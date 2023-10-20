@@ -22,7 +22,7 @@
 
 
 module pwm_gen(
-    input logic CLK,// master clock
+    input logic clk,// master clock
     input logic en,// enable signal
     input logic rst,//master reset
     input logic [7:0] pwm_ctrl, // this determines the frequence of the pwm can be lengthend to add precision
@@ -31,7 +31,7 @@ module pwm_gen(
     
     logic [7:0] counter;
     
-    always_ff@(posedge CLK or rst) begin
+    always_ff@(posedge clk or posedge rst) begin
         if(rst) begin
             counter <= 'b0;
         end
