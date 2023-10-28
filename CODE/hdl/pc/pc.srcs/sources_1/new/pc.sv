@@ -25,8 +25,8 @@ module pc(
     input rst,
     input inc,
     input jmp,
-    input [15:0] addrin,
-    output [15:0] addrout
+    input [7:0] addrin,
+    output [7:0] addrout
     );
     
     logic [15:0] addrout_q;
@@ -46,7 +46,7 @@ module pc(
         if(inc) begin
             addrout_d = addrout_q + 1;
         end else if(jmp) begin
-            addrout_d = addrin + 1;
+            addrout_d = addrin;
         end else begin
             addrout_d = addrout_q;
         end
