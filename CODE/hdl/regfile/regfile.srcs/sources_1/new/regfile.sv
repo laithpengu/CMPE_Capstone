@@ -55,8 +55,6 @@ module regfile(
     logic [7:0] register2_d;
     logic [7:0] register3_q;
     logic [7:0] register3_d;
-    logic [7:0] register4_q;
-    logic [7:0] register4_d;
     
 //    Assigning the inputs to their corresponding flip flop input (d->i) and the outputs to their corresponding flip flop output (o->q)
     assign wr_addr_d = wr_addr;
@@ -81,7 +79,6 @@ module regfile(
             register1_q <= 8'h00;
             register2_q <= 8'h00;
             register3_q <= 8'h00;
-            register4_q <= 8'h00;
         end else begin
 //    Otherwise, assign the output of each flip flop (q) to its corresponding input (d)        
             wr_addr_q <= wr_addr_d;
@@ -94,7 +91,6 @@ module regfile(
             register1_q <= register1_d;
             register2_q <= register2_d;
             register3_q <= register3_d;
-            register4_q <= register4_d;
         end
     end
 
@@ -108,25 +104,21 @@ module regfile(
                     register1_d = wr_data_q;
                     register2_d = register2_q;
                     register3_d = register3_q;
-                    register4_d = register4_q;
                 end
                 2'b01: begin
                     register1_d = register1_q;
                     register2_d = wr_data_q;
                     register3_d = register3_q;
-                    register4_d = register4_q;
                 end
                 2'b10: begin
                     register1_d = register1_q;
                     register2_d = register2_q;
                     register3_d = wr_data_q;
-                    register4_d = register4_q;
                 end
-                2'b11: begin
+                default: begin
                     register1_d = register1_q;
                     register2_d = register2_q;
                     register3_d = register3_q;
-                    register4_d = wr_data_q;
                 end
             endcase
         end else begin
@@ -144,7 +136,7 @@ module regfile(
             2'b00: rd_data1_d = register1_q;
             2'b01: rd_data1_d = register2_q;
             2'b10: rd_data1_d = register3_q;
-            2'b11: rd_data1_d = register4_q;
+            default: rd_data1_d = rd_data1_q;
         endcase
         
 // and register B        
@@ -152,7 +144,7 @@ module regfile(
             2'b00: rd_data2_d = register1_q;
             2'b01: rd_data2_d = register2_q;
             2'b10: rd_data2_d = register3_q;
-            2'b11: rd_data2_d = register4_q;
+            default: rd_data2_d = rd_data2_q;
         endcase
     end
     
