@@ -1,0 +1,6 @@
+- Scope: We are on the team ICS working on the processor. 
+- Schedule: We're on schedule, currently working on our SRS
+- Spending: Currently we have not spent any money
+- Stakeholders: Our current stakeholder is Dr. LaBerge
+- Status: We have created drafts of our major artifacts (DFD, IEM, SBD, MSD, etc.). 
+- Specifics: We will also start to determine what hardware we need, using a decision matrix for what fpga we want.

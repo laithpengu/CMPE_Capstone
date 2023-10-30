@@ -1,0 +1,53 @@
+Time resolution is 1 ps
+ Block Memory Generator module loading initial data...
+ Block Memory Generator data initialization complete.
+Block Memory Generator module pc_tb.prog_mem.inst.\native_mem_module.blk_mem_gen_v8_4_7_inst  is using a behavioral model for simulation which will not precisely model memory collision behavior.
+Getting data out 0000
+Getting data out 0001
+Getting data out 0002
+Getting data out 0003
+Getting data out 0004
+Getting data out 0005
+Getting data out 0006
+Getting data out 0007
+Getting data out 0008
+Getting data out 0009
+Getting data out 000a
+Getting data out 000b
+Getting data out 000c
+Getting data out 000d
+Getting data out 000e
+Getting data out 000f
+Getting data out 0010
+Getting data out 0011
+Getting data out 0012
+Getting data out 0013
+Getting data out 0014
+Getting data out 0015
+Getting data out 0016
+Getting data out 0017
+Getting data out 0018
+Getting data out 0019
+Getting data out 001a
+Getting data out 001b
+Getting data out 001c
+Getting data out 001d
+Getting data out 001e
+Getting data out 001f
+Getting data out 0020
+Getting data out 0021
+Getting data out 0022
+Getting data out 0023
+Getting data out 0024
+Getting data out 0025
+Getting data out 0026
+Getting data out 0027
+Getting data out 0028
+Getting data out 0029
+Getting data out 002a
+Getting data out 002b
+Getting data out 002c
+Getting data out 002d
+Getting data out 002e
+Getting data out 002f
+Jumped to address 3 to get data: 0003
