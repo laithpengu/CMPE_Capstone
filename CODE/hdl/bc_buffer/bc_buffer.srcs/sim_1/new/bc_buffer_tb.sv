@@ -48,23 +48,29 @@ initial begin
     @(negedge clk);
     rst = 1;
     
-    repeat (10)@(negedge clk);
-    ctrl_rdy = 1;
-    avoid_rdy = 0;
+    repeat (10)@(negedge clk); // wait 10 clock cycles for FIFO to setup
+    ctrl_rdy = 1;              // FIFO ready to read in
+    avoid_rdy = 0;             // FIFO not popping data off
     
     for (i = 0; i < 10; i++) begin
         // bc_in = 16'd20;
         bc_in = i + 10;
         @(negedge clk);
     end
-    ctrl_rdy = 0;
+    ctrl_rdy = 0; // stop reading data
 
     repeat (2)@(negedge clk);
-    avoid_rdy = 1;
+    avoid_rdy = 1; // start popping data off FIFO
+
     for (i = 0; i < 10; i++) begin
         @(negedge clk);
         $display("Expected Value: %h; Actual Value: %h", i + 10, bc_out);
     end
+
+    // ensure FIFO is clear
+    // write test to see lowest number of cycles between writing data and reading it
+    // write SERDES tests
+    // test other edge cases
 
 end   
 

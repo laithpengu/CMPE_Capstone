@@ -48,4 +48,14 @@ module bc_buffer(
         .rd_rst_busy(rd_rst_busy),
         .data_count(data_count)
     );
+    
+    // serdes inner_serdes(
+    //     .clk(clk),
+    //     .rst(rst),
+    //      pretty sure everything below this is wrong
+    //     .rx(),
+    //     .bc_out(bc_out),
+    //     .bc_in(bc_in),
+    //     .tx()
+    // );
 endmodule
