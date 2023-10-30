@@ -19,22 +19,25 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-
-module serdes_tb();
+module serdes_tb;
+    parameter int EARLY_TEST_WIDTH = 4;
+    parameter int TEST_WIDTH = 16;
+    int i;
     logic clk = 0;
     logic rst;
-    logic rx;
-    logic [15:0] bc_out;
-    logic [15:0] bc_in;
-    logic tx;
+    logic serial_in;
+    logic [TEST_WIDTH-1:0] parallel_in;
+    logic [TEST_WIDTH-1:0] parallel_out;
+    logic serial_out;
     
-    serdes dut(
+    serdes #(EARLY_TEST_WIDTH, TEST_WIDTH)
+    dut(
         .clk(clk),
         .rst(rst),
-        .rx(rx),
-        .bc_out(bc_out),
-        .bc_in(bc_in),
-        .tx(tx)
+        .serial_in(serial_in),
+        .parallel_in(parallel_in),
+        .parallel_out(parallel_out),
+        .serial_out(serial_out)
     );
 
     initial begin
@@ -46,38 +49,39 @@ module serdes_tb();
         @(negedge clk);
         rst = 1'b1;
         repeat (16)@(negedge clk);
-        rx = 1;
-        bc_out = 16'hf36c;
+        serial_in = 1;
+        parallel_in = 16'hf36c;
+        // for(i = 0; i < SERDES_WIDTH; i = i + 1) begin
         @(negedge clk);
-        rx = 0;
+        serial_in = 0;
         @(negedge clk);
-        rx = 1;
+        serial_in = 1;
         @(negedge clk);
-        rx = 0;
+        serial_in = 0;
         @(negedge clk);
-        rx = 1;
+        serial_in = 1;
         @(negedge clk);
-        rx = 0;
+        serial_in = 0;
         @(negedge clk);
-        rx = 1;
+        serial_in = 1;
         @(negedge clk);
-        rx = 0;
+        serial_in = 0;
         @(negedge clk);
-        rx = 1;
+        serial_in = 1;
         @(negedge clk);
-        rx = 0;
+        serial_in = 0;
         @(negedge clk);
-        rx = 1;
+        serial_in = 1;
         @(negedge clk);
-        rx = 0;
+        serial_in = 0;
         @(negedge clk);
-        rx = 1;
+        serial_in = 1;
         @(negedge clk);
-        rx = 0;
+        serial_in = 0;
         @(negedge clk);
-        rx = 1;
+        serial_in = 1;
         @(negedge clk);
-        rx = 0;
+        serial_in = 0;
         repeat (10)@(negedge clk);
     end
 

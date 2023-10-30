@@ -20,31 +20,35 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module serdes(
+module serdes#(
+    parameter SERDES_WIDTH=16,
+    parameter EARLY_WIDTH=4) (
     input clk,
     input rst,
-    input rx,
-    input [15:0] bc_out,
-    output [15:0] bc_in,
-    output tx
+    input serial_in,
+    input [SERDES_WIDTH-1:0] parallel_in,
+    output [SERDES_WIDTH-1:0] parallel_out,
+    output serial_out
     );
     
-    logic [15:0] bc_in_q;
-    logic [15:0] bc_in_d;
-    logic [15:0] bc_rx_q;
-    logic [15:0] bc_rx_d;
-    logic [3:0] count_rx;
-    logic [3:0] count_tx;
+    logic [SERDES_WIDTH-1:0] bc_in_q;
+    logic [SERDES_WIDTH-1:0] bc_in_d;
+    logic [SERDES_WIDTH-1:0] bc_rx_q;
+    logic [SERDES_WIDTH-1:0] bc_rx_d;
+    logic [$clog2(SERDES_WIDTH)-1:0] count_rx;
+    logic [$clog2(SERDES_WIDTH)-1:0] count_tx;
+//    logic [3:0] count_rx;
+//    logic [3:0] count_tx;
 
-    assign tx = bc_out[count_tx];
-    assign bc_in = bc_in_q;
+    assign serial_out = parallel_in[count_tx];
+    assign parallel_out = bc_in_q;
 
     always_ff @(posedge clk or negedge rst) begin
         if(!rst) begin
-            bc_in_q <= 16'h0000;
-            bc_rx_q <= 16'h0000;
-            count_rx <= 4'h0;
-            count_tx <= 4'h0;
+            bc_in_q <= 'h0;
+            bc_rx_q <= 'h0;
+            count_rx <= 'h0;
+            count_tx <= 'h0;
         end else begin
             bc_in_q <= bc_in_d;
             bc_rx_q <= bc_rx_d;
@@ -55,10 +59,10 @@ module serdes(
 
     always_comb begin
         if(count_rx == 0) begin
-            bc_rx_d = {{15{1'b0}}, rx};
+            bc_rx_d = {{{SERDES_WIDTH - 1}{1'b0}}, serial_in};
             bc_in_d = bc_rx_q;
         end else begin
-            bc_rx_d = {bc_rx_q[14:0], rx};
+            bc_rx_d = {bc_rx_q[SERDES_WIDTH - 1:0], serial_in};
             bc_in_d = bc_in_q;
         end
     end
