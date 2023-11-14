@@ -21,49 +21,50 @@
 
 
 module serdes#(
-    parameter SERDES_WIDTH=16,
-    parameter EARLY_WIDTH=4) (
+    parameter EARLY_WIDTH=4,
+    parameter SERDES_WIDTH=16) (
     input clk,
     input rst,
     input serial_in,
     input [SERDES_WIDTH-1:0] parallel_in,
     output [SERDES_WIDTH-1:0] parallel_out,
-    output serial_out
+    output serial_out,
+    output early_rdy,
+    output parallel_rdy
     );
     
-    logic [SERDES_WIDTH-1:0] bc_in_q;
-    logic [SERDES_WIDTH-1:0] bc_in_d;
-    logic [SERDES_WIDTH-1:0] bc_rx_q;
-    logic [SERDES_WIDTH-1:0] bc_rx_d;
-    logic [$clog2(SERDES_WIDTH)-1:0] count_rx;
-    logic [$clog2(SERDES_WIDTH)-1:0] count_tx;
-//    logic [3:0] count_rx;
-//    logic [3:0] count_tx;
+    logic [SERDES_WIDTH-1:0] parallel_out_q;
+    logic [SERDES_WIDTH-1:0] parallel_out_d;
+    logic [SERDES_WIDTH-1:0] parallel_in_q;
+    logic [SERDES_WIDTH-1:0] parallel_in_d;
+    logic [$clog2(SERDES_WIDTH)-1:0] des_count;
+    logic [$clog2(SERDES_WIDTH)-1:0] ser_count;
 
-    assign serial_out = parallel_in[count_tx];
-    assign parallel_out = bc_in_q;
+    assign parallel_in_d = parallel_in;
+    assign serial_out = parallel_in_q[ser_count];
+    assign parallel_out = parallel_out_q;
+    assign early_rdy = des_count == EARLY_WIDTH;
+    assign parallel_rdy = des_count == 0;
 
     always_ff @(posedge clk or negedge rst) begin
         if(!rst) begin
-            bc_in_q <= 'h0;
-            bc_rx_q <= 'h0;
-            count_rx <= 'h0;
-            count_tx <= 'h0;
+            parallel_out_q <= 'h0;
+            des_count <= 'h0;
+            ser_count <= SERDES_WIDTH - 1;
+            parallel_in_q <= 'h0;
         end else begin
-            bc_in_q <= bc_in_d;
-            bc_rx_q <= bc_rx_d;
-            count_rx <= count_rx + 1;
-            count_tx <= count_tx + 1;
+            parallel_out_q <= parallel_out_d;
+            des_count <= des_count + 1;
+            ser_count <= ser_count - 1;
+            parallel_in_q <= parallel_in_d;
         end
     end
 
     always_comb begin
-        if(count_rx == 0) begin
-            bc_rx_d = {{{SERDES_WIDTH - 1}{1'b0}}, serial_in};
-            bc_in_d = bc_rx_q;
+        if(des_count == 0) begin
+            parallel_out_d = {{{SERDES_WIDTH - 1}{1'b0}}, serial_in};
         end else begin
-            bc_rx_d = {bc_rx_q[SERDES_WIDTH - 1:0], serial_in};
-            bc_in_d = bc_in_q;
+            parallel_out_d = {parallel_out_q[SERDES_WIDTH - 1:0], serial_in};
         end
     end
     

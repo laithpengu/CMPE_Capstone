@@ -96,7 +96,7 @@ module regfile(
 
     always_comb begin
 // Always comb block for checking if write enable is set or not
-        if(wr_en_q) begin
+        if(wr_en) begin
 // When write enable is set, for each case, wr_data is set to register of address given
 // All other registers are just given their output
             case(wr_addr_q)
@@ -126,7 +126,6 @@ module regfile(
             register1_d = register1_q;
             register2_d = register2_q;
             register3_d = register3_q;
-            register4_d = register4_q;
         end
     end
     

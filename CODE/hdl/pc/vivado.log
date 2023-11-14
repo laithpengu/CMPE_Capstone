@@ -1,0 +1,194 @@
+#-----------------------------------------------------------
+# Vivado v2023.2 (64-bit)
+# SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
+# IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+# SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+# Start of session at: Sun Nov 12 00:23:10 2023
+# Process ID: 3576
+# Current directory: C:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/pc
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent43768 C:\Users\JohnPC\Documents\GitHub\CMPE_Capstone\CODE\hdl\pc\pc.xpr
+# Log file: C:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/pc/vivado.log
+# Journal file: C:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/pc\vivado.jou
+# Running On: JohnDesktop, OS: Windows, CPU Frequency: 3793 MHz, CPU Physical cores: 12, Host memory: 17092 MB
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/pc/pc.xpr
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vek280_es:part0:1.0 available at J:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vek280/es/rev_a/1.0/board.xml as part xcve2802-vsvh1760-2lp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vek280_es:part0:1.1 available at J:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vek280/es/rev_a/1.1/board.xml as part xcve2802-vsvh1760-2lp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vek280_es_revb:part0:1.0 available at J:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vek280/es/rev_b/1.0/board.xml as part xcve2802-vsvh1760-2mp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vek280_es_revb:part0:1.1 available at J:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vek280/es/rev_b/1.1/board.xml as part xcve2802-vsvh1760-2mp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vhk158_es:part0:1.0 available at J:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vhk158/es/1.0/board.xml as part xcvh1582-vsva3697-2mp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vhk158_es:part0:1.1 available at J:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vhk158/es/1.1/board.xml as part xcvh1582-vsva3697-2mp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu208ld:part0:2.0 available at J:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu208ld/production/2.0/board.xml as part xczu58dr-fsvg1517-2-i specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu216ld:part0:2.0 available at J:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu216ld/production/2.0/board.xml as part xczu59dr-ffvf1760-2-i specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu670:part0:2.0 available at J:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu670/2.0/board.xml as part xczu67dr-fsve1156-2-i specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu670ld:part0:1.0 available at J:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu670ld/1.0/board.xml as part xczu57dr-fsve1156-2-i specified in board_part file is either invalid or not available
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'J:/Xilinx/Vivado/2023.2/data/ip'.
+WARNING: [IP_Flow 19-3664] IP 'blk_mem_gen_0' generated file not found 'c:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/pc/pc.gen/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0.dcp'. Please regenerate to continue.
+WARNING: [IP_Flow 19-3664] IP 'blk_mem_gen_0' generated file not found 'c:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/pc/pc.gen/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0_stub.v'. Please regenerate to continue.
+WARNING: [IP_Flow 19-3664] IP 'blk_mem_gen_0' generated file not found 'c:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/pc/pc.gen/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0_stub.vhdl'. Please regenerate to continue.
+WARNING: [IP_Flow 19-3664] IP 'blk_mem_gen_0' generated file not found 'c:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/pc/pc.gen/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0_sim_netlist.v'. Please regenerate to continue.
+WARNING: [IP_Flow 19-3664] IP 'blk_mem_gen_0' generated file not found 'c:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/pc/pc.gen/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0_sim_netlist.vhdl'. Please regenerate to continue.
+open_project: Time (s): cpu = 00:00:19 ; elapsed = 00:00:09 . Memory (MB): peak = 1532.770 ; gain = 258.215
+update_compile_order -fileset sources_1
+reset_run synth_1
+launch_runs synth_1 -jobs 12
+WARNING: [Vivado 12-7122] Auto Incremental Compile:: No reference checkpoint was found in run synth_1. Auto-incremental flow will not be run, the standard flow will be run instead.
+[Sun Nov 12 00:24:55 2023] Launched synth_1...
+Run output will be captured here: C:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/pc/pc.runs/synth_1/runme.log
+launch_simulation
+Command: launch_simulation 
+INFO: [Vivado 12-12493] Simulation top is 'pc_tb'
+WARNING: [Vivado 12-13340] Unable to auto find GCC executables from simulator install path! (path not set)
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'C:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/pc/pc.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-72] Using boost library from 'J:/Xilinx/Vivado/2023.2/tps/boost_1_72_0'
+INFO: [USF-XSim-7] Finding pre-compiled libraries...
+INFO: [USF-XSim-11] File 'J:/Xilinx/Vivado/2023.2/data/xsim/xsim.ini' copied to run dir:'C:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/pc/pc.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-54] Inspecting design source files for 'pc_tb' in fileset 'sim_1'...
+INFO: [SIM-utils-43] Exported 'C:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/pc/pc.sim/sim_1/behav/xsim/blk_mem_gen_0.mif'
+INFO: [SIM-utils-43] Exported 'C:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/pc/pc.sim/sim_1/behav/xsim/progmem.coe'
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'C:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/pc/pc.sim/sim_1/behav/xsim'
+"xvlog --incr --relax -L uvm -prj pc_tb_vlog.prj"
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'C:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/pc/pc.sim/sim_1/behav/xsim'
+"xelab --incr --debug typical --relax --mt 2 -L xil_defaultlib -L blk_mem_gen_v8_4_7 -L uvm -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot pc_tb_behav xil_defaultlib.pc_tb xil_defaultlib.glbl -log elaborate.log"
+Vivado Simulator v2023.2
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: J:/Xilinx/Vivado/2023.2/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L xil_defaultlib -L blk_mem_gen_v8_4_7 -L uvm -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot pc_tb_behav xil_defaultlib.pc_tb xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+INFO: [XSIM 43-4323] No Change in HDL. Linking previously generated obj files to create kernel
+INFO: [USF-XSim-69] 'elaborate' step finished in '3' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'C:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/pc/pc.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "pc_tb_behav -key {Behavioral:sim_1:Functional:pc_tb} -tclbatch {pc_tb.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+INFO: [Common 17-41] Interrupt caught. Command should exit soon.
+Time resolution is 1 ps
+source pc_tb.tcl
+INFO: [Common 17-344] 'xsim' was cancelled
+INFO: [Vivado 12-5357] 'simulate' step aborted
+launch_simulation: Time (s): cpu = 00:00:02 ; elapsed = 00:00:07 . Memory (MB): peak = 1580.711 ; gain = 7.445
+INFO: [Common 17-344] 'launch_simulation' was cancelled
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+launch_simulation
+Command: launch_simulation 
+INFO: [Vivado 12-12493] Simulation top is 'pc_tb'
+WARNING: [Vivado 12-13340] Unable to auto find GCC executables from simulator install path! (path not set)
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'C:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/pc/pc.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-72] Using boost library from 'J:/Xilinx/Vivado/2023.2/tps/boost_1_72_0'
+INFO: [USF-XSim-7] Finding pre-compiled libraries...
+INFO: [USF-XSim-11] File 'J:/Xilinx/Vivado/2023.2/data/xsim/xsim.ini' copied to run dir:'C:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/pc/pc.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-54] Inspecting design source files for 'pc_tb' in fileset 'sim_1'...
+INFO: [SIM-utils-43] Exported 'C:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/pc/pc.sim/sim_1/behav/xsim/blk_mem_gen_0.mif'
+INFO: [SIM-utils-43] Exported 'C:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/pc/pc.sim/sim_1/behav/xsim/progmem.coe'
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'C:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/pc/pc.sim/sim_1/behav/xsim'
+"xvlog --incr --relax -L uvm -prj pc_tb_vlog.prj"
+INFO: [USF-XSim-69] 'compile' step finished in '2' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'C:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/pc/pc.sim/sim_1/behav/xsim'
+"xelab --incr --debug typical --relax --mt 2 -L xil_defaultlib -L blk_mem_gen_v8_4_7 -L uvm -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot pc_tb_behav xil_defaultlib.pc_tb xil_defaultlib.glbl -log elaborate.log"
+Vivado Simulator v2023.2
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: J:/Xilinx/Vivado/2023.2/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L xil_defaultlib -L blk_mem_gen_v8_4_7 -L uvm -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot pc_tb_behav xil_defaultlib.pc_tb xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+INFO: [XSIM 43-4323] No Change in HDL. Linking previously generated obj files to create kernel
+INFO: [USF-XSim-69] 'elaborate' step finished in '2' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'C:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/pc/pc.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "pc_tb_behav -key {Behavioral:sim_1:Functional:pc_tb} -tclbatch {pc_tb.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Time resolution is 1 ps
+source pc_tb.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+ Block Memory Generator module loading initial data...
+ Block Memory Generator data initialization complete.
+Block Memory Generator module pc_tb.prog_mem.inst.\native_mem_module.blk_mem_gen_v8_4_7_inst  is using a behavioral model for simulation which will not precisely model memory collision behavior.
+Getting data out 0000
+Getting data out 0001
+Getting data out 0002
+Getting data out 0003
+Getting data out 0004
+Getting data out 0005
+Getting data out 0006
+Getting data out 0007
+Getting data out 0008
+Getting data out 0009
+Getting data out 000a
+Getting data out 000b
+Getting data out 000c
+Getting data out 000d
+Getting data out 000e
+Getting data out 000f
+Getting data out 0010
+Getting data out 0011
+Getting data out 0012
+Getting data out 0013
+Getting data out 0014
+Getting data out 0015
+Getting data out 0016
+Getting data out 0017
+Getting data out 0018
+Getting data out 0019
+Getting data out 001a
+Getting data out 001b
+Getting data out 001c
+Getting data out 001d
+Getting data out 001e
+Getting data out 001f
+Getting data out 0020
+Getting data out 0021
+Getting data out 0022
+Getting data out 0023
+Getting data out 0024
+Getting data out 0025
+Getting data out 0026
+Getting data out 0027
+Getting data out 0028
+Getting data out 0029
+Getting data out 002a
+Getting data out 002b
+Getting data out 002c
+Getting data out 002d
+Getting data out 002e
+Getting data out 002f
+Jumped to address 3 to get data: 0003
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'pc_tb_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:04 ; elapsed = 00:00:06 . Memory (MB): peak = 1597.207 ; gain = 0.000
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+exit
+INFO: [Common 17-206] Exiting Vivado at Sun Nov 12 00:28:51 2023...

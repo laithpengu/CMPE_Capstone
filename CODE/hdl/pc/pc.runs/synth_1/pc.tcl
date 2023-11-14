@@ -84,7 +84,7 @@ set_property ip_output_repo c:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
-add_files c:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/pc/pc.srcs/sources_1/ip/blk_mem_gen_0/progmem.coe
+add_files C:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/pc/pc.srcs/sources_1/ip/blk_mem_gen_0/progmem.coe
 read_verilog -library xil_defaultlib -sv C:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/pc/pc.srcs/sources_1/new/pc.sv
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
