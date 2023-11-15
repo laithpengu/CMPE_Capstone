@@ -20,9 +20,10 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 module serdes_tb;
-    parameter int EARLY_TEST_WIDTH = 4;
+    parameter int EARLY_TEST_WIDTH = 16;
     parameter int TEST_WIDTH = 32;
     int i;
+    int j;
     logic clk = 0;
     logic rst;
     logic serial_in;
@@ -57,22 +58,25 @@ module serdes_tb;
         rst = 1'b0;
         @(negedge clk);
         rst = 1'b1;
-        rand_value = $urandom;
-        parallel_in = rand_value;
         for(i = 0; i < TEST_WIDTH; i = i + 1) begin
             randbit = $urandom;
             des_expected[TEST_WIDTH - i - 1] = randbit;
             serial_in = randbit;
-            if(i == 0) begin
-                ser_result[TEST_WIDTH - 1] = rand_value[TEST_WIDTH - 1];
-            end else begin
-                ser_result[TEST_WIDTH - i - 1] = serial_out;
-            end
             @(negedge clk);
         end
         $display("For deserializer test: expected value: %h and got value: %h", des_expected, parallel_out);
+        rst = 1'b0;
+        @(negedge clk);
+        rst = 1'b1;
+        rand_value = $urandom;
+        parallel_in = rand_value;
+        repeat(2)@(negedge clk);
+        for(j = 0; j < TEST_WIDTH; j = j + 1) begin
+            ser_result[TEST_WIDTH - j - 1] = serial_out;
+            @(negedge clk);
+        end
         $display("For serializer test: expected value: %h and got value: %h", ser_result, rand_value);
-        repeat (10)@(negedge clk);
     end
+
 
 endmodule

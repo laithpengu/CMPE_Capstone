@@ -37,11 +37,14 @@ module serdes#(
     logic [SERDES_WIDTH-1:0] parallel_out_d;
     logic [SERDES_WIDTH-1:0] parallel_in_q;
     logic [SERDES_WIDTH-1:0] parallel_in_d;
+    logic serial_out_q;
+    logic serial_out_d;
     logic [$clog2(SERDES_WIDTH)-1:0] des_count;
     logic [$clog2(SERDES_WIDTH)-1:0] ser_count;
 
     assign parallel_in_d = parallel_in;
-    assign serial_out = parallel_in_q[ser_count];
+    assign serial_out_d = parallel_in_q[ser_count];
+    assign serial_out = serial_out_q;
     assign parallel_out = parallel_out_q;
     assign early_rdy = des_count == EARLY_WIDTH;
     assign parallel_rdy = des_count == 0;
@@ -50,13 +53,15 @@ module serdes#(
         if(!rst) begin
             parallel_out_q <= 'h0;
             des_count <= 'h0;
-            ser_count <= SERDES_WIDTH - 1;
+            ser_count <= 'h0;
             parallel_in_q <= 'h0;
+            serial_out_q <= 'h0;
         end else begin
             parallel_out_q <= parallel_out_d;
             des_count <= des_count + 1;
             ser_count <= ser_count - 1;
             parallel_in_q <= parallel_in_d;
+            serial_out_q <= serial_out_d;
         end
     end
 
