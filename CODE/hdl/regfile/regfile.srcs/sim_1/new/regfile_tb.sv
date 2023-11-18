@@ -54,14 +54,18 @@ module regfile_tb();
             wr_addr = randAddr1;
             wr_data = randVal1;
             @(negedge clk);
+            wr_en = 1'b0;
+            @(negedge clk);
             randAddr2 = $urandom;
             randVal2 = $urandom;
             wr_addr = randAddr2;
             wr_data = randVal2;
-            repeat(2)@(negedge clk);
-            wr_en = 1'b0;
+            wr_en = 1'b1;
             rda_addr = randAddr1;
             rdb_addr = randAddr2;
+            @(negedge clk);
+            wr_en = 1'b0;
+            repeat (2)@(negedge clk);
             $display("Test %d Got value %h for address %h, expected %h; Got value %h for address %h, expected %h", i, rd_data1, randAddr1, randVal1, rd_data2, randAddr2, randVal2);
         end
     end

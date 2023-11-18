@@ -50,9 +50,9 @@ module pc_tb();
     end
 
     initial begin
-        rst = 0;
-        @(negedge clk);
         rst = 1;
+        @(negedge clk);
+        rst = 0;
         inc = 1;
         @(negedge clk);
         for(i = 0; i < 48; i = i + 1) begin

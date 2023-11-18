@@ -55,6 +55,8 @@ module regfile(
     logic [7:0] register2_d;
     logic [7:0] register3_q;
     logic [7:0] register3_d;
+    logic [7:0] register4_q;
+    logic [7:0] register4_d;
     
 //    Assigning the inputs to their corresponding flip flop input (d->i) and the outputs to their corresponding flip flop output (o->q)
     assign wr_addr_d = wr_addr;
@@ -79,6 +81,7 @@ module regfile(
             register1_q <= 8'h00;
             register2_q <= 8'h00;
             register3_q <= 8'h00;
+            register4_q <= 8'h00;
         end else begin
 //    Otherwise, assign the output of each flip flop (q) to its corresponding input (d)        
             wr_addr_q <= wr_addr_d;
@@ -91,34 +94,39 @@ module regfile(
             register1_q <= register1_d;
             register2_q <= register2_d;
             register3_q <= register3_d;
+            register4_q <= register4_d;
         end
     end
 
     always_comb begin
 // Always comb block for checking if write enable is set or not
-        if(wr_en) begin
+        if(wr_en_q) begin
 // When write enable is set, for each case, wr_data is set to register of address given
 // All other registers are just given their output
             case(wr_addr_q)
                 2'b00: begin
-                    register1_d = wr_data_q;
+                    register1_d = wr_data;
                     register2_d = register2_q;
                     register3_d = register3_q;
+                    register4_d = register4_q;
                 end
                 2'b01: begin
                     register1_d = register1_q;
-                    register2_d = wr_data_q;
+                    register2_d = wr_data;
                     register3_d = register3_q;
+                    register4_d = register4_q;
                 end
                 2'b10: begin
                     register1_d = register1_q;
                     register2_d = register2_q;
-                    register3_d = wr_data_q;
+                    register3_d = wr_data;
+                    register4_d = register4_q;
                 end
-                default: begin
+                2'b11: begin
                     register1_d = register1_q;
                     register2_d = register2_q;
                     register3_d = register3_q;
+                    register4_d = wr_data;
                 end
             endcase
         end else begin
@@ -126,16 +134,17 @@ module regfile(
             register1_d = register1_q;
             register2_d = register2_q;
             register3_d = register3_q;
+            register4_d = register4_q;
         end
     end
     
     always_comb begin
 // Outputs the data of the register from address given register A
         case(rda_addr_q)
-            2'b00: rd_data1_d = register1_q;
+            2'b00: rd_data1_q = register1_q;
             2'b01: rd_data1_d = register2_q;
             2'b10: rd_data1_d = register3_q;
-            default: rd_data1_d = rd_data1_q;
+            2'b11: rd_data1_d = register4_q;
         endcase
         
 // and register B        
@@ -143,7 +152,7 @@ module regfile(
             2'b00: rd_data2_d = register1_q;
             2'b01: rd_data2_d = register2_q;
             2'b10: rd_data2_d = register3_q;
-            default: rd_data2_d = rd_data2_q;
+            2'b11: rd_data2_d = register4_q;
         endcase
     end
     

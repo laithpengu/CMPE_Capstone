@@ -1,0 +1,3 @@
+Time resolution is 1 ps
+For deserializer test: expected value: c129 and got value: c129
+For serializer test: expected value: 69d2 and got value: 69d2

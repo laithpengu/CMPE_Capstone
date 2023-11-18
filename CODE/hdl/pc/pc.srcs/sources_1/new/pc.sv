@@ -34,8 +34,8 @@ module pc(
     
     assign addrout = addrout_q;
     
-    always_ff @(posedge clk or negedge rst) begin
-        if(!rst) begin
+    always_ff @(posedge clk or posedge rst) begin
+        if(rst) begin
             addrout_q <= 16'h0000;
         end else begin
             addrout_q <= addrout_d;
