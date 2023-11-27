@@ -34,6 +34,9 @@ module bc_buffer(
     logic [9:0] data_count;
     logic wr_rst_busy;
     logic rd_rst_busy;
+    //
+    logic from_fifo;
+    logic to_arduino;
     
     fifo_generator_0 fifo(
         .clk(clk),
@@ -49,13 +52,15 @@ module bc_buffer(
         .data_count(data_count)
     );
     
-    // serdes inner_serdes(
-    //     .clk(clk),
-    //     .rst(rst),
-    //      pretty sure everything below this is wrong
-    //     .rx(),
-    //     .bc_out(bc_out),
-    //     .bc_in(bc_in),
-    //     .tx()
-    // );
+    serdes inner_serdes(
+        .clk(clk),
+        .rst(rst),
+        // pretty sure everything below this is wrong
+        .serial_in(from_fifo),
+        .parallel_in(bc_out),
+        .parallel_out(bc_in),
+        .serial_out(to_arduino),
+        .early_rdy(),
+        .parallel_rdy()
+    );
 endmodule
