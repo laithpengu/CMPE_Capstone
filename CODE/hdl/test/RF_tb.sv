@@ -26,28 +26,32 @@ logic clk;
 logic rst;
 logic c_en;
 logic intr;
+logic sdo;
 logic [9:0] addr_in;
 logic [7:0] data_in;
 logic [1:0] mode;
 logic ready;
 logic sdi;
-logic sdo;
 logic sck;
 logic cs;
+logic data_out;
+logic intr_out;
 
 RF dut(
     .clk(clk),
     .rst(rst),
     .c_en(c_en),
     .intr(intr),
+    .sdo(sdo),
     .addr_in(addr_in),
     .data_in(data_in),
     .mode(mode),
     .ready(ready),
     .sdi(sdi),
-    .sdo(sdo),
     .sck(sck),
-    .cs(cs));
+    .cs(cs),
+    .data_out(data_out),
+    .intr_out(intr_out));
 
 initial begin
     clk = 1'b0;
@@ -70,7 +74,13 @@ initial
     mode = 2'b00;
     c_en = 1'b1;
     intr = 1'b0;
-    #170
+    sdo = 1'b0;
+    #80
+    for(int i = 0; i < 8; i++) begin
+        sdo = $urandom_range(1,0);
+        #10;
+    end
+    #10
     
     @(negedge clk)
     c_en = 1'b0;
@@ -98,7 +108,13 @@ initial
     mode = 2'b10;
     c_en = 1'b1;
     intr = 1'b0;
-    #250
+    sdo = 1'b0;
+    #160
+    for(int i = 0; i < 8; i++) begin
+        sdo = $urandom_range(1,0);
+        #10;
+    end
+    #10
     
     @(negedge clk)
     c_en = 1'b0;
@@ -123,7 +139,7 @@ initial
     rst = 1'b0;
     addr_in = $urandom_range(1023,0);
     data_in = $urandom_range(255,0);
-    mode = 2'b00;
+    mode = 2'b01;
     c_en = 1'b1;
     intr = 1'b0;
     #40
