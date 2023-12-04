@@ -21,7 +21,7 @@
 
 
 module RF_top(
-    input clk,
+    input CLK100MHZ,
     input rst,
     input sdo,
     input intr_in,
@@ -43,11 +43,10 @@ module RF_top(
     wire [1:0] inst;
     wire cs_out;
     wire intr_inter;
-    wire intr_in =0;
     assign n_rst = 1;
     assign wake = 0;
     RF_cl_test RF_state(
-    .clk(clk),
+    .clk(CLK100MHZ),
     .rst(rst),
     .data_in(data_out_mem),
     .ready(ready),
@@ -60,7 +59,7 @@ module RF_top(
     .intr_out(intr_out));
     
     RF RF_0(
-    .clk(clk),
+    .clk(CLK100MHZ),
     .rst(rst),
     .c_en(cs_out),
     .intr(intr_in),
@@ -76,7 +75,7 @@ module RF_top(
     .intr_out(intr_inter));
     
     pc pc_dut_0(
-     .clk(clk),
+     .clk(CLK100MHZ),
      .rst(rst),
      .inc(inc),
      .jmp(0),
@@ -85,7 +84,7 @@ module RF_top(
      );
      
      blk_mem_gen_0 mem_0(
-        .clka(clk),
+        .clka(CLK100MHZ),
         .addra(addr_a),
         .douta(data_out_mem)
         );
