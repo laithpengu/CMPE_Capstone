@@ -1,0 +1,190 @@
+{
+  "design": {
+    "design_info": {
+      "boundary_crc": "0x0",
+      "device": "xc7a100tcsg324-1",
+      "gen_directory": "../../../../Demo_Test.gen/sources_1/bd/design_1",
+      "name": "design_1",
+      "rev_ctrl_bd_flag": "RevCtrlBdOff",
+      "synth_flow_mode": "Hierarchical",
+      "tool_version": "2023.2"
+    },
+    "design_tree": {
+      "RF_top_0": ""
+    },
+    "ports": {
+      "CLK100MHZ": {
+        "type": "clk",
+        "direction": "I",
+        "parameters": {
+          "FREQ_HZ": {
+            "value": "100000000"
+          }
+        }
+      },
+      "sdo": {
+        "type": "data",
+        "direction": "I"
+      },
+      "intr_in": {
+        "type": "intr",
+        "direction": "I"
+      },
+      "sdi": {
+        "type": "data",
+        "direction": "O"
+      },
+      "sck": {
+        "type": "clk",
+        "direction": "O"
+      },
+      "cs": {
+        "type": "data",
+        "direction": "O"
+      },
+      "data_out_s": {
+        "type": "data",
+        "direction": "O"
+      },
+      "intr_out": {
+        "type": "intr",
+        "direction": "O"
+      },
+      "wake": {
+        "direction": "O"
+      },
+      "rst": {
+        "type": "rst",
+        "direction": "I",
+        "parameters": {
+          "POLARITY": {
+            "value": "ACTIVE_HIGH"
+          }
+        }
+      },
+      "n_rst": {
+        "type": "rst",
+        "direction": "O"
+      }
+    },
+    "components": {
+      "RF_top_0": {
+        "vlnv": "xilinx.com:module_ref:RF_top:1.0",
+        "ip_revision": "1",
+        "xci_name": "design_1_RF_top_0_0",
+        "xci_path": "ip\\design_1_RF_top_0_0\\design_1_RF_top_0_0.xci",
+        "inst_hier_path": "RF_top_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "RF_top",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "CLK100MHZ": {
+            "direction": "I"
+          },
+          "rst": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "sdo": {
+            "direction": "I"
+          },
+          "intr_in": {
+            "direction": "I"
+          },
+          "n_rst": {
+            "type": "rst",
+            "direction": "O"
+          },
+          "sdi": {
+            "direction": "O"
+          },
+          "sck": {
+            "direction": "O"
+          },
+          "cs": {
+            "direction": "O"
+          },
+          "data_out_s": {
+            "direction": "O"
+          },
+          "intr_out": {
+            "direction": "O"
+          },
+          "wake": {
+            "direction": "O"
+          }
+        }
+      }
+    },
+    "nets": {
+      "CLK100MHZ_1": {
+        "ports": [
+          "CLK100MHZ",
+          "RF_top_0/CLK100MHZ"
+        ]
+      },
+      "RF_top_0_cs": {
+        "ports": [
+          "RF_top_0/cs",
+          "cs"
+        ]
+      },
+      "RF_top_0_data_out_s": {
+        "ports": [
+          "RF_top_0/data_out_s",
+          "data_out_s"
+        ]
+      },
+      "RF_top_0_intr_out": {
+        "ports": [
+          "RF_top_0/intr_out",
+          "intr_out"
+        ]
+      },
+      "RF_top_0_n_rst": {
+        "ports": [
+          "RF_top_0/n_rst",
+          "n_rst"
+        ]
+      },
+      "RF_top_0_sck": {
+        "ports": [
+          "RF_top_0/sck",
+          "sck"
+        ]
+      },
+      "RF_top_0_sdi": {
+        "ports": [
+          "RF_top_0/sdi",
+          "sdi"
+        ]
+      },
+      "RF_top_0_wake": {
+        "ports": [
+          "RF_top_0/wake",
+          "wake"
+        ]
+      },
+      "intr_in_1": {
+        "ports": [
+          "intr_in",
+          "RF_top_0/intr_in"
+        ]
+      },
+      "rst_1": {
+        "ports": [
+          "rst",
+          "RF_top_0/rst"
+        ]
+      },
+      "sdo_1": {
+        "ports": [
+          "sdo",
+          "RF_top_0/sdo"
+        ]
+      }
+    }
+  }
+}
