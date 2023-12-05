@@ -1,0 +1,35 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Default View_ScaleFactor":"2.0",
+   "Default View_TopLeft":"-155,-146",
+   "ExpandedHierarchyInLayout":"",
+   "guistr":"# # String gsaved with Nlview 7.5.8 2022-09-21 7111 VDI=41 GEI=38 GUI=JA:10.0
+#  -string -flagsOSRD
+preplace port port-id_CLK100MHZ -pg 1 -lvl 0 -x 0 -y 70 -defaultsOSRD
+preplace port port-id_sdo -pg 1 -lvl 0 -x 0 -y 130 -defaultsOSRD
+preplace port port-id_intr_in -pg 1 -lvl 0 -x 0 -y 160 -defaultsOSRD
+preplace port port-id_sdi -pg 1 -lvl 2 -x 310 -y 60 -defaultsOSRD
+preplace port port-id_sck -pg 1 -lvl 2 -x 310 -y 90 -defaultsOSRD
+preplace port port-id_cs -pg 1 -lvl 2 -x 310 -y 120 -defaultsOSRD
+preplace port port-id_data_out_s -pg 1 -lvl 2 -x 310 -y 150 -defaultsOSRD
+preplace port port-id_intr_out -pg 1 -lvl 2 -x 310 -y 180 -defaultsOSRD
+preplace port port-id_wake -pg 1 -lvl 2 -x 310 -y 210 -defaultsOSRD
+preplace port port-id_rst -pg 1 -lvl 0 -x 0 -y 100 -defaultsOSRD
+preplace port port-id_n_rst -pg 1 -lvl 2 -x 310 -y 30 -defaultsOSRD
+preplace inst RF_top_0 -pg 1 -lvl 1 -x 150 -y 120 -defaultsOSRD
+preplace netloc CLK100MHZ_1 1 0 1 20J 70n
+preplace netloc sdo_1 1 0 1 NJ 130
+preplace netloc intr_in_1 1 0 1 20J 150n
+preplace netloc RF_top_0_sdi 1 1 1 290J 60n
+preplace netloc RF_top_0_sck 1 1 1 280J 90n
+preplace netloc RF_top_0_cs 1 1 1 NJ 120
+preplace netloc RF_top_0_data_out_s 1 1 1 290J 140n
+preplace netloc RF_top_0_intr_out 1 1 1 290J 160n
+preplace netloc RF_top_0_wake 1 1 1 280J 180n
+preplace netloc rst_1 1 0 1 20J 100n
+preplace netloc RF_top_0_n_rst 1 1 1 280J 30n
+levelinfo -pg 1 0 150 310
+pagesize -pg 1 -db -bbox -sgen -130 0 430 240
+"
+}
+
