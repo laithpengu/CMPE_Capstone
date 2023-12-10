@@ -1,0 +1,198 @@
+{
+  "design": {
+    "design_info": {
+      "boundary_crc": "0x2042DF735104268D",
+      "device": "xc7a100tcsg324-1",
+      "gen_directory": "../../../../pkt_display.gen/sources_1/bd/design_1",
+      "name": "design_1",
+      "rev_ctrl_bd_flag": "RevCtrlBdOff",
+      "synth_flow_mode": "Hierarchical",
+      "tool_version": "2023.2",
+      "validated": "true"
+    },
+    "design_tree": {
+      "pkt_display_wrapper_0": ""
+    },
+    "ports": {
+      "CLK100MHZ": {
+        "direction": "I"
+      },
+      "BTNC": {
+        "direction": "I"
+      },
+      "BTNU": {
+        "direction": "I"
+      },
+      "BTND": {
+        "direction": "I"
+      },
+      "AN": {
+        "direction": "O",
+        "left": "7",
+        "right": "0"
+      },
+      "CA": {
+        "direction": "O"
+      },
+      "CB": {
+        "direction": "O"
+      },
+      "CC": {
+        "direction": "O"
+      },
+      "CD": {
+        "direction": "O"
+      },
+      "CE": {
+        "direction": "O"
+      },
+      "CF": {
+        "direction": "O"
+      },
+      "CG": {
+        "direction": "O"
+      },
+      "DP": {
+        "direction": "O"
+      }
+    },
+    "components": {
+      "pkt_display_wrapper_0": {
+        "vlnv": "xilinx.com:module_ref:pkt_display_wrapper:1.0",
+        "ip_revision": "1",
+        "xci_name": "design_1_pkt_display_wrapper_0_0",
+        "xci_path": "ip\\design_1_pkt_display_wrapper_0_0\\design_1_pkt_display_wrapper_0_0.xci",
+        "inst_hier_path": "pkt_display_wrapper_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "pkt_display_wrapper",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I"
+          },
+          "BTNC": {
+            "direction": "I"
+          },
+          "BTNU": {
+            "direction": "I"
+          },
+          "BTND": {
+            "direction": "I"
+          },
+          "an": {
+            "direction": "O",
+            "left": "7",
+            "right": "0"
+          },
+          "ca": {
+            "direction": "O"
+          },
+          "cb": {
+            "direction": "O"
+          },
+          "cc": {
+            "direction": "O"
+          },
+          "cd": {
+            "direction": "O"
+          },
+          "ce": {
+            "direction": "O"
+          },
+          "cf": {
+            "direction": "O"
+          },
+          "cg": {
+            "direction": "O"
+          },
+          "dp": {
+            "direction": "O"
+          }
+        }
+      }
+    },
+    "nets": {
+      "BTNC_1": {
+        "ports": [
+          "BTNC",
+          "pkt_display_wrapper_0/BTNC"
+        ]
+      },
+      "BTND_1": {
+        "ports": [
+          "BTND",
+          "pkt_display_wrapper_0/BTND"
+        ]
+      },
+      "BTNU_1": {
+        "ports": [
+          "BTNU",
+          "pkt_display_wrapper_0/BTNU"
+        ]
+      },
+      "CLK100MHZ_1": {
+        "ports": [
+          "CLK100MHZ",
+          "pkt_display_wrapper_0/clk"
+        ]
+      },
+      "pkt_display_wrapper_0_an": {
+        "ports": [
+          "pkt_display_wrapper_0/an",
+          "AN"
+        ]
+      },
+      "pkt_display_wrapper_0_ca": {
+        "ports": [
+          "pkt_display_wrapper_0/ca",
+          "CA"
+        ]
+      },
+      "pkt_display_wrapper_0_cb": {
+        "ports": [
+          "pkt_display_wrapper_0/cb",
+          "CB"
+        ]
+      },
+      "pkt_display_wrapper_0_cc": {
+        "ports": [
+          "pkt_display_wrapper_0/cc",
+          "CC"
+        ]
+      },
+      "pkt_display_wrapper_0_cd": {
+        "ports": [
+          "pkt_display_wrapper_0/cd",
+          "CD"
+        ]
+      },
+      "pkt_display_wrapper_0_ce": {
+        "ports": [
+          "pkt_display_wrapper_0/ce",
+          "CE"
+        ]
+      },
+      "pkt_display_wrapper_0_cf": {
+        "ports": [
+          "pkt_display_wrapper_0/cf",
+          "CF"
+        ]
+      },
+      "pkt_display_wrapper_0_cg": {
+        "ports": [
+          "pkt_display_wrapper_0/cg",
+          "CG"
+        ]
+      },
+      "pkt_display_wrapper_0_dp": {
+        "ports": [
+          "pkt_display_wrapper_0/dp",
+          "DP"
+        ]
+      }
+    }
+  }
+}
