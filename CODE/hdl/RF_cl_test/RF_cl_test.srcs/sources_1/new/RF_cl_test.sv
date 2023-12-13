@@ -72,6 +72,10 @@ module RF_cl_test(
     end
     
     always_comb begin
+        next_state = curr_state;
+        addr_d = addr_q;
+        data_out_d = data_out_q;
+        counter_d = counter_q;
         case(curr_state)
             idle_state: begin
                 inst = 2'b00;

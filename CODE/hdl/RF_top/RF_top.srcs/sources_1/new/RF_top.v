@@ -31,7 +31,6 @@ module RF_top(
     output cs,
     output data_out_s,
     output intr_out,
-    output clk_out,
     output wake);
     wire [15:0] data_in;
     wire [15:0] data_out_mem;
@@ -48,7 +47,7 @@ module RF_top(
     assign n_rst = 1;
     assign wake = 0;
     RF_cl_test RF_state(
-    .clk(CLK100MHZ),
+    .clk(clk_intr),
     .rst(rst),
     .data_in(data_out_mem),
     .ready(ready),
@@ -64,7 +63,6 @@ module RF_top(
   // Clock out ports  
   .clk_out1(clk_intr),
   // Status and control signals               
-  .reset(rst), 
  // Clock in ports
   .clk_in1(CLK100MHZ)
   );
