@@ -46,6 +46,7 @@ module RF_top(
     wire clk_intr;
     assign n_rst = 1;
     assign wake = 0;
+    
     RF_cl_test RF_state(
     .clk(clk_intr),
     .rst(rst),
@@ -58,7 +59,8 @@ module RF_top(
     .cs_out(cs_out),
     .inc(inc),
     .intr_out(intr_out));
-    clk_wiz_0 clk_wiz_dut
+  
+  clk_wiz_0 clk_wiz_dut
   (
   // Clock out ports  
   .clk_out1(clk_intr),
@@ -100,6 +102,6 @@ module RF_top(
         .clka(clk_intr),
         .addra(addr_a),
         .douta(data_out_mem)
-        );
+     );
 
 endmodule

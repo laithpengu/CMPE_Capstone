@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sat Dec  9 16:09:47 2023" VIVADOVERSION="2023.2">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Wed Dec 13 18:58:14 2023" VIVADOVERSION="2023.2">
 
   <SYSTEMINFO ARCH="artix7" DEVICE="7a100t" NAME="design_1" PACKAGE="csg324" SPEEDGRADE="-1"/>
 
@@ -17,11 +17,6 @@
     <PORT DIR="I" NAME="BTND" SIGIS="undef" SIGNAME="External_Ports_BTND">
       <CONNECTIONS>
         <CONNECTION INSTANCE="pkt_display_wrapper_0" PORT="BTND"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="I" NAME="BTNU" SIGIS="undef" SIGNAME="External_Ports_BTNU">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="pkt_display_wrapper_0" PORT="BTNU"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="O" NAME="CA" SIGIS="undef" SIGNAME="pkt_display_wrapper_0_ca">
@@ -89,11 +84,6 @@
         <PORT DIR="I" NAME="BTND" SIGIS="undef" SIGNAME="External_Ports_BTND">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="BTND"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="BTNU" SIGIS="undef" SIGNAME="External_Ports_BTNU">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="BTNU"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="7" NAME="an" RIGHT="0" SIGIS="undef" SIGNAME="pkt_display_wrapper_0_an">

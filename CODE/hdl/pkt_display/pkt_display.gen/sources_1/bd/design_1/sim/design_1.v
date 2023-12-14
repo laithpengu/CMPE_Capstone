@@ -2,8 +2,8 @@
 //Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-//Date        : Sat Dec  9 16:09:47 2023
-//Host        : JohnDesktop running 64-bit major release  (build 9200)
+//Date        : Wed Dec 13 18:58:14 2023
+//Host        : DESKTOP-M1PCUD5 running 64-bit major release  (build 9200)
 //Command     : generate_target design_1.bd
 //Design      : design_1
 //Purpose     : IP block netlist
@@ -15,7 +15,6 @@ module design_1
    (AN,
     BTNC,
     BTND,
-    BTNU,
     CA,
     CB,
     CC,
@@ -28,7 +27,6 @@ module design_1
   output [7:0]AN;
   input BTNC;
   input BTND;
-  input BTNU;
   output CA;
   output CB;
   output CC;
@@ -41,7 +39,6 @@ module design_1
 
   wire BTNC_1;
   wire BTND_1;
-  wire BTNU_1;
   wire CLK100MHZ_1;
   wire [7:0]pkt_display_wrapper_0_an;
   wire pkt_display_wrapper_0_ca;
@@ -56,7 +53,6 @@ module design_1
   assign AN[7:0] = pkt_display_wrapper_0_an;
   assign BTNC_1 = BTNC;
   assign BTND_1 = BTND;
-  assign BTNU_1 = BTNU;
   assign CA = pkt_display_wrapper_0_ca;
   assign CB = pkt_display_wrapper_0_cb;
   assign CC = pkt_display_wrapper_0_cc;
@@ -69,7 +65,6 @@ module design_1
   design_1_pkt_display_wrapper_0_0 pkt_display_wrapper_0
        (.BTNC(BTNC_1),
         .BTND(BTND_1),
-        .BTNU(BTNU_1),
         .an(pkt_display_wrapper_0_an),
         .ca(pkt_display_wrapper_0_ca),
         .cb(pkt_display_wrapper_0_cb),

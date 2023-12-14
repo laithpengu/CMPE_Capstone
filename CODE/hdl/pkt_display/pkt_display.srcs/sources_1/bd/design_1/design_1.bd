@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x2042DF735104268D",
+      "boundary_crc": "0x20CDABDA11073563",
       "device": "xc7a100tcsg324-1",
       "gen_directory": "../../../../pkt_display.gen/sources_1/bd/design_1",
       "name": "design_1",
@@ -18,9 +18,6 @@
         "direction": "I"
       },
       "BTNC": {
-        "direction": "I"
-      },
-      "BTNU": {
         "direction": "I"
       },
       "BTND": {
@@ -76,9 +73,6 @@
           "BTNC": {
             "direction": "I"
           },
-          "BTNU": {
-            "direction": "I"
-          },
           "BTND": {
             "direction": "I"
           },
@@ -125,12 +119,6 @@
         "ports": [
           "BTND",
           "pkt_display_wrapper_0/BTND"
-        ]
-      },
-      "BTNU_1": {
-        "ports": [
-          "BTNU",
-          "pkt_display_wrapper_0/BTNU"
         ]
       },
       "CLK100MHZ_1": {

@@ -181,6 +181,16 @@ always @(*) begin
             cg = 1'b0;
             dp = 1'b1;
         end
+        default: begin
+            ca = 1'b0;
+            cb = 1'b0;
+            cc = 1'b0;
+            cd = 1'b0;
+            ce = 1'b0;
+            cf = 1'b0;
+            cg = 1'b0;
+            dp = 1'b0;
+        end
     endcase
 end
 

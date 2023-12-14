@@ -1,39 +1,37 @@
 {
    "ActiveEmotionalView":"Default View",
-   "Default View_ScaleFactor":"1.5",
-   "Default View_TopLeft":"-1305,-746",
+   "Default View_ScaleFactor":"2.0",
+   "Default View_TopLeft":"-517,-109",
    "ExpandedHierarchyInLayout":"",
    "guistr":"# # String gsaved with Nlview 7.5.8 2022-09-21 7111 VDI=41 GEI=38 GUI=JA:10.0
 #  -string -flagsOSRD
-preplace port port-id_CLK100MHZ -pg 1 -lvl 0 -x -830 -y -400 -defaultsOSRD
-preplace port port-id_BTNC -pg 1 -lvl 0 -x -830 -y -430 -defaultsOSRD
-preplace port port-id_BTNU -pg 1 -lvl 0 -x -830 -y -290 -defaultsOSRD
-preplace port port-id_BTND -pg 1 -lvl 0 -x -830 -y -260 -defaultsOSRD
-preplace port port-id_CA -pg 1 -lvl 3 -x 130 -y -420 -defaultsOSRD
-preplace port port-id_CB -pg 1 -lvl 3 -x 130 -y -390 -defaultsOSRD
-preplace port port-id_CC -pg 1 -lvl 3 -x 130 -y -360 -defaultsOSRD
-preplace port port-id_CD -pg 1 -lvl 3 -x 130 -y -330 -defaultsOSRD
-preplace port port-id_CE -pg 1 -lvl 3 -x 130 -y -300 -defaultsOSRD
-preplace port port-id_CF -pg 1 -lvl 3 -x 130 -y -270 -defaultsOSRD
-preplace port port-id_CG -pg 1 -lvl 3 -x 130 -y -240 -defaultsOSRD
-preplace port port-id_DP -pg 1 -lvl 3 -x 130 -y -210 -defaultsOSRD
-preplace portBus AN -pg 1 -lvl 3 -x 130 -y -450 -defaultsOSRD
-preplace inst pkt_display_wrapper_0 -pg 1 -lvl 1 -x -670 -y -290 -defaultsOSRD
-preplace netloc BTNC_1 1 0 1 -800 -430n
-preplace netloc BTND_1 1 0 1 N -260
-preplace netloc BTNU_1 1 0 1 -810 -290n
-preplace netloc CLK100MHZ_1 1 0 1 -810 -400n
-preplace netloc pkt_display_wrapper_0_an 1 1 2 -570 -450 NJ
-preplace netloc pkt_display_wrapper_0_ca 1 1 2 -560 -420 NJ
-preplace netloc pkt_display_wrapper_0_cb 1 1 2 -550 -390 NJ
-preplace netloc pkt_display_wrapper_0_cc 1 1 2 -540 -360 NJ
-preplace netloc pkt_display_wrapper_0_cd 1 1 2 -530 -330 NJ
-preplace netloc pkt_display_wrapper_0_ce 1 1 2 -520 -300 NJ
-preplace netloc pkt_display_wrapper_0_cf 1 1 2 -510 -270 NJ
-preplace netloc pkt_display_wrapper_0_cg 1 1 2 -570 -240 NJ
-preplace netloc pkt_display_wrapper_0_dp 1 1 2 N -210 NJ
-levelinfo -pg 1 -830 -670 -230 130
-pagesize -pg 1 -db -bbox -sgen -960 -630 260 180
+preplace port port-id_CLK100MHZ -pg 1 -lvl 0 -x -10 -y 90 -defaultsOSRD
+preplace port port-id_BTNC -pg 1 -lvl 0 -x -10 -y 120 -defaultsOSRD
+preplace port port-id_BTND -pg 1 -lvl 0 -x -10 -y 150 -defaultsOSRD
+preplace port port-id_CA -pg 1 -lvl 2 -x 260 -y 50 -defaultsOSRD
+preplace port port-id_CB -pg 1 -lvl 2 -x 260 -y 80 -defaultsOSRD
+preplace port port-id_CC -pg 1 -lvl 2 -x 260 -y 110 -defaultsOSRD
+preplace port port-id_CD -pg 1 -lvl 2 -x 260 -y 140 -defaultsOSRD
+preplace port port-id_CE -pg 1 -lvl 2 -x 260 -y 170 -defaultsOSRD
+preplace port port-id_CF -pg 1 -lvl 2 -x 260 -y 200 -defaultsOSRD
+preplace port port-id_CG -pg 1 -lvl 2 -x 260 -y 230 -defaultsOSRD
+preplace port port-id_DP -pg 1 -lvl 2 -x 260 -y 260 -defaultsOSRD
+preplace portBus AN -pg 1 -lvl 2 -x 260 -y 20 -defaultsOSRD
+preplace inst pkt_display_wrapper_0 -pg 1 -lvl 1 -x 120 -y 140 -defaultsOSRD
+preplace netloc BTNC_1 1 0 1 10 120n
+preplace netloc BTND_1 1 0 1 20 150n
+preplace netloc CLK100MHZ_1 1 0 1 20 90n
+preplace netloc pkt_display_wrapper_0_an 1 1 1 220 20n
+preplace netloc pkt_display_wrapper_0_ca 1 1 1 230 50n
+preplace netloc pkt_display_wrapper_0_cb 1 1 1 240 80n
+preplace netloc pkt_display_wrapper_0_cc 1 1 1 220 110n
+preplace netloc pkt_display_wrapper_0_cd 1 1 1 N 140
+preplace netloc pkt_display_wrapper_0_ce 1 1 1 240 160n
+preplace netloc pkt_display_wrapper_0_cf 1 1 1 240 180n
+preplace netloc pkt_display_wrapper_0_cg 1 1 1 230 200n
+preplace netloc pkt_display_wrapper_0_dp 1 1 1 220 220n
+levelinfo -pg 1 -10 120 260
+pagesize -pg 1 -db -bbox -sgen -140 0 360 280
 "
 }
 0

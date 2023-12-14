@@ -57,7 +57,6 @@
 module design_1_pkt_display_wrapper_0_0 (
   clk,
   BTNC,
-  BTNU,
   BTND,
   an,
   ca,
@@ -74,7 +73,6 @@ module design_1_pkt_display_wrapper_0_0 (
 (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *)
 input wire clk;
 input wire BTNC;
-input wire BTNU;
 input wire BTND;
 output wire [7 : 0] an;
 output wire ca;
@@ -89,7 +87,6 @@ output wire dp;
   pkt_display_wrapper inst (
     .clk(clk),
     .BTNC(BTNC),
-    .BTNU(BTNU),
     .BTND(BTND),
     .an(an),
     .ca(ca),

@@ -3,12 +3,12 @@
 # SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
 # IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
 # SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
-# Start of session at: Sat Dec  9 16:10:58 2023
-# Process ID: 39592
-# Current directory: C:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/pkt_display/pkt_display.runs/synth_1
+# Start of session at: Wed Dec 13 18:59:34 2023
+# Process ID: 18016
+# Current directory: D:/CMPE_Capstone/CODE/hdl/pkt_display/pkt_display.runs/synth_1
 # Command line: vivado.exe -log design_1_wrapper.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source design_1_wrapper.tcl
-# Log file: C:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/pkt_display/pkt_display.runs/synth_1/design_1_wrapper.vds
-# Journal file: C:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/pkt_display/pkt_display.runs/synth_1\vivado.jou
-# Running On: JohnDesktop, OS: Windows, CPU Frequency: 3793 MHz, CPU Physical cores: 12, Host memory: 17092 MB
+# Log file: D:/CMPE_Capstone/CODE/hdl/pkt_display/pkt_display.runs/synth_1/design_1_wrapper.vds
+# Journal file: D:/CMPE_Capstone/CODE/hdl/pkt_display/pkt_display.runs/synth_1\vivado.jou
+# Running On: DESKTOP-M1PCUD5, OS: Windows, CPU Frequency: 2592 MHz, CPU Physical cores: 6, Host memory: 16868 MB
 #-----------------------------------------------------------
 source design_1_wrapper.tcl -notrace

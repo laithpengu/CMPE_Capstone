@@ -107,6 +107,7 @@ module RF_cl_test(
             
             decode_state: begin
                 next_state = pc_read_data_state;
+                counter_d = 'b0;
                 inc = 0;
                 if(data_in_q == 'hFFFF) begin
                     next_state = wait_state;
