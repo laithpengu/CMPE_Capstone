@@ -93,11 +93,6 @@ module RF_top(
      .addrout(addr_a)
      );
      
- //    clk_div div_0(
- //    .CLK100MHZ(CLK100MHZ),
- //    .rst(rst),
- //    .clk_int(clk));
-     
      blk_mem_gen_0 mem_0(
         .clka(clk_intr),
         .addra(addr_a),

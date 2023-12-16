@@ -13,11 +13,11 @@ vmap fifo_generator_v13_2_9 riviera/fifo_generator_v13_2_9
 vmap xil_defaultlib riviera/xil_defaultlib
 
 vlog -work xpm  -incr -l xpm -l fifo_generator_v13_2_9 -l xil_defaultlib \
-"J:/Xilinx/Vivado/2023.2/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv" \
-"J:/Xilinx/Vivado/2023.2/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv" \
+"D:/Xilinx/Vivado/2023.2/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv" \
+"D:/Xilinx/Vivado/2023.2/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv" \
 
 vcom -work xpm -93  -incr \
-"J:/Xilinx/Vivado/2023.2/data/ip/xpm/xpm_VCOMP.vhd" \
+"D:/Xilinx/Vivado/2023.2/data/ip/xpm/xpm_VCOMP.vhd" \
 
 vlog -work fifo_generator_v13_2_9  -incr -v2k5 -l xpm -l fifo_generator_v13_2_9 -l xil_defaultlib \
 "../../../ipstatic/simulation/fifo_generator_vlog_beh.v" \

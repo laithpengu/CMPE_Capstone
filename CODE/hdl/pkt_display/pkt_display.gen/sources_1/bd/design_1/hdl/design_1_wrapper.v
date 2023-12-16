@@ -2,7 +2,7 @@
 //Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-//Date        : Wed Dec 13 18:58:14 2023
+//Date        : Fri Dec 15 21:46:02 2023
 //Host        : DESKTOP-M1PCUD5 running 64-bit major release  (build 9200)
 //Command     : generate_target design_1_wrapper.bd
 //Design      : design_1_wrapper
@@ -14,6 +14,7 @@ module design_1_wrapper
    (AN,
     BTNC,
     BTND,
+    BTNU,
     CA,
     CB,
     CC,
@@ -22,10 +23,12 @@ module design_1_wrapper
     CF,
     CG,
     CLK100MHZ,
-    DP);
+    DP,
+    LED16_B);
   output [7:0]AN;
   input BTNC;
   input BTND;
+  input BTNU;
   output CA;
   output CB;
   output CC;
@@ -35,10 +38,12 @@ module design_1_wrapper
   output CG;
   input CLK100MHZ;
   output DP;
+  output LED16_B;
 
   wire [7:0]AN;
   wire BTNC;
   wire BTND;
+  wire BTNU;
   wire CA;
   wire CB;
   wire CC;
@@ -48,11 +53,13 @@ module design_1_wrapper
   wire CG;
   wire CLK100MHZ;
   wire DP;
+  wire LED16_B;
 
   design_1 design_1_i
        (.AN(AN),
         .BTNC(BTNC),
         .BTND(BTND),
+        .BTNU(BTNU),
         .CA(CA),
         .CB(CB),
         .CC(CC),
@@ -61,5 +68,6 @@ module design_1_wrapper
         .CF(CF),
         .CG(CG),
         .CLK100MHZ(CLK100MHZ),
-        .DP(DP));
+        .DP(DP),
+        .LED16_B(LED16_B));
 endmodule

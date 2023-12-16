@@ -89,15 +89,15 @@ set_property ip_output_repo d:/CMPE_Capstone/CODE/hdl/pkt_display/pkt_display.ca
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
-add_files D:/CMPE_Capstone/CODE/hdl/Demo_Test/Demo_Test.ext/Device_mem.coe
 add_files D:/CMPE_Capstone/CODE/mem_files/Device_mem.coe
 read_verilog -library xil_defaultlib D:/CMPE_Capstone/CODE/hdl/pkt_display/pkt_display.gen/sources_1/bd/design_1/hdl/design_1_wrapper.v
 add_files D:/CMPE_Capstone/CODE/hdl/pkt_display/pkt_display.srcs/sources_1/bd/design_1/design_1.bd
-set_property used_in_implementation false [get_files -all d:/CMPE_Capstone/CODE/hdl/pkt_display/pkt_display.gen/sources_1/bd/design_1/ip/design_1_pkt_display_wrapper_0_0/design_1_pkt_display_wrapper_0_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/CMPE_Capstone/CODE/hdl/pkt_display/pkt_display.gen/sources_1/bd/design_1/ip/design_1_pkt_display_wrapper_0_3/design_1_pkt_display_wrapper_0_3_ooc.xdc]
 set_property used_in_implementation false [get_files -all d:/CMPE_Capstone/CODE/hdl/pkt_display/pkt_display.gen/sources_1/bd/design_1/design_1_ooc.xdc]
 
 read_ip -quiet D:/CMPE_Capstone/CODE/hdl/pkt_display/pkt_display.srcs/sources_1/ip/fifo_generator_0/fifo_generator_0.xci
 set_property used_in_implementation false [get_files -all d:/CMPE_Capstone/CODE/hdl/pkt_display/pkt_display.gen/sources_1/ip/fifo_generator_0/fifo_generator_0.xdc]
+set_property used_in_implementation false [get_files -all d:/CMPE_Capstone/CODE/hdl/pkt_display/pkt_display.gen/sources_1/ip/fifo_generator_0/fifo_generator_0_clocks.xdc]
 set_property used_in_implementation false [get_files -all d:/CMPE_Capstone/CODE/hdl/pkt_display/pkt_display.gen/sources_1/ip/fifo_generator_0/fifo_generator_0_ooc.xdc]
 
 read_ip -quiet D:/CMPE_Capstone/CODE/hdl/pkt_display/pkt_display.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci

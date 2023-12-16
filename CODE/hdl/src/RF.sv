@@ -21,20 +21,20 @@
 
 
 module RF(
-    input clk,
-    input rst,
-    input c_en,
-    input intr,
-    input sdo,  
-    input[9:0] addr_in,
-    input[7:0] data_in,
-    input[1:0] mode,
-    output ready,
-    output sdi,
-    output sck,
-    output cs,
-    output data_out,
-    output intr_out
+    input logic clk,
+    input logic rst,
+    input logic c_en,
+    input logic intr,
+    input logic sdo,  
+    input logic [9:0] addr_in,
+    input logic [7:0] data_in,
+    input logic [1:0] mode,
+    output logic ready,
+    output logic sdi,
+    output logic sck,
+    output logic cs,
+    output logic data_out,
+    output logic intr_out
     );
   
     enum {idle_s, longrd_s, longwr_s, shortrd_s, shortwr_s} curr_s, next_s;
@@ -60,16 +60,21 @@ module RF(
     logic data_out_q;
     logic cs_q;
     logic cs_d;
+    logic c_en_q;
+    logic c_en_d;
+    logic [1:0] mode_q;
+    logic [1:0] mode_d;
     
     assign intr_out = intr;
     assign mode_sm = {intr, c_en, mode};
-    assign long_addr = {mode[1], addr_in, mode[0]};
-    assign short_addr = {mode[1], addr_in[5:0], mode[0]};
+    assign long_addr = {mode_q[1], addr_in, mode_q[0]};
+    assign short_addr = {mode_q[1], addr_in[5:0], mode_q[0]};
     assign sdi = sdi_q;
     assign data_out = data_out_q;
-    assign cs  = cs_q;
+    assign cs = cs_q;
     assign ready = ready_q;
     assign sck = clk; 
+    assign c_en_d = c_en;
     
     // Sequential procedural block for state and synchronize the outputs
     always_ff @(negedge clk or posedge rst)
@@ -82,7 +87,9 @@ module RF(
         ready_q <= 1'b0;
         wait_index_q <= 3'b000;
         addr_index_q <= 4'b0000;
-        data_index_q <= 4'b0000; 
+        data_index_q <= 4'b0000;
+        mode_q <= 2'b00;
+        c_en_q <= 'b0;
       end 
       else begin
         curr_s <= next_s;
@@ -93,13 +100,23 @@ module RF(
         wait_index_q <= wait_index_d;
         addr_index_q <= addr_index_d;
         data_index_q <= data_index_d;
+        mode_q <= mode_d;
+        c_en_q <= c_en_d;
       end
     end
     
     // Combinational procedural block for state machine
     always_comb begin
+    addr_index_d = addr_index_q;
+    data_index_d = data_index_q;
+    wait_index_d = wait_index_q;
+    if(c_en & ~c_en_q) begin
+        mode_d = mode;
+    end else begin
+        mode_d = mode_q;
+    end
     case(curr_s)
-        //Idle state, connects to other states
+        //Idle state, connects to other state
         idle_s: begin   
             ready_d = 1'b1;
             cs_d = 1'b1;       

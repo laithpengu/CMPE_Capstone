@@ -24,6 +24,7 @@ module pkt_display_wrapper(
     input clk,
     input BTNC,
     input BTND,
+    input BTNU,
     output [7:0] an,
     output ca,   // top
     output cb,   // right high
@@ -32,50 +33,57 @@ module pkt_display_wrapper(
     output ce,   // left low
     output cf,   // left high
     output cg,   // center
-    output dp
+    output dp,
+    output empty
     );
     
     wire [31:0] parallel_out;
+    wire parallel_rdy;
     reg BTNC_Q;
     reg BTND_Q;
-//    reg BTNU_Q;
+    reg BTNU_Q;
     wire rst;
-    wire parallel_rdy;
     wire display_data;
     wire state_ready;
     wire sdi;
     wire cs;
+    wire data_out_s;
+    wire [7:0] addr_a;
+    wire [15:0] data_out_mem;
+    wire [9:0] addr_out;
+    wire [7:0] data_out;
+    wire [1:0] inst;
+    wire inc;
+    wire RF_ready;
+    reg cs_q;
+    reg [28:0] counter;
     wire sck;
-//    wire [7:0] addr_a;
-//    wire [15:0] data_out_mem;
-//    wire [9:0] addr_out;
-//    wire [7:0] data_out;
-//    wire [1:0] inst;
-//    wire inc;
-//    wire fifo_wr;
-//    reg cs_q;
     
     assign rst = BTNC;
     assign display_data = BTND & ~BTND_Q;
 //    assign state_ready = BTNU & ~BTNU_Q;
-//    assign queued_data = {12'h000, addr_out, data_out, inst};
-//    assign fifo_wr = cs_out & ~cs_q;
+//    assign queued_data = {counter,{{3}{1'b1}}, sdi};
+    //assign RF_ready = cs_out & ~cs_q;
     always @(posedge clk, posedge rst) begin
         if(rst) begin
             BTNC_Q <= 1'b0;
             BTND_Q <= 1'b0;
-//            BTNU_Q <= 1'b0;
+            BTNU_Q <= 1'b0;
 //            cs_q <= 1'b0;
+            counter <= 28'h0000000;
         end else begin
             BTNC_Q <= BTNC;
             BTND_Q <= BTND;
-//            BTNU_Q <= BTNU;
-//            cs_q <= cs_out;            
+            BTNU_Q <= BTNU;
+//            cs_q <= cs_out;
+            counter <= counter + 1;         
         end
     end
     
+    
     pkt_display display(
         .clk(clk),
+        .sck(sck),
         .rst(rst),
         .data_in(parallel_out),
         .data_wr(parallel_rdy),
@@ -88,7 +96,8 @@ module pkt_display_wrapper(
         .ce(ce),
         .cf(cf),
         .cg(cg),
-        .dp(dp)
+        .dp(dp),
+        .empty(empty)
     );
     
     spi_des serdes(
@@ -100,46 +109,18 @@ module pkt_display_wrapper(
         .parallel_out(parallel_out)
     );
     
-    RF_top Top_G(
+    RF_top RF_top_0(
         .CLK100MHZ(clk),
         .rst(rst),
-        .sdo(1'b0),
-        .intr_in(1'b0),
-        .n_rst(1'b0),
+        .sdo(),
+        .intr_in('b0),
+        .n_rst(),
         .sdi(sdi),
         .sck(sck),
         .cs(cs),
-        .data_out_s(1'b0),
-        .intr_out(1'b0),
-        .wake(1'b0)
+        .data_out_s(),
+        .intr_out(),
+        .wake()
     );
-    
-//    RF_cl_test RF_state(
-//        .clk(clk),
-//        .rst(rst),
-//        .data_in(data_out_mem),
-//        .ready(state_ready),
-//        .intr(1'b0),
-//        .addr_out(addr_out),
-//        .data_out(data_out),
-//        .inst(inst),
-//        .cs_out(cs_out),
-//        .inc(inc),
-//        .intr_out()
-//    );
-    
-//    pc pc_dut_0(
-//        .clk(clk),
-//        .rst(rst),
-//        .inc(inc),
-//        .jmp(1'b0),
-//        .addrin('b0),
-//        .addrout(addr_a)
-//     );
-    
-//    blk_mem_gen_0 mem_0(
-//        .clka(clk),
-//        .addra(addr_a),
-//        .douta(data_out_mem)
-//    );
+
 endmodule

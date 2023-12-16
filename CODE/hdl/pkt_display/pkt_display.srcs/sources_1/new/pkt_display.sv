@@ -22,6 +22,7 @@
 
 module pkt_display(
     input clk,
+    input sck,
     input rst,
     input [31:0] data_in,
     input data_wr,
@@ -34,17 +35,19 @@ module pkt_display(
     output ce,   // left low
     output cf,   // left high
     output cg,   // center
-    output dp
+    output dp,
+    output empty
     );
 
     logic [31:0] data_out;
 
     logic full;
-    logic empty;
+//    logic empty;
     
     fifo_generator_0 data_fifo(
-        .clk(clk),
-        .srst(rst),
+        .wr_clk(sck),
+        .rd_clk(clk),
+        .rst(rst),
         .din(data_in),
         .wr_en(data_wr),
         .rd_en(data_rd),

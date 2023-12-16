@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Wed Dec 13 18:58:14 2023" VIVADOVERSION="2023.2">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Fri Dec 15 21:46:02 2023" VIVADOVERSION="2023.2">
 
   <SYSTEMINFO ARCH="artix7" DEVICE="7a100t" NAME="design_1" PACKAGE="csg324" SPEEDGRADE="-1"/>
 
@@ -17,6 +17,11 @@
     <PORT DIR="I" NAME="BTND" SIGIS="undef" SIGNAME="External_Ports_BTND">
       <CONNECTIONS>
         <CONNECTION INSTANCE="pkt_display_wrapper_0" PORT="BTND"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" NAME="BTNU" SIGIS="undef" SIGNAME="External_Ports_BTNU">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="pkt_display_wrapper_0" PORT="BTNU"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="O" NAME="CA" SIGIS="undef" SIGNAME="pkt_display_wrapper_0_ca">
@@ -64,6 +69,11 @@
         <CONNECTION INSTANCE="pkt_display_wrapper_0" PORT="dp"/>
       </CONNECTIONS>
     </PORT>
+    <PORT DIR="O" NAME="LED16_B" SIGIS="undef" SIGNAME="pkt_display_wrapper_0_empty">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="pkt_display_wrapper_0" PORT="empty"/>
+      </CONNECTIONS>
+    </PORT>
   </EXTERNALPORTS>
 
   <EXTERNALINTERFACES/>
@@ -72,7 +82,7 @@
     <MODULE COREREVISION="1" FULLNAME="/pkt_display_wrapper_0" HWVERSION="1.0" INSTANCE="pkt_display_wrapper_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="pkt_display_wrapper" VLNV="xilinx.com:module_ref:pkt_display_wrapper:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
-        <PARAMETER NAME="Component_Name" VALUE="design_1_pkt_display_wrapper_0_0"/>
+        <PARAMETER NAME="Component_Name" VALUE="design_1_pkt_display_wrapper_0_3"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
@@ -84,6 +94,11 @@
         <PORT DIR="I" NAME="BTND" SIGIS="undef" SIGNAME="External_Ports_BTND">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="BTND"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="BTNU" SIGIS="undef" SIGNAME="External_Ports_BTNU">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="BTNU"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="7" NAME="an" RIGHT="0" SIGIS="undef" SIGNAME="pkt_display_wrapper_0_an">
@@ -134,6 +149,11 @@
         <PORT DIR="O" NAME="dp" SIGIS="undef" SIGNAME="pkt_display_wrapper_0_dp">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="DP"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="empty" SIGIS="undef" SIGNAME="pkt_display_wrapper_0_empty">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="LED16_B"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>

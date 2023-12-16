@@ -12,7 +12,7 @@
     ** Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 
 source design_1_wrapper.tcl -notrace
-create_project: Time (s): cpu = 00:00:05 ; elapsed = 00:00:10 . Memory (MB): peak = 591.824 ; gain = 217.207
+create_project: Time (s): cpu = 00:00:05 ; elapsed = 00:00:12 . Memory (MB): peak = 591.844 ; gain = 218.215
 INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1704] No user IP repositories specified
 INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'D:/Xilinx/Vivado/2023.2/data/ip'.
@@ -28,38 +28,37 @@ INFO: [Designutils 20-5440] No compile time benefit to using incremental synthes
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 31428
+INFO: [Synth 8-7075] Helper process launched with PID 40568
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:08 . Memory (MB): peak = 1453.113 ; gain = 438.469
+Starting RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:09 . Memory (MB): peak = 1454.457 ; gain = 439.980
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-6157] synthesizing module 'design_1_wrapper' [D:/CMPE_Capstone/CODE/hdl/pkt_display/pkt_display.gen/sources_1/bd/design_1/hdl/design_1_wrapper.v:13]
 INFO: [Synth 8-6157] synthesizing module 'design_1' [d:/CMPE_Capstone/CODE/hdl/pkt_display/pkt_display.gen/sources_1/bd/design_1/synth/design_1.v:13]
-INFO: [Synth 8-6157] synthesizing module 'design_1_pkt_display_wrapper_0_0' [D:/CMPE_Capstone/CODE/hdl/pkt_display/pkt_display.runs/synth_1/.Xil/Vivado-18016-DESKTOP-M1PCUD5/realtime/design_1_pkt_display_wrapper_0_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'design_1_pkt_display_wrapper_0_0' (0#1) [D:/CMPE_Capstone/CODE/hdl/pkt_display/pkt_display.runs/synth_1/.Xil/Vivado-18016-DESKTOP-M1PCUD5/realtime/design_1_pkt_display_wrapper_0_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'design_1_pkt_display_wrapper_0_3' [D:/CMPE_Capstone/CODE/hdl/pkt_display/pkt_display.runs/synth_1/.Xil/Vivado-42552-DESKTOP-M1PCUD5/realtime/design_1_pkt_display_wrapper_0_3_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'design_1_pkt_display_wrapper_0_3' (0#1) [D:/CMPE_Capstone/CODE/hdl/pkt_display/pkt_display.runs/synth_1/.Xil/Vivado-42552-DESKTOP-M1PCUD5/realtime/design_1_pkt_display_wrapper_0_3_stub.v:6]
 INFO: [Synth 8-6155] done synthesizing module 'design_1' (0#1) [d:/CMPE_Capstone/CODE/hdl/pkt_display/pkt_display.gen/sources_1/bd/design_1/synth/design_1.v:13]
 INFO: [Synth 8-6155] done synthesizing module 'design_1_wrapper' (0#1) [D:/CMPE_Capstone/CODE/hdl/pkt_display/pkt_display.gen/sources_1/bd/design_1/hdl/design_1_wrapper.v:13]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:10 . Memory (MB): peak = 1563.828 ; gain = 549.184
+Finished RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:12 . Memory (MB): peak = 1564.957 ; gain = 550.480
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:10 . Memory (MB): peak = 1563.828 ; gain = 549.184
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:06 ; elapsed = 00:00:12 . Memory (MB): peak = 1564.957 ; gain = 550.480
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:10 . Memory (MB): peak = 1563.828 ; gain = 549.184
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:06 ; elapsed = 00:00:12 . Memory (MB): peak = 1564.957 ; gain = 550.480
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1563.828 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1564.957 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
 Initializing timing engine
-Parsing XDC File [d:/CMPE_Capstone/CODE/hdl/pkt_display/pkt_display.gen/sources_1/bd/design_1/ip/design_1_pkt_display_wrapper_0_0/design_1_pkt_display_wrapper_0_0/design_1_pkt_display_wrapper_0_0_in_context.xdc] for cell 'design_1_i/pkt_display_wrapper_0'
-Finished Parsing XDC File [d:/CMPE_Capstone/CODE/hdl/pkt_display/pkt_display.gen/sources_1/bd/design_1/ip/design_1_pkt_display_wrapper_0_0/design_1_pkt_display_wrapper_0_0/design_1_pkt_display_wrapper_0_0_in_context.xdc] for cell 'design_1_i/pkt_display_wrapper_0'
+Parsing XDC File [d:/CMPE_Capstone/CODE/hdl/pkt_display/pkt_display.gen/sources_1/bd/design_1/ip/design_1_pkt_display_wrapper_0_3/design_1_pkt_display_wrapper_0_3/design_1_pkt_display_wrapper_0_3_in_context.xdc] for cell 'design_1_i/pkt_display_wrapper_0'
+Finished Parsing XDC File [d:/CMPE_Capstone/CODE/hdl/pkt_display/pkt_display.gen/sources_1/bd/design_1/ip/design_1_pkt_display_wrapper_0_3/design_1_pkt_display_wrapper_0_3/design_1_pkt_display_wrapper_0_3_in_context.xdc] for cell 'design_1_i/pkt_display_wrapper_0'
 Parsing XDC File [D:/CMPE_Capstone/CODE/hdl/pkt_display/Nexys-A7-100T-Master.xdc]
 WARNING: [Vivado 12-507] No nets matched 'sck_IBUF'. [D:/CMPE_Capstone/CODE/hdl/pkt_display/Nexys-A7-100T-Master.xdc:9]
-WARNING: [Vivado 12-584] No ports matched 'BTNU'. [D:/CMPE_Capstone/CODE/hdl/pkt_display/Nexys-A7-100T-Master.xdc:76]
 Finished Parsing XDC File [D:/CMPE_Capstone/CODE/hdl/pkt_display/Nexys-A7-100T-Master.xdc]
 WARNING: [Project 1-498] One or more constraints failed evaluation while reading constraint file [D:/CMPE_Capstone/CODE/hdl/pkt_display/Nexys-A7-100T-Master.xdc] and the design contains unresolved black boxes. These constraints will be read post-synthesis (as long as their source constraint file is marked as used_in_implementation) and should be applied correctly then. You should review the constraints listed in the file [.Xil/design_1_wrapper_propImpl.xdc] and check the run log file to verify that these constraints were correctly applied.
 INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [D:/CMPE_Capstone/CODE/hdl/pkt_display/Nexys-A7-100T-Master.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/design_1_wrapper_propImpl.xdc].
@@ -68,36 +67,36 @@ Parsing XDC File [D:/CMPE_Capstone/CODE/hdl/pkt_display/pkt_display.runs/synth_1
 Finished Parsing XDC File [D:/CMPE_Capstone/CODE/hdl/pkt_display/pkt_display.runs/synth_1/dont_touch.xdc]
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1574.164 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1564.957 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
 The system cannot find the path specified.
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 1574.164 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 1564.957 ; gain = 0.000
 INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:10 ; elapsed = 00:00:20 . Memory (MB): peak = 1574.164 ; gain = 559.520
+Finished Constraint Validation : Time (s): cpu = 00:00:12 ; elapsed = 00:00:25 . Memory (MB): peak = 1564.957 ; gain = 550.480
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a100tcsg324-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:10 ; elapsed = 00:00:20 . Memory (MB): peak = 1574.164 ; gain = 559.520
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:12 ; elapsed = 00:00:25 . Memory (MB): peak = 1564.957 ; gain = 550.480
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
-Applied set_property IO_BUFFER_TYPE = NONE for CLK100MHZ. (constraint file  d:/CMPE_Capstone/CODE/hdl/pkt_display/pkt_display.gen/sources_1/bd/design_1/ip/design_1_pkt_display_wrapper_0_0/design_1_pkt_display_wrapper_0_0/design_1_pkt_display_wrapper_0_0_in_context.xdc, line 2).
-Applied set_property CLOCK_BUFFER_TYPE = NONE for CLK100MHZ. (constraint file  d:/CMPE_Capstone/CODE/hdl/pkt_display/pkt_display.gen/sources_1/bd/design_1/ip/design_1_pkt_display_wrapper_0_0/design_1_pkt_display_wrapper_0_0/design_1_pkt_display_wrapper_0_0_in_context.xdc, line 3).
+Applied set_property IO_BUFFER_TYPE = NONE for CLK100MHZ. (constraint file  d:/CMPE_Capstone/CODE/hdl/pkt_display/pkt_display.gen/sources_1/bd/design_1/ip/design_1_pkt_display_wrapper_0_3/design_1_pkt_display_wrapper_0_3/design_1_pkt_display_wrapper_0_3_in_context.xdc, line 2).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for CLK100MHZ. (constraint file  d:/CMPE_Capstone/CODE/hdl/pkt_display/pkt_display.gen/sources_1/bd/design_1/ip/design_1_pkt_display_wrapper_0_3/design_1_pkt_display_wrapper_0_3/design_1_pkt_display_wrapper_0_3_in_context.xdc, line 3).
 Applied set_property KEEP_HIERARCHY = SOFT for design_1_i. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for design_1_i/pkt_display_wrapper_0. (constraint file  auto generated constraint).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:10 ; elapsed = 00:00:20 . Memory (MB): peak = 1574.164 ; gain = 559.520
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:12 ; elapsed = 00:00:25 . Memory (MB): peak = 1564.957 ; gain = 550.480
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:10 ; elapsed = 00:00:20 . Memory (MB): peak = 1574.164 ; gain = 559.520
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:12 ; elapsed = 00:00:25 . Memory (MB): peak = 1564.957 ; gain = 550.480
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -120,25 +119,25 @@ Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:11 ; elapsed = 00:00:22 . Memory (MB): peak = 1574.164 ; gain = 559.520
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:13 ; elapsed = 00:00:28 . Memory (MB): peak = 1564.957 ; gain = 550.480
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:14 ; elapsed = 00:00:29 . Memory (MB): peak = 1574.164 ; gain = 559.520
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:18 ; elapsed = 00:00:36 . Memory (MB): peak = 1564.957 ; gain = 550.480
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:14 ; elapsed = 00:00:29 . Memory (MB): peak = 1574.164 ; gain = 559.520
+Finished Timing Optimization : Time (s): cpu = 00:00:18 ; elapsed = 00:00:36 . Memory (MB): peak = 1564.957 ; gain = 550.480
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:14 ; elapsed = 00:00:29 . Memory (MB): peak = 1574.164 ; gain = 559.520
+Finished Technology Mapping : Time (s): cpu = 00:00:18 ; elapsed = 00:00:36 . Memory (MB): peak = 1564.957 ; gain = 550.480
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -156,37 +155,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:17 ; elapsed = 00:00:35 . Memory (MB): peak = 1576.469 ; gain = 561.824
+Finished IO Insertion : Time (s): cpu = 00:00:22 ; elapsed = 00:00:45 . Memory (MB): peak = 1564.957 ; gain = 550.480
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:17 ; elapsed = 00:00:35 . Memory (MB): peak = 1576.469 ; gain = 561.824
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:22 ; elapsed = 00:00:45 . Memory (MB): peak = 1564.957 ; gain = 550.480
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:17 ; elapsed = 00:00:35 . Memory (MB): peak = 1576.469 ; gain = 561.824
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:22 ; elapsed = 00:00:45 . Memory (MB): peak = 1564.957 ; gain = 550.480
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:17 ; elapsed = 00:00:35 . Memory (MB): peak = 1576.469 ; gain = 561.824
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:22 ; elapsed = 00:00:45 . Memory (MB): peak = 1564.957 ; gain = 550.480
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:17 ; elapsed = 00:00:35 . Memory (MB): peak = 1576.469 ; gain = 561.824
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:22 ; elapsed = 00:00:45 . Memory (MB): peak = 1564.957 ; gain = 550.480
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:17 ; elapsed = 00:00:35 . Memory (MB): peak = 1576.469 ; gain = 561.824
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:22 ; elapsed = 00:00:45 . Memory (MB): peak = 1564.957 ; gain = 550.480
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -196,7 +195,7 @@ Report BlackBoxes:
 +------+---------------------------------+----------+
 |      |BlackBox name                    |Instances |
 +------+---------------------------------+----------+
-|1     |design_1_pkt_display_wrapper_0_0 |         1|
+|1     |design_1_pkt_display_wrapper_0_3 |         1|
 +------+---------------------------------+----------+
 
 Report Cell Usage: 
@@ -204,30 +203,30 @@ Report Cell Usage:
 |      |Cell                           |Count |
 +------+-------------------------------+------+
 |1     |design_1_pkt_display_wrapper_0 |     1|
-|2     |IBUF                           |     2|
-|3     |OBUF                           |    16|
+|2     |IBUF                           |     3|
+|3     |OBUF                           |    17|
 +------+-------------------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:17 ; elapsed = 00:00:35 . Memory (MB): peak = 1576.469 ; gain = 561.824
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:22 ; elapsed = 00:00:45 . Memory (MB): peak = 1564.957 ; gain = 550.480
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 1 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:10 ; elapsed = 00:00:33 . Memory (MB): peak = 1576.469 ; gain = 551.488
-Synthesis Optimization Complete : Time (s): cpu = 00:00:17 ; elapsed = 00:00:35 . Memory (MB): peak = 1576.469 ; gain = 561.824
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:14 ; elapsed = 00:00:42 . Memory (MB): peak = 1564.957 ; gain = 550.480
+Synthesis Optimization Complete : Time (s): cpu = 00:00:22 ; elapsed = 00:00:45 . Memory (MB): peak = 1564.957 ; gain = 550.480
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1588.531 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1568.195 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1594.113 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1573.855 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
 The system cannot find the path specified.
-Synth Design complete | Checksum: 179827bc
+Synth Design complete | Checksum: d900fc89
 INFO: [Common 17-83] Releasing license: Synthesis
-28 Infos, 4 Warnings, 0 Critical Warnings and 0 Errors encountered.
+28 Infos, 3 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:20 ; elapsed = 00:00:41 . Memory (MB): peak = 1594.113 ; gain = 988.402
-Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1594.113 ; gain = 0.000
+synth_design: Time (s): cpu = 00:00:25 ; elapsed = 00:00:52 . Memory (MB): peak = 1573.855 ; gain = 968.801
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1573.855 ; gain = 0.000
 INFO: [Common 17-1381] The checkpoint 'D:/CMPE_Capstone/CODE/hdl/pkt_display/pkt_display.runs/synth_1/design_1_wrapper.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file design_1_wrapper_utilization_synth.rpt -pb design_1_wrapper_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Wed Dec 13 19:00:31 2023...
+INFO: [Common 17-206] Exiting Vivado at Fri Dec 15 22:02:19 2023...

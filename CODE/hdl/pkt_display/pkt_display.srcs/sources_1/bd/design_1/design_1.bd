@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x20CDABDA11073563",
+      "boundary_crc": "0x60B25D723907D43C",
       "device": "xc7a100tcsg324-1",
       "gen_directory": "../../../../pkt_display.gen/sources_1/bd/design_1",
       "name": "design_1",
@@ -51,14 +51,20 @@
       },
       "DP": {
         "direction": "O"
+      },
+      "BTNU": {
+        "direction": "I"
+      },
+      "LED16_B": {
+        "direction": "O"
       }
     },
     "components": {
       "pkt_display_wrapper_0": {
         "vlnv": "xilinx.com:module_ref:pkt_display_wrapper:1.0",
         "ip_revision": "1",
-        "xci_name": "design_1_pkt_display_wrapper_0_0",
-        "xci_path": "ip\\design_1_pkt_display_wrapper_0_0\\design_1_pkt_display_wrapper_0_0.xci",
+        "xci_name": "design_1_pkt_display_wrapper_0_3",
+        "xci_path": "ip\\design_1_pkt_display_wrapper_0_3\\design_1_pkt_display_wrapper_0_3.xci",
         "inst_hier_path": "pkt_display_wrapper_0",
         "reference_info": {
           "ref_type": "hdl",
@@ -74,6 +80,9 @@
             "direction": "I"
           },
           "BTND": {
+            "direction": "I"
+          },
+          "BTNU": {
             "direction": "I"
           },
           "an": {
@@ -104,6 +113,9 @@
           },
           "dp": {
             "direction": "O"
+          },
+          "empty": {
+            "direction": "O"
           }
         }
       }
@@ -119,6 +131,12 @@
         "ports": [
           "BTND",
           "pkt_display_wrapper_0/BTND"
+        ]
+      },
+      "BTNU_1": {
+        "ports": [
+          "BTNU",
+          "pkt_display_wrapper_0/BTNU"
         ]
       },
       "CLK100MHZ_1": {
@@ -179,6 +197,12 @@
         "ports": [
           "pkt_display_wrapper_0/dp",
           "DP"
+        ]
+      },
+      "pkt_display_wrapper_0_empty": {
+        "ports": [
+          "pkt_display_wrapper_0/empty",
+          "LED16_B"
         ]
       }
     }
