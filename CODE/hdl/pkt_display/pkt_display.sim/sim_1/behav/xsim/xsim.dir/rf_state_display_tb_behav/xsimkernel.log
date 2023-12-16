@@ -2,3 +2,6 @@ Running: xsim.dir/rf_state_display_tb_behav/xsimk.exe -simmode gui -wdb rf_state
 Design successfully loaded
 Design Loading Memory Usage: 8716 KB (Peak: 8716 KB)
 Design Loading CPU Usage: 0 ms
+Simulation completed
+Simulation Memory Usage: 12096 KB (Peak: 12096 KB)
+Simulation CPU Usage: 781 ms
