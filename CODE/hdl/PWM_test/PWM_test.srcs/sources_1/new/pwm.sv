@@ -21,26 +21,29 @@
 
 
 module PWM(
-    input [15:0] data_in,
     input clk,
     input rst,
+    input [15:0] data_in,
     output spd_out,
     output dir_out
     );
 
-    logic [7:0] direction = data_in[15:8];
-    logic [7:0] speed = data_in[7:0];
+    logic [7:0] direction;
+    logic [7:0] speed;
+    
+    assign direction = data_in[15:8];
+    assign speed = data_in[7:0];
 
     pwm_speed u_inst_pwm_spd(
-        .data_in(speed),
         .clk(clk),
         .rst(rst),
+        .data_in(speed),
         .data_out(spd_out));
 
     pwm_dir u_inst_pwm_dir(
-        .data_in(direction),
         .clk(clk),
         .rst(rst),
+        .data_in(direction),
         .data_out(dir_out));
 
     

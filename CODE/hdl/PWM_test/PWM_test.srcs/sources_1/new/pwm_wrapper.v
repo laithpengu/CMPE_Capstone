@@ -28,11 +28,20 @@ module pwm_wrapper(
     output dir 
     );
     
+    wire clk_out_1;
+    wire clk_out_2;
+    
     PWM u_inst_pwm(
-    .data_in(data_in),
     .clk(clk),
     .rst(rst),
+    .data_in(data_in),
     .spd_out(spd),
     .dir_out(dir)
+    );
+    
+    clk_wiz_0 wiz(
+        .reset(rst),
+        .clk_in1(clk),
+        .clk_out1(clock_out_1)
     );
 endmodule
