@@ -63,11 +63,11 @@ module RF_cl_test(
     assign data_out = data_out_q;
     assign cs_out = cs_out_q;
     
-    enum{idle_state,pc_read_addr_state,pc_read_data_state,decode_state,wait_state,send_state,run_state,wait_rst}curr_state,next_state;
+    enum{pre_idle,idle_state,pc_read_addr_state,pc_read_data_state,decode_state,wait_state,send_state,run_state,wait_rst}curr_state,next_state;
     
     always_ff@(posedge clk or posedge rst or posedge intr) begin
         if(rst) begin
-            curr_state <= idle_state;
+            curr_state <= pre_idle;
             addr_q <='b0;
             inst_q <= 'b0;
             data_out_q <= 'b0;
@@ -120,6 +120,13 @@ module RF_cl_test(
         back_buff_d = back_buff_q; 
         cs_out_d = cs_out_q;
         case(curr_state)
+            pre_idle: begin
+                if(counter_q == 'd20) begin
+                    next_state = idle_state;
+                end else begin
+                    counter_d = counter_q +1;
+                end
+            end
             idle_state: begin
                 inst_d = 2'b00;
                 cs_out_d=0;
@@ -240,7 +247,8 @@ module RF_cl_test(
             
             wait_state: begin
                 cs_out_d = 0;
-                if(counter_q == 'd3000)begin
+                //if(counter_q == 'd3000) begin
+                if(rst)begin
                   counter_d = 'b0;
                   next_state = idle_state;
                 end else begin
@@ -262,3 +270,4 @@ module RF_cl_test(
         endcase
     end 
 endmodule
+

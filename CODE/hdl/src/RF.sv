@@ -34,9 +34,10 @@ module RF(
     output logic sck,
     output logic cs,
     output logic data_out,
-    output logic intr_out
+    output logic intr_out,
+    output logic rst_n
     );
-  
+    assign rst_n = ~rst;
     enum {idle_s, longrd_s, longwr_s, shortrd_s, shortwr_s} curr_s, next_s;
     // 00 - short read
     // 01 - short write

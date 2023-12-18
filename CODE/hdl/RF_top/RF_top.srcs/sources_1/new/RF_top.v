@@ -31,7 +31,8 @@ module RF_top(
     output cs,
     output data_out_s,
     output intr_out,
-    output wake);
+    output wake
+    );
     wire [15:0] data_in;
     wire [15:0] data_out_mem;
     wire [7:0] addr_a;
@@ -44,7 +45,6 @@ module RF_top(
     wire cs_out;
     wire intr_inter;
     wire clk_intr;
-    assign n_rst = 1;
     assign wake = 0;
     
     RF_cl_test RF_state(
@@ -82,7 +82,10 @@ module RF_top(
     .ready(ready),
     .cs(cs),
     .data_out(data_out_s),
-    .intr_out(intr_inter));
+    .intr_out(intr_inter),
+    .rst_n(n_rst));
+    
+    
     
     pc pc_dut_0(
      .clk(clk_intr),
@@ -93,6 +96,18 @@ module RF_top(
      .addrout(addr_a)
      );
      
+     
+     ila_0 ila_inst_0 (
+	.clk(clk_intr), // input wire clk
+
+
+	.probe0(sdi), // input wire [0:0]  probe0  
+	.probe1(intr_in), // input wire [0:0]  probe1 
+	.probe2(cs) // input wire [0:0]  probe2
+);
+     
+     
+     
      blk_mem_gen_0 mem_0(
         .clka(clk_intr),
         .addra(addr_a),
@@ -100,3 +115,4 @@ module RF_top(
      );
 
 endmodule
+
