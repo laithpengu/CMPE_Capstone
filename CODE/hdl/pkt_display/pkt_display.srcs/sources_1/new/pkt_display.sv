@@ -36,12 +36,13 @@ module pkt_display(
     output cf,   // left high
     output cg,   // center
     output dp,
-    output empty
+    output empty,
+    output full
     );
 
     logic [31:0] data_out;
 
-    logic full;
+//    logic full;
 //    logic empty;
     
     fifo_generator_0 data_fifo(

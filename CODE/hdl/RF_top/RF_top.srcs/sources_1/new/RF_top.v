@@ -45,7 +45,10 @@ module RF_top(
     wire cs_out;
     wire intr_inter;
     wire clk_intr;
+    wire rst_n;
+    
     assign wake = 0;
+    assign n_rst = rst_n;
     
     RF_cl_test RF_state(
     .clk(clk_intr),
@@ -84,9 +87,7 @@ module RF_top(
     .data_out(data_out_s),
     .intr_out(intr_inter),
     .rst_n(n_rst));
-    
-    
-    
+
     pc pc_dut_0(
      .clk(clk_intr),
      .rst(rst),

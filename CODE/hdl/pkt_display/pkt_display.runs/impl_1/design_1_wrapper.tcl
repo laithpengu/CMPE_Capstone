@@ -124,7 +124,6 @@ set ACTIVE_STEP init_design
 set rc [catch {
   create_msg_db init_design.pb
   set_param chipscope.maxJobs 3
-  set_param xicom.use_bs_reader 1
   set_param runs.launchOptions { -jobs 12  }
 OPTRACE "create in-memory project" START { }
   create_project -in_memory -part xc7a100tcsg324-1
@@ -144,8 +143,6 @@ OPTRACE "add files" START { }
   set_param project.isImplRun true
   add_files D:/CMPE_Capstone/CODE/hdl/pkt_display/pkt_display.srcs/sources_1/bd/design_1/design_1.bd
   read_ip -quiet D:/CMPE_Capstone/CODE/hdl/pkt_display/pkt_display.srcs/sources_1/ip/fifo_generator_0/fifo_generator_0.xci
-  read_ip -quiet D:/CMPE_Capstone/CODE/hdl/pkt_display/pkt_display.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci
-  read_ip -quiet D:/CMPE_Capstone/CODE/hdl/pkt_display/pkt_display.srcs/sources_1/ip/blk_mem_gen_0_1/blk_mem_gen_0.xci
   set_param project.isImplRun false
 OPTRACE "read constraints: implementation" START { }
   read_xdc D:/CMPE_Capstone/CODE/hdl/pkt_display/Nexys-A7-100T-Master.xdc

@@ -66,6 +66,7 @@ module RF(
     logic [1:0] mode_q;
     logic [1:0] mode_d;
     
+    assign rst_n = ~rst;
     assign intr_out = intr;
     assign mode_sm = {intr, c_en, mode};
     assign long_addr = {mode_q[1], addr_in, mode_q[0]};

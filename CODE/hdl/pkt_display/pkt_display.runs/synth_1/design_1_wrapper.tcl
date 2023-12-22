@@ -71,7 +71,6 @@ proc create_report { reportName command } {
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
 set_param chipscope.maxJobs 3
-set_param xicom.use_bs_reader 1
 set_msg_config -id {HDL-1065} -limit 10000
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a100tcsg324-1
@@ -92,21 +91,13 @@ OPTRACE "Adding files" START { }
 add_files D:/CMPE_Capstone/CODE/mem_files/Device_mem.coe
 read_verilog -library xil_defaultlib D:/CMPE_Capstone/CODE/hdl/pkt_display/pkt_display.gen/sources_1/bd/design_1/hdl/design_1_wrapper.v
 add_files D:/CMPE_Capstone/CODE/hdl/pkt_display/pkt_display.srcs/sources_1/bd/design_1/design_1.bd
-set_property used_in_implementation false [get_files -all d:/CMPE_Capstone/CODE/hdl/pkt_display/pkt_display.gen/sources_1/bd/design_1/ip/design_1_pkt_display_wrapper_0_3/design_1_pkt_display_wrapper_0_3_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/CMPE_Capstone/CODE/hdl/pkt_display/pkt_display.gen/sources_1/bd/design_1/ip/design_1_pkt_display_wrapper_0_4/design_1_pkt_display_wrapper_0_4_ooc.xdc]
 set_property used_in_implementation false [get_files -all d:/CMPE_Capstone/CODE/hdl/pkt_display/pkt_display.gen/sources_1/bd/design_1/design_1_ooc.xdc]
 
 read_ip -quiet D:/CMPE_Capstone/CODE/hdl/pkt_display/pkt_display.srcs/sources_1/ip/fifo_generator_0/fifo_generator_0.xci
 set_property used_in_implementation false [get_files -all d:/CMPE_Capstone/CODE/hdl/pkt_display/pkt_display.gen/sources_1/ip/fifo_generator_0/fifo_generator_0.xdc]
 set_property used_in_implementation false [get_files -all d:/CMPE_Capstone/CODE/hdl/pkt_display/pkt_display.gen/sources_1/ip/fifo_generator_0/fifo_generator_0_clocks.xdc]
 set_property used_in_implementation false [get_files -all d:/CMPE_Capstone/CODE/hdl/pkt_display/pkt_display.gen/sources_1/ip/fifo_generator_0/fifo_generator_0_ooc.xdc]
-
-read_ip -quiet D:/CMPE_Capstone/CODE/hdl/pkt_display/pkt_display.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci
-set_property used_in_implementation false [get_files -all d:/CMPE_Capstone/CODE/hdl/pkt_display/pkt_display.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_board.xdc]
-set_property used_in_implementation false [get_files -all d:/CMPE_Capstone/CODE/hdl/pkt_display/pkt_display.gen/sources_1/ip/clk_wiz_0/clk_wiz_0.xdc]
-set_property used_in_implementation false [get_files -all d:/CMPE_Capstone/CODE/hdl/pkt_display/pkt_display.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_ooc.xdc]
-
-read_ip -quiet D:/CMPE_Capstone/CODE/hdl/pkt_display/pkt_display.srcs/sources_1/ip/blk_mem_gen_0_1/blk_mem_gen_0.xci
-set_property used_in_implementation false [get_files -all d:/CMPE_Capstone/CODE/hdl/pkt_display/pkt_display.gen/sources_1/ip/blk_mem_gen_0_1/blk_mem_gen_0_ooc.xdc]
 
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being

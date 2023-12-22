@@ -25,6 +25,9 @@ module pkt_display_wrapper(
     input BTNC,
     input BTND,
     input BTNU,
+    input sdi,
+    input sck,
+    input cs,
     output [7:0] an,
     output ca,   // top
     output cb,   // right high
@@ -45,8 +48,8 @@ module pkt_display_wrapper(
     wire rst;
     wire display_data;
     wire state_ready;
-    wire sdi;
-    wire cs;
+//    wire sdi;
+//    wire cs;
     wire data_out_s;
     wire [7:0] addr_a;
     wire [15:0] data_out_mem;
@@ -57,7 +60,7 @@ module pkt_display_wrapper(
     wire RF_ready;
     reg cs_q;
     reg [28:0] counter;
-    wire sck;
+//    wire sck;
     
     assign rst = BTNC;
     assign display_data = BTND & ~BTND_Q;
@@ -109,18 +112,18 @@ module pkt_display_wrapper(
         .parallel_out(parallel_out)
     );
     
-    RF_top RF_top_0(
-        .CLK100MHZ(clk),
-        .rst(rst),
-        .sdo(),
-        .intr_in('b0),
-        .n_rst(),
-        .sdi(sdi),
-        .sck(sck),
-        .cs(cs),
-        .data_out_s(),
-        .intr_out(),
-        .wake()
-    );
+//    RF_top RF_top_0(
+//        .CLK100MHZ(clk),
+//        .rst(rst),
+//        .sdo(),
+//        .intr_in('b0),
+//        .n_rst(),
+//        .sdi(sdi),
+//        .sck(sck),
+//        .cs(cs),
+//        .data_out_s(),
+//        .intr_out(),
+//        .wake()
+//    );
 
 endmodule
