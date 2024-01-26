@@ -1,3 +1,6 @@
 /.obsidian
 /.vscode
 /docs/meetingnotes/.obsidian
+*/sim/*.xpr
+*.log
+*.jou

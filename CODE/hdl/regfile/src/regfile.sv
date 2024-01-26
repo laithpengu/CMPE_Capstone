@@ -141,7 +141,7 @@ module regfile(
     always_comb begin
 // Outputs the data of the register from address given register A
         case(rda_addr_q)
-            2'b00: rd_data1_q = register1_q;
+            2'b00: rd_data1_d = register1_q;
             2'b01: rd_data1_d = register2_q;
             2'b10: rd_data1_d = register3_q;
             2'b11: rd_data1_d = register4_q;
