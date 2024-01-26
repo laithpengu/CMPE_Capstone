@@ -24,19 +24,24 @@ module bc_buffer_tb();
 
 int i;
 logic clk = 0;
+logic sck = 0;
 logic rst;
 logic ctrl_rdy;
 logic avoid_rdy;
+logic from_avoid;
 logic [15:0] bc_in;        
 logic [15:0] bc_out;
 
 bc_buffer dut(
     .clk(clk),
+    .sck(sck),
     .rst(rst),
+    .from_avoid(from_avoid),
     .ctrl_rdy(ctrl_rdy),
     .avoid_rdy(avoid_rdy),
-    .bc_in(bc_in),
-    .bc_out(bc_out)
+    .start_ser(start_ser),
+    .start_des(start_des),
+    .bc_in(bc_in)
 );
 
 initial begin
@@ -51,7 +56,7 @@ initial begin
     repeat (10)@(negedge clk); // wait 10 clock cycles for FIFO to setup
     ctrl_rdy = 1;              // FIFO ready to read in
     avoid_rdy = 0;             // FIFO not popping data off
-    
+        
     for (i = 0; i < 10; i++) begin
         // bc_in = 16'd20;
         bc_in = i + 10;

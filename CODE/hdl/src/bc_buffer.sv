@@ -14,18 +14,24 @@
 // Dependencies: 
 // 
 // Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
+// Revision 0.1 - Serdes filled out
+// Additional Comments: SERDES filled out (maybe not entirely properly)
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
 
 module bc_buffer(
         input clk,
+        input sck,
         input rst,
         input ctrl_rdy,
         input avoid_rdy,
-        input [15:0] bc_in,  
+        input from_avoid,
+        input start_ser,
+        input start_des,
+        input [15:0] bc_in,          
+        output [15:0] to_control,
+        output to_avoid,
         output [15:0] bc_out
     );
     
@@ -34,13 +40,18 @@ module bc_buffer(
     logic [9:0] data_count;
     logic wr_rst_busy;
     logic rd_rst_busy;
-    //
-    logic from_fifo;
-    logic to_arduino;
+    logic early_rdy; //maybe make this one an input/output?
+    logic parallel_rdy; //also make this an input/output?
+    logic serial_done; //same as above?
+    //logic [15:0] bc_out;
+    //logic from_fifo;  //parallel
+    //logic from_avoid; //serial, make this an input??
+    //logic [15:0] to_control; //parallel, make this an output?????
+    //logic to_avoid;
     
     fifo_generator_0 fifo(
         .clk(clk),
-        .rst(!rst),
+        .rst(rst),
         .full(full),
         .empty(empty),
         .din(bc_in),
@@ -52,15 +63,17 @@ module bc_buffer(
         .data_count(data_count)
     );
     
-    serdes inner_serdes(
-        .clk(clk),
-        .rst(rst),
-        // pretty sure everything below this is wrong
-        .serial_in(from_fifo),
-        .parallel_in(bc_out),
-        .parallel_out(bc_in),
-        .serial_out(to_arduino),
-        .early_rdy(),
-        .parallel_rdy()
-    );
+   serdes inner_serdes(
+       .clk(sck),
+       .rst(rst),
+       .serial_in(from_avoid),
+       .parallel_in(bc_out), //bc_out is filled from fifo
+       .start_ser(start_ser),
+       .start_des(start_des),
+       .parallel_out(to_control),
+       .serial_out(to_avoid),
+       .early_rdy(early_rdy),
+       .parallel_rdy(parallel_rdy),
+       .serial_done(serial_done)
+   );
 endmodule

@@ -57,7 +57,7 @@ module serdes#(
         if(rst) begin
             parallel_out_q <= 'h0;
             des_count <= 'h0;
-            ser_count <= 'h0;
+            ser_count <= 'h0 - 1;
             parallel_in_q <= 'h0;
             serial_out_q <= 'h0;
         end else if(start_ser) begin
