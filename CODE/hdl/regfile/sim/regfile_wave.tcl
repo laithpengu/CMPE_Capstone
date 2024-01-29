@@ -9,4 +9,3 @@ set_property top regfile_tb [get_fileset sim_1]
 launch_simulation -simset sim_1 -mode behavioral
 run 5us
 current_fileset
-quit

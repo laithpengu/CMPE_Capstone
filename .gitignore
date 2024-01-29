@@ -4,4 +4,7 @@
 */sim/*.xpr
 *.log
 *.jou
-*/sim.*/*
+sim.*
+.Xil
+.gen
+.srcs

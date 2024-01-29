@@ -12,5 +12,5 @@ opt_design
 place_design
 route_design
 
-# write bitstream
-write_bitstream -force "regfile.bit"
+# write bitstream - just need to see that it implements fine
+# write_bitstream -force "regfile.bit"
