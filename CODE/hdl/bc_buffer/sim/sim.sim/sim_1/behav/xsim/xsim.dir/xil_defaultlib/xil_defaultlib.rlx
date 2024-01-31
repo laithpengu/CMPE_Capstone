@@ -2,8 +2,8 @@
 2020.2
 Oct 13 2023
 20:47:58
-D:/CMPE_Capstone/CODE/hdl/bc_buffer/sim/sim.gen/sources_1/ip/fifo_generator_0/sim/fifo_generator_0.v,1706302361,verilog,,,,fifo_generator_0,,uvm,,,,,,
-D:/CMPE_Capstone/CODE/hdl/bc_buffer/sim/sim.sim/sim_1/behav/xsim/glbl.v,1697210495,verilog,,,,glbl,,uvm,,,,,,
-D:/CMPE_Capstone/CODE/hdl/bc_buffer/src/bc_buffer.sv,1706293436,systemVerilog,,D:/CMPE_Capstone/CODE/hdl/bc_buffer/test/bc_buffer_tb.sv,,bc_buffer,,uvm,,,,,,
-D:/CMPE_Capstone/CODE/hdl/bc_buffer/test/bc_buffer_tb.sv,1706293462,systemVerilog,,,,bc_buffer_tb,,uvm,,,,,,
-D:/CMPE_Capstone/CODE/hdl/serdes/src/serdes.sv,1706293216,systemVerilog,,,,serdes,,uvm,,,,,,
+C:/Users/halod/Documents/GitHub/CMPE_Capstone/CODE/hdl/bc_buffer/sim/sim.gen/sources_1/ip/fifo_generator_0/sim/fifo_generator_0.v,1706302960,verilog,,,,fifo_generator_0,,uvm,,,,,,
+C:/Users/halod/Documents/GitHub/CMPE_Capstone/CODE/hdl/bc_buffer/sim/sim.sim/sim_1/behav/xsim/glbl.v,1697210495,verilog,,,,glbl,,uvm,,,,,,
+C:/Users/halod/Documents/GitHub/CMPE_Capstone/CODE/hdl/bc_buffer/src/bc_buffer.sv,1706302721,systemVerilog,,C:/Users/halod/Documents/GitHub/CMPE_Capstone/CODE/hdl/bc_buffer/test/bc_buffer_tb.sv,,bc_buffer,,uvm,,,,,,
+C:/Users/halod/Documents/GitHub/CMPE_Capstone/CODE/hdl/bc_buffer/test/bc_buffer_tb.sv,1706302721,systemVerilog,,,,bc_buffer_tb,,uvm,,,,,,
+C:/Users/halod/Documents/GitHub/CMPE_Capstone/CODE/hdl/serdes/src/serdes.sv,1706302721,systemVerilog,,,,serdes,,uvm,,,,,,
