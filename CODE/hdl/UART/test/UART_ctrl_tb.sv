@@ -22,13 +22,13 @@
 module UART_ctrl_tb();
     logic clk = 0;
     logic rst;
-    logic [7:0] data;
+    logic [15:0] data;
     logic valid;
     logic ready;
     logic [3:0] awaddr;
     logic awvalid;
     logic awready;
-    logic [31:0]  wdata;
+    logic [7:0]  wdata;
     logic wvalid;
     logic wready;
     logic [1:0] bresp;
@@ -56,35 +56,16 @@ module UART_ctrl_tb();
         valid = 0;
         repeat(10) @(posedge clk);
         wait(ready);
-        writeData(.data(8'h41));
+//        writeData(.input_data(16'h5f4e));
+        data = 16'h4f3e;
+        valid = 1;
         @(posedge clk);
-        writeData(.data(8'h42));
-        @(posedge clk);
-        writeData(.data(8'h43));
-        @(posedge clk);
-        writeData(.data(8'h44));
-        @(posedge clk);
-        // writeData(.addr(4'hc), .data(8'h00));
-        // writeData(.addr(4'h4), .data(8'h41));
-        // writeData(.addr(4'h4), .data(8'h42));
-        // writeData(.addr(4'h4), .data(8'h43));
-        // writeData(.addr(4'h4), .data(8'h44));
-        // writeData(.addr(4'h4), .data(8'h41));
-        // writeData(.addr(4'h4), .data(8'h42));
-        // writeData(.addr(4'h4), .data(8'h43));
-        // writeData(.addr(4'h4), .data(8'h44));
-        // writeData(.addr(4'h4), .data(8'h41));
-        // writeData(.addr(4'h4), .data(8'h42));
-        // writeData(.addr(4'h4), .data(8'h43));
-        // writeData(.addr(4'h4), .data(8'h44));
-        // writeData(.addr(4'h4), .data(8'h41));
-        // writeData(.addr(4'h4), .data(8'h42));
-        // writeData(.addr(4'h4), .data(8'h43));
-        // writeData(.addr(4'h4), .data(8'h44));
+        wait(ready);
+        valid = 0;
         // $finish;
     end
 
-    task writeData(input [7:0] data);
+    task writeData(input [15:0] input_data);
         data = data;
         valid = 1;
         @(posedge clk);
@@ -115,7 +96,7 @@ module UART_ctrl_tb();
         .S_AXI_AWADDR(awaddr),
         .S_AXI_AWVALID(awvalid),
         .S_AXI_AWREADY(awready),
-        .S_AXI_WDATA(wdata),
+        .S_AXI_WDATA({24'h000000, wdata}),
         .S_AXI_WVALID(wvalid),
         .S_AXI_WREADY(wready),
         .S_AXI_BRESP(bresp),

@@ -15,10 +15,7 @@ module UART(
     wire [1:0] bresp;
     wire bvalid;
     wire bready;
-    reg [7:0] counter;
-    
-    initial
-        counter <= 'b0;
+    reg [10:0] counter;
     
     always @(posedge clk or posedge rst) begin
         if(rst)
@@ -32,7 +29,7 @@ module UART(
     UART_ctrl ctrl(
         .clk(clk),
         .rst(rst),
-        .data(data[7:0] + 'h41),
+        .data(data),
         .valid('b1),
         .ready(ready),
         .awaddr(awaddr),
