@@ -56,11 +56,14 @@ module UART_ctrl_tb();
         valid = 0;
         repeat(10) @(posedge clk);
         wait(ready);
-        data = 8'h41;
-        valid = 1;
+        writeData(.data(8'h41));
         @(posedge clk);
-        wait(ready);
-        valid = 0;
+        writeData(.data(8'h42));
+        @(posedge clk);
+        writeData(.data(8'h43));
+        @(posedge clk);
+        writeData(.data(8'h44));
+        @(posedge clk);
         // writeData(.addr(4'hc), .data(8'h00));
         // writeData(.addr(4'h4), .data(8'h41));
         // writeData(.addr(4'h4), .data(8'h42));
@@ -81,20 +84,12 @@ module UART_ctrl_tb();
         // $finish;
     end
 
-    task writeData(input [3:0] addr, input [7:0] data);
-        awvalid = 1;
-        awaddr = addr;
-        wdata = {24'h000000, data};
-        wvalid = 1;
-        bready = 1;
-        wait(awready);
+    task writeData(input [7:0] data);
+        data = data;
+        valid = 1;
         @(posedge clk);
-        awvalid = 0;
-        awaddr = 'b0;
-        wdata = 'b0;
-        wvalid = 0;
-        @(posedge clk)
-        bready = 0;
+        wait(ready);
+        valid = 0;
     endtask
 
     UART_ctrl ctrl(

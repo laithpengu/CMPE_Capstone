@@ -33,6 +33,13 @@ module UART_ctrl(
     end
 
     always_comb begin
+        awaddr = 4'hc;
+        awvalid = 1;
+        wdata = 8'h00;
+        wvalid = 1;
+        bready = 1;
+        ready = 0;
+        next_data = curr_data;
         case(curr_state)
             set_ctrl_state: begin
                 awaddr = 4'hc;
@@ -53,7 +60,7 @@ module UART_ctrl(
                 wvalid = 0;
                 bready = 1;
                 ready = 0;
-                if(!bready)
+                if(!bready || !bvalid)
                     next_state = resp_state;
                 else
                     if(|bresp)
@@ -91,6 +98,7 @@ module UART_ctrl(
                 else
                     next_state = write_state;
             end
+            default: next_state = idle_state;
         endcase
     end
 endmodule
