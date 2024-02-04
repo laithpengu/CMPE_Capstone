@@ -1,0 +1,23 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  --include "../../../../pkt_display.ip_user_files/ipstatic" \
+"../../../../pkt_display.gen/sources_1/ip/blk_mem_gen_0_1/sim/blk_mem_gen_0.v" \
+"../../../../pkt_display.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_clk_wiz.v" \
+"../../../../pkt_display.gen/sources_1/ip/clk_wiz_0/clk_wiz_0.v" \
+"../../../../pkt_display.gen/sources_1/ip/fifo_generator_0/sim/fifo_generator_0.v" \
+"../../../../../RF_top/RF_top.srcs/sources_1/new/RF_top.v" \
+"../../../../pkt_display.srcs/sources_1/new/led.v" \
+"../../../../pkt_display.srcs/sources_1/new/pkt_display_wrapper.v" \
+
+sv xil_defaultlib  --include "../../../../pkt_display.ip_user_files/ipstatic" \
+"../../../../../src/RF.sv" \
+"../../../../../RF_cl_test/RF_cl_test.srcs/sources_1/new/RF_cl_test.sv" \
+"../../../../../src/pc.sv" \
+"../../../../pkt_display.srcs/sources_1/new/pkt_display.sv" \
+"../../../../../src/spi_des.sv" \
+"../../../../pkt_display.srcs/sim_1/new/rf_state_display_tb.sv" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort
