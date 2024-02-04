@@ -25,17 +25,8 @@ module UART_ctrl_tb();
     logic [15:0] data;
     logic valid;
     logic ready;
-    logic [3:0] awaddr;
-    logic awvalid;
-    logic awready;
-    logic [7:0]  wdata;
-    logic wvalid;
-    logic wready;
-    logic [1:0] bresp;
-    logic bvalid;
-    logic bready;
-    logic rx;
-    logic tx;
+    logic uart_rx;
+    logic uart_tx;
 
     initial begin
         forever #5ns clk = !clk;
@@ -55,8 +46,7 @@ module UART_ctrl_tb();
         rst = 0;
         valid = 0;
         repeat(10) @(posedge clk);
-        wait(ready);
-//        writeData(.input_data(16'h5f4e));
+        // wait(ready);
         data = 16'h4f3e;
         valid = 1;
         @(posedge clk);
@@ -73,37 +63,47 @@ module UART_ctrl_tb();
         valid = 0;
     endtask
 
-    UART_ctrl ctrl(
+    UART_pkg uart_pkg(
         .clk,
         .rst,
         .data,
         .valid,
         .ready,
-        .awaddr,
-        .awvalid,
-        .awready,
-        .wdata,
-        .wvalid,
-        .wready,
-        .bresp,
-        .bvalid,
-        .bready
+        .uart_rx,
+        .uart_tx
     );
 
-    axi_uartlite_0 uart(
-        .S_AXI_ACLK(clk),
-        .S_AXI_ARESETN(!rst),
-        .S_AXI_AWADDR(awaddr),
-        .S_AXI_AWVALID(awvalid),
-        .S_AXI_AWREADY(awready),
-        .S_AXI_WDATA({24'h000000, wdata}),
-        .S_AXI_WVALID(wvalid),
-        .S_AXI_WREADY(wready),
-        .S_AXI_BRESP(bresp),
-        .S_AXI_BVALID(bvalid),
-        .S_AXI_BREADY(bready),
-        .RX(rx),
-        .TX(tx)
-    );
+    // UART_ctrl ctrl(
+    //     .clk,
+    //     .rst,
+    //     .data,
+    //     .valid,
+    //     .ready,
+    //     .awaddr,
+    //     .awvalid,
+    //     .awready,
+    //     .wdata,
+    //     .wvalid,
+    //     .wready,
+    //     .bresp,
+    //     .bvalid,
+    //     .bready
+    // );
+
+    // axi_uartlite_0 uart(
+    //     .S_AXI_ACLK(clk),
+    //     .S_AXI_ARESETN(!rst),
+    //     .S_AXI_AWADDR(awaddr),
+    //     .S_AXI_AWVALID(awvalid),
+    //     .S_AXI_AWREADY(awready),
+    //     .S_AXI_WDATA({24'h000000, wdata}),
+    //     .S_AXI_WVALID(wvalid),
+    //     .S_AXI_WREADY(wready),
+    //     .S_AXI_BRESP(bresp),
+    //     .S_AXI_BVALID(bvalid),
+    //     .S_AXI_BREADY(bready),
+    //     .RX(rx),
+    //     .TX(tx)
+    // );
 
 endmodule

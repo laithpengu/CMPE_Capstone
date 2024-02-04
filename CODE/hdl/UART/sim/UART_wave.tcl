@@ -1,4 +1,7 @@
-# Top level
+# ASCII Converter
+read_verilog ../src/ascii_conv.sv
+
+# Controller
 read_verilog ../src/UART_ctrl.sv
 
 # Create UART IP
@@ -7,6 +10,9 @@ set_property CONFIG.PARITY {No_Parity} [get_ips axi_uartlite_0]
 generate_target {instantiation_template} [get_files sim.srcs/sources_1/ip/axi_uartlite_0/axi_uartlite_0.xci]
 update_compile_order -fileset sources_1
 generate_target all [get_files  sim.srcs/sources_1/ip/axi_uartlite_0/axi_uartlite_0.xci]
+
+# Top level
+read_verilog ../src/UART_pkg.sv
 
 # Test bench
 read_verilog ../test/UART_ctrl_tb.sv

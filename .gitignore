@@ -8,3 +8,4 @@ sim.*
 .Xil
 .gen
 .srcs
+UART_impl/*
