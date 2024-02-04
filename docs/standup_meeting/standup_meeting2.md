@@ -1,6 +1,6 @@
-- Scope: We are the ICS processor team. ICS, the intelligent convoy system, allows one leader vehicle to have autonomous vehicles follow with active obstacle avoidance.
-- Schedule: We're on schedule, currently working on our SOW. We are also starting to design the submodules that make up the processor.
-- Spending: Currently we have not spent any money, however, today we plan to put in an order to purchase a couple transceivers and a servo PMOD to get more current to the servo from the FPGA.
-- Stakeholders: Our current stakeholder is Dr. LaBerge
-- Status: We have recently received some FPGAs from the 316 professor, Professor Oechsler. With this we are able to do physical tests using the components of the vehicle with our hdl designs.
-- Specifics: We plan to continue developing each submodule needed, as well as test each individual submodule thoroughly. We also will continue to prototype physical tests with the components of the vehicles. We will also start prototyping the controller using a breadboard.
+- **Scope**: We are the ICS processor team. ICS, the intelligent convoy system, allows one leader vehicle to have autonomous vehicles follow with active obstacle avoidance.
+- **Schedule**: We're on schedule, currently working on our SOW. We are also starting to design the submodules that make up the processor.
+- **Spending**: Currently we have not spent any money, however, today we plan to put in an order to purchase a couple transceivers and a servo PMOD to get more current to the servo from the FPGA.
+- **Stakeholders**: Our current stakeholder is Dr. LaBerge
+- **Status**: We have recently received some FPGAs from the 316 professor, Professor Oechsler. With this we are able to do physical tests using the components of the vehicle with our hdl designs.
+- **Specifics**: We plan to continue developing each submodule needed, as well as test each individual submodule thoroughly. We also will continue to prototype physical tests with the components of the vehicles. We will also start prototyping the controller using a breadboard.

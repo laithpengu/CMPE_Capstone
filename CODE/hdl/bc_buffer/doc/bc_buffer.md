@@ -26,11 +26,11 @@
 ## Setting up the ROM
 ### Basic
 - Make Memory Type be "Single Port ROM"
-- ![image](../img/ROM_inst_1.jpg)
+- ![image](img/ROM_inst_1.jpg)
 ### Port A Options
 - Port A Width: 16
 - Port A Depth: 256
 - Enable Port Type: Always Enabled
-- ![image](../img/ROM_inst_2.jpg)
+- ![image](img/ROM_inst_2.jpg)
 ### Other Options
 - Make sure that you load init file with the coefficient needs to be put on the  -->

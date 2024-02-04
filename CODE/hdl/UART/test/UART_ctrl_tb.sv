@@ -46,13 +46,12 @@ module UART_ctrl_tb();
         rst = 0;
         valid = 0;
         repeat(10) @(posedge clk);
-        // wait(ready);
         data = 16'h4f3e;
         valid = 1;
         @(posedge clk);
         wait(ready);
         valid = 0;
-        // $finish;
+        $finish;
     end
 
     task writeData(input [15:0] input_data);

@@ -1,6 +1,6 @@
-- Scope: We are the ICS processor team. ICS, the intelligent convoy system, allows one leader vehicle to have autonomous vehicles follow with active obstacle avoidance.
-- Schedule: We're on schedule, currently working on multiple modules in parralel.
-- Spending: Currently we have spend $66.95 on parts buying addons for the FPGAs as well as a rc car control to be use as the body of our controller
-- Stakeholders: Our current stakeholder is Dr. LaBerge
-- Status: We are curently working on different modules in parrelles in teams each module will act as a sub system.
-- Specifics: We have plan for tackling the RF module with a state machine we have some issues with the car charging as the previouse team did not take ease of access to the battery into consideration for the veihcle design.
+- **Scope**: We are the ICS processor team. ICS, the intelligent convoy system, allows one leader vehicle to have autonomous vehicles follow with active obstacle avoidance.
+- **Schedule**: We're on schedule, currently working on multiple modules in parralel.
+- **Spending**: Currently we have spend $66.95 on parts buying addons for the FPGAs as well as a rc car control to be use as the body of our controller
+- **Stakeholders**: Our current stakeholder is Dr. LaBerge
+- **Status**: We are curently working on different modules in parrelles in teams each module will act as a sub system.
+- **Specifics**: We have plan for tackling the RF module with a state machine we have some issues with the car charging as the previouse team did not take ease of access to the battery into consideration for the veihcle design.

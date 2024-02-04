@@ -1,6 +1,6 @@
-- Scope: We are the ICS processor team. ICS, the Intelligent Convoy System, allows one leader vehicle to have autonomous vehicles follow with active obstacle avoidance.
-- Schedule: We're on schedule, Finalizing modules and testing what we've already made
-- Spending: Spending HAS changed since our last standup. We have purchased 3 new FPGA boards that we believe will be helpful with issues regarding to processing speed. Total spent stands at $663.95
-- Stakeholders: Our current stakeholder is Dr. LaBerge
-- Status: We're finalizing the URCAD abstract and planning our next set of work via various work breakdowns
-- Specifics: Created JIRA board and Work Breakdown Structure for tracking tasks. Creating TCL Scripts to speed up testing rate by automating the sythesis process within Vivado. Also looking into using DPI (C code modules paired with SV) in order to create a framework of what our SV modules should look like
+- **Scope**: We are the ICS processor team. ICS, the Intelligent Convoy System, allows one leader vehicle to have autonomous vehicles follow with active obstacle avoidance.
+- **Schedule**: We're on schedule, Finalizing modules and testing what we've already made
+- **Spending**: Spending HAS changed since our last standup. We have purchased 3 new FPGA boards that we believe will be helpful with issues regarding to processing speed. Total spent stands at $663.95
+- **Stakeholders**: Our current stakeholder is Dr. LaBerge
+- **Status**: We're finalizing the URCAD abstract and planning our next set of work via various work breakdowns
+- **Specifics**: Created JIRA board and Work Breakdown Structure for tracking tasks. Creating TCL Scripts to speed up testing rate by automating the sythesis process within Vivado. Also looking into using DPI (C code modules paired with SV) in order to create a framework of what our SV modules should look like
