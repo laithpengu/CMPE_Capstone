@@ -1,0 +1,154 @@
+{
+  "design": {
+    "design_info": {
+      "boundary_crc": "0xF318F8A198667D55",
+      "device": "xc7s50csga324-1",
+      "gen_directory": "../../../../pwm_proj.gen/sources_1/bd/design_1",
+      "name": "design_1",
+      "rev_ctrl_bd_flag": "RevCtrlBdOff",
+      "synth_flow_mode": "Hierarchical",
+      "tool_version": "2023.2",
+      "validated": "true"
+    },
+    "design_tree": {
+      "pwm_wrapper_0": ""
+    },
+    "ports": {
+      "CLK100MHZ": {
+        "type": "clk",
+        "direction": "I",
+        "parameters": {
+          "ASSOCIATED_RESET": {
+            "value": "rst",
+            "value_src": "default"
+          },
+          "CLK_DOMAIN": {
+            "value": "design_1_CLK100MHZ",
+            "value_src": "default"
+          },
+          "FREQ_HZ": {
+            "value": "100000000"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.0",
+            "value_src": "default"
+          }
+        }
+      },
+      "rst": {
+        "type": "rst",
+        "direction": "I",
+        "parameters": {
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "POLARITY": {
+            "value": "ACTIVE_HIGH"
+          }
+        }
+      },
+      "sw": {
+        "type": "data",
+        "direction": "I",
+        "left": "3",
+        "right": "0",
+        "parameters": {
+          "LAYERED_METADATA": {
+            "value": "undef",
+            "value_src": "default"
+          }
+        }
+      }
+    },
+    "components": {
+      "pwm_wrapper_0": {
+        "vlnv": "xilinx.com:module_ref:pwm_wrapper:1.0",
+        "ip_revision": "1",
+        "xci_name": "design_1_pwm_wrapper_0_0",
+        "xci_path": "ip\\design_1_pwm_wrapper_0_0\\design_1_pwm_wrapper_0_0.xci",
+        "inst_hier_path": "pwm_wrapper_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "pwm_wrapper",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "rst",
+                "value_src": "constant"
+              },
+              "FREQ_HZ": {
+                "value": "100000000",
+                "value_src": "user_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "design_1_CLK100MHZ",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "rst": {
+            "type": "rst",
+            "direction": "I",
+            "parameters": {
+              "POLARITY": {
+                "value": "ACTIVE_HIGH",
+                "value_src": "user_prop"
+              }
+            }
+          },
+          "data_in": {
+            "direction": "I",
+            "left": "15",
+            "right": "0",
+            "parameters": {
+              "LAYERED_METADATA": {
+                "value": "undef",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "spd": {
+            "direction": "O"
+          },
+          "dir": {
+            "direction": "O"
+          }
+        }
+      }
+    },
+    "nets": {
+      "CLK100MHZ_1": {
+        "ports": [
+          "CLK100MHZ",
+          "pwm_wrapper_0/clk"
+        ]
+      },
+      "rst_1": {
+        "ports": [
+          "rst",
+          "pwm_wrapper_0/rst"
+        ]
+      },
+      "sw_1": {
+        "ports": [
+          "sw",
+          "pwm_wrapper_0/data_in"
+        ]
+      }
+    }
+  }
+}

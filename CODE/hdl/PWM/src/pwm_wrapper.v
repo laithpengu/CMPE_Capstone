@@ -23,7 +23,7 @@
 module pwm_wrapper(
     input clk,
     input rst,
-    input[15:0] data_in,
+    input[3:0] data_in,
     output spd,
     output dir 
     );
@@ -32,7 +32,7 @@ module pwm_wrapper(
     wire clk_out_2;
     
     PWM u_inst_pwm(
-        .clk(clk_out_2),
+        .clk(clk_out_1),
         .rst(rst),
         .data_in(data_in),
         .spd_out(spd),
@@ -40,14 +40,12 @@ module pwm_wrapper(
     );
     
     clk_wiz_0 wiz(
-        .reset(rst),
         .clk_in1(clk),
         .clk_out1(clk_out_1)
     );
     
-    clk_div divider(
+    clk_div u_inst_clk_div(
         .clk_in(clk_out_1),
-        .rst(rst),
         .clk_out(clk_out_2)
     );
 endmodule
