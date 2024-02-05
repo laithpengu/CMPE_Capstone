@@ -13,7 +13,15 @@
 - ouptut to_avoid: Serialized breadcrumb stream sent to Avoidance
 - output bc_out [15:0]: Breacdrumb to be serialzied and sent to Avoidance
 ## How to use
-- 
+### Entering data into FIFO
+- FIFO takes 10 clock cycles to setup
+- set ctrl_rdy signal to high and avoid_rdy signal to low
+- at posedge of clock, bc_in is read onto the stack
+- to stop reading data in, set ctrl_rdy low
+### Reading data out of FIFO
+- takes 2 clock cycles to prepare popping data off
+- set avoid_rdy high to pop data into bc_out
+- data enters bc_out on posedge of clock
 
 
 <!-- - When inc signal goes high, it will increment the currently held address. 

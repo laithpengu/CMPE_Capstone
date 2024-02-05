@@ -1,0 +1,45 @@
+module dpi_tb;
+    // import "DPI-C" function int cFunc(input int x);
+
+    // int svNum;
+    // int result;
+
+    // initial
+    // begin
+    //     svNum = 10;
+    //     result = cFunc(svNum);
+
+    //     if (result == 15)
+    //         $display("PASSED");
+    //     else
+    //         $display("FAILED");
+    // end
+
+    export "DPI-C" function svFunc ; 
+
+    int svValue ;
+
+    function int svFunc(input int x) ;
+        svValue = x + 1 ;
+        return svValue + 3 ;
+    endfunction
+
+    import "DPI-C" function int cFunc(input int x) ;
+
+    int result ;
+    
+    initial
+    begin
+        svValue = 15 ;
+        result = cFunc(3) ;
+        if (svValue != 4)
+        begin
+        $display("FAILED") ;
+        $finish ;
+        end
+        if (result == 7)
+        $display("PASSED") ;
+        else
+        $display("FAILED") ;
+    end
+endmodule
