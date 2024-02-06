@@ -38,7 +38,7 @@
       "ports": {
         "clk": [ { "direction": "in" } ],
         "rst": [ { "direction": "in" } ],
-        "data_in": [ { "direction": "in", "size_left": "15", "size_right": "0" } ],
+        "data_in": [ { "direction": "in", "size_left": "3", "size_right": "0" } ],
         "spd": [ { "direction": "out" } ],
         "dir": [ { "direction": "out" } ]
       },

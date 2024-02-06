@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0xF318F8A198667D55",
+      "boundary_crc": "0xDA15DDEADF1B2FB4",
       "device": "xc7s50csga324-1",
       "gen_directory": "../../../../pwm_proj.gen/sources_1/bd/design_1",
       "name": "design_1",
@@ -67,6 +67,12 @@
             "value_src": "default"
           }
         }
+      },
+      "spd": {
+        "direction": "O"
+      },
+      "dir": {
+        "direction": "O"
       }
     },
     "components": {
@@ -112,7 +118,7 @@
           },
           "data_in": {
             "direction": "I",
-            "left": "15",
+            "left": "3",
             "right": "0",
             "parameters": {
               "LAYERED_METADATA": {
@@ -135,6 +141,18 @@
         "ports": [
           "CLK100MHZ",
           "pwm_wrapper_0/clk"
+        ]
+      },
+      "pwm_wrapper_0_dir": {
+        "ports": [
+          "pwm_wrapper_0/dir",
+          "dir"
+        ]
+      },
+      "pwm_wrapper_0_spd": {
+        "ports": [
+          "pwm_wrapper_0/spd",
+          "spd"
         ]
       },
       "rst_1": {
