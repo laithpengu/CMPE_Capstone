@@ -45,6 +45,7 @@ module RF_top(
     wire intr_inter;
     assign n_rst = 1;
     assign wake = 0;
+
     RF_cl_test RF_state(
     .clk(CLK100MHZ),
     .rst(rst),
@@ -84,9 +85,9 @@ module RF_top(
      );
      
      blk_mem_gen_0 mem_0(
-        .clka(CLK100MHZ),
-        .addra(addr_a),
-        .douta(data_out_mem)
-        );
+    .clka(CLK100MHZ),
+    .addra(addr_a),
+    .douta(data_out_mem)
+    );
 
 endmodule
