@@ -70,12 +70,8 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
-set_param checkpoint.writeSynthRtdsInDcp 1
 set_param chipscope.maxJobs 3
-set_param synth.incrementalSynthesisCache D:/CMPE_Capstone/CODE/hdl/PWM/pwm_proj/.Xil/Vivado-11836-DESKTOP-M1PCUD5/incrSyn
-set_msg_config -id {HDL-1065} -limit 10000
-set_msg_config -id {Synth 8-256} -limit 10000
-set_msg_config -id {Synth 8-638} -limit 10000
+set_param xicom.use_bs_reader 1
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7s50csga324-1
 
@@ -85,14 +81,16 @@ set_param synth.vivado.isSynthRun true
 set_msg_config -source 4 -id {IP_Flow 19-2162} -severity warning -new_severity info
 set_property webtalk.parent_dir D:/CMPE_Capstone/CODE/hdl/PWM/pwm_proj/pwm_proj.cache/wt [current_project]
 set_property parent.project_path D:/CMPE_Capstone/CODE/hdl/PWM/pwm_proj/pwm_proj.xpr [current_project]
-set_property XPM_LIBRARIES XPM_CDC [current_project]
+set_property XPM_LIBRARIES {XPM_CDC XPM_MEMORY} [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language Verilog [current_project]
-set_property board_part digilentinc.com:arty-s7-50:part0:1.1 [current_project]
 set_property ip_output_repo d:/CMPE_Capstone/CODE/hdl/PWM/pwm_proj/pwm_proj.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
+add_files D:/CMPE_Capstone/CODE/mem_files/pwm_test.coe
+add_files -quiet d:/CMPE_Capstone/CODE/hdl/PWM/pwm_proj/pwm_proj.gen/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0.dcp
+set_property used_in_implementation false [get_files d:/CMPE_Capstone/CODE/hdl/PWM/pwm_proj/pwm_proj.gen/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0.dcp]
 read_verilog -library xil_defaultlib D:/CMPE_Capstone/CODE/hdl/PWM/pwm_proj/pwm_proj.gen/sources_1/bd/design_1/hdl/design_1_wrapper.v
 add_files D:/CMPE_Capstone/CODE/hdl/PWM/pwm_proj/pwm_proj.srcs/sources_1/bd/design_1/design_1.bd
 set_property used_in_implementation false [get_files -all d:/CMPE_Capstone/CODE/hdl/PWM/pwm_proj/pwm_proj.gen/sources_1/bd/design_1/ip/design_1_pwm_wrapper_0_0/design_1_pwm_wrapper_0_0_ooc.xdc]

@@ -45,9 +45,10 @@ module pwm_speed(
         end else begin
             data_in_q <= data_in_d;
             data_out_q <= data_out_d;
-            counter_q <= counter_d;
+//            counter_q <= counter_d;
             next_match_value_q <= next_match_value_d;
             curr_match_value_q <= curr_match_value_d;
+            counter <= counter + 1;
         end
     end
 
@@ -70,7 +71,7 @@ module pwm_speed(
         end else begin
             data_out_d = data_out_q;
             curr_match_value_d = curr_match_value_q;
-            counter_d = counter_q;
+            counter = counter;
         end
     end
 endmodule
