@@ -141,7 +141,6 @@ module RF_cl_test(
             
             pc_read_addr_state: begin
                 if(counter_q == 'b0) begin
-                   
                    counter_d = counter_q +1;
                    next_state = pc_read_addr_state;
                 end else if(counter_q == 'd2)begin

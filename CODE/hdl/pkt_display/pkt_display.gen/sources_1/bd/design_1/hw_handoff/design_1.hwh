@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Fri Dec 15 21:46:02 2023" VIVADOVERSION="2023.2">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Mon Dec 18 13:26:03 2023" VIVADOVERSION="2023.2">
 
   <SYSTEMINFO ARCH="artix7" DEVICE="7a100t" NAME="design_1" PACKAGE="csg324" SPEEDGRADE="-1"/>
 
@@ -59,7 +59,7 @@
         <CONNECTION INSTANCE="pkt_display_wrapper_0" PORT="cg"/>
       </CONNECTIONS>
     </PORT>
-    <PORT DIR="I" NAME="CLK100MHZ" SIGIS="undef" SIGNAME="External_Ports_CLK100MHZ">
+    <PORT CLKFREQUENCY="100000000" DIR="I" NAME="CLK100MHZ" SIGIS="clk" SIGNAME="External_Ports_CLK100MHZ">
       <CONNECTIONS>
         <CONNECTION INSTANCE="pkt_display_wrapper_0" PORT="clk"/>
       </CONNECTIONS>
@@ -74,6 +74,22 @@
         <CONNECTION INSTANCE="pkt_display_wrapper_0" PORT="empty"/>
       </CONNECTIONS>
     </PORT>
+    <PORT DIR="I" NAME="cs" SIGIS="undef" SIGNAME="External_Ports_cs">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="pkt_display_wrapper_0" PORT="cs"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" NAME="sck" SIGIS="undef" SIGNAME="External_Ports_sck">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="pkt_display_wrapper_0" PORT="sck"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" NAME="sdi" SIGIS="undef" SIGNAME="External_Ports_sdi">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="pkt_display_wrapper_0" PORT="sdi"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" NAME="sdo" SIGIS="undef"/>
   </EXTERNALPORTS>
 
   <EXTERNALINTERFACES/>
@@ -82,7 +98,7 @@
     <MODULE COREREVISION="1" FULLNAME="/pkt_display_wrapper_0" HWVERSION="1.0" INSTANCE="pkt_display_wrapper_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="pkt_display_wrapper" VLNV="xilinx.com:module_ref:pkt_display_wrapper:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
-        <PARAMETER NAME="Component_Name" VALUE="design_1_pkt_display_wrapper_0_3"/>
+        <PARAMETER NAME="Component_Name" VALUE="design_1_pkt_display_wrapper_0_4"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
@@ -146,6 +162,11 @@
             <CONNECTION INSTANCE="External_Ports" PORT="CLK100MHZ"/>
           </CONNECTIONS>
         </PORT>
+        <PORT DIR="I" NAME="cs" SIGIS="undef" SIGNAME="External_Ports_cs">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="cs"/>
+          </CONNECTIONS>
+        </PORT>
         <PORT DIR="O" NAME="dp" SIGIS="undef" SIGNAME="pkt_display_wrapper_0_dp">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="DP"/>
@@ -154,6 +175,16 @@
         <PORT DIR="O" NAME="empty" SIGIS="undef" SIGNAME="pkt_display_wrapper_0_empty">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="LED16_B"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="sck" SIGIS="undef" SIGNAME="External_Ports_sck">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="sck"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="sdi" SIGIS="undef" SIGNAME="External_Ports_sdi">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="sdi"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>

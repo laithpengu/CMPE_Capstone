@@ -2,7 +2,7 @@
 //Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-//Date        : Fri Dec 15 21:46:02 2023
+//Date        : Mon Dec 18 13:26:03 2023
 //Host        : DESKTOP-M1PCUD5 running 64-bit major release  (build 9200)
 //Command     : generate_target design_1.bd
 //Design      : design_1
@@ -25,7 +25,11 @@ module design_1
     CG,
     CLK100MHZ,
     DP,
-    LED16_B);
+    LED16_B,
+    cs,
+    sck,
+    sdi,
+    sdo);
   output [7:0]AN;
   input BTNC;
   input BTND;
@@ -37,14 +41,19 @@ module design_1
   output CE;
   output CF;
   output CG;
-  input CLK100MHZ;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.CLK100MHZ CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.CLK100MHZ, CLK_DOMAIN design_1_CLK100MHZ, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, INSERT_VIP 0, PHASE 0.0" *) input CLK100MHZ;
   output DP;
   output LED16_B;
+  input cs;
+  input sck;
+  input sdi;
+  input sdo;
 
   wire BTNC_1;
   wire BTND_1;
   wire BTNU_1;
   wire CLK100MHZ_1;
+  wire cs_1;
   wire [7:0]pkt_display_wrapper_0_an;
   wire pkt_display_wrapper_0_ca;
   wire pkt_display_wrapper_0_cb;
@@ -55,6 +64,9 @@ module design_1
   wire pkt_display_wrapper_0_cg;
   wire pkt_display_wrapper_0_dp;
   wire pkt_display_wrapper_0_empty;
+  wire sck_1;
+  wire sdi_1;
+  wire sdo_1;
 
   assign AN[7:0] = pkt_display_wrapper_0_an;
   assign BTNC_1 = BTNC;
@@ -70,7 +82,11 @@ module design_1
   assign CLK100MHZ_1 = CLK100MHZ;
   assign DP = pkt_display_wrapper_0_dp;
   assign LED16_B = pkt_display_wrapper_0_empty;
-  design_1_pkt_display_wrapper_0_3 pkt_display_wrapper_0
+  assign cs_1 = cs;
+  assign sck_1 = sck;
+  assign sdi_1 = sdi;
+  assign sdo_1 = sdo;
+  design_1_pkt_display_wrapper_0_4 pkt_display_wrapper_0
        (.BTNC(BTNC_1),
         .BTND(BTND_1),
         .BTNU(BTNU_1),
@@ -83,6 +99,9 @@ module design_1
         .cf(pkt_display_wrapper_0_cf),
         .cg(pkt_display_wrapper_0_cg),
         .clk(CLK100MHZ_1),
+        .cs(cs_1),
         .dp(pkt_display_wrapper_0_dp),
-        .empty(pkt_display_wrapper_0_empty));
+        .empty(pkt_display_wrapper_0_empty),
+        .sck(sck_1),
+        .sdi(sdi_1));
 endmodule

@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<ProcessHandle Version="1" Minor="0">
+    <Process Command="vivado.bat" Owner="turke" Host="DESKTOP-M1PCUD5" Pid="34592" HostCore="12" HostMemory="016868048896">
+    </Process>
+</ProcessHandle>
+<?xml version="1.0"?>
+<ProcessHandle Version="1" Minor="0">
+    <Process Command="vivado.bat" Owner="turke" Host="DESKTOP-M1PCUD5" Pid="22948" HostCore="12" HostMemory="016868048896">
+    </Process>
+</ProcessHandle>
+<?xml version="1.0"?>
+<ProcessHandle Version="1" Minor="0">
+    <Process Command="vivado.bat" Owner="turke" Host="DESKTOP-M1PCUD5" Pid="31492" HostCore="12" HostMemory="016868048896">
+    </Process>
+</ProcessHandle>

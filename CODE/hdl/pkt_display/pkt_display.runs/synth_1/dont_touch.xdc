@@ -6,14 +6,8 @@
 # Block Designs: bd/design_1/design_1.bd
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==design_1 || ORIG_REF_NAME==design_1} -quiet] -quiet
 
-# IP: bd/design_1/ip/design_1_pkt_display_wrapper_0_3/design_1_pkt_display_wrapper_0_3.xci
-set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==design_1_pkt_display_wrapper_0_3 || ORIG_REF_NAME==design_1_pkt_display_wrapper_0_3} -quiet] -quiet
-
-# IP: ip/blk_mem_gen_0_1/blk_mem_gen_0.xci
-set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==blk_mem_gen_0 || ORIG_REF_NAME==blk_mem_gen_0} -quiet] -quiet
-
-# IP: ip/clk_wiz_0/clk_wiz_0.xci
-set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==clk_wiz_0 || ORIG_REF_NAME==clk_wiz_0} -quiet] -quiet
+# IP: bd/design_1/ip/design_1_pkt_display_wrapper_0_4/design_1_pkt_display_wrapper_0_4.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==design_1_pkt_display_wrapper_0_4 || ORIG_REF_NAME==design_1_pkt_display_wrapper_0_4} -quiet] -quiet
 
 # IP: ip/fifo_generator_0/fifo_generator_0.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==fifo_generator_0 || ORIG_REF_NAME==fifo_generator_0} -quiet] -quiet

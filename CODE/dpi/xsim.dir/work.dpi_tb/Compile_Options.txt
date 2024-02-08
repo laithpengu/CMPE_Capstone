@@ -1,0 +1,1 @@
+-svlog "sv_test.sv" -sv_lib "dpi" -r 

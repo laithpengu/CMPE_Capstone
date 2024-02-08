@@ -15,7 +15,7 @@
 - Pair of vehicles that have client-server relationship
 - Data transferred over TCP socket
 ## Potential Pitfalls
-![image](img/image.png)
+![image](img/pitfalls.png)
 ## Future Work
 - Obtain accurate GPS data
     - Want consistent GPS path
