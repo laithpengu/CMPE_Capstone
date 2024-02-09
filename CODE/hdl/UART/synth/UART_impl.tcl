@@ -5,13 +5,13 @@ add_files -norecurse {../src/UART_pkg.sv \
 ../src/UART_ctrl.sv \
 ../src/ascii_conv.sv \
 ../src/UART_impl.v}
-add_files -fileset constrs_1 -norecurse Arty-S7-50-Master.xdc
+add_files -fileset constrs_1 -norecurse UART_impl.xdc
 update_compile_order -fileset sources_1
 
 # Create the block memory (won't be needed for when using the UART_pkg)
 create_ip -name blk_mem_gen -vendor xilinx.com -library ip -version 8.4 -module_name blk_mem_gen_0
 set_property -dict [list \
-  CONFIG.Coe_File {C:\Users\JohnPC\Documents\GitHub\CMPE_Capstone\CODE\mem_files\default.coe} \
+  CONFIG.Coe_File {D:\CMPE_Capstone\CODE\mem_files\default.coe} \
   CONFIG.Enable_A {Always_Enabled} \
   CONFIG.Load_Init_File {true} \
   CONFIG.Memory_Type {Single_Port_ROM} \
