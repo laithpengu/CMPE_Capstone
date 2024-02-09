@@ -30,6 +30,7 @@ module pwm_wrapper(
     
     wire clk_out_1;
     wire clk_out_2;
+    wire clk_out_3;
     wire addr_a;
     wire data_out_mem;
     
@@ -46,19 +47,24 @@ module pwm_wrapper(
         .clk_out1(clk_out_1)
     );
     
-    clk_div u_inst_clk_div(
+    clk_div_0 u_inst_clk_div_0(
         .clk_in(clk_out_1),
         .clk_out(clk_out_2)
     );
     
+    clk_div_1 u_inst_clk_div_1(
+        .clk_in(clk_out_2),
+        .clk_out(clk_out_3)
+    );
+    
     blk_mem_gen_0 blk_mem(
-        .clka(clk_out_2),
+        .clka(clk_out_3),
         .addra(addr_a),
         .douta(data_out_mem)
     );
 
     pc pc_dut_0(
-        .clk(clk_out_2),
+        .clk(clk_out_3),
         .rst(rst),
         .inc(1'b1),
         .jmp(1'b0),
