@@ -55,8 +55,8 @@ module pwm_dir(
 
     always_comb begin
         // update next match value
-        next_match_value_d = 9'b0;
-        if(data_in_q >= 8'd200 || next_match_value_d < 10'd229 || next_match_value_d > 10'd371) begin
+        next_match_value_d = data_in_q * 2;
+        if(data_in_q >= 10'd200 || next_match_value_d < 10'd229 || next_match_value_d > 10'd371) begin
             next_match_value_d = 10'd300;
         end
         
@@ -64,7 +64,7 @@ module pwm_dir(
             data_out_d = 1'b0;
             curr_match_value_d = curr_match_value_q;
             counter_d = counter_q + 1;
-        end else if(counter_q == 10'h25E) begin // invert on counter finish
+        end else if(counter_q == 10'h25E) begin // invert on counter finish (@ 606)
             counter_d = 10'h000;
             data_out_d = 1'b1;
             // update match value
