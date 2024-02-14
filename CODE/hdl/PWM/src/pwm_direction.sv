@@ -42,12 +42,12 @@ module pwm_dir(
             data_in_q <= 8'h00;
             data_out_q <= 1'b1;
             counter_q <= 10'h000;
-            next_match_value_q <= 9'b0;
-            curr_match_value_q <= 9'b0;
+            next_match_value_q <= 10'd0;
+            curr_match_value_q <= 10'd300;
         end else begin
             data_in_q <= data_in_d;
             data_out_q <= data_out_d;
-            counter_q <= counter_d;
+            counter_q <= counter_d + 1;
             next_match_value_q <= next_match_value_d;
             curr_match_value_q <= curr_match_value_d;
         end
@@ -63,7 +63,7 @@ module pwm_dir(
         if(counter_q == curr_match_value_q) begin // find match value
             data_out_d = 1'b0;
             curr_match_value_d = curr_match_value_q;
-            counter_d = counter_q + 1;
+            counter_d = counter_q;
         end else if(counter_q == 10'h25E) begin // invert on counter finish (@ 606)
             counter_d = 10'h000;
             data_out_d = 1'b1;

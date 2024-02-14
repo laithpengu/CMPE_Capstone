@@ -21,50 +21,53 @@
 
 
 module pwm_wrapper(
-    input clk,
+    input CLK100MHZ,
     input rst,
-    input[3:0] data_in,
+    input [15:0] data_in,
     output spd,
-    output dir 
+    output dir
     );
     
-    wire clk_out_1;
-    wire clk_out_2;
-    wire clk_out_3;
-    wire addr_a;
-    wire data_out_mem;
+    wire clk_5mhz;
+    wire clk_200khz;
+    wire clk_330hz;
+    wire [7:0] addr_a;
+    wire [15:0] data_out_mem;
     
     PWM u_inst_pwm(
-        .clk(clk_out_2),
+        .clk(clk_200khz),
         .rst(rst),
-        .data_in(data_in),
+        .data_in(data_out_mem),
         .spd_out(spd),
         .dir_out(dir)
     );
     
     clk_wiz_0 wiz(
-        .clk_in1(clk),
-        .clk_out1(clk_out_1)
+        .clk_in1(CLK100MHZ),
+        .clk_out1(clk_5mhz)
     );
     
     clk_div_0 u_inst_clk_div_0(
-        .clk_in(clk_out_1),
-        .clk_out(clk_out_2)
+        .clk_in(clk_5mhz),
+        .rst(rst),
+        .clk_out(clk_200khz)
     );
     
     clk_div_1 u_inst_clk_div_1(
-        .clk_in(clk_out_2),
-        .clk_out(clk_out_3)
+        .clk_in(clk_200khz),
+        .rst(rst),
+        .clk_out(clk_330hz)
     );
     
     blk_mem_gen_0 blk_mem(
-        .clka(clk_out_3),
+        .clka(clk_330hz),
+        .ena(1'b1),
         .addra(addr_a),
         .douta(data_out_mem)
     );
 
     pc pc_dut_0(
-        .clk(clk_out_3),
+        .clk(clk_330hz),
         .rst(rst),
         .inc(1'b1),
         .jmp(1'b0),

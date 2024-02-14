@@ -27,7 +27,8 @@ module pwm_speed(
     logic [9:0] next_match_value_q; 
     logic [9:0] curr_match_value_d;
     logic [9:0] curr_match_value_q;
-    logic [9:0] counter;
+    logic [9:0] counter_d;
+    logic [9:0] counter_q;
 
     assign data_in_d = data_in;
     assign data_out = data_out_q;
@@ -39,16 +40,15 @@ module pwm_speed(
         if(rst) begin
             data_in_q <= 8'h00;
             data_out_q <= 1'b1;
-            counter <= 10'b0;
+            counter_q <= 10'b0;
             next_match_value_q <= 10'b0;
             curr_match_value_q <= 10'b0;
         end else begin
             data_in_q <= data_in_d;
             data_out_q <= data_out_d;
-//            counter_q <= counter_d;
+            counter_q <= counter_d + 1;
             next_match_value_q <= next_match_value_d;
             curr_match_value_q <= curr_match_value_d;
-            counter <= counter + 1;
         end
     end
 
@@ -60,19 +60,19 @@ module pwm_speed(
             next_match_value_d = data_in_q * 3;
         end
 
-        if(counter == curr_match_value_q) begin // find match value
+        if(counter_q == curr_match_value_q) begin // find match value
             data_out_d = 1'b0;
             curr_match_value_d = curr_match_value_q;
-            counter = counter;
-        end else if(counter == 10'h25E) begin // invert on counter finish (@ 606)
-            counter = 10'b0;
+            counter_d = counter_q;
+        end else if(counter_q == 10'h25E) begin // invert on counter finish (@ 606)
+            counter_d = 10'b0;
             data_out_d = 1'b1;
             // update match value
             curr_match_value_d = next_match_value_q;
         end else begin
             data_out_d = data_out_q;
             curr_match_value_d = curr_match_value_q;
-            counter = counter;
+            counter_d = counter_q;
         end
     end
 endmodule
