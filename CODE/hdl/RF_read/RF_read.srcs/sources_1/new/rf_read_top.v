@@ -23,18 +23,19 @@
 module rf_read_top(
     input CLK100MHZ,
     input rst,
-    input w_en,
-    input [3:0] sw,
-    input sdo,
-    input intr_in,
-    output n_rst,
-    output sdi,
-    output sck,
-    output cs,
-    output data_out_s,
-    output intr_out,
-    output wake);
+    input inc,
+    input [3:0] sw
+    );
     
+    wire sdo;
+    wire intr_in;
+    wire sdi;
+    wire sck;
+    wire cs;
+    wire data_out_s;
+    wire intr_out;
+    wire [7:0] rd_data1;
+    wire [7:0] rd_data2;
     wire [15:0] data_in;
     wire [15:0] data_out_mem;
     wire [7:0] addr_a;
@@ -42,12 +43,9 @@ module rf_read_top(
     wire intr;
     wire [9:0] addr_out;
     wire [7:0] data_out;
-    wire inc;
     wire [1:0] inst;
     wire cs_out;
     wire intr_inter;
-    assign n_rst = 1;
-    assign wake = 0;
     
     RF_cl_test RF_state(
         .clk(CLK100MHZ),
@@ -84,8 +82,8 @@ module rf_read_top(
         .clk(CLK100MHZ),
         .rst(rst),
         .inc(inc),
-        .jmp(0),
-        .addrin('b0),
+        .jmp(1'b0),
+        .addrin(1'b0),
         .addrout(addr_a)
     );
      
@@ -94,17 +92,33 @@ module rf_read_top(
         .addra(addr_a),
         .douta(data_out_mem)
     );
+
+    ser_buffer serial_dut_0(
+        .clk(CLK100MHZ),
+        .rst(rst),
+        .start(~cs),
+        .data_in(data_out_s),
+        .data_out(rf_data_out)
+    );
+
+    par_buffer parallel_dut_0(
+        clk(CLK100MHZ),
+        rst(rst),
+        start(~cs),
+        data_in(data_out),
+        data_out(sdo)
+    );
     
     regfile reg_dut_0(
         .clk(CLK100MHZ),
         .rst(rst),
         .wr_addr(sw[3:2]),
-        .wr_data(sdo),
-        .wr_en(w_en),
+        .wr_data(rf_data_out),
+        .wr_en(cs),
         .rda_addr(sw[1:0]),
         .rdb_addr(2'b00),
-        .rd_data1(),
-        .rd_data2()
+        .rd_data1(rd_data1),
+        .rd_data2(rd_data2)
     );
 
 endmodule
