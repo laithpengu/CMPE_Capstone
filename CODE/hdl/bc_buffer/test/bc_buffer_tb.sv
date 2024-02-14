@@ -14,7 +14,7 @@
 // Dependencies: 
 // 
 // Revision:
-// Revision 0.02 - Rewriting for double FIFO
+// Revision 2.0 - Rewriting for double FIFO
 // Additional Comments: This sits inside of the buffer folder
 // 
 //////////////////////////////////////////////////////////////////////////////////
@@ -24,24 +24,27 @@ module bc_buffer_tb();
 
 int i;
 logic clk = 0;
-logic sck = 0;
 logic rst;
-logic ctrl_rdy;
-logic avoid_rdy;
-logic from_avoid;
-logic [15:0] bc_in;        
-logic [15:0] bc_out;
+logic in_wr_en;
+logic in_rd_en;
+logic out_wr_en;
+logic out_rd_en;
+logic [15:0] to_incoming;        
+logic [15:0] to_outgoing;
+logic [15:0] from_incoming;
+logic [15:0] from_outgoing;
 
 bc_buffer dut(
     .clk(clk),
-    .sck(sck),
     .rst(rst),
-    .from_avoid(from_avoid),
-    .ctrl_rdy(ctrl_rdy),
-    .avoid_rdy(avoid_rdy),
-    .start_ser(start_ser),
-    .start_des(start_des),
-    .bc_in(bc_in)
+    .in_wr_en(in_wr_en),
+    .in_rd_en(in_rd_en),
+    .out_wr_en(out_wr_en),
+    .out_rd_en(out_rd_en),
+    .to_incoming(to_incoming),
+    .to_outgoing(to_outgoing),
+    .from_incoming(from_incoming),
+    .from_outgoing(from_outgoing)
 );
 
 initial begin
@@ -54,22 +57,22 @@ initial begin
     rst = 1;
     
     repeat (10)@(negedge clk); // wait 10 clock cycles for FIFO to setup
-    ctrl_rdy = 1;              // FIFO ready to read in
-    avoid_rdy = 0;             // FIFO not popping data off
+    out_wr_en = 1;             // FIFO ready to write data in
+    out_rd_en = 0;             // FIFO not popping data off
         
     for (i = 0; i < 10; i++) begin
-        // bc_in = 16'd20;
-        bc_in = i + 10;
+        // to_outgoing = 16'd20;
+        to_outgoing = i + 10;
         @(negedge clk);
     end
-    ctrl_rdy = 0; // stop reading data
+    out_wr_en = 0; // stop writing data
 
     repeat (2)@(negedge clk);
-    avoid_rdy = 1; // start popping data off FIFO
+    out_rd_en = 1; // start popping data off FIFO
 
     for (i = 0; i < 10; i++) begin
         @(negedge clk);
-        $display("Expected Value: %h; Actual Value: %h", i + 10, bc_out);
+        $display("Expected Value: %h; Actual Value: %h", i + 10, from_outgoing);
     end
 
     // ensure FIFO is clear
