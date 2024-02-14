@@ -25,17 +25,14 @@
 module bc_buffer(
         input clk,
         input rst,
-        input in_wr_en, //was ctrl_rdy
-        input in_rd_en, //was avoid_rdy
-        input from_avoid, //rename
-        input [15:0] to_incoming, //rename "to_incoming"
+        input in_wr_en,
+        input in_rd_en,
+        input out_wr_en,
+        input out_rd_en,
+        input [15:0] to_incoming, // going into incoming_fifo
         input [15:0] to_outgoing,
-        output [15:0] 
-        
-        
-        output [15:0] to_control, //rename "from_outgoing"
-        output to_avoid, //rename "from_incoming"
-        output [15:0] bc_out //rename "to_incoming"
+        output [15:0] from_incoming, // leaving the incoming_fifo
+        output [15:0] from_outgoing
     );
     
     // wires for incoming_fifo
@@ -52,13 +49,14 @@ module bc_buffer(
     logic out_wr_rst_busy;
     logic out_rd_rst_busy;
     
+    // fifo for data coming into the Processor
     fifo_generator_0 incoming_fifo(
         .clk(clk),
         .rst(rst),
         .full(in_full),
         .empty(in_empty),
         .din(to_incoming),
-        .dout(bc_out),
+        .dout(from_incoming),
         .wr_en(in_wr_en),
         .rd_en(in_rd_en),
         .wr_rst_busy(in_wr_rst_busy),
@@ -66,16 +64,16 @@ module bc_buffer(
         .data_count(in_data_count)
     );
     
-    // needs inputs to be reevaluated!!!
+    // fifo for data leaving the processor
     fifo_generator_1 outgoing_fifo(
         .clk(clk),
         .rst(rst),
         .full(out_full),
         .empty(out_empty),
-        .din(bc_in),
-        .dout(bc_out),
-        .wr_en(ctrl_rdy),
-        .rd_en(avoid_rdy),
+        .din(to_outgoing),
+        .dout(from_outgoing),
+        .wr_en(out_wr_en),
+        .rd_en(out_rd_en),
         .wr_rst_busy(out_wr_rst_busy),
         .rd_rst_busy(out_rd_rst_busy),
         .data_count(out_data_count)
