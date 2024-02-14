@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7s50csga324-1" LaunchTime="1707425583" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/pwm_wrapper.dcp">
-  <File Type="PA-TCL" Name="design_1_wrapper.tcl"/>
-  <File Type="REPORTS-TCL" Name="design_1_wrapper_reports.tcl"/>
-  <File Type="RDS-RDS" Name="design_1_wrapper.vds"/>
-  <File Type="RDS-UTIL" Name="design_1_wrapper_utilization_synth.rpt"/>
-  <File Type="RDS-UTIL-PB" Name="design_1_wrapper_utilization_synth.pb"/>
-  <File Type="RDS-DCP" Name="design_1_wrapper.dcp"/>
+<GenRun Id="synth_1" LaunchPart="xc7s50csga324-1" LaunchTime="1707766567" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/pwm_wrapper.dcp">
+  <File Type="PA-TCL" Name="pwm_wrapper.tcl"/>
+  <File Type="RDS-PROPCONSTRS" Name="pwm_wrapper_drc_synth.rpt"/>
+  <File Type="REPORTS-TCL" Name="pwm_wrapper_reports.tcl"/>
+  <File Type="RDS-RDS" Name="pwm_wrapper.vds"/>
+  <File Type="RDS-UTIL" Name="pwm_wrapper_utilization_synth.rpt"/>
+  <File Type="RDS-UTIL-PB" Name="pwm_wrapper_utilization_synth.pb"/>
+  <File Type="RDS-DCP" Name="pwm_wrapper.dcp"/>
+  <File Type="VDS-TIMINGSUMMARY" Name="pwm_wrapper_timing_summary_synth.rpt"/>
+  <File Type="VDS-TIMING-PB" Name="pwm_wrapper_timing_summary_synth.pb"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
     <Filter Type="Srcs"/>
     <File Path="$PSRCDIR/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0.xci">
@@ -15,7 +18,14 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PSRCDIR/sources_1/new/clk_div.sv">
+    <File Path="$PPRDIR/../src/clk_div_0.sv">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../src/clk_div_1.sv">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
@@ -57,20 +67,6 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PSRCDIR/sources_1/bd/design_1/design_1.bd">
-      <FileInfo>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="implementation"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
-    <File Path="$PGENDIR/sources_1/bd/design_1/hdl/design_1_wrapper.v">
-      <FileInfo>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="implementation"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
     <File Path="$PPRDIR/../../../mem_files/pwm_test.coe">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
@@ -79,7 +75,9 @@
     </File>
     <Config>
       <Option Name="DesignMode" Val="RTL"/>
-      <Option Name="TopModule" Val="design_1_wrapper"/>
+      <Option Name="TopModule" Val="pwm_wrapper"/>
+      <Option Name="TopLib" Val="xil_defaultlib"/>
+      <Option Name="TopRTLFile" Val="$PPRDIR/../src/pwm_wrapper.v"/>
     </Config>
   </FileSet>
   <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1" RelGenDir="$PGENDIR/constrs_1">
@@ -113,5 +111,4 @@
     <Step Id="synth_design"/>
   </Strategy>
   <BlockFileSet Type="BlockSrcs" Name="clk_wiz_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="design_1_pwm_wrapper_0_0"/>
 </GenRun>
