@@ -10,10 +10,10 @@ module par_buffer(
     logic[2:0] index_d;
     logic start_d;
     logic start_q;
-    logic data_in_q;
-    logic data_in_d;
-    logic[7:0] data_out_q;
-    logic[7:0] data_out_d;
+    logic[7:0] data_in_q;
+    logic[7:0] data_in_d;
+    logic data_out_q;
+    logic data_out_d;
 
     assign start_d = start;
     assign data_in_d = data_in;
