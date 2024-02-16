@@ -3,18 +3,18 @@
 # SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
 # IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
 # SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
-# Start of session at: Mon Feb 12 14:36:11 2024
-# Process ID: 12136
-# Current directory: C:/CMPE_Capstone/CODE/hdl/PWM/pwm_proj/pwm_proj.runs/synth_1
+# Start of session at: Thu Feb 15 15:25:34 2024
+# Process ID: 33672
+# Current directory: D:/CMPE_Capstone/CODE/hdl/PWM/pwm_proj/pwm_proj.runs/synth_1
 # Command line: vivado.exe -log pwm_wrapper.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source pwm_wrapper.tcl
-# Log file: C:/CMPE_Capstone/CODE/hdl/PWM/pwm_proj/pwm_proj.runs/synth_1/pwm_wrapper.vds
-# Journal file: C:/CMPE_Capstone/CODE/hdl/PWM/pwm_proj/pwm_proj.runs/synth_1\vivado.jou
-# Running On: DESKTOP-3N0HTJA, OS: Windows, CPU Frequency: 2904 MHz, CPU Physical cores: 2, Host memory: 12753 MB
+# Log file: D:/CMPE_Capstone/CODE/hdl/PWM/pwm_proj/pwm_proj.runs/synth_1/pwm_wrapper.vds
+# Journal file: D:/CMPE_Capstone/CODE/hdl/PWM/pwm_proj/pwm_proj.runs/synth_1\vivado.jou
+# Running On: DESKTOP-M1PCUD5, OS: Windows, CPU Frequency: 2592 MHz, CPU Physical cores: 6, Host memory: 16868 MB
 #-----------------------------------------------------------
 source pwm_wrapper.tcl -notrace
-create_project: Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 450.824 ; gain = 183.340
-Command: read_checkpoint -auto_incremental -incremental C:/CMPE_Capstone/CODE/hdl/PWM/pwm_proj/pwm_proj.srcs/utils_1/imports/synth_1/pwm_wrapper.dcp
-INFO: [Vivado 12-5825] Read reference checkpoint from C:/CMPE_Capstone/CODE/hdl/PWM/pwm_proj/pwm_proj.srcs/utils_1/imports/synth_1/pwm_wrapper.dcp for incremental synthesis
+create_project: Time (s): cpu = 00:00:03 ; elapsed = 00:00:09 . Memory (MB): peak = 590.398 ; gain = 215.637
+Command: read_checkpoint -auto_incremental -incremental D:/CMPE_Capstone/CODE/hdl/PWM/pwm_proj/pwm_proj.srcs/utils_1/imports/synth_1/pwm_wrapper.dcp
+INFO: [Vivado 12-5825] Read reference checkpoint from D:/CMPE_Capstone/CODE/hdl/PWM/pwm_proj/pwm_proj.srcs/utils_1/imports/synth_1/pwm_wrapper.dcp for incremental synthesis
 INFO: [Vivado 12-7989] Please ensure there are no constraint changes
 Command: synth_design -top pwm_wrapper -part xc7s50csga324-1
 Starting synth_design
@@ -25,115 +25,129 @@ INFO: [Designutils 20-5440] No compile time benefit to using incremental synthes
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 3624
+INFO: [Synth 8-7075] Helper process launched with PID 36212
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 1292.246 ; gain = 440.449
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:07 . Memory (MB): peak = 1429.293 ; gain = 440.902
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-11241] undeclared symbol 'clk_out_2', assumed default net type 'wire' [C:/CMPE_Capstone/CODE/hdl/PWM/src/pwm_wrapper.v:43]
-INFO: [Synth 8-11241] undeclared symbol 'clk_out_3', assumed default net type 'wire' [C:/CMPE_Capstone/CODE/hdl/PWM/src/pwm_wrapper.v:66]
-INFO: [Synth 8-6157] synthesizing module 'pwm_wrapper' [C:/CMPE_Capstone/CODE/hdl/PWM/src/pwm_wrapper.v:23]
-INFO: [Synth 8-6157] synthesizing module 'PWM' [C:/CMPE_Capstone/CODE/hdl/PWM/src/pwm.sv:23]
-INFO: [Synth 8-6157] synthesizing module 'pwm_speed' [C:/CMPE_Capstone/CODE/hdl/PWM/src/pwm_speed.sv:15]
-INFO: [Synth 8-6155] done synthesizing module 'pwm_speed' (0#1) [C:/CMPE_Capstone/CODE/hdl/PWM/src/pwm_speed.sv:15]
-INFO: [Synth 8-6157] synthesizing module 'pwm_dir' [C:/CMPE_Capstone/CODE/hdl/PWM/src/pwm_direction.sv:15]
-INFO: [Synth 8-6155] done synthesizing module 'pwm_dir' (0#1) [C:/CMPE_Capstone/CODE/hdl/PWM/src/pwm_direction.sv:15]
-INFO: [Synth 8-6155] done synthesizing module 'PWM' (0#1) [C:/CMPE_Capstone/CODE/hdl/PWM/src/pwm.sv:23]
-INFO: [Synth 8-6157] synthesizing module 'clk_wiz_0' [C:/CMPE_Capstone/CODE/hdl/PWM/pwm_proj/pwm_proj.runs/synth_1/.Xil/Vivado-12136-DESKTOP-3N0HTJA/realtime/clk_wiz_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'clk_wiz_0' (0#1) [C:/CMPE_Capstone/CODE/hdl/PWM/pwm_proj/pwm_proj.runs/synth_1/.Xil/Vivado-12136-DESKTOP-3N0HTJA/realtime/clk_wiz_0_stub.v:6]
-INFO: [Synth 8-6157] synthesizing module 'clk_div_0' [C:/CMPE_Capstone/CODE/hdl/PWM/src/clk_div_0.sv:23]
-INFO: [Synth 8-6155] done synthesizing module 'clk_div_0' (0#1) [C:/CMPE_Capstone/CODE/hdl/PWM/src/clk_div_0.sv:23]
-INFO: [Synth 8-6157] synthesizing module 'clk_div_1' [C:/CMPE_Capstone/CODE/hdl/PWM/src/clk_div_1.sv:23]
-INFO: [Synth 8-6155] done synthesizing module 'clk_div_1' (0#1) [C:/CMPE_Capstone/CODE/hdl/PWM/src/clk_div_1.sv:23]
-INFO: [Synth 8-6157] synthesizing module 'blk_mem_gen_0' [C:/CMPE_Capstone/CODE/hdl/PWM/pwm_proj/pwm_proj.runs/synth_1/.Xil/Vivado-12136-DESKTOP-3N0HTJA/realtime/blk_mem_gen_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'blk_mem_gen_0' (0#1) [C:/CMPE_Capstone/CODE/hdl/PWM/pwm_proj/pwm_proj.runs/synth_1/.Xil/Vivado-12136-DESKTOP-3N0HTJA/realtime/blk_mem_gen_0_stub.v:6]
-WARNING: [Synth 8-7071] port 'ena' of module 'blk_mem_gen_0' is unconnected for instance 'blk_mem' [C:/CMPE_Capstone/CODE/hdl/PWM/src/pwm_wrapper.v:65]
-WARNING: [Synth 8-7071] port 'wea' of module 'blk_mem_gen_0' is unconnected for instance 'blk_mem' [C:/CMPE_Capstone/CODE/hdl/PWM/src/pwm_wrapper.v:65]
-WARNING: [Synth 8-7071] port 'dina' of module 'blk_mem_gen_0' is unconnected for instance 'blk_mem' [C:/CMPE_Capstone/CODE/hdl/PWM/src/pwm_wrapper.v:65]
-WARNING: [Synth 8-7023] instance 'blk_mem' of module 'blk_mem_gen_0' has 6 connections declared, but only 3 given [C:/CMPE_Capstone/CODE/hdl/PWM/src/pwm_wrapper.v:65]
-INFO: [Synth 8-6157] synthesizing module 'pc' [C:/CMPE_Capstone/CODE/hdl/pc/src/pc.sv:23]
-INFO: [Synth 8-6155] done synthesizing module 'pc' (0#1) [C:/CMPE_Capstone/CODE/hdl/pc/src/pc.sv:23]
-INFO: [Synth 8-6155] done synthesizing module 'pwm_wrapper' (0#1) [C:/CMPE_Capstone/CODE/hdl/PWM/src/pwm_wrapper.v:23]
-WARNING: [Synth 8-6014] Unused sequential element counter_reg was removed.  [C:/CMPE_Capstone/CODE/hdl/PWM/src/clk_div_0.sv:36]
-WARNING: [Synth 8-6014] Unused sequential element counter_reg was removed.  [C:/CMPE_Capstone/CODE/hdl/PWM/src/clk_div_1.sv:36]
-WARNING: [Synth 8-3848] Net clk_out_2 in module/entity pwm_wrapper does not have driver. [C:/CMPE_Capstone/CODE/hdl/PWM/src/pwm_wrapper.v:43]
-WARNING: [Synth 8-3848] Net clk_out_3 in module/entity pwm_wrapper does not have driver. [C:/CMPE_Capstone/CODE/hdl/PWM/src/pwm_wrapper.v:66]
+INFO: [Synth 8-6157] synthesizing module 'pwm_wrapper' [D:/CMPE_Capstone/CODE/hdl/PWM/src/pwm_wrapper.v:23]
+INFO: [Synth 8-6157] synthesizing module 'PWM' [D:/CMPE_Capstone/CODE/hdl/PWM/src/pwm.sv:23]
+INFO: [Synth 8-6157] synthesizing module 'pwm_speed' [D:/CMPE_Capstone/CODE/hdl/PWM/src/pwm_speed.sv:15]
+INFO: [Synth 8-6155] done synthesizing module 'pwm_speed' (0#1) [D:/CMPE_Capstone/CODE/hdl/PWM/src/pwm_speed.sv:15]
+INFO: [Synth 8-6157] synthesizing module 'pwm_dir' [D:/CMPE_Capstone/CODE/hdl/PWM/src/pwm_direction.sv:15]
+INFO: [Synth 8-6155] done synthesizing module 'pwm_dir' (0#1) [D:/CMPE_Capstone/CODE/hdl/PWM/src/pwm_direction.sv:15]
+INFO: [Synth 8-6155] done synthesizing module 'PWM' (0#1) [D:/CMPE_Capstone/CODE/hdl/PWM/src/pwm.sv:23]
+INFO: [Synth 8-6157] synthesizing module 'clk_wiz_0' [D:/CMPE_Capstone/CODE/hdl/PWM/pwm_proj/pwm_proj.runs/synth_1/.Xil/Vivado-33672-DESKTOP-M1PCUD5/realtime/clk_wiz_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'clk_wiz_0' (0#1) [D:/CMPE_Capstone/CODE/hdl/PWM/pwm_proj/pwm_proj.runs/synth_1/.Xil/Vivado-33672-DESKTOP-M1PCUD5/realtime/clk_wiz_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'clk_div_0' [D:/CMPE_Capstone/CODE/hdl/PWM/src/clk_div_0.sv:23]
+INFO: [Synth 8-6155] done synthesizing module 'clk_div_0' (0#1) [D:/CMPE_Capstone/CODE/hdl/PWM/src/clk_div_0.sv:23]
+INFO: [Synth 8-6157] synthesizing module 'clk_div_1' [D:/CMPE_Capstone/CODE/hdl/PWM/src/clk_div_1.sv:23]
+INFO: [Synth 8-6155] done synthesizing module 'clk_div_1' (0#1) [D:/CMPE_Capstone/CODE/hdl/PWM/src/clk_div_1.sv:23]
+INFO: [Synth 8-6157] synthesizing module 'blk_mem_gen_0' [D:/CMPE_Capstone/CODE/hdl/PWM/pwm_proj/pwm_proj.runs/synth_1/.Xil/Vivado-33672-DESKTOP-M1PCUD5/realtime/blk_mem_gen_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'blk_mem_gen_0' (0#1) [D:/CMPE_Capstone/CODE/hdl/PWM/pwm_proj/pwm_proj.runs/synth_1/.Xil/Vivado-33672-DESKTOP-M1PCUD5/realtime/blk_mem_gen_0_stub.v:6]
+WARNING: [Synth 8-7071] port 'wea' of module 'blk_mem_gen_0' is unconnected for instance 'blk_mem' [D:/CMPE_Capstone/CODE/hdl/PWM/src/pwm_wrapper.v:62]
+WARNING: [Synth 8-7071] port 'dina' of module 'blk_mem_gen_0' is unconnected for instance 'blk_mem' [D:/CMPE_Capstone/CODE/hdl/PWM/src/pwm_wrapper.v:62]
+WARNING: [Synth 8-7023] instance 'blk_mem' of module 'blk_mem_gen_0' has 6 connections declared, but only 4 given [D:/CMPE_Capstone/CODE/hdl/PWM/src/pwm_wrapper.v:62]
+INFO: [Synth 8-6157] synthesizing module 'pc' [D:/CMPE_Capstone/CODE/hdl/pc/src/pc.sv:23]
+INFO: [Synth 8-6155] done synthesizing module 'pc' (0#1) [D:/CMPE_Capstone/CODE/hdl/pc/src/pc.sv:23]
+INFO: [Synth 8-6155] done synthesizing module 'pwm_wrapper' (0#1) [D:/CMPE_Capstone/CODE/hdl/PWM/src/pwm_wrapper.v:23]
+WARNING: [Synth 8-7129] Port data_in[15] in module pwm_wrapper is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_in[14] in module pwm_wrapper is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_in[13] in module pwm_wrapper is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_in[12] in module pwm_wrapper is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_in[11] in module pwm_wrapper is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_in[10] in module pwm_wrapper is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_in[9] in module pwm_wrapper is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_in[8] in module pwm_wrapper is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_in[7] in module pwm_wrapper is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_in[6] in module pwm_wrapper is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_in[5] in module pwm_wrapper is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_in[4] in module pwm_wrapper is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_in[3] in module pwm_wrapper is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_in[2] in module pwm_wrapper is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_in[1] in module pwm_wrapper is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_in[0] in module pwm_wrapper is either unconnected or has no load
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 1403.121 ; gain = 551.324
+Finished RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:09 . Memory (MB): peak = 1539.836 ; gain = 551.445
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 1403.121 ; gain = 551.324
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:04 ; elapsed = 00:00:09 . Memory (MB): peak = 1539.836 ; gain = 551.445
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 1403.121 ; gain = 551.324
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:09 . Memory (MB): peak = 1539.836 ; gain = 551.445
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1403.121 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 1539.836 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
 Initializing timing engine
-Parsing XDC File [c:/CMPE_Capstone/CODE/hdl/PWM/pwm_proj/pwm_proj.gen/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0/blk_mem_gen_0_in_context.xdc] for cell 'blk_mem'
-Finished Parsing XDC File [c:/CMPE_Capstone/CODE/hdl/PWM/pwm_proj/pwm_proj.gen/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0/blk_mem_gen_0_in_context.xdc] for cell 'blk_mem'
-Parsing XDC File [c:/CMPE_Capstone/CODE/hdl/PWM/pwm_proj/pwm_proj.gen/sources_1/ip/clk_wiz_0/clk_wiz_0/clk_wiz_0_in_context.xdc] for cell 'wiz'
-Finished Parsing XDC File [c:/CMPE_Capstone/CODE/hdl/PWM/pwm_proj/pwm_proj.gen/sources_1/ip/clk_wiz_0/clk_wiz_0/clk_wiz_0_in_context.xdc] for cell 'wiz'
-Parsing XDC File [C:/CMPE_Capstone/CODE/hdl/PWM/synth/PWM.xdc]
-WARNING: [Vivado 12-584] No ports matched 'sw[0]'. [C:/CMPE_Capstone/CODE/hdl/PWM/synth/PWM.xdc:13]
-WARNING: [Vivado 12-584] No ports matched 'sw[1]'. [C:/CMPE_Capstone/CODE/hdl/PWM/synth/PWM.xdc:14]
-WARNING: [Vivado 12-584] No ports matched 'sw[2]'. [C:/CMPE_Capstone/CODE/hdl/PWM/synth/PWM.xdc:15]
-WARNING: [Vivado 12-584] No ports matched 'sw[3]'. [C:/CMPE_Capstone/CODE/hdl/PWM/synth/PWM.xdc:16]
-Finished Parsing XDC File [C:/CMPE_Capstone/CODE/hdl/PWM/synth/PWM.xdc]
-WARNING: [Project 1-498] One or more constraints failed evaluation while reading constraint file [C:/CMPE_Capstone/CODE/hdl/PWM/synth/PWM.xdc] and the design contains unresolved black boxes. These constraints will be read post-synthesis (as long as their source constraint file is marked as used_in_implementation) and should be applied correctly then. You should review the constraints listed in the file [.Xil/pwm_wrapper_propImpl.xdc] and check the run log file to verify that these constraints were correctly applied.
-INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/CMPE_Capstone/CODE/hdl/PWM/synth/PWM.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/pwm_wrapper_propImpl.xdc].
+Parsing XDC File [d:/CMPE_Capstone/CODE/hdl/PWM/pwm_proj/pwm_proj.gen/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0/blk_mem_gen_0_in_context.xdc] for cell 'blk_mem'
+Finished Parsing XDC File [d:/CMPE_Capstone/CODE/hdl/PWM/pwm_proj/pwm_proj.gen/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0/blk_mem_gen_0_in_context.xdc] for cell 'blk_mem'
+Parsing XDC File [d:/CMPE_Capstone/CODE/hdl/PWM/pwm_proj/pwm_proj.gen/sources_1/ip/clk_wiz_0/clk_wiz_0/clk_wiz_0_in_context.xdc] for cell 'wiz'
+Finished Parsing XDC File [d:/CMPE_Capstone/CODE/hdl/PWM/pwm_proj/pwm_proj.gen/sources_1/ip/clk_wiz_0/clk_wiz_0/clk_wiz_0_in_context.xdc] for cell 'wiz'
+Parsing XDC File [D:/CMPE_Capstone/CODE/hdl/PWM/synth/PWM.xdc]
+WARNING: [Vivado 12-584] No ports matched 'sw[0]'. [D:/CMPE_Capstone/CODE/hdl/PWM/synth/PWM.xdc:13]
+WARNING: [Vivado 12-584] No ports matched 'sw[1]'. [D:/CMPE_Capstone/CODE/hdl/PWM/synth/PWM.xdc:14]
+WARNING: [Vivado 12-584] No ports matched 'sw[2]'. [D:/CMPE_Capstone/CODE/hdl/PWM/synth/PWM.xdc:15]
+WARNING: [Vivado 12-584] No ports matched 'sw[3]'. [D:/CMPE_Capstone/CODE/hdl/PWM/synth/PWM.xdc:16]
+WARNING: [Vivado 12-584] No ports matched 'clk_out_0'. [D:/CMPE_Capstone/CODE/hdl/PWM/synth/PWM.xdc:41]
+WARNING: [Vivado 12-584] No ports matched 'clk_out_1'. [D:/CMPE_Capstone/CODE/hdl/PWM/synth/PWM.xdc:42]
+Finished Parsing XDC File [D:/CMPE_Capstone/CODE/hdl/PWM/synth/PWM.xdc]
+WARNING: [Project 1-498] One or more constraints failed evaluation while reading constraint file [D:/CMPE_Capstone/CODE/hdl/PWM/synth/PWM.xdc] and the design contains unresolved black boxes. These constraints will be read post-synthesis (as long as their source constraint file is marked as used_in_implementation) and should be applied correctly then. You should review the constraints listed in the file [.Xil/pwm_wrapper_propImpl.xdc] and check the run log file to verify that these constraints were correctly applied.
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [D:/CMPE_Capstone/CODE/hdl/PWM/synth/PWM.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/pwm_wrapper_propImpl.xdc].
 Resolution: To avoid this warning, move constraints listed in [.Xil/pwm_wrapper_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
-Parsing XDC File [C:/CMPE_Capstone/CODE/hdl/PWM/pwm_proj/pwm_proj.runs/synth_1/dont_touch.xdc]
-Finished Parsing XDC File [C:/CMPE_Capstone/CODE/hdl/PWM/pwm_proj/pwm_proj.runs/synth_1/dont_touch.xdc]
+Parsing XDC File [D:/CMPE_Capstone/CODE/hdl/PWM/pwm_proj/pwm_proj.runs/synth_1/dont_touch.xdc]
+Finished Parsing XDC File [D:/CMPE_Capstone/CODE/hdl/PWM/pwm_proj/pwm_proj.runs/synth_1/dont_touch.xdc]
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1438.473 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1625.797 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.007 . Memory (MB): peak = 1438.473 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 1625.797 ; gain = 0.000
 INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:22 ; elapsed = 00:00:23 . Memory (MB): peak = 1438.473 ; gain = 586.676
+Finished Constraint Validation : Time (s): cpu = 00:00:08 ; elapsed = 00:00:18 . Memory (MB): peak = 1625.797 ; gain = 637.406
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7s50csga324-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:22 ; elapsed = 00:00:23 . Memory (MB): peak = 1438.473 ; gain = 586.676
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:08 ; elapsed = 00:00:18 . Memory (MB): peak = 1625.797 ; gain = 637.406
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
-Applied set_property IO_BUFFER_TYPE = NONE for CLK100MHZ. (constraint file  c:/CMPE_Capstone/CODE/hdl/PWM/pwm_proj/pwm_proj.gen/sources_1/ip/clk_wiz_0/clk_wiz_0/clk_wiz_0_in_context.xdc, line 3).
-Applied set_property CLOCK_BUFFER_TYPE = NONE for CLK100MHZ. (constraint file  c:/CMPE_Capstone/CODE/hdl/PWM/pwm_proj/pwm_proj.gen/sources_1/ip/clk_wiz_0/clk_wiz_0/clk_wiz_0_in_context.xdc, line 4).
+Applied set_property IO_BUFFER_TYPE = NONE for CLK100MHZ. (constraint file  d:/CMPE_Capstone/CODE/hdl/PWM/pwm_proj/pwm_proj.gen/sources_1/ip/clk_wiz_0/clk_wiz_0/clk_wiz_0_in_context.xdc, line 3).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for CLK100MHZ. (constraint file  d:/CMPE_Capstone/CODE/hdl/PWM/pwm_proj/pwm_proj.gen/sources_1/ip/clk_wiz_0/clk_wiz_0/clk_wiz_0_in_context.xdc, line 4).
 Applied set_property KEEP_HIERARCHY = SOFT for blk_mem. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for wiz. (constraint file  auto generated constraint).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:22 ; elapsed = 00:00:23 . Memory (MB): peak = 1438.473 ; gain = 586.676
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:08 ; elapsed = 00:00:18 . Memory (MB): peak = 1625.797 ; gain = 637.406
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:22 ; elapsed = 00:00:24 . Memory (MB): peak = 1438.473 ; gain = 586.676
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:08 ; elapsed = 00:00:18 . Memory (MB): peak = 1625.797 ; gain = 637.406
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
 ---------------------------------------------------------------------------------
 Detailed RTL Component Info : 
 +---Adders : 
-	   2 Input   10 Bit       Adders := 4     
+	   2 Input   28 Bit       Adders := 2     
+	   2 Input   10 Bit       Adders := 2     
 	   2 Input    8 Bit       Adders := 1     
 +---Registers : 
+	               28 Bit    Registers := 2     
 	               10 Bit    Registers := 6     
 	                8 Bit    Registers := 3     
 	                1 Bit    Registers := 4     
 +---Muxes : 
-	   2 Input   10 Bit        Muxes := 4     
+	   2 Input   28 Bit        Muxes := 2     
+	   2 Input   10 Bit        Muxes := 6     
 	   2 Input    8 Bit        Muxes := 1     
 	   2 Input    1 Bit        Muxes := 3     
 ---------------------------------------------------------------------------------
@@ -152,26 +166,42 @@ Finished Part Resource Summary
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+WARNING: [Synth 8-7129] Port data_in[15] in module pwm_wrapper is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_in[14] in module pwm_wrapper is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_in[13] in module pwm_wrapper is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_in[12] in module pwm_wrapper is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_in[11] in module pwm_wrapper is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_in[10] in module pwm_wrapper is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_in[9] in module pwm_wrapper is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_in[8] in module pwm_wrapper is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_in[7] in module pwm_wrapper is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_in[6] in module pwm_wrapper is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_in[5] in module pwm_wrapper is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_in[4] in module pwm_wrapper is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_in[3] in module pwm_wrapper is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_in[2] in module pwm_wrapper is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_in[1] in module pwm_wrapper is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_in[0] in module pwm_wrapper is either unconnected or has no load
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:25 ; elapsed = 00:00:26 . Memory (MB): peak = 1438.473 ; gain = 586.676
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:09 ; elapsed = 00:00:21 . Memory (MB): peak = 1625.797 ; gain = 637.406
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:32 ; elapsed = 00:00:34 . Memory (MB): peak = 1438.473 ; gain = 586.676
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:11 ; elapsed = 00:00:27 . Memory (MB): peak = 1625.797 ; gain = 637.406
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:32 ; elapsed = 00:00:34 . Memory (MB): peak = 1438.473 ; gain = 586.676
+Finished Timing Optimization : Time (s): cpu = 00:00:12 ; elapsed = 00:00:27 . Memory (MB): peak = 1625.797 ; gain = 637.406
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:32 ; elapsed = 00:00:34 . Memory (MB): peak = 1438.473 ; gain = 586.676
+Finished Technology Mapping : Time (s): cpu = 00:00:12 ; elapsed = 00:00:27 . Memory (MB): peak = 1625.797 ; gain = 637.406
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -188,7 +218,6 @@ Start Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
-CRITICAL WARNING: [Synth 8-4442] BlackBox module blk_mem has unconnected pin ena
 CRITICAL WARNING: [Synth 8-4442] BlackBox module blk_mem has unconnected pin wea[0]
 CRITICAL WARNING: [Synth 8-4442] BlackBox module blk_mem has unconnected pin dina[15]
 CRITICAL WARNING: [Synth 8-4442] BlackBox module blk_mem has unconnected pin dina[14]
@@ -207,37 +236,37 @@ CRITICAL WARNING: [Synth 8-4442] BlackBox module blk_mem has unconnected pin din
 CRITICAL WARNING: [Synth 8-4442] BlackBox module blk_mem has unconnected pin dina[1]
 CRITICAL WARNING: [Synth 8-4442] BlackBox module blk_mem has unconnected pin dina[0]
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:39 ; elapsed = 00:00:40 . Memory (MB): peak = 1438.473 ; gain = 586.676
+Finished IO Insertion : Time (s): cpu = 00:00:14 ; elapsed = 00:00:32 . Memory (MB): peak = 1625.797 ; gain = 637.406
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:39 ; elapsed = 00:00:40 . Memory (MB): peak = 1438.473 ; gain = 586.676
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:14 ; elapsed = 00:00:32 . Memory (MB): peak = 1625.797 ; gain = 637.406
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:39 ; elapsed = 00:00:40 . Memory (MB): peak = 1438.473 ; gain = 586.676
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:14 ; elapsed = 00:00:32 . Memory (MB): peak = 1625.797 ; gain = 637.406
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:39 ; elapsed = 00:00:40 . Memory (MB): peak = 1438.473 ; gain = 586.676
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:14 ; elapsed = 00:00:32 . Memory (MB): peak = 1625.797 ; gain = 637.406
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:39 ; elapsed = 00:00:40 . Memory (MB): peak = 1438.473 ; gain = 586.676
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:14 ; elapsed = 00:00:32 . Memory (MB): peak = 1625.797 ; gain = 637.406
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:39 ; elapsed = 00:00:40 . Memory (MB): peak = 1438.473 ; gain = 586.676
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:14 ; elapsed = 00:00:32 . Memory (MB): peak = 1625.797 ; gain = 637.406
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -257,30 +286,42 @@ Report Cell Usage:
 +------+------------+------+
 |1     |blk_mem_gen |     1|
 |2     |clk_wiz     |     1|
-|3     |OBUF        |     4|
+|3     |BUFG        |     1|
+|4     |CARRY4      |    10|
+|5     |LUT1        |     9|
+|6     |LUT2        |    23|
+|7     |LUT3        |     4|
+|8     |LUT4        |    16|
+|9     |LUT5        |    14|
+|10    |LUT6        |    45|
+|11    |FDCE        |    93|
+|12    |FDPE        |     8|
+|13    |IBUF        |     1|
+|14    |OBUF        |     2|
 +------+------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:39 ; elapsed = 00:00:40 . Memory (MB): peak = 1438.473 ; gain = 586.676
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:14 ; elapsed = 00:00:32 . Memory (MB): peak = 1625.797 ; gain = 637.406
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 18 critical warnings and 1 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:26 ; elapsed = 00:00:38 . Memory (MB): peak = 1438.473 ; gain = 551.324
-Synthesis Optimization Complete : Time (s): cpu = 00:00:39 ; elapsed = 00:00:41 . Memory (MB): peak = 1438.473 ; gain = 586.676
+Synthesis finished with 0 errors, 17 critical warnings and 17 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:09 ; elapsed = 00:00:30 . Memory (MB): peak = 1625.797 ; gain = 551.445
+Synthesis Optimization Complete : Time (s): cpu = 00:00:14 ; elapsed = 00:00:33 . Memory (MB): peak = 1625.797 ; gain = 637.406
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1438.473 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1625.797 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 10 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
-INFO: [Opt 31-140] Inserted 1 IBUFs to IO ports without IO buffers.
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1439.633 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1625.797 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Synth Design complete | Checksum: fc30c4bc
+Synth Design complete | Checksum: ddeff807
 INFO: [Common 17-83] Releasing license: Synthesis
-40 Infos, 14 Warnings, 18 Critical Warnings and 0 Errors encountered.
+39 Infos, 43 Warnings, 17 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:44 ; elapsed = 00:00:47 . Memory (MB): peak = 1439.633 ; gain = 979.867
+synth_design: Time (s): cpu = 00:00:17 ; elapsed = 00:00:38 . Memory (MB): peak = 1625.797 ; gain = 1025.496
 INFO: [runtcl-6] Synthesis results are not added to the cache due to CRITICAL_WARNING
-Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1439.633 ; gain = 0.000
-INFO: [Common 17-1381] The checkpoint 'C:/CMPE_Capstone/CODE/hdl/PWM/pwm_proj/pwm_proj.runs/synth_1/pwm_wrapper.dcp' has been generated.
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1625.797 ; gain = 0.000
+INFO: [Common 17-1381] The checkpoint 'D:/CMPE_Capstone/CODE/hdl/PWM/pwm_proj/pwm_proj.runs/synth_1/pwm_wrapper.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file pwm_wrapper_utilization_synth.rpt -pb pwm_wrapper_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Mon Feb 12 14:37:09 2024...
+INFO: [Common 17-206] Exiting Vivado at Thu Feb 15 15:26:25 2024...

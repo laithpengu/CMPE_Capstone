@@ -23,10 +23,12 @@
 module rf_read_top(
     input CLK100MHZ,
     input rst,
-    input inc,
-    input [3:0] sw
+    input [3:0] sw,
+    input uart_rx,
+    output uart_tx
     );
     
+	wire inc;
     wire sdo;
     wire intr_in;
     wire sdi;
@@ -46,6 +48,7 @@ module rf_read_top(
     wire [1:0] inst;
     wire cs_out;
     wire intr_inter;
+    wire uart_ready;
     
     RF_cl_test RF_state(
         .clk(CLK100MHZ),
@@ -102,23 +105,33 @@ module rf_read_top(
     );
 
     par_buffer parallel_dut_0(
-        clk(CLK100MHZ),
-        rst(rst),
-        start(~cs),
-        data_in(data_out),
-        data_out(sdo)
-    );
-    
-    regfile reg_dut_0(
         .clk(CLK100MHZ),
         .rst(rst),
-        .wr_addr(sw[3:2]),
-        .wr_data(rf_data_out),
-        .wr_en(cs),
-        .rda_addr(sw[1:0]),
-        .rdb_addr(2'b00),
-        .rd_data1(rd_data1),
-        .rd_data2(rd_data2)
+        .start(~cs),
+        .data_in(data_out),
+        .data_out(sdo)
+    );
+    
+    // regfile reg_dut_0(
+    //     .clk(CLK100MHZ),
+    //     .rst(rst),
+    //     .wr_addr(sw[3:2]),
+    //     .wr_data(rf_data_out),
+    //     .wr_en(cs),
+    //     .rda_addr(sw[1:0]),
+    //     .rdb_addr(2'b00),
+    //     .rd_data1(rd_data1),
+    //     .rd_data2(rd_data2)
+    // );
+    
+    UART_pkg uart_dut_0(
+        .clk(CLK100MHZ),
+        .rst(rst),
+        .data(rf_data_out),
+        .valid(cs),
+        .ready(ready_uart),
+        .uart_rx(uart_rx),
+        .uart_tx(uart_tx)
     );
 
 endmodule

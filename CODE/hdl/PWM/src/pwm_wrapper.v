@@ -32,12 +32,12 @@ module pwm_wrapper(
     wire clk_200khz;
     wire clk_330hz;
     wire [7:0] addr_a;
-    wire [15:0] data_out_mem;
+//    wire [15:0] data_out_mem;
     
     PWM u_inst_pwm(
         .clk(clk_200khz),
         .rst(rst),
-        .data_in(data_out_mem),
+        .data_in(data_in),
         .spd_out(spd),
         .dir_out(dir)
     );
@@ -59,12 +59,12 @@ module pwm_wrapper(
         .clk_out(clk_330hz)
     );
     
-    blk_mem_gen_0 blk_mem(
-        .clka(clk_330hz),
-        .ena(1'b1),
-        .addra(addr_a),
-        .douta(data_out_mem)
-    );
+//    blk_mem_gen_0 blk_mem(
+//        .clka(clk_330hz),
+//        .ena(1'b1),
+//        .addra(addr_a),
+//        .douta(data_out_mem)
+//    );
 
     pc pc_dut_0(
         .clk(clk_330hz),

@@ -59,7 +59,7 @@ module pwm_dir(
         if(data_in_q >= 10'd200 || next_match_value_d < 10'd229 || next_match_value_d > 10'd371) begin
             next_match_value_d = 10'd300;
         end
-        
+
         if(counter_q == curr_match_value_q) begin // find match value
             data_out_d = 1'b0;
             curr_match_value_d = curr_match_value_q;
