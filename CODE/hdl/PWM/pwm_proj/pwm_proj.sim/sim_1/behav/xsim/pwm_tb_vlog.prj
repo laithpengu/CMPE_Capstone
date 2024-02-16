@@ -1,6 +1,5 @@
 # compile verilog/system verilog design source files
 verilog xil_defaultlib  --include "../../../../pwm_proj.ip_user_files/ipstatic" \
-"../../../../pwm_proj.gen/sources_1/ip/blk_mem_gen_0/sim/blk_mem_gen_0.v" \
 "../../../../pwm_proj.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_clk_wiz.v" \
 "../../../../pwm_proj.gen/sources_1/ip/clk_wiz_0/clk_wiz_0.v" \
 "../../../../../src/pwm_wrapper.v" \
@@ -12,7 +11,7 @@ sv xil_defaultlib  --include "../../../../pwm_proj.ip_user_files/ipstatic" \
 "../../../../../src/pwm.sv" \
 "../../../../../src/pwm_direction.sv" \
 "../../../../../src/pwm_speed.sv" \
-"../../../../../src/pwm_tb.sv" \
+"../../../../../test/pwm_tb.sv" \
 
 # compile glbl module
 verilog xil_defaultlib "glbl.v"
