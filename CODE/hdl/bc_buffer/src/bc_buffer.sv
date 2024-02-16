@@ -25,71 +25,58 @@
 module bc_buffer(
         input clk,
         input rst,
-        input in_wr_en,
-        input in_rd_en,
-        input out_wr_en,
-        input out_rd_en,
-        input [15:0] to_incoming, // going into incoming_fifo
-        input [15:0] to_outgoing,
-        output [15:0] from_incoming, // leaving the incoming_fifo
-        output [15:0] from_outgoing
+        input avoid_in_valid,
+        input ctrl_out_rdy,
+        input ctrl_in_valid,
+        input avoid_out_rdy,
+        input [15:0] avoid_in_data, // going into incoming_fifo
+        input [15:0] ctrl_in_data,
+        output [15:0] avoid_out_data, // leaving the incoming_fifo
+        output [15:0] ctrl_out_data
     );
     
-    // wires for incoming_fifo
-    logic in_full;
-    logic in_empty;
-    logic [9:0] in_data_count;
-    logic in_wr_rst_busy;
-    logic in_rd_rst_busy;
+    // wires for new_breadcrumb_fifo
+    logic avoid_in_rdy; // was in_full
+    logic ctrl_in_valid;
+    logic [9:0] new_data_count;
+    logic new_wr_rst_busy;
+    logic new_rd_rst_busy;
     
-    // wires for outgoing_fifo
-    logic out_full;
-    logic out_empty;    
-    logic [9:0] out_data_count;
-    logic out_wr_rst_busy;
-    logic out_rd_rst_busy;
+    // wires for old_breadcrumb_fifo
+    logic ctrl_in_rdy;
+    logic avoid_out_valid;    
+    logic [9:0] old_data_count;
+    logic old_wr_rst_busy;
+    logic old_rd_rst_busy;
     
     // fifo for data coming into the Processor
-    fifo_generator_0 incoming_fifo(
+    fifo_generator_0 new_breadcrumb_fifo(
         .clk(clk),
         .rst(rst),
-        .full(in_full),
-        .empty(in_empty),
-        .din(to_incoming),
-        .dout(from_incoming),
-        .wr_en(in_wr_en),
-        .rd_en(in_rd_en),
-        .wr_rst_busy(in_wr_rst_busy),
-        .rd_rst_busy(in_rd_rst_busy),
-        .data_count(in_data_count)
+        .full(avoid_in_rdy),
+        .empty(ctrl_out_valid),
+        .din(avoid_in_data),
+        .dout(ctrl_out_data),
+        .wr_en(avoid_in_valid),
+        .rd_en(ctrl_out_rdy),
+        .wr_rst_busy(new_wr_rst_busy),
+        .rd_rst_busy(new_rd_rst_busy),
+        .data_count(new_data_count)
     );
     
     // fifo for data leaving the processor
-    fifo_generator_1 outgoing_fifo(
+    fifo_generator_1 old_breadcrumb_fifo(
         .clk(clk),
         .rst(rst),
-        .full(out_full),
-        .empty(out_empty),
-        .din(to_outgoing),
-        .dout(from_outgoing),
-        .wr_en(out_wr_en),
-        .rd_en(out_rd_en),
-        .wr_rst_busy(out_wr_rst_busy),
-        .rd_rst_busy(out_rd_rst_busy),
-        .data_count(out_data_count)
+        .full(ctrl_in_rdy), // maybe flip?
+        .empty(avoid_out_valid),
+        .din(ctrl_in_data),
+        .dout(avoid_out_data),
+        .wr_en(ctrl_in_valid),
+        .rd_en(avoid_out_rdy),
+        .wr_rst_busy(old_wr_rst_busy),
+        .rd_rst_busy(old_rd_rst_busy),
+        .data_count(old_data_count)
     );
-    
-//   serdes inner_serdes(
-//       .clk(sck),
-//       .rst(rst),
-//       .serial_in(from_avoid),
-//       .parallel_in(bc_out), //bc_out is filled from fifo
-//       .start_ser(start_ser),
-//       .start_des(start_des),
-//       .parallel_out(to_control),
-//       .serial_out(to_avoid),
-//       .early_rdy(early_rdy),
-//       .parallel_rdy(parallel_rdy),
-//       .serial_done(serial_done)
-//   );
+
 endmodule
