@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version              : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date                      : Thu Feb 15 15:27:14 2024
+| Date                      : Fri Feb 16 16:45:00 2024
 | Host                      : DESKTOP-M1PCUD5 running 64-bit major release  (build 9200)
 | Command                   : report_io -file pwm_wrapper_io_placed.rpt
 | Design                    : pwm_wrapper
@@ -25,7 +25,7 @@ Table of Contents
 +---------------+
 | Total User IO |
 +---------------+
-|            20 |
+|             4 |
 +---------------+
 
 

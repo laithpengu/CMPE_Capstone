@@ -54,7 +54,7 @@ module pwm_speed(
 
     always_comb begin
         // update next match value
-        if(data_in_q >= 10'd200) begin
+        if(data_in_q > 10'd200) begin
             next_match_value_d = 10'd0;
         end else begin
             next_match_value_d = data_in_q * 3;

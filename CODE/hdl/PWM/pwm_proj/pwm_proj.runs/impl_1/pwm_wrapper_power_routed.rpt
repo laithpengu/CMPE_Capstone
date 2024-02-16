@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date             : Thu Feb 15 15:27:40 2024
+| Date             : Fri Feb 16 16:45:30 2024
 | Host             : DESKTOP-M1PCUD5 running 64-bit major release  (build 9200)
 | Command          : report_power -file pwm_wrapper_power_routed.rpt -pb pwm_wrapper_power_summary_routed.pb -rpx pwm_wrapper_power_routed.rpx
 | Design           : pwm_wrapper
@@ -30,10 +30,10 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.160        |
+| Total On-Chip Power (W)  | 0.159        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.088        |
+| Dynamic (W)              | 0.087        |
 | Device Static (W)        | 0.072        |
 | Effective TJA (C/W)      | 4.9          |
 | Max Ambient (C)          | 84.2         |
@@ -53,18 +53,17 @@ Table of Contents
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
 | Clocks         |    <0.001 |        8 |       --- |             --- |
-| Slice Logic    |    <0.001 |      238 |       --- |             --- |
-|   LUT as Logic |    <0.001 |       93 |     32600 |            0.29 |
-|   Register     |    <0.001 |      101 |     65200 |            0.15 |
-|   CARRY4       |    <0.001 |       10 |      8150 |            0.12 |
+| Slice Logic    |    <0.001 |      100 |       --- |             --- |
+|   LUT as Logic |    <0.001 |       46 |     32600 |            0.14 |
+|   Register     |    <0.001 |       33 |     65200 |            0.05 |
 |   BUFG         |    <0.001 |        1 |        32 |            3.13 |
-|   Others       |     0.000 |       15 |       --- |             --- |
-| Signals        |    <0.001 |      167 |       --- |             --- |
-| Block RAM      |    <0.001 |      0.5 |        75 |            0.67 |
+|   CARRY4       |    <0.001 |        4 |      8150 |            0.05 |
+|   Others       |     0.000 |        8 |       --- |             --- |
+| Signals        |    <0.001 |       54 |       --- |             --- |
 | MMCM           |     0.086 |        1 |         5 |           20.00 |
 | I/O            |    <0.001 |        4 |       210 |            1.90 |
 | Static Power   |     0.072 |          |           |                 |
-| Total          |     0.160 |          |           |                 |
+| Total          |     0.159 |          |           |                 |
 +----------------+-----------+----------+-----------+-----------------+
 
 
@@ -74,7 +73,7 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) | Powerup (A) | Budget (A)  | Margin (A) |
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
-| Vccint    |       1.000 |     0.012 |       0.002 |      0.010 |       NA    | Unspecified | NA         |
+| Vccint    |       1.000 |     0.011 |       0.001 |      0.010 |       NA    | Unspecified | NA         |
 | Vccaux    |       1.800 |     0.060 |       0.048 |      0.013 |       NA    | Unspecified | NA         |
 | Vcco33    |       3.300 |     0.001 |       0.000 |      0.001 |       NA    | Unspecified | NA         |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
@@ -143,13 +142,12 @@ Table of Contents
 3.1 By Hierarchy
 ----------------
 
-+--------------+-----------+
-| Name         | Power (W) |
-+--------------+-----------+
-| pwm_wrapper  |     0.088 |
-|   u_inst_pwm |     0.001 |
-|   wiz        |     0.086 |
-|     inst     |     0.086 |
-+--------------+-----------+
++-------------+-----------+
+| Name        | Power (W) |
++-------------+-----------+
+| pwm_wrapper |     0.087 |
+|   wiz       |     0.086 |
+|     inst    |     0.086 |
++-------------+-----------+
 
 

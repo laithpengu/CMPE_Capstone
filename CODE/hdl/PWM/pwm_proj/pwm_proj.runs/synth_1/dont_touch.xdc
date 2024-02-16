@@ -3,5 +3,5 @@
 
 # XDC: D:/CMPE_Capstone/CODE/hdl/PWM/synth/PWM.xdc
 
-# IP: ip/blk_mem_gen_0/blk_mem_gen_0.xci
-set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==blk_mem_gen_0 || ORIG_REF_NAME==blk_mem_gen_0} -quiet] -quiet
+# IP: ip/clk_wiz_0/clk_wiz_0.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==clk_wiz_0 || ORIG_REF_NAME==clk_wiz_0} -quiet] -quiet
