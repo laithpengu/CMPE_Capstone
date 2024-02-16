@@ -1,0 +1,21 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  \
+"../../../../RF_read.gen/sources_1/ip/blk_mem_gen_0/sim/blk_mem_gen_0.v" \
+"../../../../RF_read.srcs/sources_1/new/rf_read_top.v" \
+
+sv xil_defaultlib  \
+"../../../../../src/RF.sv" \
+"../../../../../src/RF_cl_test.sv" \
+"../../../../../UART/src/UART_ctrl.sv" \
+"../../../../../UART/src/UART_pkg.sv" \
+"../../../../../UART/src/ascii_conv.sv" \
+"../../../../RF_read.srcs/sources_1/new/parallel_buffer.sv" \
+"../../../../../pc/src/pc.sv" \
+"../../../../RF_read.srcs/sources_1/new/serial_buffer.sv" \
+"../../../../RF_read.srcs/sim_1/new/rf_read_tb.sv" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

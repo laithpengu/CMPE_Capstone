@@ -23,7 +23,7 @@
 module rf_read_top(
     input CLK100MHZ,
     input rst,
-    input [3:0] sw,
+    input valid,
     input uart_rx,
     output uart_tx
     );
@@ -128,7 +128,7 @@ module rf_read_top(
         .clk(CLK100MHZ),
         .rst(rst),
         .data(rf_data_out),
-        .valid(cs),
+        .valid(valid),
         .ready(ready_uart),
         .uart_rx(uart_rx),
         .uart_tx(uart_tx)
