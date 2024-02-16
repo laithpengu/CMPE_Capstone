@@ -14,8 +14,8 @@
 // Dependencies: 
 // 
 // Revision:
-// Revision 0.02 - Rewriting for double FIFO
-// Additional Comments: This sits inside of the buffer folder
+// Revision 2.1 - Renaming wires for ready/valid handshake method
+// Additional Comments:
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
@@ -24,24 +24,27 @@ module bc_buffer_tb();
 
 int i;
 logic clk = 0;
-logic sck = 0;
 logic rst;
-logic ctrl_rdy;
-logic avoid_rdy;
-logic from_avoid;
-logic [15:0] bc_in;        
-logic [15:0] bc_out;
+logic avoid_in_valid;
+logic ctrl_out_rdy;
+logic ctrl_in_valid;
+logic avoid_out_rdy;
+logic [15:0] avoid_in_data;        
+logic [15:0] ctrl_in_data;
+logic [15:0] avoid_out_data;
+logic [15:0] ctrl_out_data;
 
 bc_buffer dut(
     .clk(clk),
-    .sck(sck),
     .rst(rst),
-    .from_avoid(from_avoid),
-    .ctrl_rdy(ctrl_rdy),
-    .avoid_rdy(avoid_rdy),
-    .start_ser(start_ser),
-    .start_des(start_des),
-    .bc_in(bc_in)
+    .avoid_in_valid(avoid_in_valid),
+    .ctrl_out_rdy(ctrl_out_rdy),
+    .ctrl_in_valid(ctrl_in_valid),
+    .avoid_out_rdy(avoid_out_rdy),
+    .avoid_in_data(avoid_in_data),
+    .ctrl_in_data(ctrl_in_data),
+    .avoid_out_data(avoid_out_data),
+    .ctrl_out_data(ctrl_out_data)
 );
 
 initial begin
@@ -54,22 +57,22 @@ initial begin
     rst = 1;
     
     repeat (10)@(negedge clk); // wait 10 clock cycles for FIFO to setup
-    ctrl_rdy = 1;              // FIFO ready to read in
-    avoid_rdy = 0;             // FIFO not popping data off
+    ctrl_in_valid = 1;         // FIFO ready to write data in
+    avoid_out_rdy = 0;         // FIFO not popping data off
         
     for (i = 0; i < 10; i++) begin
-        // bc_in = 16'd20;
-        bc_in = i + 10;
+        // ctrl_in_data = 16'd20;
+        ctrl_in_data = i + 10;
         @(negedge clk);
     end
-    ctrl_rdy = 0; // stop reading data
+    ctrl_in_valid = 0; // stop writing data
 
     repeat (2)@(negedge clk);
-    avoid_rdy = 1; // start popping data off FIFO
+    avoid_out_rdy = 1; // start popping data off FIFO
 
     for (i = 0; i < 10; i++) begin
         @(negedge clk);
-        $display("Expected Value: %h; Actual Value: %h", i + 10, bc_out);
+        $display("Expected Value: %h; Actual Value: %h", i + 10, ctrl_out_data);
     end
 
     // ensure FIFO is clear
