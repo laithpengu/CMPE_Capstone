@@ -3,8 +3,8 @@
 # SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
 # IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
 # SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
-# Start of session at: Fri Feb 16 16:43:18 2024
-# Process ID: 34080
+# Start of session at: Mon Feb 19 15:27:28 2024
+# Process ID: 34504
 # Current directory: D:/CMPE_Capstone/CODE/hdl/PWM/pwm_proj/pwm_proj.runs/synth_1
 # Command line: vivado.exe -log pwm_wrapper.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source pwm_wrapper.tcl
 # Log file: D:/CMPE_Capstone/CODE/hdl/PWM/pwm_proj/pwm_proj.runs/synth_1/pwm_wrapper.vds
@@ -12,12 +12,15 @@
 # Running On: DESKTOP-M1PCUD5, OS: Windows, CPU Frequency: 2592 MHz, CPU Physical cores: 6, Host memory: 16868 MB
 #-----------------------------------------------------------
 source pwm_wrapper.tcl -notrace
-create_project: Time (s): cpu = 00:00:04 ; elapsed = 00:00:09 . Memory (MB): peak = 593.211 ; gain = 220.414
+create_project: Time (s): cpu = 00:00:04 ; elapsed = 00:00:08 . Memory (MB): peak = 592.242 ; gain = 218.492
 Command: read_checkpoint -auto_incremental -incremental D:/CMPE_Capstone/CODE/hdl/PWM/pwm_proj/pwm_proj.srcs/utils_1/imports/synth_1/pwm_wrapper.dcp
 INFO: [Vivado 12-5825] Read reference checkpoint from D:/CMPE_Capstone/CODE/hdl/PWM/pwm_proj/pwm_proj.srcs/utils_1/imports/synth_1/pwm_wrapper.dcp for incremental synthesis
 INFO: [Vivado 12-7989] Please ensure there are no constraint changes
 Command: synth_design -top pwm_wrapper -part xc7s50csga324-1
 Starting synth_design
+WARNING: [Vivado_Tcl 4-393] The 'Synthesis' target of the following IPs are stale, please generate the output products using the generate_target or synth_ip command before running synth_design.
+D:/CMPE_Capstone/CODE/hdl/PWM/pwm_proj/pwm_proj.srcs/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0.xci
+
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7s50'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7s50'
 INFO: [Device 21-403] Loading part xc7s50csga324-1
@@ -25,9 +28,9 @@ INFO: [Designutils 20-5440] No compile time benefit to using incremental synthes
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 41720
+INFO: [Synth 8-7075] Helper process launched with PID 22612
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:07 . Memory (MB): peak = 1428.492 ; gain = 440.812
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:06 . Memory (MB): peak = 1429.789 ; gain = 441.117
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-6157] synthesizing module 'pwm_wrapper' [D:/CMPE_Capstone/CODE/hdl/PWM/src/pwm_wrapper.v:23]
 INFO: [Synth 8-6157] synthesizing module 'PWM' [D:/CMPE_Capstone/CODE/hdl/PWM/src/pwm.sv:23]
@@ -36,30 +39,33 @@ INFO: [Synth 8-6155] done synthesizing module 'pwm_speed' (0#1) [D:/CMPE_Capston
 INFO: [Synth 8-6157] synthesizing module 'pwm_dir' [D:/CMPE_Capstone/CODE/hdl/PWM/src/pwm_direction.sv:15]
 INFO: [Synth 8-6155] done synthesizing module 'pwm_dir' (0#1) [D:/CMPE_Capstone/CODE/hdl/PWM/src/pwm_direction.sv:15]
 INFO: [Synth 8-6155] done synthesizing module 'PWM' (0#1) [D:/CMPE_Capstone/CODE/hdl/PWM/src/pwm.sv:23]
-INFO: [Synth 8-6157] synthesizing module 'clk_wiz_0' [D:/CMPE_Capstone/CODE/hdl/PWM/pwm_proj/pwm_proj.runs/synth_1/.Xil/Vivado-34080-DESKTOP-M1PCUD5/realtime/clk_wiz_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'clk_wiz_0' (0#1) [D:/CMPE_Capstone/CODE/hdl/PWM/pwm_proj/pwm_proj.runs/synth_1/.Xil/Vivado-34080-DESKTOP-M1PCUD5/realtime/clk_wiz_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'clk_wiz_0' [D:/CMPE_Capstone/CODE/hdl/PWM/pwm_proj/pwm_proj.runs/synth_1/.Xil/Vivado-34504-DESKTOP-M1PCUD5/realtime/clk_wiz_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'clk_wiz_0' (0#1) [D:/CMPE_Capstone/CODE/hdl/PWM/pwm_proj/pwm_proj.runs/synth_1/.Xil/Vivado-34504-DESKTOP-M1PCUD5/realtime/clk_wiz_0_stub.v:6]
 INFO: [Synth 8-6157] synthesizing module 'clk_div_0' [D:/CMPE_Capstone/CODE/hdl/PWM/src/clk_div_0.sv:23]
 INFO: [Synth 8-6155] done synthesizing module 'clk_div_0' (0#1) [D:/CMPE_Capstone/CODE/hdl/PWM/src/clk_div_0.sv:23]
 INFO: [Synth 8-6157] synthesizing module 'clk_div_1' [D:/CMPE_Capstone/CODE/hdl/PWM/src/clk_div_1.sv:23]
 INFO: [Synth 8-6155] done synthesizing module 'clk_div_1' (0#1) [D:/CMPE_Capstone/CODE/hdl/PWM/src/clk_div_1.sv:23]
-INFO: [Synth 8-6157] synthesizing module 'blk_mem_gen_0' [D:/CMPE_Capstone/CODE/hdl/PWM/pwm_proj/pwm_proj.runs/synth_1/.Xil/Vivado-34080-DESKTOP-M1PCUD5/realtime/blk_mem_gen_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'blk_mem_gen_0' (0#1) [D:/CMPE_Capstone/CODE/hdl/PWM/pwm_proj/pwm_proj.runs/synth_1/.Xil/Vivado-34080-DESKTOP-M1PCUD5/realtime/blk_mem_gen_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'clk_div_2' [D:/CMPE_Capstone/CODE/hdl/PWM/src/clk_div_2.sv:23]
+INFO: [Synth 8-6155] done synthesizing module 'clk_div_2' (0#1) [D:/CMPE_Capstone/CODE/hdl/PWM/src/clk_div_2.sv:23]
+INFO: [Synth 8-6157] synthesizing module 'blk_mem_gen_0' [D:/CMPE_Capstone/CODE/hdl/PWM/pwm_proj/pwm_proj.runs/synth_1/.Xil/Vivado-34504-DESKTOP-M1PCUD5/realtime/blk_mem_gen_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'blk_mem_gen_0' (0#1) [D:/CMPE_Capstone/CODE/hdl/PWM/pwm_proj/pwm_proj.runs/synth_1/.Xil/Vivado-34504-DESKTOP-M1PCUD5/realtime/blk_mem_gen_0_stub.v:6]
 INFO: [Synth 8-6157] synthesizing module 'pc' [D:/CMPE_Capstone/CODE/hdl/pc/src/pc.sv:23]
 INFO: [Synth 8-6155] done synthesizing module 'pc' (0#1) [D:/CMPE_Capstone/CODE/hdl/pc/src/pc.sv:23]
 INFO: [Synth 8-6155] done synthesizing module 'pwm_wrapper' (0#1) [D:/CMPE_Capstone/CODE/hdl/PWM/src/pwm_wrapper.v:23]
+WARNING: [Synth 8-6014] Unused sequential element counter_q_reg was removed.  [D:/CMPE_Capstone/CODE/hdl/PWM/src/clk_div_1.sv:44]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:10 . Memory (MB): peak = 1540.215 ; gain = 552.535
+Finished RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:08 . Memory (MB): peak = 1540.613 ; gain = 551.941
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:10 . Memory (MB): peak = 1540.215 ; gain = 552.535
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:04 ; elapsed = 00:00:08 . Memory (MB): peak = 1540.613 ; gain = 551.941
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:10 . Memory (MB): peak = 1540.215 ; gain = 552.535
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:08 . Memory (MB): peak = 1540.613 ; gain = 551.941
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 1540.215 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1540.613 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
@@ -76,22 +82,22 @@ Parsing XDC File [D:/CMPE_Capstone/CODE/hdl/PWM/pwm_proj/pwm_proj.runs/synth_1/d
 Finished Parsing XDC File [D:/CMPE_Capstone/CODE/hdl/PWM/pwm_proj/pwm_proj.runs/synth_1/dont_touch.xdc]
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1585.043 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1620.793 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 1585.043 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 1620.793 ; gain = 0.000
 INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:10 ; elapsed = 00:00:19 . Memory (MB): peak = 1585.043 ; gain = 597.363
+Finished Constraint Validation : Time (s): cpu = 00:00:08 ; elapsed = 00:00:16 . Memory (MB): peak = 1620.793 ; gain = 632.121
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7s50csga324-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:10 ; elapsed = 00:00:19 . Memory (MB): peak = 1585.043 ; gain = 597.363
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:08 ; elapsed = 00:00:16 . Memory (MB): peak = 1620.793 ; gain = 632.121
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
@@ -101,10 +107,10 @@ Applied set_property CLOCK_BUFFER_TYPE = NONE for CLK100MHZ. (constraint file  d
 Applied set_property KEEP_HIERARCHY = SOFT for wiz. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for blk_mem. (constraint file  auto generated constraint).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:10 ; elapsed = 00:00:19 . Memory (MB): peak = 1585.043 ; gain = 597.363
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:08 ; elapsed = 00:00:16 . Memory (MB): peak = 1620.793 ; gain = 632.121
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:10 ; elapsed = 00:00:20 . Memory (MB): peak = 1585.043 ; gain = 597.363
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:08 ; elapsed = 00:00:16 . Memory (MB): peak = 1620.793 ; gain = 632.121
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -118,7 +124,7 @@ Detailed RTL Component Info :
 	               28 Bit    Registers := 2     
 	               10 Bit    Registers := 6     
 	                8 Bit    Registers := 3     
-	                1 Bit    Registers := 4     
+	                1 Bit    Registers := 5     
 +---Muxes : 
 	   2 Input   28 Bit        Muxes := 2     
 	   2 Input   10 Bit        Muxes := 6     
@@ -141,25 +147,25 @@ Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:12 ; elapsed = 00:00:23 . Memory (MB): peak = 1585.043 ; gain = 597.363
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:09 ; elapsed = 00:00:19 . Memory (MB): peak = 1620.793 ; gain = 632.121
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:15 ; elapsed = 00:00:29 . Memory (MB): peak = 1585.043 ; gain = 597.363
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:11 ; elapsed = 00:00:25 . Memory (MB): peak = 1620.793 ; gain = 632.121
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:15 ; elapsed = 00:00:29 . Memory (MB): peak = 1585.043 ; gain = 597.363
+Finished Timing Optimization : Time (s): cpu = 00:00:11 ; elapsed = 00:00:25 . Memory (MB): peak = 1620.793 ; gain = 632.121
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:15 ; elapsed = 00:00:29 . Memory (MB): peak = 1585.043 ; gain = 597.363
+Finished Technology Mapping : Time (s): cpu = 00:00:11 ; elapsed = 00:00:25 . Memory (MB): peak = 1620.793 ; gain = 632.121
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -177,37 +183,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:18 ; elapsed = 00:00:35 . Memory (MB): peak = 1585.043 ; gain = 597.363
+Finished IO Insertion : Time (s): cpu = 00:00:13 ; elapsed = 00:00:30 . Memory (MB): peak = 1620.793 ; gain = 632.121
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:18 ; elapsed = 00:00:35 . Memory (MB): peak = 1585.043 ; gain = 597.363
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:13 ; elapsed = 00:00:30 . Memory (MB): peak = 1620.793 ; gain = 632.121
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:18 ; elapsed = 00:00:35 . Memory (MB): peak = 1585.043 ; gain = 597.363
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:14 ; elapsed = 00:00:30 . Memory (MB): peak = 1620.793 ; gain = 632.121
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:18 ; elapsed = 00:00:35 . Memory (MB): peak = 1585.043 ; gain = 597.363
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:14 ; elapsed = 00:00:30 . Memory (MB): peak = 1620.793 ; gain = 632.121
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:18 ; elapsed = 00:00:35 . Memory (MB): peak = 1585.043 ; gain = 597.363
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:14 ; elapsed = 00:00:30 . Memory (MB): peak = 1620.793 ; gain = 632.121
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:18 ; elapsed = 00:00:35 . Memory (MB): peak = 1585.043 ; gain = 597.363
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:14 ; elapsed = 00:00:30 . Memory (MB): peak = 1620.793 ; gain = 632.121
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -227,41 +233,41 @@ Report Cell Usage:
 +------+------------+------+
 |1     |blk_mem_gen |     1|
 |2     |clk_wiz     |     1|
-|3     |BUFG        |     1|
-|4     |CARRY4      |    11|
-|5     |LUT1        |     6|
-|6     |LUT2        |     8|
+|3     |BUFG        |     2|
+|4     |CARRY4      |    10|
+|5     |LUT1        |    11|
+|6     |LUT2        |    23|
 |7     |LUT3        |     4|
-|8     |LUT4        |    43|
-|9     |LUT5        |     9|
-|10    |LUT6        |    35|
-|11    |FDCE        |    65|
-|12    |FDPE        |     5|
+|8     |LUT4        |    25|
+|9     |LUT5        |    16|
+|10    |LUT6        |    34|
+|11    |FDCE        |    92|
+|12    |FDPE        |     9|
 |13    |IBUF        |     1|
 |14    |OBUF        |     2|
 +------+------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:18 ; elapsed = 00:00:35 . Memory (MB): peak = 1585.043 ; gain = 597.363
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:14 ; elapsed = 00:00:30 . Memory (MB): peak = 1620.793 ; gain = 632.121
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 1 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:12 ; elapsed = 00:00:33 . Memory (MB): peak = 1585.043 ; gain = 552.535
-Synthesis Optimization Complete : Time (s): cpu = 00:00:18 ; elapsed = 00:00:35 . Memory (MB): peak = 1585.043 ; gain = 597.363
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:09 ; elapsed = 00:00:28 . Memory (MB): peak = 1620.793 ; gain = 551.941
+Synthesis Optimization Complete : Time (s): cpu = 00:00:14 ; elapsed = 00:00:30 . Memory (MB): peak = 1620.793 ; gain = 632.121
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1585.043 ; gain = 0.000
-INFO: [Netlist 29-17] Analyzing 11 Unisim elements for replacement
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1620.793 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 10 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1585.043 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1620.793 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Synth Design complete | Checksum: 94f961d3
+Synth Design complete | Checksum: 5858bd79
 INFO: [Common 17-83] Releasing license: Synthesis
-39 Infos, 1 Warnings, 0 Critical Warnings and 0 Errors encountered.
+41 Infos, 3 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:21 ; elapsed = 00:00:41 . Memory (MB): peak = 1585.043 ; gain = 982.746
-Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1585.043 ; gain = 0.000
+synth_design: Time (s): cpu = 00:00:15 ; elapsed = 00:00:34 . Memory (MB): peak = 1620.793 ; gain = 1019.043
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1620.793 ; gain = 0.000
 INFO: [Common 17-1381] The checkpoint 'D:/CMPE_Capstone/CODE/hdl/PWM/pwm_proj/pwm_proj.runs/synth_1/pwm_wrapper.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file pwm_wrapper_utilization_synth.rpt -pb pwm_wrapper_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Fri Feb 16 16:44:13 2024...
+INFO: [Common 17-206] Exiting Vivado at Mon Feb 19 15:28:15 2024...

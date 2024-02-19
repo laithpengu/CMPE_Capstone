@@ -10,7 +10,7 @@ module pwm_tb;
     pwm_wrapper dut(
         .CLK100MHZ(clk),
         .rst(rst),
-        .data_in(16'd100),
+//        .data_in(16'd100),
         .spd(spd_out),
         .dir(dir_out)
     );

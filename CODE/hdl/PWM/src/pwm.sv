@@ -14,14 +14,15 @@
 // Dependencies: 
 // 
 // Revision:
-// Revision 0.01 - File Created
+// Revision 0.01 - File Created 
 // Additional Comments:
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
 
 module PWM(
-    input clk,
+    input clk_400khz,
+    input clk_200khz,
     input rst,
     input [15:0] data_in,
     output spd_out,
@@ -35,13 +36,13 @@ module PWM(
     assign speed = data_in[7:0];
 
     pwm_speed u_inst_pwm_spd(
-        .clk(clk),
+        .clk(clk_400khz),
         .rst(rst),
         .data_in(speed),
         .data_out(spd_out));
 
     pwm_dir u_inst_pwm_dir(
-        .clk(clk),
+        .clk(clk_200khz),
         .rst(rst),
         .data_in(direction),
         .data_out(dir_out));

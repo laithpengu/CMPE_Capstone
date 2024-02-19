@@ -91,6 +91,7 @@ add_files d:/CMPE_Capstone/CODE/mem_files/pwm_test.coe
 read_verilog -library xil_defaultlib -sv {
   D:/CMPE_Capstone/CODE/hdl/PWM/src/clk_div_0.sv
   D:/CMPE_Capstone/CODE/hdl/PWM/src/clk_div_1.sv
+  D:/CMPE_Capstone/CODE/hdl/PWM/src/clk_div_2.sv
   D:/CMPE_Capstone/CODE/hdl/pc/src/pc.sv
   D:/CMPE_Capstone/CODE/hdl/PWM/src/pwm.sv
   D:/CMPE_Capstone/CODE/hdl/PWM/src/pwm_direction.sv

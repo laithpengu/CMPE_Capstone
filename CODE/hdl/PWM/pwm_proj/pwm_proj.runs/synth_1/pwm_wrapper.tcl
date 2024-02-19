@@ -70,8 +70,12 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
+set_param checkpoint.writeSynthRtdsInDcp 1
 set_param chipscope.maxJobs 3
+set_param synth.incrementalSynthesisCache C:/Users/turke/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-33916-DESKTOP-M1PCUD5/incrSyn
 set_param xicom.use_bs_reader 1
+set_msg_config -id {Synth 8-256} -limit 10000
+set_msg_config -id {Synth 8-638} -limit 10000
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7s50csga324-1
 
@@ -92,6 +96,7 @@ add_files D:/CMPE_Capstone/CODE/mem_files/pwm_test.coe
 read_verilog -library xil_defaultlib -sv {
   D:/CMPE_Capstone/CODE/hdl/PWM/src/clk_div_0.sv
   D:/CMPE_Capstone/CODE/hdl/PWM/src/clk_div_1.sv
+  D:/CMPE_Capstone/CODE/hdl/PWM/src/clk_div_2.sv
   D:/CMPE_Capstone/CODE/hdl/pc/src/pc.sv
   D:/CMPE_Capstone/CODE/hdl/PWM/src/pwm.sv
   D:/CMPE_Capstone/CODE/hdl/PWM/src/pwm_direction.sv
