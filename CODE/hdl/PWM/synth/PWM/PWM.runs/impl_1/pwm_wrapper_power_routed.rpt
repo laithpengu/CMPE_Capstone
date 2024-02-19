@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date             : Fri Feb 16 14:07:07 2024
+| Date             : Mon Feb 19 15:21:44 2024
 | Host             : DESKTOP-M1PCUD5 running 64-bit major release  (build 9200)
 | Command          : report_power -file pwm_wrapper_power_routed.rpt -pb pwm_wrapper_power_summary_routed.pb -rpx pwm_wrapper_power_routed.rpx
 | Design           : pwm_wrapper
@@ -53,13 +53,13 @@ Table of Contents
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
 | Clocks         |    <0.001 |        8 |       --- |             --- |
-| Slice Logic    |    <0.001 |      236 |       --- |             --- |
-|   LUT as Logic |    <0.001 |       93 |     32600 |            0.29 |
+| Slice Logic    |    <0.001 |      239 |       --- |             --- |
+|   LUT as Logic |    <0.001 |       89 |     32600 |            0.27 |
 |   Register     |    <0.001 |      101 |     65200 |            0.15 |
+|   BUFG         |    <0.001 |        2 |        32 |            6.25 |
 |   CARRY4       |    <0.001 |       10 |      8150 |            0.12 |
-|   BUFG         |    <0.001 |        1 |        32 |            3.13 |
-|   Others       |     0.000 |       13 |       --- |             --- |
-| Signals        |    <0.001 |      167 |       --- |             --- |
+|   Others       |     0.000 |       14 |       --- |             --- |
+| Signals        |    <0.001 |      169 |       --- |             --- |
 | Block RAM      |    <0.001 |      0.5 |        75 |            0.67 |
 | MMCM           |     0.086 |        1 |         5 |           20.00 |
 | I/O            |    <0.001 |        4 |       210 |            1.90 |

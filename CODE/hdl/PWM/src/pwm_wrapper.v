@@ -29,16 +29,18 @@ module pwm_wrapper(
     );
     
     wire clk_5mhz;
+    wire clk_400khz;
     wire clk_200khz;
     wire clk_330hz;
     wire [7:0] addr_a;
     wire [15:0] data_out_mem;
     
     PWM u_inst_pwm(
-        .clk(clk_200khz),
+        .clk_400khz(clk_400khz),
+        .clk_200khz(clk_200khz),
         .rst(rst),
-        .data_in(16'h00C8),
-        // .data_in(16'h7300),
+//        .data_in(16'h9630),
+        .data_in(data_out_mem),
         .spd_out(spd),
         .dir_out(dir)
     );
@@ -51,10 +53,16 @@ module pwm_wrapper(
     clk_div_0 u_inst_clk_div_0(
         .clk_in(clk_5mhz),
         .rst(rst),
+        .clk_out(clk_400khz)
+    );
+
+    clk_div_1 u_inst_clk_div_1(
+        .clk_in(clk_400khz),
+        .rst(rst),
         .clk_out(clk_200khz)
     );
-    
-    clk_div_1 u_inst_clk_div_1(
+
+    clk_div_2 u_inst_clk_div_2(
         .clk_in(clk_200khz),
         .rst(rst),
         .clk_out(clk_330hz)

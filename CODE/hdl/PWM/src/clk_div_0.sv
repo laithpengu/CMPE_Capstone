@@ -50,11 +50,11 @@ module clk_div_0(
     end
 
     always_comb begin
-        if(counter_q >= 28'd25) begin
+        if(counter_q >= 28'd13) begin
             counter_d <= 28'd0;
         end else begin
             counter_d <= counter_q ;
         end
-        clk_out_d <= (counter_q < 25 / 2)?1'b1:1'b0;
+        clk_out_d <= (counter_q < 13 / 2)?1'b1:1'b0;
     end
 endmodule

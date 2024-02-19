@@ -2,7 +2,7 @@
 -- Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
--- Date        : Fri Feb 16 13:16:52 2024
+-- Date        : Mon Feb 19 15:01:45 2024
 -- Host        : DESKTOP-M1PCUD5 running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode synth_stub
 --               d:/CMPE_Capstone/CODE/hdl/PWM/synth/PWM/PWM.gen/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0_stub.vhdl
