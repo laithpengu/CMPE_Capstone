@@ -24,6 +24,7 @@ module bc_buffer_tb();
 
 int i;
 int j;
+int k;
 logic clk = 0;
 logic rst;
 
@@ -80,19 +81,22 @@ initial begin
     end
     ctrl_in_valid = 0; // stop writing data
 
-    repeat (2)@(negedge clk);
-    avoid_out_rdy = 1; // start popping data off FIFO
-
-    for (i = 0; i < 10; i++) begin
-        @(negedge clk);
-        $display("Expected Value: %h; Actual Value: %h", i + 10, avoid_out_data);
-    end
-
     // ensure FIFO is clear
     // write test to see lowest number of cycles between writing data and reading it
     // write SERDES tests
     // test other edge cases
 
+end
+
+initial begin
+    // when this is only 11, it fails. Might need to check against avoid_in_rdy, etc.
+    repeat (12)@(negedge clk);
+    avoid_out_rdy = 1; // start popping data off FIFO
+
+    for (k = 0; k < 10; k++) begin
+        @(negedge clk);
+        $display("Expected Value: %h; Actual Value: %h", k + 10, avoid_out_data);
+    end
 end
 
 initial begin
