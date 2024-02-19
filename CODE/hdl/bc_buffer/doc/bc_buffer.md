@@ -1,17 +1,17 @@
 # Breadcrumb Buffer Module
+This module exists as the connector piece between the Processor FPGA modules and the Avoidance Microblaze that also sits on the FPGA. The Buffer module consists of two FIFO structures, one that allows the Control Logic module of the process to send data to the Avoidance team, and another that allows Avoidance to send data to the Control Logic. Both FIFOs feature a ready/valid handshake method in which the sending party sends a signal that their data is valid and the receiving party signals that they are ready to recieve data before any data is transmitted. In this case a FIFO will always be on one side of the handshake while the Control Logic or Avoidance modules will be on the other side. 
+
 ## Ports 
 - input clk
-- input sck: Slave clock from Avoidance team, they choose rate at which to receive data
 - input rst: Async, active-high reset
-- input ctrl_rdy: Signal that Control Logic is ready to fill FIFO
-- input avoid_rdy: Signal that Avoidance is ready to read from FIFO
-- input from_avoid: Bit stream of serial data to be deserialized. Contains new breadcrumb information for Control Logic
-- input start_ser: Switch to tell SERDES where the first bit of a new serialization starts
-- input start_des: Switch to tell SERDES where the first bit of a new deserialization starts
-- input bc_in [15:0]: Breadcrumb loaded into FIFO
-- output to_control [15:0]: Deserialized breadcrumb from Avoidance to Control Logic
-- ouptut to_avoid: Serialized breadcrumb stream sent to Avoidance
-- output bc_out [15:0]: Breacdrumb to be serialzied and sent to Avoidance
+- input avoid_in_valid: new_fifo write enable. Signal that Avoidance is ready to send new data into the FIFO
+- input ctrl_out_rdy: new_fifo read enable. Signal that Control Logic is ready to receive new data from the FIFO
+- input ctrl_in_valid: old_fifo write enable. Signal that Control Logic is ready to new data into the FIFO
+- input avoid_out_rdy: old_fifo read enable. Signal that Avoidance is ready to receive data from the FIFO
+- input [15:0] avoid_in_data: new_fifo data in. Data that Avoidance is passing to the FIFO
+- input [15:0] ctrl_in_data: old_fifo data in. Data that Control Logic is passing to the FIFO
+- output [15:0] avoid_out_data: old_fifo data out. Data that Avoidance is receiving from the FIFO
+- output [15:0] ctrl_out_data: new_fifo data out. Data that Control Logic is receiving from the FIFO
 ## How to use
 ### Entering data into FIFO
 - FIFO takes 10 clock cycles to setup
