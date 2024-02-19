@@ -25,36 +25,47 @@
 module bc_buffer(
         input clk,
         input rst,
-        input avoid_in_valid,
-        input ctrl_out_rdy,
-        input ctrl_in_valid,
+        
         input avoid_out_rdy,
-        input [15:0] avoid_in_data, // going into incoming_fifo
-        input [15:0] ctrl_in_data,
+        output avoid_out_valid,
         output [15:0] avoid_out_data, // leaving the incoming_fifo
-        output [15:0] ctrl_out_data
+        
+        output avoid_in_rdy,
+        input avoid_in_valid,
+        input [15:0] avoid_in_data, // going into incoming_fifo
+
+        output ctrl_out_valid,
+        input ctrl_out_rdy,
+        output [15:0] ctrl_out_data,
+        
+        output ctrl_in_rdy,
+        input ctrl_in_valid,
+        input [15:0] ctrl_in_data
     );
     
-    // wires for new_breadcrumb_fifo
-    logic avoid_in_rdy; // was in_full
-    logic ctrl_in_valid;
+    logic new_full;
+    logic new_empty;
     logic [9:0] new_data_count;
     logic new_wr_rst_busy;
     logic new_rd_rst_busy;
     
-    // wires for old_breadcrumb_fifo
-    logic ctrl_in_rdy;
-    logic avoid_out_valid;    
+    logic old_full;
+    logic old_empty;
     logic [9:0] old_data_count;
     logic old_wr_rst_busy;
     logic old_rd_rst_busy;
+
+    assign avoid_in_rdy = ~new_full;
+    assign ctrl_out_valid = ~new_empty;
+    assign ctrl_in_rdy = ~old_full;
+    assign avoid_out_valid = ~old_empty;
     
     // fifo for data coming into the Processor
     fifo_generator_0 new_breadcrumb_fifo(
         .clk(clk),
         .rst(rst),
-        .full(avoid_in_rdy),
-        .empty(ctrl_out_valid),
+        .full(new_full),
+        .empty(new_empty),
         .din(avoid_in_data),
         .dout(ctrl_out_data),
         .wr_en(avoid_in_valid),
@@ -68,8 +79,8 @@ module bc_buffer(
     fifo_generator_1 old_breadcrumb_fifo(
         .clk(clk),
         .rst(rst),
-        .full(ctrl_in_rdy), // maybe flip?
-        .empty(avoid_out_valid),
+        .full(old_full),
+        .empty(old_empty),
         .din(ctrl_in_data),
         .dout(avoid_out_data),
         .wr_en(ctrl_in_valid),
