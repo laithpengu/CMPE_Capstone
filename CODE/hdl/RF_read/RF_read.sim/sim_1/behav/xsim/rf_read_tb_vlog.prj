@@ -1,5 +1,6 @@
 # compile verilog/system verilog design source files
 verilog xil_defaultlib  \
+"../../../../RF_read.gen/sources_1/ip/fifo_generator_0/sim/fifo_generator_0.v" \
 "../../../../RF_read.gen/sources_1/ip/blk_mem_gen_0/sim/blk_mem_gen_0.v" \
 "../../../../RF_read.srcs/sources_1/new/rf_read_top.v" \
 

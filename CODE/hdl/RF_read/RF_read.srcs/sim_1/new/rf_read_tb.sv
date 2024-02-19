@@ -25,15 +25,22 @@ module rf_read_tb();
 logic clk;
 logic rst;
 logic valid;
+logic rd_en;
 logic uart_rx;
 logic uart_tx;
+logic led_full;
+logic led_empty;
+logic data_out;
 
 rf_read_top dut(
     .CLK100MHZ(clk),
     .rst(rst),
     .valid(valid),
     .uart_rx(uart_rx),
-    .uart_tx(uart_tx)
+    .empty_led(led_empty),
+    .full_led(led_full),
+    .uart_tx(uart_tx),
+    .data_o(data_out)
 );
 
 initial begin
@@ -53,8 +60,12 @@ initial
     @(negedge clk)
     rst = 1'b1;
     #10
+    rst = 1'b0;
+    #320
     
-    #500
+    rd_en = 1'b1;
+    #20
+//    valid = 1'b1;
     $stop;
     end
 
