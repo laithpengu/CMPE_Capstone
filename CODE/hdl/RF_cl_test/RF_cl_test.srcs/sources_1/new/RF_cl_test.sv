@@ -31,7 +31,8 @@ module RF_cl_test(
     output logic [1:0] inst,
     output logic cs_out,
     output logic inc,
-    output logic intr_out
+    output logic intr_out,
+    output logic wait_out
     );
     logic [12:0] addr_d;
     logic [12:0] addr_q;
@@ -65,9 +66,9 @@ module RF_cl_test(
     
     enum{pre_idle,idle_state,pc_read_addr_state,pc_read_data_state,decode_state,wait_state,send_state,run_state,wait_rst}curr_state,next_state;
     
-    always_ff@(posedge clk or posedge rst or posedge intr) begin
+    always_ff@(posedge clk or posedge rst) begin
         if(rst) begin
-            curr_state <= pre_idle;
+            curr_state <= idle_state;
             addr_q <='b0;
             inst_q <= 'b0;
             data_out_q <= 'b0;
@@ -79,19 +80,19 @@ module RF_cl_test(
             back_buff_q <= 'b0; 
             cs_out_q <= 'b0;
             inc_q <= 'b0;
-        end else if(intr) begin
-            curr_state <= idle_state;
-            inst_q <= 'b0;
-            addr_q <='b0;
-            data_out_q <= 'b0;
-            data_in_q <= 'b0;  
-            counter_q <= 'b0; 
-            addr_out_q <= 'b0;
-            data_out_q <= 'b0;
-            front_buff_q <= 'b0;
-            back_buff_q <= 'b0;
-            cs_out_q <= 'b0;   
-            inc_q <= 'b0;        
+        //end else if(intr) begin
+          //  curr_state <= idle_state;
+           // inst_q <= 'b0;
+           // addr_q <='b0;
+            //data_out_q <= 'b0;
+            //data_in_q <= 'b0;  
+            //counter_q <= 'b0; 
+            //addr_out_q <= 'b0;
+            //data_out_q <= 'b0;
+            //front_buff_q <= 'b0;
+            //back_buff_q <= 'b0;
+            //cs_out_q <= 'b0;   
+            //inc_q <= 'b0;        
         end else begin
             addr_q <= addr_d;
             data_out_q <= data_out_d;
@@ -121,7 +122,7 @@ module RF_cl_test(
         cs_out_d = cs_out_q;
         case(curr_state)
             pre_idle: begin
-                if(counter_q == 'd20) begin
+                if(counter_q == 'd2000) begin
                     next_state = idle_state;
                 end else begin
                     counter_d = counter_q +1;
@@ -132,6 +133,7 @@ module RF_cl_test(
                 cs_out_d=0;
                 counter_d = 'b0;
                 inc_d = 0;
+                wait_out = 0;
                 if(ready) begin
                     next_state = pc_read_addr_state;
                 end else begin
@@ -159,9 +161,9 @@ module RF_cl_test(
                 counter_d = 'b0;
                 inc_d = 0;
                 if(data_in_q == 'hFFFF) begin
-                    next_state = wait_state;
-                end else if(data_in_q == 'hFFF0) begin
                     next_state = wait_rst;
+                end else if(data_in_q == 'hFFF0) begin
+                    next_state = wait_state;
                 end else if(data_in_q[15:14] == 'b11)begin
                     front_buff_d = 1;
                     back_buff_d =  1;
@@ -184,9 +186,12 @@ module RF_cl_test(
             pc_read_data_state: begin
                 counter_d = counter_q +1;
                 if(data_in_q  == 'hFFFF)begin
-                    next_state = wait_state;
+                    next_state = wait_rst;
                     cs_out_d =0;
-                end else begin
+                end else if(data_in_q  == 'hFFF0) begin
+                    next_state = wait_state;
+                    cs_out_d =0;                 
+                end else begin              
                 if(counter_q == 'b0) begin
                    inc_d =0;
                 end else if(counter_q == 'd4)begin
@@ -235,6 +240,7 @@ module RF_cl_test(
             if(data_in_q == 'hFFFF) begin
                 next_state = wait_state;
                 cs_out_d =0;
+                wait_out = 1;
             end else begin
                 if(!ready) begin
                     next_state = run_state;
@@ -246,8 +252,9 @@ module RF_cl_test(
             
             wait_state: begin
                 cs_out_d = 0;
-                //if(counter_q == 'd3000) begin
-                if(rst)begin
+                wait_out =1;
+                if(counter_q == 'd3000) begin
+                //if(rst)begin
                   counter_d = 'b0;
                   next_state = idle_state;
                 end else begin
