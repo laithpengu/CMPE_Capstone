@@ -24,18 +24,17 @@ module rf_read_tb();
 
 logic clk;
 logic rst;
-logic valid;
 logic rd_en;
 logic uart_rx;
 logic uart_tx;
 logic led_full;
 logic led_empty;
-logic data_out;
+logic[7:0] data_out;
 
 rf_read_top dut(
     .CLK100MHZ(clk),
     .rst(rst),
-    .valid(valid),
+    .rd_en(rd_en),
     .uart_rx(uart_rx),
     .empty_led(led_empty),
     .full_led(led_full),
@@ -46,11 +45,6 @@ rf_read_top dut(
 initial begin
     clk = 1'b0;
 	forever #5 clk = ~clk;
-end
-
-initial begin
-    valid = 1'b0;
-    forever #80 valid = ~valid;
 end
 
 initial 

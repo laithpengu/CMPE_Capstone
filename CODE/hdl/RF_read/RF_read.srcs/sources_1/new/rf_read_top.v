@@ -24,12 +24,11 @@ module rf_read_top(
     input CLK100MHZ,
     input rst,
     input rd_en,
-    input valid,
     input uart_rx,
+    output uart_tx,
     output empty_led,
     output full_led,
-    output uart_tx,
-    output data_o
+    output[7:0] data_o
     );
     
 	wire inc;
@@ -54,6 +53,9 @@ module rf_read_top(
     wire intr_inter;
     wire uart_ready;
     wire [7:0] fifo_out;
+    wire enable;
+    wire [7:0] rf_data_out;
+    wire ready_uart;
     
     assign data_o = fifo_out;
     assign intr_in = 1'b0;
@@ -110,7 +112,7 @@ module rf_read_top(
         .srst(rst),
         .full(full_led),
         .din(rf_data_out),
-        .wr_en(cs),
+        .wr_en(enable),
         .empty(empty_led),
         .dout(fifo_out),
         .rd_en(rd_en)
@@ -121,7 +123,8 @@ module rf_read_top(
         .rst(rst),
         .start(~cs),
         .data_in(data_out_s),
-        .data_out(rf_data_out)
+        .data_out(rf_data_out),
+        .enable(enable)
     );
 
     par_buffer parallel_dut_0(
@@ -136,7 +139,7 @@ module rf_read_top(
         .clk(CLK100MHZ),
         .rst(rst),
         .data(fifo_out),
-        .valid(valid),
+        .valid(rd_en),
         .ready(ready_uart),
         .uart_rx(uart_rx),
         .uart_tx(uart_tx)
