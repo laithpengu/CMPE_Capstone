@@ -27,8 +27,8 @@ module rf_read_top(
     input uart_rx,
     output uart_tx,
     output empty_led,
-    output full_led,
-    output[7:0] data_o
+    output full_led
+//    output[7:0] data_o
     );
     
 	wire inc;
@@ -43,7 +43,7 @@ module rf_read_top(
     wire [7:0] rd_data2;
     wire [15:0] data_in;
     wire [15:0] data_out_mem;
-    wire [7:0] addr_a;
+    wire [2:0] addr_a;
     wire ready;
     wire intr;
     wire [9:0] addr_out;
@@ -57,7 +57,7 @@ module rf_read_top(
     wire [7:0] rf_data_out;
     wire ready_uart;
     
-    assign data_o = fifo_out;
+//    assign data_o = fifo_out;
     assign intr_in = 1'b0;
     
     
@@ -123,6 +123,7 @@ module rf_read_top(
         .rst(rst),
         .start(~cs),
         .data_in(data_out_s),
+        .mode(inst),
         .data_out(rf_data_out),
         .enable(enable)
     );

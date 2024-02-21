@@ -29,7 +29,7 @@ logic uart_rx;
 logic uart_tx;
 logic led_full;
 logic led_empty;
-logic[7:0] data_out;
+//logic[7:0] data_out;
 
 rf_read_top dut(
     .CLK100MHZ(clk),
@@ -38,8 +38,8 @@ rf_read_top dut(
     .uart_rx(uart_rx),
     .empty_led(led_empty),
     .full_led(led_full),
-    .uart_tx(uart_tx),
-    .data_o(data_out)
+    .uart_tx(uart_tx)
+//    .data_o(data_out)
 );
 
 initial begin
@@ -55,10 +55,10 @@ initial
     rst = 1'b1;
     #10
     rst = 1'b0;
-    #320
+    #1360
     
     rd_en = 1'b1;
-    #20
+    #100
 //    valid = 1'b1;
     $stop;
     end

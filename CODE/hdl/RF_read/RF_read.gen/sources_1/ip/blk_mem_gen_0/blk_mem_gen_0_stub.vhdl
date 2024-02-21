@@ -2,7 +2,7 @@
 -- Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
--- Date        : Wed Feb  7 11:43:23 2024
+-- Date        : Wed Feb 21 09:34:46 2024
 -- Host        : DESKTOP-8G5SJN0 running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode synth_stub
 --               c:/Users/SethT/Desktop/CMPE_Capstone/CODE/hdl/RF_read/RF_read.gen/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0_stub.vhdl
@@ -16,7 +16,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 entity blk_mem_gen_0 is
   Port ( 
     clka : in STD_LOGIC;
-    addra : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    addra : in STD_LOGIC_VECTOR ( 2 downto 0 );
     douta : out STD_LOGIC_VECTOR ( 15 downto 0 )
   );
 
@@ -26,7 +26,7 @@ architecture stub of blk_mem_gen_0 is
 attribute syn_black_box : boolean;
 attribute black_box_pad_pin : string;
 attribute syn_black_box of stub : architecture is true;
-attribute black_box_pad_pin of stub : architecture is "clka,addra[7:0],douta[15:0]";
+attribute black_box_pad_pin of stub : architecture is "clka,addra[2:0],douta[15:0]";
 attribute x_core_info : string;
 attribute x_core_info of stub : architecture is "blk_mem_gen_v8_4_7,Vivado 2023.2";
 begin
