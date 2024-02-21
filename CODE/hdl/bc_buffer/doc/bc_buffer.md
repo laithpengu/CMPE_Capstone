@@ -4,14 +4,22 @@ This module exists as the connector piece between the Processor FPGA modules and
 ## Ports 
 - input clk
 - input rst: Async, active-high reset
-- input avoid_in_valid: new_fifo write enable. Signal that Avoidance is ready to send new data into the FIFO
-- input ctrl_out_rdy: new_fifo read enable. Signal that Control Logic is ready to receive new data from the FIFO
-- input ctrl_in_valid: old_fifo write enable. Signal that Control Logic is ready to new data into the FIFO
+
 - input avoid_out_rdy: old_fifo read enable. Signal that Avoidance is ready to receive data from the FIFO
-- input [15:0] avoid_in_data: new_fifo data in. Data that Avoidance is passing to the FIFO
-- input [15:0] ctrl_in_data: old_fifo data in. Data that Control Logic is passing to the FIFO
+- output avoid_out_valid: if High then the Old_FIFO has data ready to send to Avoidance
 - output [15:0] avoid_out_data: old_fifo data out. Data that Avoidance is receiving from the FIFO
+
+- output avoid_in_rdy: if High then Avoidance has data ready to send to New_FIFO
+- input avoid_in_valid: new_fifo write enable. Signal that Avoidance is ready to send new data into the FIFO
+- input [15:0] avoid_in_data: new_fifo data in. Data that Avoidance is passing to the FIFO
+
+- input ctrl_out_rdy: new_fifo read enable. Signal that Control Logic is ready to receive new data from the FIFO
+- output ctrl_out_valid: if High then New_FIFO has data ready to send to Control Logic
 - output [15:0] ctrl_out_data: new_fifo data out. Data that Control Logic is receiving from the FIFO
+
+- output ctrl_in_rdy: if High then Control Logic has data ready to send to Old_FIFO
+- input ctrl_in_valid: old_fifo write enable. Signal that Control Logic is ready to new data into the FIFO
+- input [15:0] ctrl_in_data: old_fifo data in. Data that Control Logic is passing to the FIFO
 ## How to use
 ### Entering data into FIFO
 - FIFO takes 10 clock cycles to setup

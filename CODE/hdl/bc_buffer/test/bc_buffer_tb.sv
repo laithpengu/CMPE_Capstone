@@ -89,14 +89,20 @@ initial begin
 end
 
 initial begin
-    // when this is only 11, it fails. Might need to check against avoid_in_rdy, etc.
+    // when this is 11 or lower it fails. 12 or higher and the valid signal is high
     repeat (12)@(negedge clk);
-    avoid_out_rdy = 1; // start popping data off FIFO
 
-    for (k = 0; k < 10; k++) begin
-        @(negedge clk);
-        $display("Expected Value: %h; Actual Value: %h", k + 10, avoid_out_data);
+    if (avoid_out_valid) begin
+        avoid_out_rdy = 1; // start popping data off FIFO
+
+        for (k = 0; k < 10; k++) begin
+            @(negedge clk);
+            $display("Old Expected Value: %h; Actual Value: %h", k + 10, avoid_out_data);
+        end        
+    end else begin
+        $display("The Old FIFO was not ready for reading!");
     end
+
 end
 
 initial begin
@@ -108,7 +114,7 @@ initial begin
     avoid_in_valid = 1;        // NEW_FIFO ready to write data in
     ctrl_out_rdy = 0;          // NEW_FIFO not popping data off
         
-    for (j = 0; j < 10; j++) begin
+    for (j = 10; j < 20; j++) begin
         // avoid_in_data = 16'd20;
         avoid_in_data = j + 10;
         @(negedge clk);
@@ -118,9 +124,9 @@ initial begin
     repeat (2)@(negedge clk);
     ctrl_out_rdy = 1; // start popping data off FIFO
 
-    for (j = 10; j > 0; j--) begin
+    for (j = 10; j < 20; j++) begin
         @(negedge clk);
-        $display("Expected Value: %h; Actual Value: %h", j - 10, avoid_out_data);
+        $display("New Expected Value: %h; Actual Value: %h", j + 10, ctrl_out_data);
     end
 
     // ensure FIFO is clear

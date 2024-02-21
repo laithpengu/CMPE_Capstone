@@ -34,8 +34,8 @@ module bc_buffer(
         input avoid_in_valid,
         input [15:0] avoid_in_data, // going into incoming_fifo
 
-        output ctrl_out_valid,
         input ctrl_out_rdy,
+        output ctrl_out_valid,
         output [15:0] ctrl_out_data,
         
         output ctrl_in_rdy,
