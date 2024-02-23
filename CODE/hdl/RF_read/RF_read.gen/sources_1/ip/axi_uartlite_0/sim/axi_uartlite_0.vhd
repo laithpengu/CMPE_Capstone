@@ -156,7 +156,7 @@ BEGIN
   U0 : axi_uartlite
     GENERIC MAP (
       C_FAMILY => "spartan7",
-      C_S_AXI_ACLK_FREQ_HZ => 100000000,
+      C_S_AXI_ACLK_FREQ_HZ => 5000000,
       C_S_AXI_ADDR_WIDTH => 4,
       C_S_AXI_DATA_WIDTH => 32,
       C_BAUDRATE => 9600,

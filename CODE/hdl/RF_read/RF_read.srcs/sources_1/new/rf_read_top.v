@@ -133,7 +133,7 @@ module rf_read_top(
         .wr_en(enable),
         .empty(empty_led),
         .dout(fifo_out),
-        .rd_en(rd_en)
+        .rd_en(rd_en&ready_uart)
     );
 
     ser_buffer serial_dut_0(

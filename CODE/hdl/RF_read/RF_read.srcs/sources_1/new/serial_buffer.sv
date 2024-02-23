@@ -107,7 +107,7 @@ module ser_buffer(
                     data_out_d = {data_out_q[7:1],data_in}; 
                 end
                 default: begin
-                    data_out_d = data_in;
+                    data_out_d = data_out_q;
                 end
             endcase
             counter_d = counter_q + 1'b1;

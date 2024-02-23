@@ -2,7 +2,7 @@
 // Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-// Date        : Wed Feb 14 07:52:17 2024
+// Date        : Fri Feb 23 11:01:51 2024
 // Host        : DESKTOP-8G5SJN0 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode synth_stub
 //               c:/Users/SethT/Desktop/CMPE_Capstone/CODE/hdl/RF_read/RF_read.gen/sources_1/ip/axi_uartlite_0/axi_uartlite_0_stub.v
