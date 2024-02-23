@@ -36,7 +36,7 @@ module par_buffer(
         end
         else begin
             index_d = 3'b111;
-            data_out = 1'bX;
+            data_out = 1'b0;
         end
     end
 endmodule

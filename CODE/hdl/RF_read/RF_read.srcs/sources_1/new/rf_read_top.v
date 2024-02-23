@@ -25,12 +25,20 @@ module rf_read_top(
     input rst,
     input rd_en,
     input uart_rx,
+//    input sdo, //rf
+//    input intr_in, //rf
     output uart_tx,
     output empty_led,
     output full_led
+//    output sdi, //rf
+//    output sck, //rf
+//    output cs, //rf
+//    output n_rst, //rf
+//    output wake //rf
 //    output[7:0] data_o
     );
     
+    wire clk;
 	wire inc;
     wire sdo;
     wire intr_in;
@@ -39,19 +47,14 @@ module rf_read_top(
     wire cs;
     wire data_out_s;
     wire intr_out;
-    wire [7:0] rd_data1;
-    wire [7:0] rd_data2;
-    wire [15:0] data_in;
     wire [15:0] data_out_mem;
     wire [2:0] addr_a;
     wire ready;
-    wire intr;
     wire [9:0] addr_out;
     wire [7:0] data_out;
     wire [1:0] inst;
     wire cs_out;
     wire intr_inter;
-    wire uart_ready;
     wire [7:0] fifo_out;
     wire enable;
     wire [7:0] rf_data_out;
@@ -59,10 +62,16 @@ module rf_read_top(
     
 //    assign data_o = fifo_out;
     assign intr_in = 1'b0;
+    assign n_rst = 1;
+    assign wake = 0;
     
+    clk_wiz_0 clk_wiz(
+        .clk_out1(clk),
+        .clk_in1(CLK100MHZ)
+    );
     
     RF_cl_test RF_state(
-        .clk(CLK100MHZ),
+        .clk(clk),
         .rst(rst),
         .data_in(data_out_mem),
         .ready(ready),
@@ -76,7 +85,7 @@ module rf_read_top(
     );
     
     RF RF_0(
-        .clk(CLK100MHZ),
+        .clk(clk),
         .rst(rst),
         .c_en(cs_out),
         .intr(intr_in),
@@ -93,7 +102,7 @@ module rf_read_top(
     );
     
     pc pc_dut_0(
-        .clk(CLK100MHZ),
+        .clk(clk),
         .rst(rst),
         .inc(inc),
         .jmp(1'b0),
@@ -102,13 +111,13 @@ module rf_read_top(
     );
      
     blk_mem_gen_0 mem_0(
-        .clka(CLK100MHZ),
+        .clka(clk),
         .addra(addr_a),
         .douta(data_out_mem)
     );
     
     fifo_generator_0 fifo_0(
-        .clk(CLK100MHZ),
+        .clk(clk),
         .srst(rst),
         .full(full_led),
         .din(rf_data_out),
@@ -119,7 +128,7 @@ module rf_read_top(
     );
 
     ser_buffer serial_dut_0(
-        .clk(CLK100MHZ),
+        .clk(clk),
         .rst(rst),
         .start(~cs),
         .data_in(data_out_s),
@@ -129,7 +138,7 @@ module rf_read_top(
     );
 
     par_buffer parallel_dut_0(
-        .clk(CLK100MHZ),
+        .clk(clk),
         .rst(rst),
         .start(~cs),
         .data_in(data_out),
@@ -137,7 +146,7 @@ module rf_read_top(
     );
     
     UART_pkg uart_dut_0(
-        .clk(CLK100MHZ),
+        .clk(clk),
         .rst(rst),
         .data(fifo_out),
         .valid(rd_en),
