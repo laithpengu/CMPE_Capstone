@@ -34,13 +34,15 @@ module pwm_wrapper(
     wire clk_330hz;
     wire [7:0] addr_a;
     wire [15:0] data_out_mem;
+    wire pwm_rdy;
     
     PWM u_inst_pwm(
         .clk_400khz(clk_400khz),
         .clk_200khz(clk_200khz),
         .rst(rst),
-//        .data_in(16'h9630),
+//        .data_in(16'h9820),
         .data_in(data_out_mem),
+        .pwm_rdy(pwm_rdy),
         .spd_out(spd),
         .dir_out(dir)
     );

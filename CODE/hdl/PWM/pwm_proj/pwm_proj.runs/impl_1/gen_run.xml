@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="impl_1" LaunchPart="xc7s50csga324-1" LaunchTime="1708374440">
+<GenRun Id="impl_1" LaunchPart="xc7s50csga324-1" LaunchTime="1708719092">
   <File Type="ROUTE-PWR" Name="pwm_wrapper_power_routed.rpt"/>
   <File Type="PA-TCL" Name="pwm_wrapper.tcl"/>
   <File Type="ROUTE-PWR-SUM" Name="pwm_wrapper_power_summary_routed.pb"/>
@@ -128,7 +128,7 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PPRDIR/../src/pwm_direction.sv">
+    <File Path="$PPRDIR/../src/pwm_dir.sv">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
@@ -198,7 +198,9 @@
     <Step Id="phys_opt_design"/>
     <Step Id="route_design"/>
     <Step Id="post_route_phys_opt_design"/>
-    <Step Id="write_bitstream"/>
+    <Step Id="write_bitstream">
+      <Option Id="BinFile">1</Option>
+    </Step>
   </Strategy>
   <BlockFileSet Type="BlockSrcs" Name="blk_mem_gen_0"/>
 </GenRun>

@@ -1,0 +1,8 @@
+../../pc/src/pc.sv
+../../PWM/src/clk_div_0.sv
+../../PWM/src/clk_div_1.sv
+../../PWM/src/clk_div_2.sv
+../../PWM/src/pwm_dir.sv
+../../PWM/src/pwm_speed.sv
+../../PWM/src/pwm.sv
+../../bc_buffer/src/bc_buffer.sv

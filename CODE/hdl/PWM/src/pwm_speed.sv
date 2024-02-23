@@ -16,7 +16,8 @@ module pwm_speed(
     input clk,
     input rst,
     input [7:0] data_in,
-    output data_out
+    output data_out,
+    output speed_rdy
     );
 
     logic [7:0] data_in_q;
@@ -32,8 +33,7 @@ module pwm_speed(
 
     assign data_in_d = data_in;
     assign data_out = data_out_q;
-
-
+    assign speed_rdy = (counter_q == 0);
 
     always_ff @(posedge clk or posedge rst)
     begin

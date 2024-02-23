@@ -25,22 +25,22 @@
 module bc_buffer(
         input clk,
         input rst,
-        
-        input avoid_out_rdy,
-        output avoid_out_valid,
-        output [15:0] avoid_out_data, // leaving the incoming_fifo
-        
-        output avoid_in_rdy,
-        input avoid_in_valid,
-        input [15:0] avoid_in_data, // going into incoming_fifo
 
-        input ctrl_out_rdy,
-        output ctrl_out_valid,
-        output [15:0] ctrl_out_data,
+        input [15:0] avoid_in_data, // going into incoming_fifo
+        input avoid_in_valid,
+        output avoid_in_rdy,
         
-        output ctrl_in_rdy,
+        output [15:0] avoid_out_data, // leaving the incoming_fifo
+        output avoid_out_valid,
+        input avoid_out_rdy,
+
+        input [15:0] ctrl_in_data,
         input ctrl_in_valid,
-        input [15:0] ctrl_in_data
+        output ctrl_in_rdy,
+
+        output [15:0] ctrl_out_data,
+        output ctrl_out_valid,
+        input ctrl_out_rdy
     );
     
     logic new_full;
