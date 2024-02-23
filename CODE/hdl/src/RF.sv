@@ -73,7 +73,7 @@ module RF(
     assign long_addr = {mode_q[1], addr_in, mode_q[0]};
     assign short_addr = {mode_q[1], addr_in[5:0], mode_q[0]};
     assign sdi = sdi_q;
-    assign data_out = data_out_q;
+//    assign data_out = data_out_q;
     assign cs = cs_q;
     assign ready = ready_q;
     assign sck = clk; 

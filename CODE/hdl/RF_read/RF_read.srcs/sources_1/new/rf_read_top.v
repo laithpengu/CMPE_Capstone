@@ -48,8 +48,10 @@ module rf_read_top(
     // wire cs;
     wire data_out_s;
     wire intr_out;
-    wire [15:0] data_out_mem;
+    wire [15:0] data_out_mem_a;
+    wire [15:0] data_out_mem_b;
     wire [2:0] addr_a;
+    wire [5:0] addr_b;
     wire ready;
     wire [9:0] addr_out;
     wire [7:0] data_out;
@@ -63,8 +65,8 @@ module rf_read_top(
     
 //    assign data_o = fifo_out;
     assign intr = 1'b0;
-    assign n_rst = 1;
-    assign wake = 0;
+    assign n_rst = 1'b1;
+    assign wake = 1'b0;
     
     clk_wiz_0 clk_wiz(
         .clk_out1(clk),
@@ -74,7 +76,7 @@ module rf_read_top(
     RF_cl_test RF_state(
         .clk(clk),
         .rst(rst),
-        .data_in(data_out_mem),
+        .data_in(data_out_mem_b),
         .ready(ready),
         .intr(intr_inter),
         .addr_out(addr_out),
@@ -108,13 +110,19 @@ module rf_read_top(
         .inc(inc),
         .jmp(1'b0),
         .addrin(1'b0),
-        .addrout(addr_a)
+        .addrout(addr_b)
     );
      
     blk_mem_gen_0 mem_0(
         .clka(clk),
         .addra(addr_a),
-        .douta(data_out_mem)
+        .douta(data_out_mem_a)
+    );
+
+    blk_mem_gen_1 rf_addr_0(
+        .clka(clk),
+        .addra(addr_b),
+        .douta(data_out_mem_b)
     );
     
     fifo_generator_0 fifo_0(

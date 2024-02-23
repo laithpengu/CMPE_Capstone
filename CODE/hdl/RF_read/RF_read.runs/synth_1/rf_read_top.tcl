@@ -71,7 +71,8 @@ proc create_report { reportName command } {
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
 set_param checkpoint.writeSynthRtdsInDcp 1
-set_param synth.incrementalSynthesisCache C:/Users/SethT/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-10820-DESKTOP-8G5SJN0/incrSyn
+set_param chipscope.maxJobs 2
+set_param synth.incrementalSynthesisCache C:/Users/SethT/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-10280-DESKTOP-8G5SJN0/incrSyn
 set_msg_config -id {Synth 8-256} -limit 10000
 set_msg_config -id {Synth 8-638} -limit 10000
 OPTRACE "Creating in-memory project" START { }
@@ -92,15 +93,14 @@ set_property ip_output_repo c:/Users/SethT/Desktop/CMPE_Capstone/CODE/hdl/RF_rea
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
-add_files C:/Users/SethT/Desktop/CMPE_Capstone/CODE/mem_files/Read_mem.coe
 add_files C:/Users/SethT/Desktop/CMPE_Capstone/CODE/mem_files/mem_read.coe
+add_files C:/Users/SethT/Desktop/CMPE_Capstone/CODE/mem_files/mem_read_rf.coe
 read_verilog -library xil_defaultlib -sv {
   C:/Users/SethT/Desktop/CMPE_Capstone/CODE/hdl/src/RF.sv
   C:/Users/SethT/Desktop/CMPE_Capstone/CODE/hdl/src/RF_cl_test.sv
   C:/Users/SethT/Desktop/CMPE_Capstone/CODE/hdl/UART/src/UART_ctrl.sv
   C:/Users/SethT/Desktop/CMPE_Capstone/CODE/hdl/UART/src/UART_pkg.sv
   C:/Users/SethT/Desktop/CMPE_Capstone/CODE/hdl/UART/src/ascii_conv.sv
-  C:/Users/SethT/Desktop/CMPE_Capstone/CODE/hdl/RF_read/RF_read.srcs/sources_1/new/parallel_buffer.sv
   C:/Users/SethT/Desktop/CMPE_Capstone/CODE/hdl/pc/src/pc.sv
   C:/Users/SethT/Desktop/CMPE_Capstone/CODE/hdl/RF_read/RF_read.srcs/sources_1/new/serial_buffer.sv
 }
@@ -117,6 +117,14 @@ read_ip -quiet C:/Users/SethT/Desktop/CMPE_Capstone/CODE/hdl/RF_read/RF_read.src
 set_property used_in_implementation false [get_files -all c:/Users/SethT/Desktop/CMPE_Capstone/CODE/hdl/RF_read/RF_read.gen/sources_1/ip/fifo_generator_0/fifo_generator_0.xdc]
 set_property used_in_implementation false [get_files -all c:/Users/SethT/Desktop/CMPE_Capstone/CODE/hdl/RF_read/RF_read.gen/sources_1/ip/fifo_generator_0/fifo_generator_0_ooc.xdc]
 
+read_ip -quiet C:/Users/SethT/Desktop/CMPE_Capstone/CODE/hdl/RF_read/RF_read.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci
+set_property used_in_implementation false [get_files -all c:/Users/SethT/Desktop/CMPE_Capstone/CODE/hdl/RF_read/RF_read.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_board.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/SethT/Desktop/CMPE_Capstone/CODE/hdl/RF_read/RF_read.gen/sources_1/ip/clk_wiz_0/clk_wiz_0.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/SethT/Desktop/CMPE_Capstone/CODE/hdl/RF_read/RF_read.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_ooc.xdc]
+
+read_ip -quiet c:/Users/SethT/Desktop/CMPE_Capstone/CODE/hdl/RF_read/RF_read.srcs/sources_1/ip/blk_mem_gen_1/blk_mem_gen_1.xci
+set_property used_in_implementation false [get_files -all c:/Users/SethT/Desktop/CMPE_Capstone/CODE/hdl/RF_read/RF_read.gen/sources_1/ip/blk_mem_gen_1/blk_mem_gen_1_ooc.xdc]
+
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
 # stitched into the results of this synthesis run. Any black boxes in the
@@ -129,6 +137,8 @@ foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
 read_xdc C:/Users/SethT/Desktop/CMPE_Capstone/CODE/hdl/Arty-S7-50-Master.xdc
 set_property used_in_implementation false [get_files C:/Users/SethT/Desktop/CMPE_Capstone/CODE/hdl/Arty-S7-50-Master.xdc]
 
+read_xdc dont_touch.xdc
+set_property used_in_implementation false [get_files dont_touch.xdc]
 set_param ips.enableIPCacheLiteLoad 1
 
 read_checkpoint -auto_incremental -incremental C:/Users/SethT/Desktop/CMPE_Capstone/CODE/hdl/RF_read/RF_read.srcs/utils_1/imports/synth_1/rf_read_top.dcp

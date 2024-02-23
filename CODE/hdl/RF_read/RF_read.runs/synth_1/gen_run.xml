@@ -1,13 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7s50csga324-1" LaunchTime="1708545604" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/rf_read_top.dcp">
+<GenRun Id="synth_1" LaunchPart="xc7s50csga324-1" LaunchTime="1708713258" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/rf_read_top.dcp">
   <File Type="PA-TCL" Name="rf_read_top.tcl"/>
+  <File Type="RDS-PROPCONSTRS" Name="rf_read_top_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="rf_read_top_reports.tcl"/>
   <File Type="RDS-RDS" Name="rf_read_top.vds"/>
   <File Type="RDS-UTIL" Name="rf_read_top_utilization_synth.rpt"/>
   <File Type="RDS-UTIL-PB" Name="rf_read_top_utilization_synth.pb"/>
   <File Type="RDS-DCP" Name="rf_read_top.dcp"/>
+  <File Type="VDS-TIMINGSUMMARY" Name="rf_read_top_timing_summary_synth.rpt"/>
+  <File Type="VDS-TIMING-PB" Name="rf_read_top_timing_summary_synth.pb"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
     <Filter Type="Srcs"/>
+    <File Path="$PSRCDIR/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0.xci">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
     <File Path="$PPRDIR/../src/RF.sv">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
@@ -43,13 +53,6 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PSRCDIR/sources_1/new/parallel_buffer.sv">
-      <FileInfo>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="implementation"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
     <File Path="$PPRDIR/../pc/src/pc.sv">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
@@ -71,13 +74,21 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PPRDIR/../../mem_files/Read_mem.coe">
+    <File Path="$PSRCDIR/sources_1/new/parallel_buffer.sv">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../mem_files/mem_read.coe">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PPRDIR/../../mem_files/mem_read.coe">
+    <File Path="$PPRDIR/../../mem_files/mem_read_rf.coe">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
@@ -119,7 +130,8 @@
     <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2023"/>
     <Step Id="synth_design"/>
   </Strategy>
-  <BlockFileSet Type="BlockSrcs" Name="fifo_generator_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="blk_mem_gen_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="blk_mem_gen_1"/>
   <BlockFileSet Type="BlockSrcs" Name="axi_uartlite_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="fifo_generator_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="clk_wiz_0"/>
 </GenRun>
