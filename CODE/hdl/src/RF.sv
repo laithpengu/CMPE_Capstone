@@ -55,8 +55,8 @@ module RF(
     logic ready_q;
     logic sdi_d; 
     logic sdi_q;
-    logic data_out_d;
-    logic data_out_q;
+    // logic data_out_d;
+    // logic data_out_q;
     logic cs_q;
     logic cs_d;
     logic c_en_q;

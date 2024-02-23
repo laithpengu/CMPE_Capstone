@@ -18,10 +18,14 @@
   <File Type="BITSTR-MMI" Name="rf_read_top.mmi"/>
   <File Type="ROUTE-METHODOLOGY-DRC" Name="rf_read_top_methodology_drc_routed.rpt"/>
   <File Type="BITSTR-SYSDEF" Name="rf_read_top.sysdef"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="rf_read_top_methodology_drc_routed.pb"/>
   <File Type="BITSTR-LTX" Name="debug_nets.ltx"/>
   <File Type="BITSTR-LTX" Name="rf_read_top.ltx"/>
+  <File Type="BOOT-PDI-FILE" Name="rf_read_top_boot.pdi"/>
   <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
+  <File Type="NPI_FILE" Name="rf_read_top.npi"/>
   <File Type="OPT-DRC" Name="rf_read_top_drc_opted.rpt"/>
+  <File Type="RBD_FILE" Name="rf_read_top.rbd"/>
   <File Type="OPT-HWDEF" Name="rf_read_top.hwdef"/>
   <File Type="PLACE-IO" Name="rf_read_top_io_placed.rpt"/>
   <File Type="PLACE-UTIL" Name="rf_read_top_utilization_placed.rpt"/>
@@ -55,17 +59,13 @@
   <File Type="POSTROUTE-PHYSOPT-TIMING-RPX" Name="rf_read_top_timing_summary_postroute_physopted.rpx"/>
   <File Type="POSTROUTE-PHYSOPT-BUS-SKEW" Name="rf_read_top_bus_skew_postroute_physopted.rpt"/>
   <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-RPX" Name="rf_read_top_bus_skew_postroute_physopted.rpx"/>
-  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="rf_read_top_methodology_drc_routed.pb"/>
   <File Type="ROUTE-DRC-RPX" Name="rf_read_top_drc_routed.rpx"/>
   <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="rf_read_top_methodology_drc_routed.rpx"/>
   <File Type="PDI-FILE" Name="rf_read_top.pdi"/>
-  <File Type="BOOT-PDI-FILE" Name="rf_read_top_boot.pdi"/>
   <File Type="PL-PDI-FILE" Name="rf_read_top_pld.pdi"/>
   <File Type="RCFI_FILE" Name="rf_read_top.rcfi"/>
   <File Type="CFI_FILE" Name="rf_read_top.cfi"/>
   <File Type="RNPI_FILE" Name="rf_read_top.rnpi"/>
-  <File Type="NPI_FILE" Name="rf_read_top.npi"/>
-  <File Type="RBD_FILE" Name="rf_read_top.rbd"/>
   <File Type="ROUTE-RQS" Name="rf_read_top_routed.rqs"/>
   <File Type="POSTROUTE-PHYSOPT-RQS" Name="rf_read_top_postroute_physopted.rqs"/>
   <File Type="ROUTE-RQS-RPT" Name="route_report_qor_suggestions_0.rpt"/>
@@ -192,7 +192,7 @@
     <Step Id="write_bitstream"/>
     <Step Id="write_device_image"/>
   </Strategy>
-  <BlockFileSet Type="BlockSrcs" Name="blk_mem_gen_0"/>
   <BlockFileSet Type="BlockSrcs" Name="fifo_generator_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="blk_mem_gen_0"/>
   <BlockFileSet Type="BlockSrcs" Name="axi_uartlite_0"/>
 </GenRun>
