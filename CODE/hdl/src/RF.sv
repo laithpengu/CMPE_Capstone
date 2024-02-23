@@ -34,10 +34,8 @@ module RF(
     output logic sck,
     output logic cs,
     output logic data_out,
-    output logic intr_out,
-    output logic rst_n
+    output logic intr_out
     );
-    assign rst_n = ~rst;
     enum {idle_s, longrd_s, longwr_s, shortrd_s, shortwr_s} curr_s, next_s;
     // 00 - short read
     // 01 - short write
@@ -57,52 +55,50 @@ module RF(
     logic ready_q;
     logic sdi_d; 
     logic sdi_q;
-    // logic sdo_d;
-    // logic sdo_q;
-    // logic data_out_d;
-    // logic data_out_q;
+    logic data_out_d;
+    logic data_out_q;
     logic cs_q;
     logic cs_d;
     logic c_en_q;
     logic c_en_d;
     logic [1:0] mode_q;
     logic [1:0] mode_d;
-    
-    assign rst_n = ~rst;
+    logic intr_d;
+    logic intr_q;
+    logic intr_deb;
+    assign intr_d = intr;
     assign intr_out = intr;
-    assign mode_sm = {intr, c_en, mode};
+    assign intr_deb = 0;
+    assign mode_sm = {intr_deb, c_en, mode};
     assign long_addr = {mode_q[1], addr_in, mode_q[0]};
     assign short_addr = {mode_q[1], addr_in[5:0], mode_q[0]};
     assign sdi = sdi_q;
-    // assign data_out = data_out_q;
+    assign data_out = data_out_q;
     assign cs = cs_q;
     assign ready = ready_q;
     assign sck = clk; 
     assign c_en_d = c_en;
-    // assign sdo_d = sdo;
-    assign data_out = sdo;
     
     // Sequential procedural block for state and synchronize the outputs
     always_ff @(negedge clk or posedge rst)
     begin
       if (rst) begin
         curr_s <= idle_s;
-        sdi_q <= 1'bX;
-        // sdo_q <= 1'bX;
-        // data_out_q <= 1'bX;
+        sdi_q <= 1'b0;
+        data_out_q <= 1'bX;
         cs_q  <= 1'b1;
         ready_q <= 1'b0;
         wait_index_q <= 3'b000;
         addr_index_q <= 4'b0000;
         data_index_q <= 4'b0000;
         mode_q <= 2'b00;
+        intr_q <= 'b0;
         c_en_q <= 'b0;
       end 
       else begin
         curr_s <= next_s;
         sdi_q <= sdi_d;
-        // sdo_q <= sdo_d;
-        // data_out_q <= data_out_d;
+        data_out_q <= data_out_d;
         cs_q <= cs_d;
         ready_q <= ready_d;
         wait_index_q <= wait_index_d;
@@ -110,6 +106,7 @@ module RF(
         data_index_q <= data_index_d;
         mode_q <= mode_d;
         c_en_q <= c_en_d;
+        intr_q = intr_d;
       end
     end
     
@@ -128,33 +125,33 @@ module RF(
         idle_s: begin   
             ready_d = 1'b1;
             cs_d = 1'b1;       
-            sdi_d = 1'bx;
-            // data_out = 1'bx;
+            sdi_d = 1'b0;
+            data_out_d = 1'bx;
             wait_index_d = 3'b000;
             addr_index_d = 4'b0000;
             data_index_d = 4'b0000;      
             case(mode_sm)
 
-                5'b0100: begin
+                4'b0100: begin
                     next_s = shortrd_s;
                     addr_index_d = 4'b1000;
                     data_index_d = 4'b1000;
                 end
 
-                5'b0101: begin
+                4'b0101: begin
                     next_s = shortwr_s;
                     addr_index_d = 4'b1000;
                     data_index_d = 4'b1000;
                 end
 
-                5'b0110: begin
+                4'b0110: begin
                     next_s = longrd_s;
                     wait_index_d = 3'b100;
                     addr_index_d = 4'b1100;
                     data_index_d = 4'b1000;
                 end
 
-                5'b0111: begin
+                4'b0111: begin
                     next_s = longwr_s;
                     wait_index_d = 3'b100;
                     addr_index_d = 4'b1100;
@@ -168,27 +165,27 @@ module RF(
         end
         
         shortrd_s: begin
-            case(intr)
+            case(intr_deb)
                 1'b0: begin
                     if(addr_index_q > 4'b0) begin
                         sdi_d = short_addr[addr_index_q - 1'b1];
-                        // data_out = 1'b0;
+                        data_out_d = 1'b0;
                         addr_index_d = addr_index_q - 1'b1; 
                         next_s = shortrd_s;
                         cs_d = 1'b0;
                         ready_d = 1'b0;
                     end
                     else if(addr_index_q == 4'b0 && data_index_q > 4'b0) begin
-                        sdi_d = 1'bx;
-                        // data_out = sdo;
+                        sdi_d = 1'b0;
+                        data_out_d = sdo;
                         data_index_d = data_index_q - 1'b1; 
                         next_s = shortrd_s;
                         cs_d = 1'b0;
                         ready_d = 1'b0;
                     end
                     else begin
-                        sdi_d = 1'bx;
-                        // data_out = 1'bx;
+                        sdi_d = 1'b0;
+                        data_out_d = 1'bx;
                         cs_d = 1'b1;
                         ready_d = 1'b1;
                         next_s = idle_s;
@@ -196,8 +193,8 @@ module RF(
                 end
 
                 default: begin
-                    sdi_d = 1'bx;
-                    // data_out = 1'bx;
+                    sdi_d = 1'b0;
+                    data_out_d = 1'bx;
                     addr_index_d = 4'b0000; 
                     data_index_d = 4'b0000; 
                     cs_d = 1'b1;
@@ -208,11 +205,11 @@ module RF(
         end
         
         shortwr_s: begin
-            case(intr)
+            case(intr_deb)
                 1'b0: begin
                     if(addr_index_q > 4'b0) begin
                         sdi_d = short_addr[addr_index_q - 1'b1];
-                        // data_out = 1'b0;
+                        data_out_d = 1'b0;
                         addr_index_d = addr_index_q - 1'b1; 
                         cs_d = 1'b0;
                         ready_d = 1'b0;
@@ -220,15 +217,15 @@ module RF(
                     end
                     else if(addr_index_q == 4'b0 && data_index_q > 4'b0) begin
                         sdi_d = data_in[data_index_q - 1'b1];
-                        // data_out = 1'b0;
+                        data_out_d = 1'b0;
                         data_index_d = data_index_q - 1'b1; 
                         cs_d = 1'b0;
                         ready_d = 1'b0;
                         next_s = shortwr_s;
                     end
                     else begin
-                        sdi_d = 1'bx;
-                        // data_out = 1'bx;
+                        sdi_d = 1'b0;
+                        data_out_d = 1'bx;
                         cs_d = 1'b1;
                         ready_d = 1'b0;
                         next_s = idle_s;
@@ -236,8 +233,8 @@ module RF(
                 end
 
                 default: begin
-                    sdi_d = 1'bx;
-                    // data_out = 1'bx;
+                    sdi_d = 1'b0;
+                    data_out_d = 1'bx;
                     addr_index_d = 4'b0000; 
                     data_index_d = 4'b0000; 
                     cs_d = 1'b1;
@@ -248,35 +245,35 @@ module RF(
         end
         
         longrd_s: begin
-            case(intr)
+            case(intr_deb)
                 1'b0: begin
                     if(addr_index_q > 4'b0) begin
                         sdi_d = long_addr[addr_index_q - 1'b1];
-                        // data_out = 1'b0;
+                        data_out_d = 1'b0;
                         addr_index_d = addr_index_q - 1'b1; 
                         cs_d = 1'b0;
                         ready_d = 1'b0;
                         next_s = longrd_s;
                     end
                     else if(addr_index_q == 4'b0 && wait_index_q > 3'b0) begin
-                        sdi_d = 1'bx;
-                        // data_out = 1'b0;
+                        sdi_d = 1'b0;
+                        data_out_d = 1'b0;
                         wait_index_d = wait_index_q - 1'b1; 
                         cs_d = 1'b0;
                         ready_d = 1'b0;
                         next_s = longrd_s;
                     end
                     else if(addr_index_q == 4'b0 && wait_index_q == 3'b0 && data_index_q > 4'b0) begin
-                        sdi_d = 1'bx;
-                        // data_out = sdo;
+                        sdi_d = 1'b0;
+                        data_out_d = sdo;
                         data_index_d = data_index_q - 1'b1; 
                         cs_d = 1'b0;
                         ready_d = 1'b0;
                         next_s = longrd_s;
                     end
                     else begin
-                        sdi_d = 1'bx;
-                        // data_out = 1'bx;
+                        sdi_d = 1'b0;
+                        data_out_d = 1'bx;
                         cs_d = 1'b1;
                         ready_d = 1'b0;
                         next_s = idle_s;
@@ -284,8 +281,8 @@ module RF(
                 end
 
                 default: begin
-                    sdi_d = 1'bx;
-                    // data_out = 1'bx;
+                    sdi_d = 1'b0;
+                    data_out_d = 1'bx;
                     addr_index_d = 4'b0000; 
                     data_index_d = 4'b0000;
                     wait_index_d = 3'b000;
@@ -297,19 +294,19 @@ module RF(
         end
         
         longwr_s: begin
-            case(intr)
+            case(intr_deb)
                 1'b0: begin
                     if(addr_index_q > 4'b0) begin
                         sdi_d = long_addr[addr_index_q - 1'b1];
-                        // data_out = 1'b0;
+                        data_out_d = 1'b0;
                         addr_index_d = addr_index_q - 1'b1; 
                         cs_d = 1'b0;
                         ready_d = 1'b0;
                         next_s = longwr_s;
                     end
                     else if(addr_index_q == 4'b0 && wait_index_q > 4'b0) begin
-                        sdi_d = 1'bx;
-                        // data_out = 1'b0;
+                        sdi_d = 1'b0;
+                        data_out_d = 1'b0;
                         wait_index_d = wait_index_q - 1'b1; 
                         cs_d = 1'b0;
                         ready_d = 1'b0;
@@ -317,15 +314,15 @@ module RF(
                     end
                     else if(addr_index_q == 4'b0 && wait_index_q == 4'b0 && data_index_q > 4'b0) begin
                         sdi_d = data_in[data_index_q - 1'b1];
-                        // data_out = 1'b0;
+                        data_out_d = 1'b0;
                         data_index_d = data_index_q - 1'b1; 
                         cs_d = 1'b0;
                         ready_d = 1'b0;
                         next_s = longwr_s;
                     end
                     else begin
-                        sdi_d = 1'bx;
-                        // data_out = 1'bx;
+                        sdi_d = 1'b0;
+                        data_out_d = 1'bx;
                         cs_d = 1'b1;
                         ready_d = 1'b1;
                         next_s = idle_s;
@@ -333,8 +330,8 @@ module RF(
                 end
 
                 default: begin
-                    sdi_d = 1'bx;
-                    // data_out = 1'bx;
+                    sdi_d = 1'b0;
+                    data_out_d = 1'bx;
                     addr_index_d = 4'b0000; 
                     data_index_d = 4'b0000;
                     wait_index_d = 3'b000;
@@ -348,8 +345,8 @@ module RF(
         //default case
         default: begin
             next_s = curr_s;
-            sdi_d = 1'bx;
-            // data_out = 1'bx;
+            sdi_d = 1'b0;
+            data_out_d = 1'bx;
             addr_index_d = 4'b0000; 
             data_index_d = 4'b0000;
             wait_index_d = 3'b000;
@@ -360,3 +357,4 @@ module RF(
     endcase 
     end
 endmodule
+
