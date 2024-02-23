@@ -1,10 +1,10 @@
 # Repository for CMPE Capstone group ICS-Processor
 ## Contributors
+- Ethan Swain (leader)
 - Nick Battista
 - Cole Cavanaugh
 - Seth Ellis
 - John Hair
-- Ethan Swain
 ## Contents
 ### CODE
 - **controllerArduino**: Code for the arduino going on the controller
