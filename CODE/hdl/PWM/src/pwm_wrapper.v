@@ -24,7 +24,7 @@ module pwm_wrapper(
     input CLK100MHZ,
     input rst,
     // input [15:0] data_in,
-    output spd,
+    output speed,
     output dir
     );
     
@@ -43,7 +43,7 @@ module pwm_wrapper(
 //        .data_in(16'h9820),
         .data_in(data_out_mem),
         .pwm_rdy(pwm_rdy),
-        .spd_out(spd),
+        .speed_out(speed),
         .dir_out(dir)
     );
     

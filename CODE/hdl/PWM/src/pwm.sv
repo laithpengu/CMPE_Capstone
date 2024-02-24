@@ -27,8 +27,8 @@ module PWM(
     input [15:0] data_in,
     input pwm_valid,
     output pwm_rdy,
-    output spd_out,
-    output dir_out
+    output dir_out,
+    output speed_out
     );
 
     logic [15:0] data_in_q;
@@ -42,7 +42,7 @@ module PWM(
     assign speed = data_in_q[7:0];
     assign pwm_rdy = speed_rdy & dir_rdy;
 
-    always_ff @(posedge clk) begin
+    always_ff @(posedge clk_200khz) begin
         if(pwm_valid && pwm_rdy)
             data_in_q <= data_in;
         else
@@ -53,7 +53,7 @@ module PWM(
         .clk(clk_400khz),
         .rst(rst),
         .data_in(speed),
-        .data_out(spd_out),
+        .data_out(speed_out),
         .speed_rdy(speed_rdy));
 
     pwm_dir u_inst_pwm_dir(

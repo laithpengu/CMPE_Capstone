@@ -37,7 +37,7 @@ set_property -dict { PACKAGE_PIN G15   IOSTANDARD LVCMOS33 } [get_ports { rst }]
 
 ## Pmod Header JA
 set_property -dict { PACKAGE_PIN L17   IOSTANDARD LVCMOS33 } [get_ports { dir }]; #IO_L4P_T0_D04_14 Sch=ja_p[1]
-set_property -dict { PACKAGE_PIN L18   IOSTANDARD LVCMOS33 } [get_ports { spd }]; #IO_L4N_T0_D05_14 Sch=ja_n[1]
+set_property -dict { PACKAGE_PIN L18   IOSTANDARD LVCMOS33 } [get_ports { speed }]; #IO_L4N_T0_D05_14 Sch=ja_n[1]
 #set_property -dict { PACKAGE_PIN M14   IOSTANDARD LVCMOS33 } [get_ports { clk_out_0 }]; #IO_L5P_T0_D06_14 Sch=ja_p[2]
 #set_property -dict { PACKAGE_PIN N14   IOSTANDARD LVCMOS33 } [get_ports { clk_out_1 }]; #IO_L5N_T0_D07_14 Sch=ja_n[2]
 # set_property -dict { PACKAGE_PIN M16   IOSTANDARD LVCMOS33 } [get_ports { dir }]; #IO_L7P_T1_D09_14 Sch=ja_p[3]

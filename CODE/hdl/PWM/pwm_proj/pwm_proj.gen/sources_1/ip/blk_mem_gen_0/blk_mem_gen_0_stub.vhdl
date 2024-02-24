@@ -2,10 +2,10 @@
 -- Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
--- Date        : Fri Feb 23 12:41:12 2024
+-- Date        : Fri Feb 23 12:41:11 2024
 -- Host        : DESKTOP-M1PCUD5 running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode synth_stub
---               d:/CMPE_Capstone/CODE/hdl/PWM/pwm_proj/pwm_proj.gen/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0_stub.vhdl
+-- Command     : write_vhdl -force -mode synth_stub -rename_top blk_mem_gen_0 -prefix
+--               blk_mem_gen_0_ blk_mem_gen_0_stub.vhdl
 -- Design      : blk_mem_gen_0
 -- Purpose     : Stub declaration of top-level module interface
 -- Device      : xc7s50csga324-1

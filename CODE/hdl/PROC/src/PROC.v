@@ -10,8 +10,8 @@ module PROC(
     output out_valid,
     input out_rdy,
 
-    output spd,
-    output dir
+    output dir,
+    output speed
 );
 
     wire clk_5mhz;
@@ -57,8 +57,8 @@ module PROC(
         .data_in(new_bc),
         .pwm_valid(ctrl_out_valid)
         .pwm_rdy(pwm_rdy),
-        .spd_out(spd),
-        .dir_out(dir)
+        .dir_out(dir),
+        .speed_out(speed)
     );
     
     clk_wiz_0 wiz(
