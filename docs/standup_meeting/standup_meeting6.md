@@ -1,0 +1,6 @@
+- **Scope**: We are one half of the Intelligent Convoy System, ICS allows one leader vehicle to have autonomous follower vehicles with active obstacle avoidance. We are the ICS processor team, we are responsible for bring inter-car communication and motor control to ICS. 
+- **Schedule**: We're on schedule, Finalizing modules and testing what we've already made
+- **Spending**: Spending has not changed since our last standup. Total spent still stands at $663.95
+- **Stakeholders**: Our current stakeholder is Dr. LaBerge
+- **Status**: We are currently working on creating a car to car communication test this week as well as begin working on the packet manager and expand the control logic of the system.
+- **Specifics**: Since our last stand-up we have succesfully implemented speed and direction control of the cars, we have successfully communicated between the controller(arduino) and car(fpga), and we have successfully implemented the read functionality from the transceiever. 
