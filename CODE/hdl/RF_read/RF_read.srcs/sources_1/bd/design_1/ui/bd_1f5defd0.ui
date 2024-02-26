@@ -1,0 +1,23 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Default View_ScaleFactor":"1.42081",
+   "Default View_TopLeft":"-285,5",
+   "ExpandedHierarchyInLayout":"",
+   "guistr":"# # String gsaved with Nlview 7.5.8 2022-09-21 7111 VDI=41 GEI=38 GUI=JA:10.0
+#  -string -flagsOSRD
+preplace port port-id_CLK100MHZ -pg 1 -lvl 0 -x 0 -y 40 -defaultsOSRD
+preplace port port-id_rst -pg 1 -lvl 0 -x 0 -y 70 -defaultsOSRD
+preplace port port-id_uart_rx -pg 1 -lvl 0 -x 0 -y 130 -defaultsOSRD
+preplace port port-id_uart_tx -pg 1 -lvl 2 -x 280 -y 90 -defaultsOSRD
+preplace portBus sw -pg 1 -lvl 0 -x 0 -y 100 -defaultsOSRD
+preplace inst rf_read_top_0 -pg 1 -lvl 1 -x 140 -y 90 -defaultsOSRD
+preplace netloc CLK100MHZ_1 1 0 1 20J 40n
+preplace netloc rst_1 1 0 1 20J 70n
+preplace netloc sw_1 1 0 1 NJ 100
+preplace netloc uart_rx_1 1 0 1 20J 120n
+preplace netloc rf_read_top_0_uart_tx 1 1 1 N 90
+levelinfo -pg 1 0 140 280
+pagesize -pg 1 -db -bbox -sgen -130 0 380 180
+"
+}
+0

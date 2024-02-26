@@ -1,0 +1,101 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
+| Date         : Fri Feb 23 11:09:03 2024
+| Host         : DESKTOP-8G5SJN0 running 64-bit major release  (build 9200)
+| Command      : report_control_sets -verbose -file rf_read_top_control_sets_placed.rpt
+| Design       : rf_read_top
+| Device       : xc7s50
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Histogram
+3. Flip-Flop Distribution
+4. Detailed Control Set Information
+
+1. Summary
+----------
+
++----------------------------------------------------------+-------+
+|                          Status                          | Count |
++----------------------------------------------------------+-------+
+| Total control sets                                       |    23 |
+|    Minimum number of control sets                        |    23 |
+|    Addition due to synthesis replication                 |     0 |
+|    Addition due to physical synthesis replication        |     0 |
+| Unused register locations in slices containing registers |    61 |
++----------------------------------------------------------+-------+
+* Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
+** Run report_qor_suggestions for automated merging and remapping suggestions
+
+
+2. Histogram
+------------
+
++--------------------+-------+
+|       Fanout       | Count |
++--------------------+-------+
+| Total control sets |    23 |
+| >= 0 to < 4        |     0 |
+| >= 4 to < 6        |     5 |
+| >= 6 to < 8        |     6 |
+| >= 8 to < 10       |     3 |
+| >= 10 to < 12      |     2 |
+| >= 12 to < 14      |     1 |
+| >= 14 to < 16      |     0 |
+| >= 16              |     6 |
++--------------------+-------+
+* Control sets can be remapped at either synth_design or opt_design
+
+
+3. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |               7 |            4 |
+| No           | No                    | Yes                    |              56 |           20 |
+| No           | Yes                   | No                     |              50 |           18 |
+| Yes          | No                    | No                     |               2 |            1 |
+| Yes          | No                    | Yes                    |              81 |           26 |
+| Yes          | Yes                   | No                     |              79 |           16 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+4. Detailed Control Set Information
+-----------------------------------
+
++------------------------+-------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------+------------------+----------------+--------------+
+|      Clock Signal      |                                    Enable Signal                                    |                                              Set/Reset Signal                                              | Slice Load Count | Bel Load Count | Bels / Slice |
++------------------------+-------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------+------------------+----------------+--------------+
+|  clk_wiz/inst/clk_out1 | uart_dut_0/uart/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/start2                        | uart_dut_0/uart/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/cs_ce_clr                                  |                1 |              4 |         4.00 |
+|  clk_wiz/inst/clk_out1 | uart_dut_0/uart/U0/UARTLITE_CORE_I/BAUD_RATE_I/en_16x_Baud                          |                                                                                                            |                1 |              4 |         4.00 |
+| ~clk_wiz/inst/clk_out1 | RF_0/addr_index_d                                                                   | rst_IBUF                                                                                                   |                2 |              4 |         2.00 |
+| ~clk_wiz/inst/clk_out1 | RF_0/data_index_d                                                                   | rst_IBUF                                                                                                   |                2 |              4 |         2.00 |
+| ~clk_wiz/inst/clk_out1 | RF_0/FSM_onehot_curr_s[4]_i_1_n_0                                                   | rst_IBUF                                                                                                   |                2 |              5 |         2.50 |
+|  clk_wiz/inst/clk_out1 |                                                                                     | uart_dut_0/uart/U0/UARTLITE_CORE_I/UARTLITE_RX_I/SRL_FIFO_I/I_SRL_FIFO_RBU_F/CNTR_INCR_DECR_ADDN_F_I/SS[0] |                3 |              6 |         2.00 |
+|  clk_wiz/inst/clk_out1 |                                                                                     | uart_dut_0/uart/U0/UARTLITE_CORE_I/UARTLITE_TX_I/SRL_FIFO_I/I_SRL_FIFO_RBU_F/CNTR_INCR_DECR_ADDN_F_I/SS[0] |                3 |              6 |         2.00 |
+|  clk_wiz/inst/clk_out1 | RF_state/E[0]                                                                       | rst_IBUF                                                                                                   |                1 |              6 |         6.00 |
+|  clk_wiz/inst/clk_out1 |                                                                                     |                                                                                                            |                4 |              7 |         1.75 |
+|  clk_wiz/inst/clk_out1 | uart_dut_0/uart/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/fifo_wr             |                                                                                                            |                1 |              7 |         7.00 |
+|  clk_wiz/inst/clk_out1 | uart_dut_0/uart/U0/UARTLITE_CORE_I/BAUD_RATE_I/en_16x_Baud                          | uart_dut_0/uart/U0/UARTLITE_CORE_I/UARTLITE_RX_I/SERIAL_TO_PARALLEL[8].fifo_din[8]_i_1_n_0                 |                1 |              7 |         7.00 |
+|  clk_wiz/inst/clk_out1 | RF_state/FSM_onehot_curr_state[7]_i_1_n_0                                           | rst_IBUF                                                                                                   |                5 |              8 |         1.60 |
+|  clk_wiz/inst/clk_out1 | RF_state/data_out_d                                                                 | rst_IBUF                                                                                                   |                2 |              8 |         4.00 |
+|  clk_wiz/inst/clk_out1 | uart_dut_0/ctrl/E[0]                                                                | rst_IBUF                                                                                                   |                2 |              8 |         4.00 |
+|  clk_wiz/inst/clk_out1 |                                                                                     | uart_dut_0/uart/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/rst                                                  |                4 |             10 |         2.50 |
+|  clk_wiz/inst/clk_out1 | RF_state/addr_out_d                                                                 | rst_IBUF                                                                                                   |                2 |             10 |         5.00 |
+|  clk_wiz/inst/clk_out1 | RF_state/addr_d                                                                     | rst_IBUF                                                                                                   |                2 |             12 |         6.00 |
+|  clk_wiz/inst/clk_out1 | RF_state/counter_q[15]_i_1_n_0                                                      | rst_IBUF                                                                                                   |                6 |             16 |         2.67 |
+|  clk_wiz/inst/clk_out1 | fifo_0/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/gwss.wsts/E[0] | rst_IBUF                                                                                                   |                4 |             20 |         5.00 |
+|  clk_wiz/inst/clk_out1 | fifo_0/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/grss.rsts/E[0] | rst_IBUF                                                                                                   |                5 |             20 |         4.00 |
+|  clk_wiz/inst/clk_out1 | uart_dut_0/uart/U0/UARTLITE_CORE_I/BAUD_RATE_I/en_16x_Baud                          | rst_IBUF                                                                                                   |                5 |             28 |         5.60 |
+| ~clk_wiz/inst/clk_out1 |                                                                                     | rst_IBUF                                                                                                   |               10 |             31 |         3.10 |
+|  clk_wiz/inst/clk_out1 |                                                                                     | rst_IBUF                                                                                                   |               18 |             53 |         2.94 |
++------------------------+-------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------+------------------+----------------+--------------+
+
+

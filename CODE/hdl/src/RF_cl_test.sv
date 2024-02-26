@@ -206,10 +206,10 @@ module RF_cl_test(
                 next_state = send_state;
                 case({front_buff_q,back_buff_q})
                     2'b00: begin
-                        inst_d = 'b01;
+                        inst_d = 'b00;
                     end
                     2'b01: begin
-                        inst_d = 'b00;
+                        inst_d = 'b01;
                     end
                     2'b10: begin
                         inst_d = 'b10;

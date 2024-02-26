@@ -8,11 +8,12 @@ verilog xil_defaultlib  --include "../../../../pwm_proj.ip_user_files/ipstatic" 
 sv xil_defaultlib  --include "../../../../pwm_proj.ip_user_files/ipstatic" \
 "../../../../../src/clk_div_0.sv" \
 "../../../../../src/clk_div_1.sv" \
+"../../../../../src/clk_div_2.sv" \
 "../../../../../../pc/src/pc.sv" \
 "../../../../../src/pwm.sv" \
 "../../../../../src/pwm_direction.sv" \
 "../../../../../src/pwm_speed.sv" \
-"../../../../../src/pwm_tb.sv" \
+"../../../../../test/pwm_tb.sv" \
 
 # compile glbl module
 verilog xil_defaultlib "glbl.v"

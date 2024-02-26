@@ -1,0 +1,114 @@
+{
+  "design": {
+    "design_info": {
+      "boundary_crc": "0x0",
+      "device": "xc7s50csga324-1",
+      "gen_directory": "../../../../RF_read.gen/sources_1/bd/design_1",
+      "name": "design_1",
+      "rev_ctrl_bd_flag": "RevCtrlBdOff",
+      "synth_flow_mode": "Hierarchical",
+      "tool_version": "2023.2"
+    },
+    "design_tree": {
+      "rf_read_top_0": ""
+    },
+    "ports": {
+      "CLK100MHZ": {
+        "type": "clk",
+        "direction": "I",
+        "parameters": {
+          "FREQ_HZ": {
+            "value": "100000000"
+          }
+        }
+      },
+      "rst": {
+        "type": "rst",
+        "direction": "I",
+        "parameters": {
+          "POLARITY": {
+            "value": "ACTIVE_HIGH"
+          }
+        }
+      },
+      "sw": {
+        "type": "data",
+        "direction": "I",
+        "left": "3",
+        "right": "0"
+      },
+      "uart_rx": {
+        "direction": "I"
+      },
+      "uart_tx": {
+        "direction": "O"
+      }
+    },
+    "components": {
+      "rf_read_top_0": {
+        "vlnv": "xilinx.com:module_ref:rf_read_top:1.0",
+        "ip_revision": "1",
+        "xci_name": "design_1_rf_read_top_0_0",
+        "xci_path": "ip\\design_1_rf_read_top_0_0\\design_1_rf_read_top_0_0.xci",
+        "inst_hier_path": "rf_read_top_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "rf_read_top",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "CLK100MHZ": {
+            "direction": "I"
+          },
+          "rst": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "sw": {
+            "direction": "I",
+            "left": "3",
+            "right": "0"
+          },
+          "uart_rx": {
+            "direction": "I"
+          },
+          "uart_tx": {
+            "direction": "O"
+          }
+        }
+      }
+    },
+    "nets": {
+      "CLK100MHZ_1": {
+        "ports": [
+          "CLK100MHZ",
+          "rf_read_top_0/CLK100MHZ"
+        ]
+      },
+      "rf_read_top_0_uart_tx": {
+        "ports": [
+          "rf_read_top_0/uart_tx",
+          "uart_tx"
+        ]
+      },
+      "rst_1": {
+        "ports": [
+          "rst",
+          "rf_read_top_0/rst"
+        ]
+      },
+      "sw_1": {
+        "ports": [
+          "sw",
+          "rf_read_top_0/sw"
+        ]
+      },
+      "uart_rx_1": {
+        "ports": [
+          "uart_rx",
+          "rf_read_top_0/uart_rx"
+        ]
+      }
+    }
+  }
+}

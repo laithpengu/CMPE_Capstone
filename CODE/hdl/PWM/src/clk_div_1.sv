@@ -26,8 +26,8 @@ module clk_div_1(
     output clk_out
     );
     
-    logic [27:0] counter_d = 28'd0;
-    logic [27:0] counter_q = 28'd0;
+    logic [3:0] counter_d = 4'h0;
+    logic [3:0] counter_q = 4'h0;
     logic clk_out_d = 1'b0;
     logic clk_out_q = 1'b0;
 
@@ -41,7 +41,7 @@ module clk_div_1(
 
     always_ff @(posedge clk_in or posedge rst) begin
         if (rst) begin
-            counter_q <= 28'd0;
+            counter_q <= 3'h0;
             clk_out_q <= 1'b1;
         end else begin
             counter_q <= counter_d + 1;
@@ -50,11 +50,7 @@ module clk_div_1(
     end
 
     always_comb begin
-        if(counter_q >= 28'd606) begin
-            counter_d <= 28'd0;
-        end else begin
-            counter_d <= counter_q;
-        end
-        clk_out_d <= (counter_q < 606 / 2)?1'b1:1'b0;
+        counter_d <= counter_q;
+        clk_out_d <= ~clk_out_q;
     end
 endmodule
