@@ -30,7 +30,7 @@ module RF_top(
     input Tx_valid,
     output Tx_ready,
     
-    output [8:0] Rx_data,
+    output [7:0] Rx_data,
     output Rx_valid,
     input Rx_ready,
     
@@ -58,7 +58,7 @@ module RF_top(
     wire clk_intr;
     assign clk_out = CLK100MHZ;
     assign wake = 0;
-    assign intr_out_2 = intr_inter;
+    assign intr_out_2 = intr_in;
     
     /////TEMP DELETE LATER 
     RF_cl_test RF_state(
@@ -67,7 +67,7 @@ module RF_top(
     .rst(rst),
     .data_in(data_out_mem),
     .ready(ready),
-    .intr(intr_inter),
+    .intr(intr_in),
     .addr_out(addr_out),
     .data_out(data_out),
     .inst(inst),
@@ -126,5 +126,3 @@ module RF_top(
      );
  
 endmodule
-
-
