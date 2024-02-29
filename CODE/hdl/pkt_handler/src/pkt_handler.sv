@@ -16,7 +16,10 @@ module pkt_handler (
     logic [1:0] counter_q;
     logic [31:0] frame;
 
-    assign counter_d = counter_q + 1;
+    assign rx_ready = ~(|counter_q);
+    assign kill = &frame[31:24];
+    assign data_valid = (&counter_q) && (veh_id == frame[31:24]);
+    assign data = frame[15:0];
 
     always_ff @(posedge clk or posedge rst) begin
         if(rst)
@@ -26,6 +29,31 @@ module pkt_handler (
     end
 
     always_comb begin
-        if()
+        if(rx_valid)
+            counter_d = counter_q + 1;
+        else
+            counter_d = counter_q;
+
+        case(counter_q)
+            2'b00: begin
+                frame[31:24] = rx_frame;
+                frame[23:0] = frame[23:0];
+            end
+            2'b01: begin
+                frame[31:24] = frame[31:24];
+                frame[23:16] = rx_frame;
+                frame[23:0] = frame[23:0];
+            end
+            2'b10: begin
+                frame[31:16] = frame[31:16];
+                frame[15:8] = rx_frame;
+                frame[7:0] = frame[7:0];
+            end
+            2'b11: begin
+                frame[31:16] = frame[31:16];
+                frame[7:0] = rx_frame;
+            end
+        endcase
+    end
 
 endmodule
