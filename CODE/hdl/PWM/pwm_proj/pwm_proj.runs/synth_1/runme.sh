@@ -12,9 +12,9 @@ echo "Please update the PATH and LD_LIBRARY_PATH variables below, before executi
 exit
 
 if [ -z "$PATH" ]; then
-  PATH=J:/Xilinx/Vivado/2023.2/ids_lite/ISE/bin/nt64;J:/Xilinx/Vivado/2023.2/ids_lite/ISE/lib/nt64:J:/Xilinx/Vivado/2023.2/bin
+  PATH=D:/Xilinx/Vivado/2023.2/ids_lite/ISE/bin/nt64;D:/Xilinx/Vivado/2023.2/ids_lite/ISE/lib/nt64:D:/Xilinx/Vivado/2023.2/bin
 else
-  PATH=J:/Xilinx/Vivado/2023.2/ids_lite/ISE/bin/nt64;J:/Xilinx/Vivado/2023.2/ids_lite/ISE/lib/nt64:J:/Xilinx/Vivado/2023.2/bin:$PATH
+  PATH=D:/Xilinx/Vivado/2023.2/ids_lite/ISE/bin/nt64;D:/Xilinx/Vivado/2023.2/ids_lite/ISE/lib/nt64:D:/Xilinx/Vivado/2023.2/bin:$PATH
 fi
 export PATH
 
@@ -25,7 +25,7 @@ else
 fi
 export LD_LIBRARY_PATH
 
-HD_PWD='C:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/PWM/pwm_proj/pwm_proj.runs/synth_1'
+HD_PWD='D:/CMPE_Capstone/CODE/hdl/PWM/pwm_proj/pwm_proj.runs/synth_1'
 cd "$HD_PWD"
 
 HD_LOG=runme.log

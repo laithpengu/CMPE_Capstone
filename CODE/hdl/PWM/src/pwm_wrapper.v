@@ -40,8 +40,9 @@ module pwm_wrapper(
         .clk_400khz(clk_400khz),
         .clk_200khz(clk_200khz),
         .rst(rst),
-//        .data_in(16'h9820),
-        .data_in(data_out_mem),
+        .data_in(16'h9620),
+//        .data_in(data_out_mem),
+        .pwm_valid(1'b1),
         .pwm_rdy(pwm_rdy),
         .speed_out(speed),
         .dir_out(dir)
