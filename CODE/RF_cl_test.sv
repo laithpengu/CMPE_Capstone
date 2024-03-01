@@ -343,7 +343,7 @@ always_comb begin
         if(Rx_counter_q < 'd8) begin // waits 8 fifo reads
             if(counter_q <= 'b1) begin // waits 2 cycles
                 inst_d = 'b10;// long read
-                addr_out_d = 'h300 + Rx_counter_q; // index the fifo 
+                addr_out_d = 'h200 + Rx_counter_q; // index the fifo 
                 counter_d = counter_q +1; // increase counter
                 next_state = Rx_read_state;
             end else begin
