@@ -54,13 +54,21 @@ module pkt_handler_tb();
         rst = 0;
         veh_id = 8'h01;
         wait(rx_ready);
-        sendFrame(.frame(32'hffffffff));
+        sendFrame(.frame(64'hffffffffffffffff));
         wait(rx_ready);
-        sendFrame(.frame(32'h01009673));
+        sendFrame(.frame(64'h960f0173a7583362));
     end
 
-    task sendFrame(input [31:0] frame);
+    task sendFrame(input [63:0] frame);
         rx_valid = 1;
+        rx_frame = frame[63:56];
+        @(posedge clk);
+        rx_frame = frame[55:48];
+        @(posedge clk);
+        rx_frame = frame[47:40];
+        @(posedge clk);
+        rx_frame = frame[39:32];
+        @(posedge clk);
         rx_frame = frame[31:24];
         @(posedge clk);
         rx_frame = frame[23:16];
