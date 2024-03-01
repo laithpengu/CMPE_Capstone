@@ -22,6 +22,7 @@ module PROC(
     wire [15:0] old_bc;
     wire [15:0] new_bc;
     wire [15:0] pwm_bc;
+    wire not_rdy;
 
     // Buffer signals
     // wire ctrl_in_valid;
@@ -50,13 +51,23 @@ module PROC(
         .ctrl_out_rdy(pwm_rdy)
     );
 
+    UART_pkg uart_pkg(
+        .clk(CLK100MHZ),
+        .rst(rst),
+        .data(new_bc),
+        .valid(ctrl_out_valid),
+        .ready(pwm_rdy),
+        .uart_rx(uart_rx),
+        .uart_tx(uart_tx)
+    );
+
     PWM u_inst_pwm(
         .clk_400khz(clk_400khz),
         .clk_200khz(clk_200khz),
         .rst(rst),
         .data_in(new_bc),
-        .pwm_valid(ctrl_out_valid)
-        .pwm_rdy(pwm_rdy),
+        .pwm_valid(ctrl_out_valid),
+        .pwm_rdy(), // make this pwm_rdy
         .dir_out(dir),
         .speed_out(speed)
     );
