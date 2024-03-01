@@ -5,31 +5,53 @@ This module exists as the connector piece between the Processor FPGA modules and
 - input clk
 - input rst: Async, active-high reset
 
-- input avoid_out_rdy: old_fifo read enable. Signal that Avoidance is ready to receive data from the FIFO
-- output avoid_out_valid: if High then the Old_FIFO has data ready to send to Avoidance
-- output [15:0] avoid_out_data: old_fifo data out. Data that Avoidance is receiving from the FIFO
-
-- output avoid_in_rdy: if High then Avoidance has data ready to send to New_FIFO
-- input avoid_in_valid: new_fifo write enable. Signal that Avoidance is ready to send new data into the FIFO
 - input [15:0] avoid_in_data: new_fifo data in. Data that Avoidance is passing to the FIFO
+- input avoid_in_valid: new_fifo write enable. Signal that Avoidance is ready to send new data into the FIFO
+- output avoid_in_rdy: if High then Avoidance has data ready to send to New_FIFO
 
-- input ctrl_out_rdy: new_fifo read enable. Signal that Control Logic is ready to receive new data from the FIFO
-- output ctrl_out_valid: if High then New_FIFO has data ready to send to Control Logic
-- output [15:0] ctrl_out_data: new_fifo data out. Data that Control Logic is receiving from the FIFO
+- output [15:0] avoid_out_data: old_fifo data out. Data that Avoidance is receiving from the FIFO
+- output avoid_out_valid: if High then the Old_FIFO has data ready to send to Avoidance
+- input avoid_out_rdy: old_fifo read enable. Signal that Avoidance is ready to receive data from the FIFO
 
 - output ctrl_in_rdy: if High then Control Logic has data ready to send to Old_FIFO
 - input ctrl_in_valid: old_fifo write enable. Signal that Control Logic is ready to new data into the FIFO
 - input [15:0] ctrl_in_data: old_fifo data in. Data that Control Logic is passing to the FIFO
+
+- output [15:0] ctrl_out_data: new_fifo data out. Data that Control Logic is receiving from the FIFO
+- output ctrl_out_valid: if High then New_FIFO has data ready to send to Control Logic
+- input ctrl_out_rdy: new_fifo read enable. Signal that Control Logic is ready to receive new data from the FIFO
 ## How to use
-### Entering data into FIFO
+### Entering data into new_breadcrumb_fifo
 - FIFO takes 10 clock cycles to setup
-- set ctrl_rdy signal to high and avoid_rdy signal to low
-- at posedge of clock, bc_in is read onto the stack
-- to stop reading data in, set ctrl_rdy low
-### Reading data out of FIFO
+
+- set ctrl_in_valid signal to high and avoid_out_rdy signal to low
+    - this tells the Buffer that Control Logic has valid data to send into the FIFO, and that Avoidance is not ready to read out of the FIFO
+- at posedge of clock, ctrl_in_data is read into the FIFO
+- to stop reading data in, set ctrl_in_valid low
+    - tells the Buffer that Control Logic no longer has valid data to send
+### Reading data out of new_breadcrumb_fifo
 - takes 2 clock cycles to prepare popping data off
-- set avoid_rdy high to pop data into bc_out
-- data enters bc_out on posedge of clock
+
+- check that avoid_out_valid is high, and then set avoid_out_rdy high
+    - if avoid_out_valid is high it means that the FIFO has valid data to send out to Avoidance
+- set avoid_out_rdy high to pop data into avoid_out_data
+- data enters avoid_out_data on posedge of clock
+### Entering data into old_breadcrumb_fifo
+#### Idential to how new_breadcrumb_fifo works, just with different input/output names
+- FIFO takes 10 clock cycles to setup
+
+- set avoid_in_valid signal to high and ctrl_out_rdy signal to low
+    - this tells the Buffer that Avoidance has valid data to send into the FIFO, and that Control Logic is not ready to read out of the FIFO
+- at posedge of clock, avoid_in_data is read into the FIFO
+- to stop reading data in, set avoid_in_valid low
+    - tells the Buffer that Avoid no longer has valid data to send
+### Reading data out of old_breadcrumb_fifo
+- takes 2 clock cycles to prepare popping data off
+
+- check that ctrl_out_valid is high, and then set ctrl_out_rdy high
+    - if ctrl_out_valid is high it means that the FIFO has valid data to send out to Control Logic
+- set ctrl_out_rdy high to pop data into ctrl_out_data
+- data enters ctrl_out_data on posedge of clock
 
 
 <!-- - When inc signal goes high, it will increment the currently held address. 
