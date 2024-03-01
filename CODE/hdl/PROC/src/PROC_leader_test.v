@@ -1,6 +1,21 @@
 module PROC(
     input CLK100MHZ,
     input rst,
+
+    input sdo,
+    input intr_in,
+    input Rx_ready,
+    
+    output n_rst,
+    output sdi,
+    output sck,
+    output cs,
+    output data_out_s,
+    output intr_out,
+    output wake,
+    output clk_out,
+    output intr_out_2,
+
     output dir,
     output speed
 );
@@ -11,7 +26,8 @@ module PROC(
     wire clk_330hz;
 
 // PWM signals
-    pwm
+    wire pwm_rdy;
+    wire pwm_valid;
 
     // Buffer signals
     // wire ctrl_in_valid;
@@ -22,11 +38,12 @@ module PROC(
     reg [15:0] bc_d;
     reg counter_q;
     reg counter_d;
+    wire [7:0] data;
 
     assign pwm_valid = ~counter_q;
-    assign rx_ready = intr;
+    assign rx_ready = intr_in;
 
-    always @(posedge clk or posedge rst) begin
+    always @(posedge clk_5mhz or posedge rst) begin
         if(rst) begin
             counter_q <= 'b0;
             bc_q <= 'b0;
@@ -47,6 +64,28 @@ module PROC(
         else
             counter_d = counter_q;
     end
+    
+    RF_top RF_top(
+        .CLK100MHZ(CLK100MHZ),
+        .rst(rst),
+        .sdo(sdo),
+        .intr_in(intr_in),
+        .Tx_data('b0),
+        .Tx_valid('b0),
+        .Tx_ready(),
+        .Rx_data(data),
+        .Rx_valid(rx_valid),
+        .Rx_ready(Rx_ready),
+        .n_rst(n_rst),
+        .sdi(sdi),
+        .sck(sck),
+        .cs(cs),
+        .data_out_s(data_out_s),
+        .intr_out(intr_out),
+        .wake(wake),
+        .clk_out(clk_out),
+        .intr_out_2(intr_out_2)
+    );
 
     PWM u_inst_pwm(
         .clk_400khz(clk_400khz),
@@ -54,12 +93,12 @@ module PROC(
         .rst(rst),
         .data_in(bc_q),
         .pwm_valid(pwm_valid),
-        .pwm_rdy(pwm_rdy), // make this pwm_rdy
+        .pwm_rdy(pwm_rdy), 
         .dir_out(dir),
         .speed_out(speed)
     );
     
-    clk_wiz_0 wiz(
+    clk_wiz_1 wiz(
         .clk_in1(CLK100MHZ),
         .clk_out1(clk_5mhz)
     );

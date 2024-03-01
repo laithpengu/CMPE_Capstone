@@ -26,15 +26,13 @@ module RF_top(
     input sdo,
     input intr_in,
     
-    input [31:0] Tx_data,
-    input Tx_valid,
+//    input [31:0] Tx_data,
+//    input Tx_valid,
     output Tx_ready,
     
     output [7:0] Rx_data,
     output Rx_valid,
     input Rx_ready,
-    
-    
     
     output n_rst,
     output sdi,
@@ -45,7 +43,11 @@ module RF_top(
     output wake,
     output clk_out,
     output intr_out_2
-    );
+  );
+  
+    reg [31:0] Tx_data;
+    wire Tx_valid;
+
     wire [15:0] data_out_mem;
     wire [7:0] addr_a;
     wire ready;
@@ -115,15 +117,22 @@ module RF_top(
      .addrout(addr_a)
      );
      
-     
-     
-     
      blk_mem_gen_0 mem_0(
         .clka(clk_intr),
         //.clka(CLK100MHZ),
         .addra(addr_a),
         .douta(data_out_mem)
      );
+
+     ser_buffer serial_dut_0(
+        .clk(clk_intr),
+        .rst(rst),
+        .start(~cs),
+        .data_in(sdo),
+        .mode(inst),
+        .data_out(Rx_data),
+        .enable(Rx_valid)
+    );
  
 endmodule
 
