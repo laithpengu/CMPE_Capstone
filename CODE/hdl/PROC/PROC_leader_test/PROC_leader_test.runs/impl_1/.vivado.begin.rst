@@ -1,60 +1,40 @@
 <?xml version="1.0"?>
 <ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="turke" Host="DESKTOP-M1PCUD5" Pid="13448" HostCore="12" HostMemory="016868048896">
+    <Process Command="vivado.bat" Owner="turke" Host="DESKTOP-M1PCUD5" Pid="23768" HostCore="12" HostMemory="016868048896">
     </Process>
 </ProcessHandle>
 <?xml version="1.0"?>
 <ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="turke" Host="DESKTOP-M1PCUD5" Pid="16724" HostCore="12" HostMemory="016868048896">
+    <Process Command="vivado.bat" Owner="turke" Host="DESKTOP-M1PCUD5" Pid="33192" HostCore="12" HostMemory="016868048896">
     </Process>
 </ProcessHandle>
 <?xml version="1.0"?>
 <ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="turke" Host="DESKTOP-M1PCUD5" Pid="29136" HostCore="12" HostMemory="016868048896">
+    <Process Command="vivado.bat" Owner="turke" Host="DESKTOP-M1PCUD5" Pid="30564" HostCore="12" HostMemory="016868048896">
     </Process>
 </ProcessHandle>
 <?xml version="1.0"?>
 <ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="turke" Host="DESKTOP-M1PCUD5" Pid="14792" HostCore="12" HostMemory="016868048896">
+    <Process Command="vivado.bat" Owner="turke" Host="DESKTOP-M1PCUD5" Pid="29884" HostCore="12" HostMemory="016868048896">
     </Process>
 </ProcessHandle>
 <?xml version="1.0"?>
 <ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="turke" Host="DESKTOP-M1PCUD5" Pid="25012" HostCore="12" HostMemory="016868048896">
+    <Process Command="vivado.bat" Owner="turke" Host="DESKTOP-M1PCUD5" Pid="24608" HostCore="12" HostMemory="016868048896">
     </Process>
 </ProcessHandle>
 <?xml version="1.0"?>
 <ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="turke" Host="DESKTOP-M1PCUD5" Pid="31180" HostCore="12" HostMemory="016868048896">
+    <Process Command="vivado.bat" Owner="turke" Host="DESKTOP-M1PCUD5" Pid="35560" HostCore="12" HostMemory="016868048896">
     </Process>
 </ProcessHandle>
 <?xml version="1.0"?>
 <ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="turke" Host="DESKTOP-M1PCUD5" Pid="32540" HostCore="12" HostMemory="016868048896">
+    <Process Command="vivado.bat" Owner="turke" Host="DESKTOP-M1PCUD5" Pid="18720" HostCore="12" HostMemory="016868048896">
     </Process>
 </ProcessHandle>
 <?xml version="1.0"?>
 <ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="turke" Host="DESKTOP-M1PCUD5" Pid="35868" HostCore="12" HostMemory="016868048896">
-    </Process>
-</ProcessHandle>
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="turke" Host="DESKTOP-M1PCUD5" Pid="34280" HostCore="12" HostMemory="016868048896">
-    </Process>
-</ProcessHandle>
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="turke" Host="DESKTOP-M1PCUD5" Pid="39176" HostCore="12" HostMemory="016868048896">
-    </Process>
-</ProcessHandle>
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="turke" Host="DESKTOP-M1PCUD5" Pid="21064" HostCore="12" HostMemory="016868048896">
-    </Process>
-</ProcessHandle>
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="turke" Host="DESKTOP-M1PCUD5" Pid="20156" HostCore="12" HostMemory="016868048896">
+    <Process Command="vivado.bat" Owner="turke" Host="DESKTOP-M1PCUD5" Pid="4284" HostCore="12" HostMemory="016868048896">
     </Process>
 </ProcessHandle>

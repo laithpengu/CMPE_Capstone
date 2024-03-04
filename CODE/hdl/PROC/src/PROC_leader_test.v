@@ -1,9 +1,15 @@
 module PROC(
     input CLK100MHZ,
     input rst,
-
     input sdo,
     input intr_in,
+    
+    input [31:0] Tx_data,
+    input Tx_valid,
+    output Tx_ready,
+    
+    output [7:0] Rx_data,
+    output Rx_valid,
     input Rx_ready,
     
     output n_rst,
@@ -11,13 +17,19 @@ module PROC(
     output sck,
     output cs,
     output data_out_s,
-    output intr_out,
+    output intr_out, 
     output wake,
     output clk_out,
     output intr_out_2,
+    
+    input rd_en,
+//    input uart_rx,
+//    output uart_tx,
+    output empty_led,
+    output full_led
 
-    output dir,
-    output speed
+//    output dir,
+//    output speed
 );
 // Clock signals
     wire clk_5mhz;
@@ -28,6 +40,9 @@ module PROC(
 // PWM signals
     wire pwm_rdy;
     wire pwm_valid;
+    
+    wire dir;
+    wire speed;
 
     // Buffer signals
     // wire ctrl_in_valid;
@@ -59,7 +74,7 @@ module PROC(
             1'b1: bc_d = {bc_q[15:8], data};
         endcase
 
-        if(rx_valid)
+        if(Rx_valid)
             counter_d = counter_q + 1;
         else
             counter_d = counter_q;
@@ -70,11 +85,11 @@ module PROC(
         .rst(rst),
         .sdo(sdo),
         .intr_in(intr_in),
-        .Tx_data('b0),
-        .Tx_valid('b0),
-        .Tx_ready(),
-        .Rx_data(data),
-        .Rx_valid(rx_valid),
+        .Tx_data(Tx_data),
+        .Tx_valid(Tx_valid),
+        .Tx_ready(Tx_ready),
+        .Rx_data(Rx_data),
+        .Rx_valid(Rx_valid),
         .Rx_ready(Rx_ready),
         .n_rst(n_rst),
         .sdi(sdi),
@@ -103,7 +118,7 @@ module PROC(
         .clk_out1(clk_5mhz)
     );
     
-    clk_div_0 u_inst_clk_div_0(
+    clk_div_1 u_inst_clk_div_0(
         .clk_in(clk_5mhz),
         .rst(rst),
         .clk_out(clk_400khz)
