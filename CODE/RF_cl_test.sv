@@ -304,7 +304,7 @@ always_comb begin
         next_state = intr_handle;
         Tx_ready_d = 'b1; // state machine is ready for control logic to transmit
         counter_d = 'b0;
-            if(Rx_ready) begin
+            if(~intr && Rx_ready) begin
             //if(~intr && ready && Rx_ready) begin
             //if(rst) begin
                 next_state = intr_read_1; 
@@ -340,10 +340,11 @@ always_comb begin
     end
     
     Rx_read_state: begin // this state reads from the RF fifo
+// Change when actually working
         if(Rx_counter_q < 'd8) begin // waits 8 fifo reads
             if(counter_q <= 'b1) begin // waits 2 cycles
                 inst_d = 'b10;// long read
-                addr_out_d = 'h200 + Rx_counter_q; // index the fifo 
+                addr_out_d = 'h300 + Rx_counter_q; // index the fifo 
                 counter_d = counter_q +1; // increase counter
                 next_state = Rx_read_state;
             end else begin

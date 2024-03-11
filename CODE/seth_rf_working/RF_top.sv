@@ -34,8 +34,6 @@ module RF_top(
     output Rx_valid,
     input Rx_ready,
     
-    
-    
     output n_rst,
     output sdi,
     output sck,

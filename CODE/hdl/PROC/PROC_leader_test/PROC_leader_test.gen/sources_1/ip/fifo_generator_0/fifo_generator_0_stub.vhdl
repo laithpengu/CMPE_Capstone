@@ -2,10 +2,10 @@
 -- Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
--- Date        : Mon Mar  4 11:11:18 2024
+-- Date        : Mon Mar  4 11:11:17 2024
 -- Host        : DESKTOP-M1PCUD5 running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode synth_stub
---               d:/CMPE_Capstone/CODE/hdl/PROC/PROC_leader_test/PROC_leader_test.gen/sources_1/ip/fifo_generator_0/fifo_generator_0_stub.vhdl
+-- Command     : write_vhdl -force -mode synth_stub -rename_top fifo_generator_0 -prefix
+--               fifo_generator_0_ fifo_generator_0_stub.vhdl
 -- Design      : fifo_generator_0
 -- Purpose     : Stub declaration of top-level module interface
 -- Device      : xc7s50csga324-1

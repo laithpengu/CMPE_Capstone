@@ -70,12 +70,6 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "blk_mem_gen_0_synth_1" START { ROLLUP_AUTO }
-set_param checkpoint.writeSynthRtdsInDcp 1
-set_param chipscope.maxJobs 3
-set_param synth.incrementalSynthesisCache C:/Users/turke/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-2288-DESKTOP-M1PCUD5/incrSyn
-set_param xicom.use_bs_reader 1
-set_msg_config -id {Synth 8-256} -limit 10000
-set_msg_config -id {Synth 8-638} -limit 10000
 set_param project.vivado.isBlockSynthRun true
 set_msg_config -msgmgr_mode ooc_run
 OPTRACE "Creating in-memory project" START { }
@@ -95,7 +89,7 @@ set_property ip_output_repo d:/CMPE_Capstone/CODE/hdl/PROC/PROC_leader_test/PROC
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
-read_ip -quiet d:/CMPE_Capstone/CODE/hdl/PROC/PROC_leader_test/PROC_leader_test.srcs/sources_1/ip/blk_mem_gen_0_1/blk_mem_gen_0.xci
+read_ip -quiet D:/CMPE_Capstone/CODE/hdl/PROC/PROC_leader_test/PROC_leader_test.srcs/sources_1/ip/blk_mem_gen_0_1/blk_mem_gen_0.xci
 set_property used_in_implementation false [get_files -all d:/CMPE_Capstone/CODE/hdl/PROC/PROC_leader_test/PROC_leader_test.gen/sources_1/ip/blk_mem_gen_0_1/blk_mem_gen_0_ooc.xdc]
 
 OPTRACE "Adding files" END { }

@@ -26,28 +26,32 @@ module RF_top(
     input sdo,
     input intr_in,
     
-//    input [31:0] Tx_data,
-//    input Tx_valid,
+    input [31:0] Tx_data,
+    input Tx_valid,
     output Tx_ready,
     
     output [7:0] Rx_data,
     output Rx_valid,
     input Rx_ready,
     
+    
+    
     output n_rst,
     output sdi,
     output sck,
     output cs,
     output data_out_s,
-    output intr_out,
+    output intr_out, 
     output wake,
     output clk_out,
-    output intr_out_2
-  );
-  
-    reg [31:0] Tx_data;
-    wire Tx_valid;
-
+    output intr_out_2,
+    
+    input rd_en,
+    input uart_rx,
+    output uart_tx,
+    output empty_led,
+    output full_led
+    );
     wire [15:0] data_out_mem;
     wire [7:0] addr_a;
     wire ready;
@@ -58,9 +62,17 @@ module RF_top(
     wire cs_out;
     wire intr_inter;
     wire clk_intr;
+    
+    wire[7:0] fifo_out;
+    wire[7:0] rf_data_out;
+//    wire ready_uart;
+    wire uart_ready;
+    wire enable;
+    
     assign clk_out = CLK100MHZ;
     assign wake = 0;
     assign intr_out_2 = intr_in;
+    
     
     /////TEMP DELETE LATER 
     RF_cl_test RF_state(
@@ -117,21 +129,46 @@ module RF_top(
      .addrout(addr_a)
      );
      
+     
+ 
+     
      blk_mem_gen_0 mem_0(
         .clka(clk_intr),
         //.clka(CLK100MHZ),
         .addra(addr_a),
         .douta(data_out_mem)
      );
+     
+     fifo_generator_0 fifo_0(
+        .clk(clk_intr),
+        .srst(rst),
+        .full(full_led),
+        .din(rf_data_out),
+        .wr_en(enable),
+        .empty(empty_led),
+        .dout(fifo_out),
+        .rd_en(rd_en&ready_uart)
+    );
 
-     ser_buffer serial_dut_0(
+    ser_buffer serial_dut_0(
         .clk(clk_intr),
         .rst(rst),
         .start(~cs),
         .data_in(sdo),
         .mode(inst),
-        .data_out(Rx_data),
-        .enable(Rx_valid)
+        .data_out(rf_data_out),
+        .enable(enable)
+    );
+
+    
+    UART_pkg uart_dut_0(
+        .clk(clk_intr),
+        .rst(rst),
+        .data({8'h00, rf_data_out}),
+        .valid(enable),
+        .ready(uart_ready),
+        .uart_rx(uart_rx),
+        .uart_tx(uart_tx)
     );
  
 endmodule
