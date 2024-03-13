@@ -90,4 +90,18 @@ module bc_buffer(
         .data_count(old_data_count)
     );
 
+    serdes inner_serdes(
+      .clk(sck),
+      .rst(rst),
+      .serial_in(from_avoid),
+      .parallel_in(bc_out), //bc_out is filled from fifo
+      .start_ser(start_ser),
+      .start_des(start_des),
+      .parallel_out(to_control),
+      .serial_out(to_avoid),
+      .early_rdy(early_rdy),
+      .parallel_rdy(parallel_rdy),
+      .serial_done(serial_done)
+    );
+
 endmodule
