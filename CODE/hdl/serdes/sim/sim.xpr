@@ -7,7 +7,11 @@
 <Project Product="Vivado" Version="7" Minor="65" Path="C:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/serdes/sim/sim.xpr">
   <DefaultLaunch Dir="$PRUNDIR"/>
   <Configuration>
+<<<<<<< Updated upstream
     <Option Name="Id" Val="120862b286e24eb2814be39c901a06cb"/>
+=======
+    <Option Name="Id" Val="2af5740eb4984d2b9c5221f7a5afb8a1"/>
+>>>>>>> Stashed changes
     <Option Name="Part" Val="xc7vx485tffg1157-1"/>
     <Option Name="CompiledLibDir" Val="$PCACHEDIR/compile_simlib"/>
     <Option Name="CompiledLibDirXSim" Val=""/>

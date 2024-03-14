@@ -1,7 +1,11 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
+<<<<<<< Updated upstream:CODE/hdl/PROC/PROC_leader_test/PROC_leader_test.runs/impl_1/PROC_clock_utilization_routed.rpt
 | Date         : Thu Mar 14 17:13:56 2024
+=======
+| Date         : Wed Mar 13 15:00:57 2024
+>>>>>>> Stashed changes:CODE/hdl/PROC/PROC_leader_test/PROC_leader_test.runs/impl_1/RF_top_clock_utilization_routed.rpt
 | Host         : DESKTOP-M1PCUD5 running 64-bit major release  (build 9200)
 | Command      : report_clock_utilization -file PROC_clock_utilization_routed.rpt
 | Design       : PROC
@@ -47,7 +51,11 @@ Table of Contents
 +-----------+-----------+-----------------+------------+---------------+--------------+-------------------+-------------+-----------------+--------------+--------------------+--------------------------------+-----------------------------------------+
 | Global Id | Source Id | Driver Type/Pin | Constraint | Site          | Clock Region | Load Clock Region | Clock Loads | Non-Clock Loads | Clock Period | Clock              | Driver Pin                     | Net                                     |
 +-----------+-----------+-----------------+------------+---------------+--------------+-------------------+-------------+-----------------+--------------+--------------------+--------------------------------+-----------------------------------------+
+<<<<<<< Updated upstream:CODE/hdl/PROC/PROC_leader_test/PROC_leader_test.runs/impl_1/PROC_clock_utilization_routed.rpt
 | g0        | src0      | BUFG/O          | None       | BUFGCTRL_X0Y0 | n/a          |                 2 |         250 |               1 |      200.000 | clk_out1_clk_wiz_0 | clk_wiz_dut/inst/clkout1_buf/O | clk_wiz_dut/inst/clk_out1               |
+=======
+| g0        | src0      | BUFG/O          | None       | BUFGCTRL_X0Y0 | n/a          |                 2 |         293 |               2 |      200.000 | clk_out1_clk_wiz_0 | clk_wiz_dut/inst/clkout1_buf/O | clk_wiz_dut/inst/clk_out1               |
+>>>>>>> Stashed changes:CODE/hdl/PROC/PROC_leader_test/PROC_leader_test.runs/impl_1/RF_top_clock_utilization_routed.rpt
 | g1        | src1      | BUFG/O          | None       | BUFGCTRL_X0Y1 | n/a          |                 1 |           1 |               0 |       50.000 | clkfbout_clk_wiz_0 | clk_wiz_dut/inst/clkf_buf/O    | clk_wiz_dut/inst/clkfbout_buf_clk_wiz_0 |
 +-----------+-----------+-----------------+------------+---------------+--------------+-------------------+-------------+-----------------+--------------+--------------------+--------------------------------+-----------------------------------------+
 * Clock Loads column represents cell count of net connects that connect to a clock pin. Internal cell leaf pins are not considered
@@ -75,9 +83,15 @@ Table of Contents
 +-------------------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+
 | Clock Region Name | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail |
 +-------------------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+
+<<<<<<< Updated upstream:CODE/hdl/PROC/PROC_leader_test/PROC_leader_test.runs/impl_1/PROC_clock_utilization_routed.rpt
 | X0Y0              |    1 |    12 |    0 |     4 |    0 |     2 |    0 |     4 |    0 |     1 |    0 |     1 |    0 |     0 |    0 |     0 |    0 |    50 |    0 |    50 |   62 |  1200 |   20 |   400 |    0 |    20 |    0 |    10 |    0 |    20 |
 | X1Y0              |    1 |    12 |    0 |     4 |    0 |     2 |    0 |     4 |    1 |     1 |    0 |     1 |    0 |     0 |    0 |     0 |    0 |    50 |    0 |    50 |    0 |  1500 |    0 |   450 |    0 |    40 |    0 |    20 |    0 |    20 |
 | X0Y1              |    1 |    12 |    0 |     4 |    0 |     2 |    0 |     4 |    0 |     1 |    0 |     1 |    0 |     0 |    0 |     0 |    0 |    50 |    0 |    50 |  178 |  1200 |   68 |   400 |    0 |    20 |    0 |    10 |    0 |    20 |
+=======
+| X0Y0              |    1 |    12 |    0 |     4 |    0 |     2 |    0 |     4 |    0 |     1 |    0 |     1 |    0 |     0 |    0 |     0 |    0 |    50 |    0 |    50 |  137 |  1200 |   40 |   400 |    0 |    20 |    0 |    10 |    0 |    20 |
+| X1Y0              |    1 |    12 |    0 |     4 |    0 |     2 |    0 |     4 |    1 |     1 |    0 |     1 |    0 |     0 |    0 |     0 |    0 |    50 |    0 |    50 |    0 |  1500 |    0 |   450 |    0 |    40 |    0 |    20 |    0 |    20 |
+| X0Y1              |    1 |    12 |    0 |     4 |    0 |     2 |    0 |     4 |    0 |     1 |    0 |     1 |    0 |     0 |    0 |     0 |    0 |    50 |    0 |    50 |  146 |  1200 |   58 |   400 |    0 |    20 |    0 |    10 |    0 |    20 |
+>>>>>>> Stashed changes:CODE/hdl/PROC/PROC_leader_test/PROC_leader_test.runs/impl_1/RF_top_clock_utilization_routed.rpt
 | X1Y1              |    0 |    12 |    0 |     4 |    0 |     2 |    0 |     4 |    0 |     1 |    0 |     1 |    0 |     0 |    0 |     0 |    0 |    50 |    0 |    50 |    0 |  1500 |    0 |   450 |    0 |    40 |    0 |    20 |    0 |    20 |
 | X0Y2              |    0 |    12 |    0 |     4 |    0 |     2 |    0 |     4 |    0 |     1 |    0 |     1 |    0 |     0 |    0 |     0 |    0 |    50 |    0 |    50 |    0 |  1800 |    0 |   400 |    0 |    20 |    0 |    10 |    0 |    20 |
 | X1Y2              |    0 |    12 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     4 |    0 |     1 |    0 |     0 |    0 |     0 |    0 |   950 |    0 |   300 |    0 |    10 |    0 |     5 |    0 |    20 |
@@ -104,7 +118,11 @@ All Modules
 +-----------+-----------------+-------------------+--------------------+-------------+-----------------+-------------+----------+----------------+----------+---------------------------+
 | Global Id | Driver Type/Pin | Driver Region (D) | Clock              | Period (ns) | Waveform (ns)   | Slice Loads | IO Loads | Clocking Loads | GT Loads | Net                       |
 +-----------+-----------------+-------------------+--------------------+-------------+-----------------+-------------+----------+----------------+----------+---------------------------+
+<<<<<<< Updated upstream:CODE/hdl/PROC/PROC_leader_test/PROC_leader_test.runs/impl_1/PROC_clock_utilization_routed.rpt
 | g0        | BUFG/O          | n/a               | clk_out1_clk_wiz_0 |     200.000 | {0.000 100.000} |         250 |        1 |              0 |        0 | clk_wiz_dut/inst/clk_out1 |
+=======
+| g0        | BUFG/O          | n/a               | clk_out1_clk_wiz_0 |     200.000 | {0.000 100.000} |         293 |        2 |              0 |        0 | clk_wiz_dut/inst/clk_out1 |
+>>>>>>> Stashed changes:CODE/hdl/PROC/PROC_leader_test/PROC_leader_test.runs/impl_1/RF_top_clock_utilization_routed.rpt
 +-----------+-----------------+-------------------+--------------------+-------------+-----------------+-------------+----------+----------------+----------+---------------------------+
 * Slice Loads column represents load cell count of all cell types other than IO, GT and clock resources
 ** IO Loads column represents load cell count of IO types
@@ -116,8 +134,13 @@ All Modules
 |    | X0   | X1 | HORIZONTAL PROG DELAY |
 +----+------+----+-----------------------+
 | Y2 |    0 |  0 |                     - |
+<<<<<<< Updated upstream:CODE/hdl/PROC/PROC_leader_test/PROC_leader_test.runs/impl_1/PROC_clock_utilization_routed.rpt
 | Y1 |  188 |  0 |                     0 |
 | Y0 |   63 |  0 |                     0 |
+=======
+| Y1 |  155 |  0 |                     0 |
+| Y0 |  140 |  0 |                     0 |
+>>>>>>> Stashed changes:CODE/hdl/PROC/PROC_leader_test/PROC_leader_test.runs/impl_1/RF_top_clock_utilization_routed.rpt
 +----+------+----+-----------------------+
 
 
@@ -147,11 +170,19 @@ All Modules
 8. Clock Region Cell Placement per Global Clock: Region X0Y0
 ------------------------------------------------------------
 
+<<<<<<< Updated upstream:CODE/hdl/PROC/PROC_leader_test/PROC_leader_test.runs/impl_1/PROC_clock_utilization_routed.rpt
 +-----------+-------+-----------------+------------+-------------+-----------------+----+-------------+------+-----+----+------+-----+---------+---------------------------+
 | Global Id | Track | Driver Type/Pin | Constraint | Clock Loads | Non-Clock Loads | FF | Memory LUTs | RAMB | DSP | GT | MMCM | PLL | Hard IP | Net                       |
 +-----------+-------+-----------------+------------+-------------+-----------------+----+-------------+------+-----+----+------+-----+---------+---------------------------+
 | g0        | n/a   | BUFG/O          | None       |          62 |               1 | 62 |           0 |    0 |   0 |  0 |    0 |   0 |       0 | clk_wiz_dut/inst/clk_out1 |
 +-----------+-------+-----------------+------------+-------------+-----------------+----+-------------+------+-----+----+------+-----+---------+---------------------------+
+=======
++-----------+-------+-----------------+------------+-------------+-----------------+-----+-------------+------+-----+----+------+-----+---------+---------------------------+
+| Global Id | Track | Driver Type/Pin | Constraint | Clock Loads | Non-Clock Loads | FF  | Memory LUTs | RAMB | DSP | GT | MMCM | PLL | Hard IP | Net                       |
++-----------+-------+-----------------+------------+-------------+-----------------+-----+-------------+------+-----+----+------+-----+---------+---------------------------+
+| g0        | n/a   | BUFG/O          | None       |         138 |               2 | 137 |           0 |    0 |   0 |  0 |    0 |   0 |       0 | clk_wiz_dut/inst/clk_out1 |
++-----------+-------+-----------------+------------+-------------+-----------------+-----+-------------+------+-----+----+------+-----+---------+---------------------------+
+>>>>>>> Stashed changes:CODE/hdl/PROC/PROC_leader_test/PROC_leader_test.runs/impl_1/RF_top_clock_utilization_routed.rpt
 * Clock Loads column represents cell count of net connects that connect to a clock pin. Internal cell leaf pins are not considered
 ** Non-Clock Loads column represents cell count of non-clock pin loads
 *** Columns FF, LUTRAM, RAMB through 'Hard IP' represents load cell counts
@@ -176,7 +207,11 @@ All Modules
 +-----------+-------+-----------------+------------+-------------+-----------------+-----+-------------+------+-----+----+------+-----+---------+---------------------------+
 | Global Id | Track | Driver Type/Pin | Constraint | Clock Loads | Non-Clock Loads | FF  | Memory LUTs | RAMB | DSP | GT | MMCM | PLL | Hard IP | Net                       |
 +-----------+-------+-----------------+------------+-------------+-----------------+-----+-------------+------+-----+----+------+-----+---------+---------------------------+
+<<<<<<< Updated upstream:CODE/hdl/PROC/PROC_leader_test/PROC_leader_test.runs/impl_1/PROC_clock_utilization_routed.rpt
 | g0        | n/a   | BUFG/O          | None       |         188 |               0 | 178 |           9 |    0 |   0 |  0 |    0 |   0 |       0 | clk_wiz_dut/inst/clk_out1 |
+=======
+| g0        | n/a   | BUFG/O          | None       |         155 |               0 | 146 |           9 |    0 |   0 |  0 |    0 |   0 |       0 | clk_wiz_dut/inst/clk_out1 |
+>>>>>>> Stashed changes:CODE/hdl/PROC/PROC_leader_test/PROC_leader_test.runs/impl_1/RF_top_clock_utilization_routed.rpt
 +-----------+-------+-----------------+------------+-------------+-----------------+-----+-------------+------+-----+----+------+-----+---------+---------------------------+
 * Clock Loads column represents cell count of net connects that connect to a clock pin. Internal cell leaf pins are not considered
 ** Non-Clock Loads column represents cell count of non-clock pin loads
@@ -190,6 +225,7 @@ set_property LOC BUFGCTRL_X0Y0 [get_cells clk_wiz_dut/inst/clkout1_buf]
 
 # Location of IO Primitives which is load of clock spine
 set_property LOC IOB_X0Y19 [get_cells sck_OBUF_inst]
+set_property LOC IOB_X0Y7 [get_cells clk_test_out_OBUF_inst]
 
 # Location of clock ports
 set_property LOC IOB_X1Y26 [get_ports CLK100MHZ]
@@ -197,6 +233,10 @@ set_property LOC IOB_X1Y26 [get_ports CLK100MHZ]
 # Clock net "clk_wiz_dut/inst/clk_out1" driven by instance "clk_wiz_dut/inst/clkout1_buf" located at site "BUFGCTRL_X0Y0"
 #startgroup
 create_pblock {CLKAG_clk_wiz_dut/inst/clk_out1}
+<<<<<<< Updated upstream:CODE/hdl/PROC/PROC_leader_test/PROC_leader_test.runs/impl_1/PROC_clock_utilization_routed.rpt
 add_cells_to_pblock [get_pblocks  {CLKAG_clk_wiz_dut/inst/clk_out1}] [get_cells -filter { PRIMITIVE_GROUP != I/O && IS_PRIMITIVE==1 && PRIMITIVE_LEVEL !=INTERNAL && NAME!=sck_OBUF_inst} -of_object [get_pins -filter {DIRECTION==IN} -of_objects [get_nets -hierarchical -filter {PARENT=="clk_wiz_dut/inst/clk_out1"}]]]
+=======
+add_cells_to_pblock [get_pblocks  {CLKAG_clk_wiz_dut/inst/clk_out1}] [get_cells -filter { PRIMITIVE_GROUP != I/O && IS_PRIMITIVE==1 && PRIMITIVE_LEVEL !=INTERNAL && NAME!=sck_OBUF_inst && NAME!=clk_test_out_OBUF_inst} -of_object [get_pins -filter {DIRECTION==IN} -of_objects [get_nets -hierarchical -filter {PARENT=="clk_wiz_dut/inst/clk_out1"}]]]
+>>>>>>> Stashed changes:CODE/hdl/PROC/PROC_leader_test/PROC_leader_test.runs/impl_1/RF_top_clock_utilization_routed.rpt
 resize_pblock [get_pblocks {CLKAG_clk_wiz_dut/inst/clk_out1}] -add {CLOCKREGION_X0Y0:CLOCKREGION_X0Y0 CLOCKREGION_X0Y1:CLOCKREGION_X0Y1}
 #endgroup

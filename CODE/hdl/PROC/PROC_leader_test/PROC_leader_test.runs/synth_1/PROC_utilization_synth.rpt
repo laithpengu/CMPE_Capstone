@@ -1,7 +1,11 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
+<<<<<<< Updated upstream:CODE/hdl/PROC/PROC_leader_test/PROC_leader_test.runs/synth_1/PROC_utilization_synth.rpt
 | Date         : Thu Mar 14 17:11:50 2024
+=======
+| Date         : Wed Mar 13 14:59:24 2024
+>>>>>>> Stashed changes:CODE/hdl/PROC/PROC_leader_test/PROC_leader_test.runs/synth_1/RF_top_utilization_synth.rpt
 | Host         : DESKTOP-M1PCUD5 running 64-bit major release  (build 9200)
 | Command      : report_utilization -file PROC_utilization_synth.rpt -pb PROC_utilization_synth.pb
 | Design       : PROC
@@ -31,6 +35,7 @@ Table of Contents
 +-------------------------+------+-------+------------+-----------+-------+
 |        Site Type        | Used | Fixed | Prohibited | Available | Util% |
 +-------------------------+------+-------+------------+-----------+-------+
+<<<<<<< Updated upstream:CODE/hdl/PROC/PROC_leader_test/PROC_leader_test.runs/synth_1/PROC_utilization_synth.rpt
 | Slice LUTs*             |  252 |     0 |          0 |     32600 |  0.77 |
 |   LUT as Logic          |  252 |     0 |          0 |     32600 |  0.77 |
 |   LUT as Memory         |    0 |     0 |          0 |      9600 |  0.00 |
@@ -38,6 +43,15 @@ Table of Contents
 |   Register as Flip Flop |  145 |     0 |          0 |     65200 |  0.22 |
 |   Register as Latch     |    0 |     0 |          0 |     65200 |  0.00 |
 | F7 Muxes                |    2 |     0 |          0 |     16300 |  0.01 |
+=======
+| Slice LUTs*             |  202 |     0 |          0 |     32600 |  0.62 |
+|   LUT as Logic          |  202 |     0 |          0 |     32600 |  0.62 |
+|   LUT as Memory         |    0 |     0 |          0 |      9600 |  0.00 |
+| Slice Registers         |  143 |     0 |          0 |     65200 |  0.22 |
+|   Register as Flip Flop |  143 |     0 |          0 |     65200 |  0.22 |
+|   Register as Latch     |    0 |     0 |          0 |     65200 |  0.00 |
+| F7 Muxes                |    1 |     0 |          0 |     16300 | <0.01 |
+>>>>>>> Stashed changes:CODE/hdl/PROC/PROC_leader_test/PROC_leader_test.runs/synth_1/RF_top_utilization_synth.rpt
 | F8 Muxes                |    0 |     0 |          0 |      8150 |  0.00 |
 +-------------------------+------+-------+------------+-----------+-------+
 * Warning! The Final LUT count, after physical optimizations and full implementation, is typically lower. Run opt_design after synthesis, if not already completed, for a more realistic count.
@@ -56,8 +70,13 @@ Warning! LUT value is adjusted to account for LUT combining.
 | 0     |            _ |         Set |            - |
 | 0     |            _ |       Reset |            - |
 | 0     |          Yes |           - |            - |
+<<<<<<< Updated upstream:CODE/hdl/PROC/PROC_leader_test/PROC_leader_test.runs/synth_1/PROC_utilization_synth.rpt
 | 6     |          Yes |           - |          Set |
 | 138   |          Yes |           - |        Reset |
+=======
+| 7     |          Yes |           - |          Set |
+| 135   |          Yes |           - |        Reset |
+>>>>>>> Stashed changes:CODE/hdl/PROC/PROC_leader_test/PROC_leader_test.runs/synth_1/RF_top_utilization_synth.rpt
 | 0     |          Yes |         Set |            - |
 | 1     |          Yes |       Reset |            - |
 +-------+--------------+-------------+--------------+
@@ -92,7 +111,11 @@ Warning! LUT value is adjusted to account for LUT combining.
 +-----------------------------+------+-------+------------+-----------+-------+
 |          Site Type          | Used | Fixed | Prohibited | Available | Util% |
 +-----------------------------+------+-------+------------+-----------+-------+
+<<<<<<< Updated upstream:CODE/hdl/PROC/PROC_leader_test/PROC_leader_test.runs/synth_1/PROC_utilization_synth.rpt
 | Bonded IOB                  |   29 |     0 |          0 |       210 | 13.81 |
+=======
+| Bonded IOB                  |   31 |     0 |          0 |       210 | 14.76 |
+>>>>>>> Stashed changes:CODE/hdl/PROC/PROC_leader_test/PROC_leader_test.runs/synth_1/RF_top_utilization_synth.rpt
 | Bonded IPADs                |    0 |     0 |          0 |         2 |  0.00 |
 | PHY_CONTROL                 |    0 |     0 |          0 |         5 |  0.00 |
 | PHASER_REF                  |    0 |     0 |          0 |         5 |  0.00 |
@@ -147,6 +170,7 @@ Warning! LUT value is adjusted to account for LUT combining.
 +----------+------+---------------------+
 | Ref Name | Used | Functional Category |
 +----------+------+---------------------+
+<<<<<<< Updated upstream:CODE/hdl/PROC/PROC_leader_test/PROC_leader_test.runs/synth_1/PROC_utilization_synth.rpt
 | LUT6     |  147 |                 LUT |
 | FDCE     |  138 |        Flop & Latch |
 | LUT5     |   54 |                 LUT |
@@ -160,6 +184,21 @@ Warning! LUT value is adjusted to account for LUT combining.
 | FDPE     |    6 |        Flop & Latch |
 | LUT1     |    3 |                 LUT |
 | MUXF7    |    2 |               MuxFx |
+=======
+| FDCE     |  135 |        Flop & Latch |
+| LUT6     |  100 |                 LUT |
+| LUT5     |   60 |                 LUT |
+| LUT4     |   37 |                 LUT |
+| LUT2     |   31 |                 LUT |
+| LUT3     |   22 |                 LUT |
+| OBUF     |   16 |                  IO |
+| OBUFT    |    9 |                  IO |
+| FDPE     |    7 |        Flop & Latch |
+| IBUF     |    6 |                  IO |
+| CARRY4   |    5 |          CarryLogic |
+| LUT1     |    2 |                 LUT |
+| MUXF7    |    1 |               MuxFx |
+>>>>>>> Stashed changes:CODE/hdl/PROC/PROC_leader_test/PROC_leader_test.runs/synth_1/RF_top_utilization_synth.rpt
 | FDRE     |    1 |        Flop & Latch |
 +----------+------+---------------------+
 

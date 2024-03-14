@@ -341,7 +341,7 @@ always_comb begin
     
     Rx_read_state: begin // this state reads from the RF fifo
 // Change when actually working
-        if(Rx_counter_q < 'd8) begin // waits 8 fifo reads
+        if(Rx_counter_q < 'd15) begin // waits 8 fifo reads
             if(counter_q <= 'b1) begin // waits 2 cycles
                 inst_d = 'b10;// long read
                 addr_out_d = 'h200 + Rx_counter_q; // index the fifo 
@@ -362,17 +362,21 @@ always_comb begin
     Rx_read_reg:begin
         cs_out_d = 'b0;
         if(counter_q < 'd3)begin
-        next_state = Rx_read_reg;
-        counter_d = counter_q +1;
-        end else begin
-         if(~ready)begin // waits for RF to finish process
             next_state = Rx_read_reg;
+            counter_d = counter_q +1;
         end else begin
-            counter_d = 'b0;
-            Rx_counter_d = Rx_counter_q +1;
-            next_state = Rx_read_state;
-        end
-            
+            if(~ready)begin // waits for RF to finish process
+                next_state = Rx_read_reg;
+            end else begin
+                if(counter_q < 'd20) begin
+                    counter_d = counter_q +1;
+                    next_state = Rx_read_reg;
+                end else begin
+                    counter_d = 'b0;
+                    Rx_counter_d = Rx_counter_q +1;
+                    next_state = Rx_read_state;
+                end
+            end
         end
     end
     

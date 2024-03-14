@@ -1,6 +1,10 @@
 
 { 
+<<<<<<< Updated upstream
     crc :  8968900001421860451  , 
+=======
+    crc :  587974517783741503  , 
+>>>>>>> Stashed changes
     ccp_crc :  0  , 
     cmdline : " --incr --debug typical --relax --mt 2 -L xil_defaultlib -L uvm -L unisims_ver -L unimacro_ver -L secureip --snapshot serdes_tb_behav xil_defaultlib.serdes_tb xil_defaultlib.glbl" , 
     buildDate : "Oct 13 2023" , 

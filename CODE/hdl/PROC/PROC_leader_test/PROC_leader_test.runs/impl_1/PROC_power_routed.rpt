@@ -1,7 +1,11 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
+<<<<<<< Updated upstream:CODE/hdl/PROC/PROC_leader_test/PROC_leader_test.runs/impl_1/PROC_power_routed.rpt
 | Date             : Thu Mar 14 17:13:56 2024
+=======
+| Date             : Wed Mar 13 15:00:56 2024
+>>>>>>> Stashed changes:CODE/hdl/PROC/PROC_leader_test/PROC_leader_test.runs/impl_1/RF_top_power_routed.rpt
 | Host             : DESKTOP-M1PCUD5 running 64-bit major release  (build 9200)
 | Command          : report_power -file PROC_power_routed.rpt -pb PROC_power_summary_routed.pb -rpx PROC_power_routed.rpx
 | Design           : PROC
@@ -30,10 +34,10 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.171        |
+| Total On-Chip Power (W)  | 0.172        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.099        |
+| Dynamic (W)              | 0.100        |
 | Device Static (W)        | 0.072        |
 | Effective TJA (C/W)      | 4.9          |
 | Max Ambient (C)          | 84.2         |
@@ -53,6 +57,7 @@ Table of Contents
 | On-Chip                 | Power (W) | Used     | Available | Utilization (%) |
 +-------------------------+-----------+----------+-----------+-----------------+
 | Clocks                  |    <0.001 |        6 |       --- |             --- |
+<<<<<<< Updated upstream:CODE/hdl/PROC/PROC_leader_test/PROC_leader_test.runs/impl_1/PROC_power_routed.rpt
 | Slice Logic             |    <0.001 |      689 |       --- |             --- |
 |   LUT as Logic          |    <0.001 |      320 |     32600 |            0.98 |
 |   Register              |    <0.001 |      240 |     65200 |            0.37 |
@@ -64,8 +69,21 @@ Table of Contents
 | Block RAM               |    <0.001 |      0.5 |        75 |            0.67 |
 | MMCM                    |     0.086 |        1 |         5 |           20.00 |
 | I/O                     |     0.013 |       29 |       210 |           13.81 |
+=======
+| Slice Logic             |    <0.001 |      719 |       --- |             --- |
+|   LUT as Logic          |    <0.001 |      296 |     32600 |            0.91 |
+|   Register              |    <0.001 |      283 |     65200 |            0.43 |
+|   CARRY4                |    <0.001 |        9 |      8150 |            0.11 |
+|   F7/F8 Muxes           |    <0.001 |        2 |     32600 |           <0.01 |
+|   LUT as Shift Register |    <0.001 |        6 |      9600 |            0.06 |
+|   Others                |     0.000 |       41 |       --- |             --- |
+| Signals                 |    <0.001 |      518 |       --- |             --- |
+| Block RAM               |    <0.001 |      0.5 |        75 |            0.67 |
+| MMCM                    |     0.086 |        1 |         5 |           20.00 |
+| I/O                     |     0.013 |       31 |       210 |           14.76 |
+>>>>>>> Stashed changes:CODE/hdl/PROC/PROC_leader_test/PROC_leader_test.runs/impl_1/RF_top_power_routed.rpt
 | Static Power            |     0.072 |          |           |                 |
-| Total                   |     0.171 |          |           |                 |
+| Total                   |     0.172 |          |           |                 |
 +-------------------------+-----------+----------+-----------+-----------------+
 
 
@@ -145,7 +163,11 @@ Table of Contents
 +---------------+-----------+
 | Name          | Power (W) |
 +---------------+-----------+
+<<<<<<< Updated upstream:CODE/hdl/PROC/PROC_leader_test/PROC_leader_test.runs/impl_1/PROC_power_routed.rpt
 | PROC          |     0.099 |
+=======
+| RF_top        |     0.100 |
+>>>>>>> Stashed changes:CODE/hdl/PROC/PROC_leader_test/PROC_leader_test.runs/impl_1/RF_top_power_routed.rpt
 |   clk_wiz_dut |     0.086 |
 |     inst      |     0.086 |
 +---------------+-----------+

@@ -50,7 +50,11 @@ module RF_top(
     input uart_rx,
     output uart_tx,
     output empty_led,
-    output full_led
+    output full_led,
+    
+    output sdo_test_out,
+    output cs_test_out,
+    output clk_test_out
     );
     wire [15:0] data_out_mem;
     wire [7:0] addr_a;
@@ -72,7 +76,9 @@ module RF_top(
     assign clk_out = CLK100MHZ;
     assign wake = 0;
     assign intr_out_2 = intr_in;
-    
+    assign clk_test_out = clk_intr;
+    assign cs_test_out = cs;
+    assign sdo_test_out = sdo;
     
     /////TEMP DELETE LATER 
     RF_cl_test RF_state(
@@ -130,8 +136,6 @@ module RF_top(
      );
      
      
- 
-     
      blk_mem_gen_0 mem_0(
         .clka(clk_intr),
         //.clka(CLK100MHZ),
@@ -152,8 +156,19 @@ module RF_top(
 
     rv_fifo fifo(
         .clk(clk_intr),
+<<<<<<< Updated upstream
         .rst(rst),
         .
+=======
+        .srst(rst),
+        .full(full_led),
+        .din(rf_data_out),
+        .wr_en(enable),
+        .empty(empty_led),
+        .dout(fifo_out),
+        .rd_en(rd_en&uart_ready)
+    );
+>>>>>>> Stashed changes
 
     ser_buffer serial_dut_0(
         .clk(clk_intr),
