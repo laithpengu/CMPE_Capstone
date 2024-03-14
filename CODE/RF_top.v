@@ -139,16 +139,21 @@ module RF_top(
         .douta(data_out_mem)
      );
      
-     fifo_generator_0 fifo_0(
+//     fifo_generator_0 fifo_0(
+//        .clk(clk_intr),
+//        .srst(rst),
+//        .full(full_led),
+//        .din(rf_data_out),
+//        .wr_en(enable),
+//        .empty(empty_led),
+//        .dout(fifo_out),
+//        .rd_en(rd_en&ready_uart)
+//    );
+
+    rv_fifo fifo(
         .clk(clk_intr),
-        .srst(rst),
-        .full(full_led),
-        .din(rf_data_out),
-        .wr_en(enable),
-        .empty(empty_led),
-        .dout(fifo_out),
-        .rd_en(rd_en&ready_uart)
-    );
+        .rst(rst),
+        .
 
     ser_buffer serial_dut_0(
         .clk(clk_intr),

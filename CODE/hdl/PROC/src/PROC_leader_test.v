@@ -1,3 +1,25 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer: 
+// 
+// Create Date: 11/25/2023 04:36:37 PM
+// Design Name: 
+// Module Name: RF_top
+// Project Name: 
+// Target Devices: 
+// Tool Versions: 
+// Description: 
+// 
+// Dependencies: 
+// 
+// Revision:
+// Revision 0.01 - File Created
+// Additional Comments:
+// 
+//////////////////////////////////////////////////////////////////////////////////
+
+
 module PROC(
     input CLK100MHZ,
     input rst,
@@ -12,6 +34,8 @@ module PROC(
     output Rx_valid,
     input Rx_ready,
     
+    
+    
     output n_rst,
     output sdi,
     output sck,
@@ -23,117 +47,154 @@ module PROC(
     output intr_out_2,
     
     input rd_en,
-//    input uart_rx,
-//    output uart_tx,
+    input uart_rx,
+    output uart_tx,
     output empty_led,
     output full_led
-
-//    output dir,
-//    output speed
-);
-// Clock signals
-    wire clk_5mhz;
-    wire clk_400khz;
-    wire clk_200khz;
-    wire clk_330hz;
-
-// PWM signals
-    wire pwm_rdy;
-    wire pwm_valid;
+    );
+    localparam DATA_WIDTH    = 8;
+    localparam DATA_DEPTH    = 1024;
     
-    wire dir;
-    wire speed;
+    wire [15:0] data_out_mem;
+    wire [7:0] addr_a;
+    wire ready;
+    wire [9:0] addr_out;
+    wire [7:0] data_out;
+    wire inc;
+    wire [1:0] inst;
+    wire cs_out;
+    wire intr_inter;
+    wire clk_intr;
 
-    // Buffer signals
-    // wire ctrl_in_valid;
-    // wire ctrl_in_rdy;
-    // wire ctrl_out_valid;
-    // wire ctrl_out_rdy;
-    reg [15:0] bc_q;
-    reg [15:0] bc_d;
-    reg counter_q;
-    reg counter_d;
-    wire [7:0] data;
-
-    assign pwm_valid = ~counter_q;
-    assign rx_ready = intr_in;
-
-    always @(posedge clk_5mhz or posedge rst) begin
-        if(rst) begin
-            counter_q <= 'b0;
-            bc_q <= 'b0;
-        end else begin
-            counter_q <= counter_d;
-            bc_q <= bc_d;
-        end
-    end
-
-    always begin
-        case(counter_q)
-            1'b0: bc_d = {data, bc_q[7:0]};
-            1'b1: bc_d = {bc_q[15:8], data};
-        endcase
-
-        if(Rx_valid)
-            counter_d = counter_q + 1;
-        else
-            counter_d = counter_q;
-    end
+// FIFO signals
+    wire ready_in;
+    wire valid_out;
+    wire [3:0] count;
     
-    RF_top RF_top(
-        .CLK100MHZ(CLK100MHZ),
-        .rst(rst),
-        .sdo(sdo),
-        .intr_in(intr_in),
-        .Tx_data(Tx_data),
-        .Tx_valid(Tx_valid),
-        .Tx_ready(Tx_ready),
-        .Rx_data(Rx_data),
-        .Rx_valid(Rx_valid),
-        .Rx_ready(Rx_ready),
-        .n_rst(n_rst),
-        .sdi(sdi),
-        .sck(sck),
-        .cs(cs),
-        .data_out_s(data_out_s),
-        .intr_out(intr_out),
-        .wake(wake),
-        .clk_out(clk_out),
-        .intr_out_2(intr_out_2)
-    );
-
-    PWM u_inst_pwm(
-        .clk_400khz(clk_400khz),
-        .clk_200khz(clk_200khz),
-        .rst(rst),
-        .data_in(bc_q),
-        .pwm_valid(pwm_valid),
-        .pwm_rdy(pwm_rdy), 
-        .dir_out(dir),
-        .speed_out(speed)
-    );
+    wire[7:0] fifo_out;
+    wire[7:0] rf_data_out;
+//    wire ready_uart;
+    wire uart_ready;
+    wire enable;
     
-    clk_wiz_1 wiz(
-        .clk_in1(CLK100MHZ),
-        .clk_out1(clk_5mhz)
-    );
+    assign clk_out = CLK100MHZ;
+    assign wake = 0;
+    assign intr_out_2 = intr_in;
     
-    clk_div_1 u_inst_clk_div_0(
-        .clk_in(clk_5mhz),
+    
+    /////TEMP DELETE LATER 
+    RF_cl_test RF_state(
+    .clk(clk_intr),
+    //.clk(CLK100MHZ),
+    .rst(rst),
+    .data_in(data_out_mem),
+    .ready(ready),
+    .intr(intr_in),
+    .addr_out(addr_out),
+    .data_out(data_out),
+    .inst(inst),
+    .cs_out(cs_out),
+    .inc(inc),
+    .intr_out(intr_out),
+    .rst_n(n_rst),
+    .Tx_data(Tx_data),
+    .Tx_valid(Tx_valid),
+    .Tx_ready(Tx_ready),
+    .Rx_ready(Rx_ready));
+  
+  clk_wiz_0 clk_wiz_dut
+  (
+  // Clock out ports  
+  .clk_out1(clk_intr),
+  // Status and control signals               
+ // Clock in ports
+  .clk_in1(CLK100MHZ)
+  );
+    RF RF_0(
+    .clk(clk_intr),
+    //.clk(CLK100MHZ),
+    .rst(rst),
+    .c_en(cs_out),
+    .intr(intr_in),
+    .sdo(sdo),
+    .sdi(sdi),
+    .addr_in(addr_out),
+    .data_in(data_out),
+    .mode(inst),
+    .sck(sck),
+    .ready(ready),
+    .cs(cs),
+    .data_out(data_out_s),
+    .intr_out(intr_inter));
+
+    pc pc_dut_0(
+     .clk(clk_intr),
+     //.clk(CLK100MHZ),
+     .rst(rst),
+     .inc(inc),
+     .jmp(0),
+     .addrin('b0),
+     .addrout(addr_a)
+     );
+     
+     
+ 
+     
+     blk_mem_gen_0 mem_0(
+        .clka(clk_intr),
+        //.clka(CLK100MHZ),
+        .addra(addr_a),
+        .douta(data_out_mem)
+     );
+     
+//     fifo_generator_0 fifo_0(
+//        .clk(clk_intr),
+//        .srst(rst),
+//        .full(full_led),
+//        .din(rf_data_out),
+//        .wr_en(enable),
+//        .empty(empty_led),
+//        .dout(fifo_out),
+//        .rd_en(rd_en&ready_uart)
+//    );
+
+    rv_fifo #(
+        DATA_WIDTH,
+        DATA_DEPTH
+    ) fifo (
+        .clk(clk_intr),
         .rst(rst),
-        .clk_out(clk_400khz)
+        .data_in(rf_data_out),
+        .valid_in(enable),
+        .ready_in(ready_in), // ignored signal
+        .data_out(fifo_out),
+        .valid_out(valid_out), // ignored signal
+        .ready_out(rd_en),
+        .count(count), // ignored
+        .empty(empty_led),
+        .full(full_led)
     );
 
-    clk_div_1 u_inst_clk_div_1(
-        .clk_in(clk_400khz),
+    ser_buffer serial_dut_0(
+        .clk(clk_intr),
         .rst(rst),
-        .clk_out(clk_200khz)
+        .start(~cs),
+        .data_in(sdo),
+        .mode(inst),
+        .data_out(rf_data_out),
+        .enable(enable)
     );
 
-    clk_div_2 u_inst_clk_div_2(
-        .clk_in(clk_200khz),
+    
+    UART_pkg uart_dut_0(
+        .clk(clk_intr),
         .rst(rst),
-        .clk_out(clk_330hz)
+        .data({8'h00, rf_data_out}),
+        .valid(enable),
+        .ready(uart_ready),
+        .uart_rx(uart_rx),
+        .uart_tx(uart_tx)
     );
-
+ 
 endmodule
+
