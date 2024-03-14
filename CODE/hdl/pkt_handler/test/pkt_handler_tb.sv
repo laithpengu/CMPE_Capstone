@@ -22,6 +22,7 @@
 module pkt_handler_tb();
     logic clk = 0;
     logic rst;
+    logic [7:0] prev_id;
     logic [7:0] veh_id;
 
     logic [7:0] rx_frame;
@@ -35,6 +36,7 @@ module pkt_handler_tb();
     pkt_handler dut(
         .clk,
         .rst,
+        .prev_id,
         .veh_id,
         .rx_frame,
         .rx_valid,
@@ -53,13 +55,18 @@ module pkt_handler_tb();
         @(negedge clk);
         rst = 0;
         veh_id = 8'h01;
+        prev_id = 8'h00;
         wait(rx_ready);
-        sendFrame(.frame(64'hffffffffffffffff));
+        sendFrame(.frame(64'hffffffffffffffff), .test("kill"));
         wait(rx_ready);
-        sendFrame(.frame(64'h960f0173a7583362));
+        sendFrame(.frame(64'h960f0273a7523362), .test("drop"));
+        wait(rx_ready);
+        sendFrame(.frame(64'h960f0173a7583362), .test("drop"));
+        wait(rx_ready);
+        sendFrame(.frame(64'h960f0100b3c53362), .test("pass"));
     end
 
-    task sendFrame(input [63:0] frame);
+    task sendFrame(input [63:0] frame, input string test);
         rx_valid = 1;
         rx_frame = frame[63:56];
         @(posedge clk);
@@ -78,6 +85,14 @@ module pkt_handler_tb();
         rx_frame = frame[7:0];
         @(posedge clk);
         rx_valid = 0;
+        if(test == "kill" && !kill)
+            $display("Failed kill test");
+        else if(test == "pass" && !data_valid)
+            $display("Failed pass test");
+        else if(test == "drop" && data_valid)
+            $display("Failed drop test");
+        else
+            $display("Passed %s test",  test);
     endtask
 
 endmodule

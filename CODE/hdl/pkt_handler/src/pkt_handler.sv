@@ -1,6 +1,7 @@
 module pkt_handler (
     input clk,
     input rst,
+    input [7:0] prev_id,
     input [7:0] veh_id,
 
     input [7:0] rx_frame,
@@ -19,7 +20,7 @@ module pkt_handler (
 
     assign rx_ready = ~(|counter_q);
     assign kill = (&counter_q) && (&frame_q[47:16]);
-    assign data_valid = (~(|counter_q) && (veh_id == frame_q[47:40])) || kill;
+    assign data_valid = ((counter_q > 5 || counter_q == 0) && (veh_id == frame_q[47:40]) && (prev_id == frame_q[39:32])) || kill;
     assign data = frame_q[31:16];
 
     always_ff @(posedge clk or posedge rst) begin
