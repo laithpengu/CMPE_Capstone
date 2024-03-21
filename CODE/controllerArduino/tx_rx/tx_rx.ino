@@ -18,7 +18,7 @@ static int bytes_nodata = bytes_MHR + bytes_FCS; // no_data bytes in PHY payload
 
 static int ignoreBytes = 0; // bytes to ignore, some modules behaviour.
 
-static boolean bufPHY = false; // flag to buffer all bytes in PHY Payload, or not
+static boolean bufPHY = true; // flag to buffer all bytes in PHY Payload, or not
 
 volatile uint8_t flag_got_rx;
 volatile uint8_t flag_got_tx;
@@ -235,8 +235,42 @@ void send16(word dest16, uint8_t wheel_data, uint8_t trigger_data) {
     write_short(MRF_TXNCON, (1<<MRF_TXNACKREQ | 1<<MRF_TXNTRIG));
 }
 
+void send16_trad(word dest16, char * data) {
+    byte len = strlen(data); // get the length of the char* array
+    int i = 0;
+    write_long(i++, bytes_MHR); // header length
+    // +ignoreBytes is because some module seems to ignore 2 bytes after the header?!.
+    // default: ignoreBytes = 0;
+    write_long(i++, bytes_MHR+ignoreBytes+len);
+
+    // 0 | pan compression | ack | no security | no data pending | data frame[3 bits]
+    write_long(i++, 0b01100001); // first byte of Frame Control
+    // 16 bit source, 802.15.4 (2003), 16 bit dest,
+    write_long(i++, 0b10001000); // second byte of frame control
+    write_long(i++, 1);  // sequence number 1
+
+    word panid = get_pan();
+
+    write_long(i++, panid & 0xff);  // dest panid
+    write_long(i++, panid >> 8);
+    write_long(i++, dest16 & 0xff);  // dest16 low
+    write_long(i++, dest16 >> 8); // dest16 high
+
+    word src16 = address16_read();
+    write_long(i++, src16 & 0xff); // src16 low
+    write_long(i++, src16 >> 8); // src16 high
+
+    // All testing seems to indicate that the next two bytes are ignored.
+    //2 bytes on FCS appended by TXMAC
+    i+=ignoreBytes;
+    for (int q = 0; q < len; q++) {
+        write_long(i++, data[q]);
+    }
+    // ack on, and go!
+    write_short(MRF_TXNCON, (1<<MRF_TXNACKREQ | 1<<MRF_TXNTRIG));
+}
+
 void interrupt_handler() {
-    Serial.println("recieved int");
     uint8_t last_interrupt = read_short(MRF_INTSTAT);
     if (last_interrupt & MRF_I_RXIF) {
         flag_got_rx++;
@@ -245,30 +279,22 @@ void interrupt_handler() {
         rx_disable();
         // read start of rxfifo for, has 2 bytes more added by FCS. frame_length = m + n + 2
         uint8_t frame_length = read_long(0x300);
+        Serial.println(frame_length, DEC);
 
         // buffer all bytes in PHY Payload
         if(bufPHY){
             int rb_ptr = 0;
             for (int i = 0; i < frame_length; i++) { // from 0x301 to (0x301 + frame_length -1)
                 rx_buf[rb_ptr++] = read_long(0x301 + i);
-                uint8_t data_byte = rx_buf[rb_ptr];
-                for (int x = 0; x < 8; x++) {
-                  Serial.print(bitRead(data_byte, x));
-                }
-                Serial.print("\n");
             }
         }
+
 
         // buffer data bytes
         int rd_ptr = 0;
         // from (0x301 + bytes_MHR) to (0x301 + frame_length - bytes_nodata - 1)
         for (int i = 0; i < rx_datalength(); i++) {
             rx_info.rx_data[rd_ptr++] = read_long(0x301 + bytes_MHR + i);
-            uint8_t data_byte = rx_info.rx_data[rd_ptr];
-            for (int x = 0; x < 8; x++) {
-              Serial.print(bitRead(data_byte, x));
-            }
-            Serial.print("\n");
         }
 
         rx_info.frame_length = frame_length;
@@ -299,15 +325,29 @@ void handle_rx() {
     if(get_bufferPHY()){
       Serial.println("Packet data (PHY Payload):");
       for (int i = 0; i < get_rxinfo()->frame_length; i++) {
-          Serial.print(get_rxbuf()[i]);
+          uint8_t data_byte = get_rxbuf()[i];
+          Serial.print("Hex Data: ");
+          char str_buffer[50];
+          sprintf(str_buffer,"%x",data_byte);
+          Serial.print(str_buffer);
+          Serial.print(" Raw Data: ");
+          for (int x = 0; x < 8; x++) {
+            Serial.print(bitRead(data_byte, 7 - x));
+          }
+          Serial.print("\n");
       }
     }
     
     Serial.println("\r\nData (relevant data):");
     for (int i = 0; i < rx_datalength(); i++) {
         uint8_t data_byte = get_rxinfo()->rx_data[i];
+        Serial.print("Hex Data: ");
+        char str_buffer[50];
+        sprintf(str_buffer,"%x",data_byte);
+        Serial.print(str_buffer);
+        Serial.print(" Raw Data: ");
         for (int x = 0; x < 8; x++) {
-          Serial.print(bitRead(data_byte, x));
+          Serial.print(bitRead(data_byte, 7 - x));
         }
         Serial.print("\n");
     }
@@ -397,7 +437,8 @@ void loop() {
       }
 
       Serial.println("txxxing...");
-      send16(0xFF11, wheel_out, trigger_out);
+      //send16(0xFF11, wheel_out, trigger_out);
+      send16_trad(0xFF11, "AA");
       //write_long(0x300, wheel_out);
       //write_long(0x301, trigger_out);
       //write_short(MRF_TXNCON, (1<<MRF_TXNACKREQ | 1<<MRF_TXNTRIG));
