@@ -52,8 +52,8 @@ module PROC(
     output empty_led,
     output full_led
     );
-    localparam DATA_WIDTH    = 8;
-    localparam DATA_DEPTH    = 1024;
+//    localparam DATA_WIDTH    = 8;
+//    localparam DATA_DEPTH    = 1024;
     
     wire [15:0] data_out_mem;
     wire [7:0] addr_a;
@@ -147,33 +147,33 @@ module PROC(
         .douta(data_out_mem)
      );
      
-//     fifo_generator_0 fifo_0(
-//        .clk(clk_intr),
-//        .srst(rst),
-//        .full(full_led),
-//        .din(rf_data_out),
-//        .wr_en(enable),
-//        .empty(empty_led),
-//        .dout(fifo_out),
-//        .rd_en(rd_en&ready_uart)
-//    );
-
-    rv_fifo #(
-        DATA_WIDTH,
-        DATA_DEPTH
-    ) fifo (
+     fifo_generator_0 fifo_0(
         .clk(clk_intr),
-        .rst(rst),
-        .data_in(rf_data_out),
-        .valid_in(enable),
-        .ready_in(ready_in), // ignored signal
-        .data_out(fifo_out),
-        .valid_out(valid_out), // ignored signal
-        .ready_out(rd_en),
-        .count(count), // ignored
+        .srst(rst),
+        .full(full_led),
+        .din(rf_data_out),
+        .wr_en(enable),
         .empty(empty_led),
-        .full(full_led)
+        .dout(fifo_out),
+        .rd_en(rd_en&ready_uart)
     );
+
+//    rv_fifo #(
+//        DATA_WIDTH,
+//        DATA_DEPTH
+//    ) fifo (
+//        .clk(clk_intr),
+//        .rst(rst),
+//        .data_in(rf_data_out),
+//        .valid_in(enable),
+//        .ready_in(ready_in), // ignored signal
+//        .data_out(fifo_out),
+//        .valid_out(valid_out), // ignored signal
+//        .ready_out(rd_en),
+//        .count(count), // ignored
+//        .empty(empty_led),
+//        .full(full_led)
+//    );
 
     ser_buffer serial_dut_0(
         .clk(clk_intr),

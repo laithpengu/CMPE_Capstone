@@ -66,15 +66,15 @@ logic Tx_ready_d;
 logic Tx_ready_q;
 logic [3:0] Rx_counter_d;
 logic [3:0] Rx_counter_q;
-logic [31:0] Tx_data_d;
-logic [31:0] Tx_data_q;
-logic Tx_valid_d;
-logic Tx_valid_q;
+// logic [31:0] Tx_data_d;
+// logic [31:0] Tx_data_q;
+// logic Tx_valid_d;
+//logic Tx_valid_q;
 logic Rx_ready_q;
 logic Rx_ready_d;
 
 assign Tx_data_d = Tx_data;
-assign Tx_valid_d = Tx_valid;
+// assign Tx_valid_d = Tx_valid;
 assign rst_n = rst_n_q;
 assign inc = inc_q;
 assign addr_out = addr_out_q;
@@ -92,8 +92,8 @@ always_ff@(posedge clk or posedge rst)begin
     if(rst)begin
         curr_state <= rst_state;
         Rx_ready_q <= 'b0;
-        Tx_data_q <= 'b0;
-        Tx_valid_q <= 'b0;
+        // Tx_data_q <= 'b0;
+        //Tx_valid_q <= 'b0;
         inst_q <= 'b0;
         Rx_counter_q <= 'b0;
         data_out_q <= 'b0;
@@ -110,8 +110,8 @@ always_ff@(posedge clk or posedge rst)begin
         Tx_ready_q <= 'b0;
     end else begin
         Rx_ready_q <= Rx_ready_d;
-        Tx_data_q <= Tx_data_d;
-        Tx_valid_q <= Tx_valid_d;
+        // Tx_data_q <= Tx_data_d;
+        //Tx_valid_q <= Tx_valid_d;
         Rx_counter_q <= Rx_counter_d;
         data_out_q <= data_out_d;
         data_in_q <= data_in_d;
@@ -304,7 +304,7 @@ always_comb begin
         next_state = intr_handle;
         Tx_ready_d = 'b1; // state machine is ready for control logic to transmit
         counter_d = 'b0;
-            if(~intr && Rx_ready) begin
+            if(~intr && Rx_ready_q) begin
             //if(~intr && ready && Rx_ready) begin
             //if(rst) begin
                 next_state = intr_read_1; 
@@ -344,7 +344,7 @@ always_comb begin
         if(Rx_counter_q < 'd15) begin // waits 8 fifo reads
             if(counter_q <= 'b1) begin // waits 2 cycles
                 inst_d = 'b10;// long read
-                addr_out_d = 'h200 + Rx_counter_q; // index the fifo 
+                addr_out_d = 'h300 + Rx_counter_q; // index the fifo 
                 counter_d = counter_q +1; // increase counter
                 next_state = Rx_read_state;
             end else begin

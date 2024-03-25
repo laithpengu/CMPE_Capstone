@@ -2,7 +2,7 @@
 -- Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
--- Date        : Mon Mar  4 11:11:17 2024
+-- Date        : Mon Mar 18 15:24:15 2024
 -- Host        : DESKTOP-M1PCUD5 running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode synth_stub -rename_top fifo_generator_0 -prefix
 --               fifo_generator_0_ fifo_generator_0_stub.vhdl
@@ -17,10 +17,10 @@ entity fifo_generator_0 is
   Port ( 
     clk : in STD_LOGIC;
     srst : in STD_LOGIC;
-    din : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    din : in STD_LOGIC_VECTOR ( 7 downto 0 );
     wr_en : in STD_LOGIC;
     rd_en : in STD_LOGIC;
-    dout : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    dout : out STD_LOGIC_VECTOR ( 7 downto 0 );
     full : out STD_LOGIC;
     empty : out STD_LOGIC
   );
@@ -31,7 +31,7 @@ architecture stub of fifo_generator_0 is
 attribute syn_black_box : boolean;
 attribute black_box_pad_pin : string;
 attribute syn_black_box of stub : architecture is true;
-attribute black_box_pad_pin of stub : architecture is "clk,srst,din[15:0],wr_en,rd_en,dout[15:0],full,empty";
+attribute black_box_pad_pin of stub : architecture is "clk,srst,din[7:0],wr_en,rd_en,dout[7:0],full,empty";
 attribute x_core_info : string;
 attribute x_core_info of stub : architecture is "fifo_generator_v13_2_9,Vivado 2023.2";
 begin

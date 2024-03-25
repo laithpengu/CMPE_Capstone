@@ -92,7 +92,6 @@ module RF(
         addr_index_q <= 4'b0000;
         data_index_q <= 4'b0000;
         mode_q <= 2'b00;
-        intr_q <= 'b0;
         c_en_q <= 'b0;
       end 
       else begin
@@ -106,7 +105,6 @@ module RF(
         data_index_q <= data_index_d;
         mode_q <= mode_d;
         c_en_q <= c_en_d;
-        intr_q = intr_d;
       end
     end
     

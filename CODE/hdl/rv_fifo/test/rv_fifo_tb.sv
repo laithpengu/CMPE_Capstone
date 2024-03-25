@@ -10,6 +10,7 @@ module rv_fifo_tb();
    logic                   empty, full;
    logic                   clk = 0;
    logic                   rst;
+   logic                   test1;
 
    //-----------------------------------------------------------------------------
 
@@ -49,6 +50,7 @@ module rv_fifo_tb();
       valid_in  <= 0;
       ready_out <= 0;
       rst      <= 1;
+      test1     = 0;
 
       repeat(10) @(posedge clk);
       rst <= 0;
@@ -104,7 +106,12 @@ module rv_fifo_tb();
 
       repeat(1) @(posedge clk);
       display_status();
-      $finish;
+      test1 = 1;
+   end
+
+   initial begin
+      wait(test1);
+      
    end
 
    function display_status();

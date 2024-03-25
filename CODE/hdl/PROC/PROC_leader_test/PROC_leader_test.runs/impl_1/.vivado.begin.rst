@@ -1,34 +1,20 @@
 <?xml version="1.0"?>
 <ProcessHandle Version="1" Minor="0">
-<<<<<<< Updated upstream
-    <Process Command="vivado.bat" Owner="turke" Host="DESKTOP-M1PCUD5" Pid="25888" HostCore="12" HostMemory="016868048896">
-=======
-    <Process Command="vivado.bat" Owner="turke" Host="DESKTOP-M1PCUD5" Pid="1364" HostCore="12" HostMemory="016868048896">
+    <Process Command="vivado.bat" Owner="turke" Host="DESKTOP-M1PCUD5" Pid="25388" HostCore="12" HostMemory="016868048896">
     </Process>
 </ProcessHandle>
 <?xml version="1.0"?>
 <ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="turke" Host="DESKTOP-M1PCUD5" Pid="16500" HostCore="12" HostMemory="016868048896">
+    <Process Command="vivado.bat" Owner="turke" Host="DESKTOP-M1PCUD5" Pid="32212" HostCore="12" HostMemory="016868048896">
     </Process>
 </ProcessHandle>
 <?xml version="1.0"?>
 <ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="turke" Host="DESKTOP-M1PCUD5" Pid="32752" HostCore="12" HostMemory="016868048896">
+    <Process Command="vivado.bat" Owner="turke" Host="DESKTOP-M1PCUD5" Pid="39212" HostCore="12" HostMemory="016868048896">
     </Process>
 </ProcessHandle>
 <?xml version="1.0"?>
 <ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="turke" Host="DESKTOP-M1PCUD5" Pid="25588" HostCore="12" HostMemory="016868048896">
-    </Process>
-</ProcessHandle>
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="turke" Host="DESKTOP-M1PCUD5" Pid="35580" HostCore="12" HostMemory="016868048896">
-    </Process>
-</ProcessHandle>
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="turke" Host="DESKTOP-M1PCUD5" Pid="7564" HostCore="12" HostMemory="016868048896">
->>>>>>> Stashed changes
+    <Process Command="vivado.bat" Owner="turke" Host="DESKTOP-M1PCUD5" Pid="15400" HostCore="12" HostMemory="016868048896">
     </Process>
 </ProcessHandle>

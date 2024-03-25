@@ -2,7 +2,7 @@
 // Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-// Date        : Mon Mar  4 11:11:17 2024
+// Date        : Mon Mar 18 15:24:15 2024
 // Host        : DESKTOP-M1PCUD5 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode synth_stub -rename_top fifo_generator_0 -prefix
 //               fifo_generator_0_ fifo_generator_0_stub.v
@@ -16,14 +16,14 @@
 // Please paste the declaration into a Verilog source file or add the file as an additional source.
 (* x_core_info = "fifo_generator_v13_2_9,Vivado 2023.2" *)
 module fifo_generator_0(clk, srst, din, wr_en, rd_en, dout, full, empty)
-/* synthesis syn_black_box black_box_pad_pin="srst,din[15:0],wr_en,rd_en,dout[15:0],full,empty" */
+/* synthesis syn_black_box black_box_pad_pin="srst,din[7:0],wr_en,rd_en,dout[7:0],full,empty" */
 /* synthesis syn_force_seq_prim="clk" */;
   input clk /* synthesis syn_isclock = 1 */;
   input srst;
-  input [15:0]din;
+  input [7:0]din;
   input wr_en;
   input rd_en;
-  output [15:0]dout;
+  output [7:0]dout;
   output full;
   output empty;
 endmodule

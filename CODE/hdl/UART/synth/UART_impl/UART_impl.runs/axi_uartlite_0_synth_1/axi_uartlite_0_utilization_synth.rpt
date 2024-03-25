@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date         : Fri Feb  9 14:59:26 2024
+| Date         : Mon Mar 18 18:23:51 2024
 | Host         : DESKTOP-M1PCUD5 running 64-bit major release  (build 9200)
 | Command      : report_utilization -file axi_uartlite_0_utilization_synth.rpt -pb axi_uartlite_0_utilization_synth.pb
 | Design       : axi_uartlite_0

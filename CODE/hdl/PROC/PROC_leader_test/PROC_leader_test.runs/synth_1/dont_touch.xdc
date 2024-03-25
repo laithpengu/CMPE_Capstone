@@ -5,3 +5,6 @@
 
 # IP: ip/fifo_generator_0/fifo_generator_0.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==fifo_generator_0 || ORIG_REF_NAME==fifo_generator_0} -quiet] -quiet
+
+# IP: ip/axi_uartlite_0_2/axi_uartlite_0.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==axi_uartlite_0 || ORIG_REF_NAME==axi_uartlite_0} -quiet] -quiet
