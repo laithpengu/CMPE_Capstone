@@ -24,6 +24,7 @@
 
 module bc_buffer(
         input clk,
+        input sck,
         input rst,
 
         input [15:0] avoid_in_data, // going into incoming_fifo
