@@ -1,3 +1,5 @@
-module UART_RX() begin
+module UART_RX(
     
-end
+);
+    
+endmodule
