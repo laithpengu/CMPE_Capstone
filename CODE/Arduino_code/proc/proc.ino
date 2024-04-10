@@ -8,7 +8,7 @@ char pass[] = "SouthRiver2020!";
 IPAddress ip(10, 0, 1, 16);
 int status = WL_IDLE_STATUS;
 WiFiServer server_green(79);
-char server[] = "192.168.0.103";
+char server[] = "192.168.0.100";
 String readString;
 bool connected = false;
 bool second_loop = false;
@@ -105,14 +105,10 @@ void setup() {
   Serial.println(ip);
 }
 
-
-//////////
-///LOOP///
-//////////
-void loop() {
-  while(!second_loop){
-    if (client.connect(server, 80)) {
-      second_loop = true;
+bool send(){
+  bool rv = false;
+  if (client.connect(server, 80)) {
+      rv = true;
       Serial.println("connected");
       client.println("GET /?green speed: 420 angle: 69 HTTP/1.0");
       client.println();
@@ -123,15 +119,15 @@ void loop() {
     if (client.connected()) {
       client.stop();
     }
-    delay(5000);
-  }
-  second_loop = false;
-  Serial.println("send loop left");
-  delay(5000);
-while(!connected){
-  WiFiClient client = server_green.available();
+    return rv;
+}
+
+
+bool receive(){
+  bool rv = false;
+   WiFiClient client = server_green.available();
   if (client) {
-    connected = true;
+    rv = true;
     Serial.println("new client");
 
     while (client.connected())
@@ -164,8 +160,8 @@ while(!connected){
               Serial.print("Angle: ");
               Serial.println(angle);
 
+              vehicleSpeed(10);
               vehicleAngle(angle);
-              vehicleSpeed(speed);
               delay(1);
             }
 
@@ -174,12 +170,37 @@ while(!connected){
             delay(1);
             // client.stop();
             // Serial.println("client disconnected");
+            return rv;
           }
         }
       }
     }
   }
 }
+//////////
+///LOOP///
+//////////
+void loop() {
+  //send
+  for(int i =0; i<5; i++){
+    if(send()){
+      i = 5;
+    }else{
+      i++;
+    }
+    delay(500);
+  }
+  second_loop = false;
+  Serial.println("send loop left");
+  delay(5000);
+
+//recive
+for(int i =0; i<5;i++){
+ if(receive()){
+  i =5;
+ }else{
+  i ++;
+ }
+}
   Serial.println("recived loop left");
-connected = false;
 }
