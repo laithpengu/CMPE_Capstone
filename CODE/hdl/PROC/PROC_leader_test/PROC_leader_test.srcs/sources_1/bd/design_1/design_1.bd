@@ -1,0 +1,277 @@
+{
+  "design": {
+    "design_info": {
+      "boundary_crc": "0x21FB6FBAAB2F3BA",
+      "device": "xc7s50csga324-1",
+      "gen_directory": "../../../../PROC_leader_test.gen/sources_1/bd/design_1",
+      "name": "design_1",
+      "rev_ctrl_bd_flag": "RevCtrlBdOff",
+      "synth_flow_mode": "Hierarchical",
+      "tool_version": "2023.2",
+      "validated": "true"
+    },
+    "design_tree": {
+      "RF_top_0": ""
+    },
+    "ports": {
+      "CLK100MHZ": {
+        "direction": "I"
+      },
+      "rst": {
+        "direction": "I"
+      },
+      "sdo": {
+        "direction": "I"
+      },
+      "intr_in": {
+        "direction": "I"
+      },
+      "Rx_ready": {
+        "direction": "I"
+      },
+      "rd_en": {
+        "direction": "I"
+      },
+      "Tx_ready": {
+        "direction": "O"
+      },
+      "Rx_data": {
+        "direction": "O",
+        "left": "7",
+        "right": "0"
+      },
+      "Rx_valid": {
+        "direction": "O"
+      },
+      "n_rst": {
+        "direction": "O",
+        "parameters": {
+          "POLARITY": {
+            "value": "ACTIVE_LOW",
+            "value_src": "default_prop"
+          }
+        }
+      },
+      "sdi": {
+        "direction": "O"
+      },
+      "sck": {
+        "direction": "O"
+      },
+      "cs": {
+        "direction": "O"
+      },
+      "data_out_s": {
+        "direction": "O"
+      },
+      "wake": {
+        "direction": "O"
+      },
+      "clk_out": {
+        "direction": "O"
+      },
+      "empty_led": {
+        "direction": "O"
+      },
+      "full_led": {
+        "direction": "O"
+      },
+      "intr_btn": {
+        "direction": "I"
+      }
+    },
+    "components": {
+      "RF_top_0": {
+        "vlnv": "xilinx.com:module_ref:RF_top:1.0",
+        "ip_revision": "1",
+        "xci_name": "design_1_RF_top_0_0",
+        "xci_path": "ip\\design_1_RF_top_0_0\\design_1_RF_top_0_0.xci",
+        "inst_hier_path": "RF_top_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "RF_top",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "CLK100MHZ": {
+            "direction": "I"
+          },
+          "rst": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "sdo": {
+            "direction": "I"
+          },
+          "intr_in": {
+            "direction": "I"
+          },
+          "intr_btn": {
+            "direction": "I"
+          },
+          "Tx_ready": {
+            "direction": "O"
+          },
+          "Rx_data": {
+            "direction": "O",
+            "left": "7",
+            "right": "0"
+          },
+          "Rx_valid": {
+            "direction": "O"
+          },
+          "Rx_ready": {
+            "direction": "I"
+          },
+          "n_rst": {
+            "type": "rst",
+            "direction": "O"
+          },
+          "sdi": {
+            "direction": "O"
+          },
+          "sck": {
+            "direction": "O"
+          },
+          "cs": {
+            "direction": "O"
+          },
+          "data_out_s": {
+            "direction": "O"
+          },
+          "wake": {
+            "direction": "O"
+          },
+          "clk_out": {
+            "direction": "O"
+          },
+          "rd_en": {
+            "direction": "I"
+          },
+          "empty_led": {
+            "direction": "O"
+          },
+          "full_led": {
+            "direction": "O"
+          }
+        }
+      }
+    },
+    "nets": {
+      "CLK100MHZ_1": {
+        "ports": [
+          "CLK100MHZ",
+          "RF_top_0/CLK100MHZ"
+        ]
+      },
+      "RF_top_0_Rx_data": {
+        "ports": [
+          "RF_top_0/Rx_data",
+          "Rx_data"
+        ]
+      },
+      "RF_top_0_Rx_valid": {
+        "ports": [
+          "RF_top_0/Rx_valid",
+          "Rx_valid"
+        ]
+      },
+      "RF_top_0_Tx_ready": {
+        "ports": [
+          "RF_top_0/Tx_ready",
+          "Tx_ready"
+        ]
+      },
+      "RF_top_0_clk_out": {
+        "ports": [
+          "RF_top_0/clk_out",
+          "clk_out"
+        ]
+      },
+      "RF_top_0_cs": {
+        "ports": [
+          "RF_top_0/cs",
+          "cs"
+        ]
+      },
+      "RF_top_0_data_out_s": {
+        "ports": [
+          "RF_top_0/data_out_s",
+          "data_out_s"
+        ]
+      },
+      "RF_top_0_empty_led": {
+        "ports": [
+          "RF_top_0/empty_led",
+          "empty_led"
+        ]
+      },
+      "RF_top_0_full_led": {
+        "ports": [
+          "RF_top_0/full_led",
+          "full_led"
+        ]
+      },
+      "RF_top_0_n_rst": {
+        "ports": [
+          "RF_top_0/n_rst",
+          "n_rst"
+        ]
+      },
+      "RF_top_0_sck": {
+        "ports": [
+          "RF_top_0/sck",
+          "sck"
+        ]
+      },
+      "RF_top_0_sdi": {
+        "ports": [
+          "RF_top_0/sdi",
+          "sdi"
+        ]
+      },
+      "RF_top_0_wake": {
+        "ports": [
+          "RF_top_0/wake",
+          "wake"
+        ]
+      },
+      "Rx_ready_1": {
+        "ports": [
+          "Rx_ready",
+          "RF_top_0/Rx_ready"
+        ]
+      },
+      "intr_btn_1": {
+        "ports": [
+          "intr_btn",
+          "RF_top_0/intr_btn"
+        ]
+      },
+      "intr_in_1": {
+        "ports": [
+          "intr_in",
+          "RF_top_0/intr_in"
+        ]
+      },
+      "rd_en_1": {
+        "ports": [
+          "rd_en",
+          "RF_top_0/rd_en"
+        ]
+      },
+      "rst_1": {
+        "ports": [
+          "rst",
+          "RF_top_0/rst"
+        ]
+      },
+      "sdo_1": {
+        "ports": [
+          "sdo",
+          "RF_top_0/sdo"
+        ]
+      }
+    }
+  }
+}

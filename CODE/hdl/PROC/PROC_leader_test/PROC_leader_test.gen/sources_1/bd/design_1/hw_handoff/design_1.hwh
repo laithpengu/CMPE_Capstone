@@ -1,0 +1,214 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Fri Apr  5 12:01:52 2024" VIVADOVERSION="2023.2">
+
+  <SYSTEMINFO ARCH="spartan7" BOARD="digilentinc.com:arty-s7-50:part0:1.1" DEVICE="7s50" NAME="design_1" PACKAGE="csga324" SPEEDGRADE="-1"/>
+
+  <EXTERNALPORTS>
+    <PORT DIR="I" NAME="CLK100MHZ" SIGIS="undef" SIGNAME="External_Ports_CLK100MHZ">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="RF_top_0" PORT="CLK100MHZ"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" LEFT="7" NAME="Rx_data" RIGHT="0" SIGIS="undef" SIGNAME="RF_top_0_Rx_data">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="RF_top_0" PORT="Rx_data"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" NAME="Rx_ready" SIGIS="undef" SIGNAME="External_Ports_Rx_ready">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="RF_top_0" PORT="Rx_ready"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="Rx_valid" SIGIS="undef" SIGNAME="RF_top_0_Rx_valid">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="RF_top_0" PORT="Rx_valid"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="Tx_ready" SIGIS="undef" SIGNAME="RF_top_0_Tx_ready">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="RF_top_0" PORT="Tx_ready"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="clk_out" SIGIS="undef" SIGNAME="RF_top_0_clk_out">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="RF_top_0" PORT="clk_out"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="cs" SIGIS="undef" SIGNAME="RF_top_0_cs">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="RF_top_0" PORT="cs"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="data_out_s" SIGIS="undef" SIGNAME="RF_top_0_data_out_s">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="RF_top_0" PORT="data_out_s"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="empty_led" SIGIS="undef" SIGNAME="RF_top_0_empty_led">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="RF_top_0" PORT="empty_led"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="full_led" SIGIS="undef" SIGNAME="RF_top_0_full_led">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="RF_top_0" PORT="full_led"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" NAME="intr_btn" SIGIS="undef" SIGNAME="External_Ports_intr_btn">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="RF_top_0" PORT="intr_btn"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" NAME="intr_in" SIGIS="undef" SIGNAME="External_Ports_intr_in">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="RF_top_0" PORT="intr_in"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="n_rst" POLARITY="ACTIVE_LOW" SIGIS="undef" SIGNAME="RF_top_0_n_rst">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="RF_top_0" PORT="n_rst"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" NAME="rd_en" SIGIS="undef" SIGNAME="External_Ports_rd_en">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="RF_top_0" PORT="rd_en"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" NAME="rst" SIGIS="undef" SIGNAME="External_Ports_rst">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="RF_top_0" PORT="rst"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="sck" SIGIS="undef" SIGNAME="RF_top_0_sck">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="RF_top_0" PORT="sck"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="sdi" SIGIS="undef" SIGNAME="RF_top_0_sdi">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="RF_top_0" PORT="sdi"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" NAME="sdo" SIGIS="undef" SIGNAME="External_Ports_sdo">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="RF_top_0" PORT="sdo"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="wake" SIGIS="undef" SIGNAME="RF_top_0_wake">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="RF_top_0" PORT="wake"/>
+      </CONNECTIONS>
+    </PORT>
+  </EXTERNALPORTS>
+
+  <EXTERNALINTERFACES/>
+
+  <MODULES>
+    <MODULE COREREVISION="1" FULLNAME="/RF_top_0" HWVERSION="1.0" INSTANCE="RF_top_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="RF_top" VLNV="xilinx.com:module_ref:RF_top:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="design_1_RF_top_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" NAME="CLK100MHZ" SIGIS="undef" SIGNAME="External_Ports_CLK100MHZ">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="CLK100MHZ"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="7" NAME="Rx_data" RIGHT="0" SIGIS="undef" SIGNAME="RF_top_0_Rx_data">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="Rx_data"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="Rx_ready" SIGIS="undef" SIGNAME="External_Ports_Rx_ready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="Rx_ready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="Rx_valid" SIGIS="undef" SIGNAME="RF_top_0_Rx_valid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="Rx_valid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="Tx_ready" SIGIS="undef" SIGNAME="RF_top_0_Tx_ready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="Tx_ready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="clk_out" SIGIS="undef" SIGNAME="RF_top_0_clk_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="clk_out"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="cs" SIGIS="undef" SIGNAME="RF_top_0_cs">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="cs"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="data_out_s" SIGIS="undef" SIGNAME="RF_top_0_data_out_s">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="data_out_s"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="empty_led" SIGIS="undef" SIGNAME="RF_top_0_empty_led">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="empty_led"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="full_led" SIGIS="undef" SIGNAME="RF_top_0_full_led">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="full_led"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="intr_btn" SIGIS="undef" SIGNAME="External_Ports_intr_btn">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="intr_btn"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="intr_in" SIGIS="undef" SIGNAME="External_Ports_intr_in">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="intr_in"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="n_rst" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="RF_top_0_n_rst">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="n_rst"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="rd_en" SIGIS="undef" SIGNAME="External_Ports_rd_en">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="rd_en"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="rst" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="External_Ports_rst">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="rst"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="sck" SIGIS="undef" SIGNAME="RF_top_0_sck">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="sck"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="sdi" SIGIS="undef" SIGNAME="RF_top_0_sdi">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="sdi"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="sdo" SIGIS="undef" SIGNAME="External_Ports_sdo">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="sdo"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="wake" SIGIS="undef" SIGNAME="RF_top_0_wake">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="wake"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+  </MODULES>
+
+</EDKSYSTEM>
