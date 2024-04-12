@@ -1,8 +1,8 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date         : Mon Mar 18 18:27:17 2024
-| Host         : DESKTOP-M1PCUD5 running 64-bit major release  (build 9200)
+| Date         : Thu Apr 11 14:54:01 2024
+| Host         : JohnDesktop running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file UART_impl_control_sets_placed.rpt
 | Design       : UART_impl
 | Device       : xc7s50
@@ -59,8 +59,8 @@ Table of Contents
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | No           | No                    | No                     |               7 |            4 |
-| No           | No                    | Yes                    |               5 |            2 |
-| No           | Yes                   | No                     |              50 |           19 |
+| No           | No                    | Yes                    |               5 |            3 |
+| No           | Yes                   | No                     |              50 |           18 |
 | Yes          | No                    | No                     |               2 |            1 |
 | Yes          | No                    | Yes                    |              27 |            7 |
 | Yes          | Yes                   | No                     |              39 |            8 |
@@ -76,11 +76,11 @@ Table of Contents
 |  clk_IBUF_BUFG | uart_pkg/uart/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/start2            | uart_pkg/uart/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/cs_ce_clr                                  |                1 |              4 |         4.00 |
 |  clk_IBUF_BUFG | uart_pkg/uart/U0/UARTLITE_CORE_I/BAUD_RATE_I/en_16x_Baud              |                                                                                                          |                1 |              4 |         4.00 |
 |  clk_IBUF_BUFG |                                                                       | uart_pkg/uart/U0/UARTLITE_CORE_I/UARTLITE_RX_I/SRL_FIFO_I/I_SRL_FIFO_RBU_F/CNTR_INCR_DECR_ADDN_F_I/SS[0] |                3 |              6 |         2.00 |
-|  clk_IBUF_BUFG |                                                                       | uart_pkg/uart/U0/UARTLITE_CORE_I/UARTLITE_TX_I/SRL_FIFO_I/I_SRL_FIFO_RBU_F/CNTR_INCR_DECR_ADDN_F_I/SS[0] |                3 |              6 |         2.00 |
+|  clk_IBUF_BUFG |                                                                       | uart_pkg/uart/U0/UARTLITE_CORE_I/UARTLITE_TX_I/SRL_FIFO_I/I_SRL_FIFO_RBU_F/CNTR_INCR_DECR_ADDN_F_I/SS[0] |                2 |              6 |         3.00 |
 |  clk_IBUF_BUFG |                                                                       |                                                                                                          |                4 |              7 |         1.75 |
 |  clk_IBUF_BUFG | uart_pkg/uart/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/fifo_wr |                                                                                                          |                1 |              7 |         7.00 |
 |  clk_IBUF_BUFG | uart_pkg/uart/U0/UARTLITE_CORE_I/BAUD_RATE_I/en_16x_Baud              | uart_pkg/uart/U0/UARTLITE_CORE_I/UARTLITE_RX_I/SERIAL_TO_PARALLEL[8].fifo_din[8]_i_1_n_0                 |                1 |              7 |         7.00 |
-|  clk_IBUF_BUFG |                                                                       | uart_pkg/uart/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/rst                                                  |                3 |             10 |         3.33 |
+|  clk_IBUF_BUFG |                                                                       | uart_pkg/uart/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/rst                                                  |                4 |             10 |         2.50 |
 |  clk_IBUF_BUFG | uart_pkg/ctrl/E[0]                                                    | rst_IBUF                                                                                                 |                3 |             11 |         3.67 |
 |  clk_IBUF_BUFG | uart_pkg/ctrl/next_data                                               | rst_IBUF                                                                                                 |                4 |             16 |         4.00 |
 |  clk_IBUF_BUFG | uart_pkg/uart/U0/UARTLITE_CORE_I/BAUD_RATE_I/en_16x_Baud              | rst_IBUF                                                                                                 |                6 |             28 |         4.67 |
