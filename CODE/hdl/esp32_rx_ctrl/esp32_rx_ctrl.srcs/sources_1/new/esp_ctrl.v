@@ -6,7 +6,7 @@ module esp_ctrl(
 );
     wire [7:0] data;
     reg [7:0] txdata;
-    reg valid;
+    wire valid;
     reg [13:0] counter2;
     wire ready;
     reg [10:0] counter;
@@ -28,7 +28,10 @@ module esp_ctrl(
     wire [1:0] rresp;
     wire rvalid;
     
-    assign valid = ~(|counter[3:0]) && (data != 8'hE4 && data != 8'hFF && data != 8'h00);
+    wire uart_tx_w;
+    assign uart_tx = uart_tx_w;
+    
+//    assign valid = ~(|counter[3:0]) && (data != 8'hE4 && data != 8'hFF && data != 8'h00);
     
 //    always @(posedge clk or posedge rst) begin
 //        if(rst)
@@ -87,6 +90,23 @@ module esp_ctrl(
         .rready(rready)
     );
 
+    UART_TX tx(
+        .clk(clk),
+        .rst(rst),
+        .data(data),
+        .valid(valid),
+        .ready(ready),
+        .awaddr(awaddr),
+        .awvalid(awvalid),
+        .awready(awready),
+        .wdata(wdata),
+        .wvalid(wvalid),
+        .wready(wready),
+        .bresp(bresp),
+        .bvalid(bvalid),
+        .bready(bready)
+    );
+
     axi_uartlite_0 uart(
         .s_axi_aclk(clk),
         .s_axi_aresetn(!rst),
@@ -103,29 +123,30 @@ module esp_ctrl(
         .s_axi_araddr(araddr), 
         .s_axi_arvalid(arvalid), 
         .s_axi_arready(arready), 
-        .s_axi_rdata(24'h000000, rdata),
+        .s_axi_rdata({24'h000000, rdata}),
         .s_axi_rready(rready),
         .s_axi_rresp(rresp),
         .s_axi_rvalid(rvalid),
         .rx(uart_rx),
-        .tx(uart_tx)
+        .tx(uart_tx_w)
     );
 
-    blk_mem_gen_0 brom(
-        .addra(counter[10:4]),
-        .clka(clk),
-        .douta(data)
-    );
+    // blk_mem_gen_0 brom(
+    //     .addra(counter[10:4]),
+    //     .clka(clk),
+    //     .douta(data)
+    // );
     
      ila_0 ila(
          .clk(clk),
-         .probe0(wvalid),
-         .probe1(wready),
-         .probe2(wdata),
-         .probe3(counter[8:4]),
-         .probe4(tx.curr_state),
-         .probe5(valid),
-         .probe6(ready)
+         .probe0(rvalid),
+         .probe1(rready),
+         .probe2(rdata),
+         .probe3(rx.curr_state),
+         .probe4(valid),
+         .probe5(ready),
+         .probe6(uart_rx),
+         .probe7(uart_tx_w)
      );
 
 endmodule

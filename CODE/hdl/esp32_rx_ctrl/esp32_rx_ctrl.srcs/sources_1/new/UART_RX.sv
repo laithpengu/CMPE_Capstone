@@ -41,7 +41,7 @@ module UART_RX(
         araddr = 4'h0;
         arvalid = 0;
         rready = 0;
-        valid = valid_d;
+//        valid = valid_d;
         case(curr_state)
             idle_state: begin
                 if(start) begin
