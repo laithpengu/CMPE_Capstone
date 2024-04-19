@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7s50csga324-1" LaunchTime="1713370024" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/esp_ctrl.dcp">
-  <File Type="PA-TCL" Name="esp_ctrl.tcl"/>
-  <File Type="RDS-PROPCONSTRS" Name="esp_ctrl_drc_synth.rpt"/>
-  <File Type="REPORTS-TCL" Name="esp_ctrl_reports.tcl"/>
-  <File Type="RDS-RDS" Name="esp_ctrl.vds"/>
-  <File Type="RDS-UTIL" Name="esp_ctrl_utilization_synth.rpt"/>
-  <File Type="RDS-UTIL-PB" Name="esp_ctrl_utilization_synth.pb"/>
-  <File Type="RDS-DCP" Name="esp_ctrl.dcp"/>
-  <File Type="VDS-TIMINGSUMMARY" Name="esp_ctrl_timing_summary_synth.rpt"/>
-  <File Type="VDS-TIMING-PB" Name="esp_ctrl_timing_summary_synth.pb"/>
+<GenRun Id="synth_1" LaunchPart="xc7s50csga324-1" LaunchTime="1713497641" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/esp_ctrl.dcp">
+  <File Type="PA-TCL" Name="esp_rx.tcl"/>
+  <File Type="RDS-PROPCONSTRS" Name="esp_rx_drc_synth.rpt"/>
+  <File Type="REPORTS-TCL" Name="esp_rx_reports.tcl"/>
+  <File Type="RDS-RDS" Name="esp_rx.vds"/>
+  <File Type="RDS-UTIL" Name="esp_rx_utilization_synth.rpt"/>
+  <File Type="RDS-UTIL-PB" Name="esp_rx_utilization_synth.pb"/>
+  <File Type="RDS-DCP" Name="esp_rx.dcp"/>
+  <File Type="VDS-TIMINGSUMMARY" Name="esp_rx_timing_summary_synth.rpt"/>
+  <File Type="VDS-TIMING-PB" Name="esp_rx_timing_summary_synth.pb"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
     <Filter Type="Srcs"/>
-    <File Path="$PSRCDIR/sources_1/new/UART_RX.sv">
+    <File Path="$PPRDIR/src/UART_RX.sv">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
@@ -25,7 +25,7 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PSRCDIR/sources_1/new/esp_ctrl.v">
+    <File Path="$PPRDIR/src/esp_rx.v">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
@@ -34,13 +34,13 @@
     </File>
     <Config>
       <Option Name="DesignMode" Val="RTL"/>
-      <Option Name="TopModule" Val="esp_ctrl"/>
+      <Option Name="TopModule" Val="esp_rx"/>
       <Option Name="TopAutoSet" Val="TRUE"/>
     </Config>
   </FileSet>
   <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1" RelGenDir="$PGENDIR/constrs_1">
     <Filter Type="Constrs"/>
-    <File Path="$PPRDIR/../CMPE_Capstone/CODE/hdl/PMODESP32/synth/esp_ctrl.xdc">
+    <File Path="$PPRDIR/../PMODESP32/synth/esp_ctrl.xdc">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>

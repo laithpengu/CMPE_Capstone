@@ -8,11 +8,11 @@ vmap xpm questa_lib/msim/xpm
 vmap xil_defaultlib questa_lib/msim/xil_defaultlib
 
 vlog -work xpm  -incr -mfcu  -sv "+incdir+../../../../esp32_rx_ctrl.gen/sources_1/ip/ila_0/hdl/verilog" \
-"C:/Xilinx/Vivado/2023.2/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv" \
-"C:/Xilinx/Vivado/2023.2/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv" \
+"J:/Xilinx/Vivado/2023.2/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv" \
+"J:/Xilinx/Vivado/2023.2/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv" \
 
 vcom -work xpm  -93  \
-"C:/Xilinx/Vivado/2023.2/data/ip/xpm/xpm_VCOMP.vhd" \
+"J:/Xilinx/Vivado/2023.2/data/ip/xpm/xpm_VCOMP.vhd" \
 
 vlog -work xil_defaultlib  -incr -mfcu  "+incdir+../../../../esp32_rx_ctrl.gen/sources_1/ip/ila_0/hdl/verilog" \
 "../../../../esp32_rx_ctrl.gen/sources_1/ip/ila_0/sim/ila_0.v" \

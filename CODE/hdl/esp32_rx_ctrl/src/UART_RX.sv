@@ -15,7 +15,7 @@ module UART_RX(
     input rvalid,
     output logic rready
 );
-    enum {idle_state, read_status_state, read_data_state} curr_state, next_state;
+    enum {idle_state, preset_status_state, read_status_state, preset_data_state, read_data_state} curr_state, next_state;
     logic [7:0] curr_data;
     logic [7:0] next_data;
     logic ctrl_set_q;
@@ -24,6 +24,7 @@ module UART_RX(
     logic valid_q;
 
     assign data = curr_data;
+    assign valid = valid_q;
 
     always_ff @(posedge clk or posedge rst) begin
         if(rst) begin
@@ -41,25 +42,29 @@ module UART_RX(
         araddr = 4'h0;
         arvalid = 0;
         rready = 0;
-        valid = valid_d;
+        valid_d = valid_q;
         case(curr_state)
             idle_state: begin
-                if(start) begin
+                if(ready) begin
                     next_state = read_status_state;
                     araddr = 4'h8;
                     arvalid = 1;
+                    valid_d = 1'b0;
+                    rready = 1'b1;
                 end else begin
                     next_state = idle_state;
                 end
             end
             read_status_state: begin
                 arvalid = 1;
-                if(arready && rdata[0] && !(&rresp)) begin
+                valid_d = 1'b0;
+                if(arready && !rdata[0] && !(&rresp)) begin
+                    araddr = 4'h0;
+                    rready = 1'b1;
+                    next_state = read_data_state;
+                end else begin
                     araddr = 4'h8;
                     next_state = read_status_state;
-                end else begin
-                    araddr = 4'h0;
-                    next_state = read_data_state;
                 end
             end
             read_data_state: begin
