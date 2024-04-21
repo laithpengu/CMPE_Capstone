@@ -10,11 +10,11 @@ vmap blk_mem_gen_v8_4_7 modelsim_lib/msim/blk_mem_gen_v8_4_7
 vmap xil_defaultlib modelsim_lib/msim/xil_defaultlib
 
 vlog -work xpm  -incr -mfcu  -sv \
-"J:/Xilinx/Vivado/2023.2/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv" \
-"J:/Xilinx/Vivado/2023.2/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv" \
+"D:/Xilinx/Vivado/2023.2/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv" \
+"D:/Xilinx/Vivado/2023.2/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv" \
 
 vcom -work xpm  -93  \
-"J:/Xilinx/Vivado/2023.2/data/ip/xpm/xpm_VCOMP.vhd" \
+"D:/Xilinx/Vivado/2023.2/data/ip/xpm/xpm_VCOMP.vhd" \
 
 vlog -work blk_mem_gen_v8_4_7  -incr -mfcu  \
 "../../../ipstatic/simulation/blk_mem_gen_v8_4.v" \

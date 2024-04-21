@@ -3,8 +3,8 @@
 #include <Servo.h>
 #include "mbed.h"
 
-char ssid[] = "echo_router_24";
-char pass[] = "SouthRiver2020!";
+char ssid[] = "TP-Link_2F9C";
+char pass[] = "1cs_Pr0c";
 IPAddress ip(10, 0, 1, 16);
 int status = WL_IDLE_STATUS;
 WiFiServer server_green(79);

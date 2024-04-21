@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7s50csga324-1" LaunchTime="1712892093" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/esp_ctrl.dcp">
+<GenRun Id="synth_1" LaunchPart="xc7s50csga324-1" LaunchTime="1713366983" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/esp_ctrl.dcp">
   <File Type="PA-TCL" Name="esp_ctrl.tcl"/>
   <File Type="RDS-PROPCONSTRS" Name="esp_ctrl_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="esp_ctrl_reports.tcl"/>
@@ -18,7 +18,14 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PPRDIR/../../src/esp_ctrl.v">
+    <File Path="$PPRDIR/../../../pc/src/pc.sv">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../src/esp_ctrl_tx.v">
       <FileInfo SFType="SVerilog">
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
@@ -26,12 +33,6 @@
       </FileInfo>
     </File>
     <File Path="$PPRDIR/../../src/AT_CMD.coe">
-      <FileInfo>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
-    <File Path="$PPRDIR/../../src/AT_CMD copy.coe">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>

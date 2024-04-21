@@ -3,18 +3,18 @@
 # SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
 # IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
 # SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
-# Start of session at: Thu Apr 11 23:21:37 2024
-# Process ID: 49888
-# Current directory: C:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/PMODESP32/synth/esp_ctrl/esp_ctrl.runs/synth_1
+# Start of session at: Wed Apr 17 11:16:29 2024
+# Process ID: 41268
+# Current directory: D:/CMPE_Capstone/CODE/hdl/PMODESP32/synth/esp_ctrl/esp_ctrl.runs/synth_1
 # Command line: vivado.exe -log esp_ctrl.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source esp_ctrl.tcl
-# Log file: C:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/PMODESP32/synth/esp_ctrl/esp_ctrl.runs/synth_1/esp_ctrl.vds
-# Journal file: C:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/PMODESP32/synth/esp_ctrl/esp_ctrl.runs/synth_1\vivado.jou
-# Running On: JohnDesktop, OS: Windows, CPU Frequency: 3793 MHz, CPU Physical cores: 12, Host memory: 17092 MB
+# Log file: D:/CMPE_Capstone/CODE/hdl/PMODESP32/synth/esp_ctrl/esp_ctrl.runs/synth_1/esp_ctrl.vds
+# Journal file: D:/CMPE_Capstone/CODE/hdl/PMODESP32/synth/esp_ctrl/esp_ctrl.runs/synth_1\vivado.jou
+# Running On: DESKTOP-M1PCUD5, OS: Windows, CPU Frequency: 2592 MHz, CPU Physical cores: 6, Host memory: 16868 MB
 #-----------------------------------------------------------
 source esp_ctrl.tcl -notrace
-create_project: Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 590.367 ; gain = 216.793
-Command: read_checkpoint -auto_incremental -incremental C:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/PMODESP32/synth/esp_ctrl/esp_ctrl.srcs/utils_1/imports/synth_1/esp_ctrl.dcp
-INFO: [Vivado 12-5825] Read reference checkpoint from C:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/PMODESP32/synth/esp_ctrl/esp_ctrl.srcs/utils_1/imports/synth_1/esp_ctrl.dcp for incremental synthesis
+create_project: Time (s): cpu = 00:00:07 ; elapsed = 00:00:13 . Memory (MB): peak = 592.664 ; gain = 219.125
+Command: read_checkpoint -auto_incremental -incremental D:/CMPE_Capstone/CODE/hdl/PMODESP32/synth/esp_ctrl/esp_ctrl.srcs/utils_1/imports/synth_1/esp_ctrl.dcp
+INFO: [Vivado 12-5825] Read reference checkpoint from D:/CMPE_Capstone/CODE/hdl/PMODESP32/synth/esp_ctrl/esp_ctrl.srcs/utils_1/imports/synth_1/esp_ctrl.dcp for incremental synthesis
 INFO: [Vivado 12-7989] Please ensure there are no constraint changes
 Command: synth_design -top esp_ctrl -part xc7s50csga324-1
 Starting synth_design
@@ -25,79 +25,81 @@ INFO: [Designutils 20-5440] No compile time benefit to using incremental synthes
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 5060
+INFO: [Synth 8-7075] Helper process launched with PID 42400
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1449.809 ; gain = 440.137
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:10 . Memory (MB): peak = 1448.852 ; gain = 439.328
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-6157] synthesizing module 'esp_ctrl' [C:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/PMODESP32/src/esp_ctrl.v:1]
-INFO: [Synth 8-6157] synthesizing module 'UART_TX' [C:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/PMODESP32/src/UART_TX.sv:1]
-INFO: [Synth 8-6155] done synthesizing module 'UART_TX' (0#1) [C:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/PMODESP32/src/UART_TX.sv:1]
-INFO: [Synth 8-6157] synthesizing module 'axi_uartlite_0' [C:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/PMODESP32/synth/esp_ctrl/esp_ctrl.runs/synth_1/.Xil/Vivado-49888-JohnDesktop/realtime/axi_uartlite_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'axi_uartlite_0' (0#1) [C:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/PMODESP32/synth/esp_ctrl/esp_ctrl.runs/synth_1/.Xil/Vivado-49888-JohnDesktop/realtime/axi_uartlite_0_stub.v:6]
-WARNING: [Synth 8-7071] port 'interrupt' of module 'axi_uartlite_0' is unconnected for instance 'uart' [C:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/PMODESP32/src/esp_ctrl.v:85]
-WARNING: [Synth 8-7071] port 's_axi_arready' of module 'axi_uartlite_0' is unconnected for instance 'uart' [C:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/PMODESP32/src/esp_ctrl.v:85]
-WARNING: [Synth 8-7071] port 's_axi_rdata' of module 'axi_uartlite_0' is unconnected for instance 'uart' [C:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/PMODESP32/src/esp_ctrl.v:85]
-WARNING: [Synth 8-7071] port 's_axi_rresp' of module 'axi_uartlite_0' is unconnected for instance 'uart' [C:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/PMODESP32/src/esp_ctrl.v:85]
-WARNING: [Synth 8-7071] port 's_axi_rvalid' of module 'axi_uartlite_0' is unconnected for instance 'uart' [C:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/PMODESP32/src/esp_ctrl.v:85]
-WARNING: [Synth 8-7023] instance 'uart' of module 'axi_uartlite_0' has 22 connections declared, but only 17 given [C:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/PMODESP32/src/esp_ctrl.v:85]
-INFO: [Synth 8-6157] synthesizing module 'blk_mem_gen_0' [C:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/PMODESP32/synth/esp_ctrl/esp_ctrl.runs/synth_1/.Xil/Vivado-49888-JohnDesktop/realtime/blk_mem_gen_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'blk_mem_gen_0' (0#1) [C:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/PMODESP32/synth/esp_ctrl/esp_ctrl.runs/synth_1/.Xil/Vivado-49888-JohnDesktop/realtime/blk_mem_gen_0_stub.v:6]
-WARNING: [Synth 8-4446] all outputs are unconnected for this instance and logic may be removed [C:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/PMODESP32/src/esp_ctrl.v:111]
-INFO: [Synth 8-6157] synthesizing module 'ila_0' [C:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/PMODESP32/synth/esp_ctrl/esp_ctrl.runs/synth_1/.Xil/Vivado-49888-JohnDesktop/realtime/ila_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'ila_0' (0#1) [C:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/PMODESP32/synth/esp_ctrl/esp_ctrl.runs/synth_1/.Xil/Vivado-49888-JohnDesktop/realtime/ila_0_stub.v:6]
-WARNING: [Synth 8-689] width (5) of port connection 'probe3' does not match port width (4) of module 'ila_0' [C:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/PMODESP32/src/esp_ctrl.v:116]
-WARNING: [Synth 8-689] width (32) of port connection 'probe4' does not match port width (2) of module 'ila_0' [C:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/PMODESP32/src/esp_ctrl.v:117]
-INFO: [Synth 8-6155] done synthesizing module 'esp_ctrl' (0#1) [C:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/PMODESP32/src/esp_ctrl.v:1]
-INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'tx'. This will prevent further optimization [C:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/PMODESP32/src/esp_ctrl.v:68]
-INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'ila'. This will prevent further optimization [C:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/PMODESP32/src/esp_ctrl.v:111]
-INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'uart'. This will prevent further optimization [C:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/PMODESP32/src/esp_ctrl.v:85]
-INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'brom'. This will prevent further optimization [C:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/PMODESP32/src/esp_ctrl.v:105]
+INFO: [Synth 8-6157] synthesizing module 'esp_ctrl' [D:/CMPE_Capstone/CODE/hdl/PMODESP32/src/esp_ctrl_tx.v:1]
+INFO: [Synth 8-6157] synthesizing module 'UART_TX' [D:/CMPE_Capstone/CODE/hdl/PMODESP32/src/UART_TX.sv:1]
+INFO: [Synth 8-6155] done synthesizing module 'UART_TX' (0#1) [D:/CMPE_Capstone/CODE/hdl/PMODESP32/src/UART_TX.sv:1]
+INFO: [Synth 8-6157] synthesizing module 'axi_uartlite_0' [D:/CMPE_Capstone/CODE/hdl/PMODESP32/synth/esp_ctrl/esp_ctrl.runs/synth_1/.Xil/Vivado-41268-DESKTOP-M1PCUD5/realtime/axi_uartlite_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'axi_uartlite_0' (0#1) [D:/CMPE_Capstone/CODE/hdl/PMODESP32/synth/esp_ctrl/esp_ctrl.runs/synth_1/.Xil/Vivado-41268-DESKTOP-M1PCUD5/realtime/axi_uartlite_0_stub.v:6]
+WARNING: [Synth 8-7071] port 'interrupt' of module 'axi_uartlite_0' is unconnected for instance 'uart' [D:/CMPE_Capstone/CODE/hdl/PMODESP32/src/esp_ctrl_tx.v:86]
+WARNING: [Synth 8-7071] port 's_axi_arready' of module 'axi_uartlite_0' is unconnected for instance 'uart' [D:/CMPE_Capstone/CODE/hdl/PMODESP32/src/esp_ctrl_tx.v:86]
+WARNING: [Synth 8-7071] port 's_axi_rdata' of module 'axi_uartlite_0' is unconnected for instance 'uart' [D:/CMPE_Capstone/CODE/hdl/PMODESP32/src/esp_ctrl_tx.v:86]
+WARNING: [Synth 8-7071] port 's_axi_rresp' of module 'axi_uartlite_0' is unconnected for instance 'uart' [D:/CMPE_Capstone/CODE/hdl/PMODESP32/src/esp_ctrl_tx.v:86]
+WARNING: [Synth 8-7071] port 's_axi_rvalid' of module 'axi_uartlite_0' is unconnected for instance 'uart' [D:/CMPE_Capstone/CODE/hdl/PMODESP32/src/esp_ctrl_tx.v:86]
+WARNING: [Synth 8-7023] instance 'uart' of module 'axi_uartlite_0' has 22 connections declared, but only 17 given [D:/CMPE_Capstone/CODE/hdl/PMODESP32/src/esp_ctrl_tx.v:86]
+INFO: [Synth 8-6157] synthesizing module 'blk_mem_gen_0' [D:/CMPE_Capstone/CODE/hdl/PMODESP32/synth/esp_ctrl/esp_ctrl.runs/synth_1/.Xil/Vivado-41268-DESKTOP-M1PCUD5/realtime/blk_mem_gen_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'blk_mem_gen_0' (0#1) [D:/CMPE_Capstone/CODE/hdl/PMODESP32/synth/esp_ctrl/esp_ctrl.runs/synth_1/.Xil/Vivado-41268-DESKTOP-M1PCUD5/realtime/blk_mem_gen_0_stub.v:6]
+WARNING: [Synth 8-4446] all outputs are unconnected for this instance and logic may be removed [D:/CMPE_Capstone/CODE/hdl/PMODESP32/src/esp_ctrl_tx.v:112]
+INFO: [Synth 8-6157] synthesizing module 'ila_0' [D:/CMPE_Capstone/CODE/hdl/PMODESP32/synth/esp_ctrl/esp_ctrl.runs/synth_1/.Xil/Vivado-41268-DESKTOP-M1PCUD5/realtime/ila_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'ila_0' (0#1) [D:/CMPE_Capstone/CODE/hdl/PMODESP32/synth/esp_ctrl/esp_ctrl.runs/synth_1/.Xil/Vivado-41268-DESKTOP-M1PCUD5/realtime/ila_0_stub.v:6]
+WARNING: [Synth 8-689] width (5) of port connection 'probe3' does not match port width (4) of module 'ila_0' [D:/CMPE_Capstone/CODE/hdl/PMODESP32/src/esp_ctrl_tx.v:117]
+WARNING: [Synth 8-689] width (32) of port connection 'probe4' does not match port width (2) of module 'ila_0' [D:/CMPE_Capstone/CODE/hdl/PMODESP32/src/esp_ctrl_tx.v:118]
+INFO: [Synth 8-6157] synthesizing module 'pc' [D:/CMPE_Capstone/CODE/hdl/pc/src/pc.sv:23]
+	Parameter ADDR_WIDTH bound to: 7 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'pc' (0#1) [D:/CMPE_Capstone/CODE/hdl/pc/src/pc.sv:23]
+INFO: [Synth 8-6155] done synthesizing module 'esp_ctrl' (0#1) [D:/CMPE_Capstone/CODE/hdl/PMODESP32/src/esp_ctrl_tx.v:1]
+INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'tx'. This will prevent further optimization [D:/CMPE_Capstone/CODE/hdl/PMODESP32/src/esp_ctrl_tx.v:69]
+INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'ila'. This will prevent further optimization [D:/CMPE_Capstone/CODE/hdl/PMODESP32/src/esp_ctrl_tx.v:112]
+INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'uart'. This will prevent further optimization [D:/CMPE_Capstone/CODE/hdl/PMODESP32/src/esp_ctrl_tx.v:86]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 1560.688 ; gain = 551.016
+Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:14 . Memory (MB): peak = 1560.109 ; gain = 550.586
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 1560.688 ; gain = 551.016
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:14 . Memory (MB): peak = 1560.109 ; gain = 550.586
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 1560.688 ; gain = 551.016
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:14 . Memory (MB): peak = 1560.109 ; gain = 550.586
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 1560.688 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1560.109 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
 Initializing timing engine
-Parsing XDC File [c:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/PMODESP32/synth/esp_ctrl/esp_ctrl.gen/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0/blk_mem_gen_0_in_context.xdc] for cell 'brom'
-Finished Parsing XDC File [c:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/PMODESP32/synth/esp_ctrl/esp_ctrl.gen/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0/blk_mem_gen_0_in_context.xdc] for cell 'brom'
-Parsing XDC File [c:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/PMODESP32/synth/esp_ctrl/esp_ctrl.gen/sources_1/ip/axi_uartlite_0/axi_uartlite_0/axi_uartlite_0_in_context.xdc] for cell 'uart'
-Finished Parsing XDC File [c:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/PMODESP32/synth/esp_ctrl/esp_ctrl.gen/sources_1/ip/axi_uartlite_0/axi_uartlite_0/axi_uartlite_0_in_context.xdc] for cell 'uart'
-Parsing XDC File [c:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/PMODESP32/synth/esp_ctrl/esp_ctrl.gen/sources_1/ip/ila_0/ila_0/ila_0_in_context.xdc] for cell 'ila'
-Finished Parsing XDC File [c:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/PMODESP32/synth/esp_ctrl/esp_ctrl.gen/sources_1/ip/ila_0/ila_0/ila_0_in_context.xdc] for cell 'ila'
-Parsing XDC File [C:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/PMODESP32/synth/esp_ctrl.xdc]
-Finished Parsing XDC File [C:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/PMODESP32/synth/esp_ctrl.xdc]
-INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/PMODESP32/synth/esp_ctrl.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/esp_ctrl_propImpl.xdc].
+Parsing XDC File [d:/CMPE_Capstone/CODE/hdl/PMODESP32/synth/esp_ctrl/esp_ctrl.gen/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0/blk_mem_gen_0_in_context.xdc] for cell 'brom'
+Finished Parsing XDC File [d:/CMPE_Capstone/CODE/hdl/PMODESP32/synth/esp_ctrl/esp_ctrl.gen/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0/blk_mem_gen_0_in_context.xdc] for cell 'brom'
+Parsing XDC File [d:/CMPE_Capstone/CODE/hdl/PMODESP32/synth/esp_ctrl/esp_ctrl.gen/sources_1/ip/axi_uartlite_0/axi_uartlite_0/axi_uartlite_0_in_context.xdc] for cell 'uart'
+Finished Parsing XDC File [d:/CMPE_Capstone/CODE/hdl/PMODESP32/synth/esp_ctrl/esp_ctrl.gen/sources_1/ip/axi_uartlite_0/axi_uartlite_0/axi_uartlite_0_in_context.xdc] for cell 'uart'
+Parsing XDC File [d:/CMPE_Capstone/CODE/hdl/PMODESP32/synth/esp_ctrl/esp_ctrl.gen/sources_1/ip/ila_0/ila_0/ila_0_in_context.xdc] for cell 'ila'
+Finished Parsing XDC File [d:/CMPE_Capstone/CODE/hdl/PMODESP32/synth/esp_ctrl/esp_ctrl.gen/sources_1/ip/ila_0/ila_0/ila_0_in_context.xdc] for cell 'ila'
+Parsing XDC File [D:/CMPE_Capstone/CODE/hdl/PMODESP32/synth/esp_ctrl.xdc]
+Finished Parsing XDC File [D:/CMPE_Capstone/CODE/hdl/PMODESP32/synth/esp_ctrl.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [D:/CMPE_Capstone/CODE/hdl/PMODESP32/synth/esp_ctrl.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/esp_ctrl_propImpl.xdc].
 Resolution: To avoid this warning, move constraints listed in [.Xil/esp_ctrl_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1654.707 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1637.289 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 1654.707 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.009 . Memory (MB): peak = 1637.289 ; gain = 0.000
 WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'brom' at clock pin 'clka' is different from the actual clock period '10.000', this can lead to different synthesis results.
 INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 1655.043 ; gain = 645.371
+Finished Constraint Validation : Time (s): cpu = 00:00:11 ; elapsed = 00:00:32 . Memory (MB): peak = 1637.305 ; gain = 627.781
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7s50csga324-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 1655.043 ; gain = 645.371
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:11 ; elapsed = 00:00:32 . Memory (MB): peak = 1637.305 ; gain = 627.781
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
@@ -106,7 +108,7 @@ Applied set_property KEEP_HIERARCHY = SOFT for brom. (constraint file  auto gene
 Applied set_property KEEP_HIERARCHY = SOFT for uart. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for ila. (constraint file  auto generated constraint).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 1655.043 ; gain = 645.371
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:11 ; elapsed = 00:00:32 . Memory (MB): peak = 1637.305 ; gain = 627.781
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'curr_state_reg' in module 'UART_TX'
 INFO: [Synth 8-6159] Found Keep on FSM register 'curr_state_reg' in module 'UART_TX', re-encoding will not be performed
@@ -120,7 +122,7 @@ INFO: [Synth 8-6159] Found Keep on FSM register 'curr_state_reg' in module 'UART
              write_state | 00000000000000000000000000000011 | 00000000000000000000000000000011
 ---------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:18 ; elapsed = 00:00:18 . Memory (MB): peak = 1655.043 ; gain = 645.371
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:11 ; elapsed = 00:00:32 . Memory (MB): peak = 1637.305 ; gain = 627.781
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -128,19 +130,22 @@ Start RTL Component Statistics
 Detailed RTL Component Info : 
 +---Adders : 
 	   2 Input   11 Bit       Adders := 1     
+	   2 Input    7 Bit       Adders := 1     
 +---Registers : 
 	               11 Bit    Registers := 1     
 	                8 Bit    Registers := 1     
+	                7 Bit    Registers := 1     
 	                1 Bit    Registers := 1     
 +---Muxes : 
 	   2 Input    8 Bit        Muxes := 1     
 	   4 Input    8 Bit        Muxes := 1     
+	   2 Input    7 Bit        Muxes := 1     
 	   5 Input    6 Bit        Muxes := 1     
 	   2 Input    5 Bit        Muxes := 1     
 	   2 Input    4 Bit        Muxes := 2     
 	   4 Input    4 Bit        Muxes := 1     
 	   2 Input    3 Bit        Muxes := 4     
-	   2 Input    1 Bit        Muxes := 7     
+	   2 Input    1 Bit        Muxes := 8     
 	   4 Input    1 Bit        Muxes := 7     
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
@@ -159,25 +164,25 @@ Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:20 ; elapsed = 00:00:20 . Memory (MB): peak = 1655.043 ; gain = 645.371
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:13 ; elapsed = 00:00:36 . Memory (MB): peak = 1637.305 ; gain = 627.781
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:26 ; elapsed = 00:00:26 . Memory (MB): peak = 1655.043 ; gain = 645.371
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:16 ; elapsed = 00:00:46 . Memory (MB): peak = 1637.305 ; gain = 627.781
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:26 ; elapsed = 00:00:26 . Memory (MB): peak = 1655.043 ; gain = 645.371
+Finished Timing Optimization : Time (s): cpu = 00:00:16 ; elapsed = 00:00:47 . Memory (MB): peak = 1637.305 ; gain = 627.781
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:26 ; elapsed = 00:00:26 . Memory (MB): peak = 1655.043 ; gain = 645.371
+Finished Technology Mapping : Time (s): cpu = 00:00:16 ; elapsed = 00:00:47 . Memory (MB): peak = 1637.305 ; gain = 627.781
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -195,37 +200,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:31 ; elapsed = 00:00:32 . Memory (MB): peak = 1655.043 ; gain = 645.371
+Finished IO Insertion : Time (s): cpu = 00:00:20 ; elapsed = 00:00:55 . Memory (MB): peak = 1637.305 ; gain = 627.781
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:31 ; elapsed = 00:00:32 . Memory (MB): peak = 1655.043 ; gain = 645.371
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:20 ; elapsed = 00:00:55 . Memory (MB): peak = 1637.305 ; gain = 627.781
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:31 ; elapsed = 00:00:32 . Memory (MB): peak = 1655.043 ; gain = 645.371
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:20 ; elapsed = 00:00:55 . Memory (MB): peak = 1637.305 ; gain = 627.781
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:31 ; elapsed = 00:00:32 . Memory (MB): peak = 1655.043 ; gain = 645.371
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:20 ; elapsed = 00:00:55 . Memory (MB): peak = 1637.305 ; gain = 627.781
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:31 ; elapsed = 00:00:32 . Memory (MB): peak = 1655.043 ; gain = 645.371
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:20 ; elapsed = 00:00:55 . Memory (MB): peak = 1637.305 ; gain = 627.781
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:31 ; elapsed = 00:00:32 . Memory (MB): peak = 1655.043 ; gain = 645.371
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:20 ; elapsed = 00:00:55 . Memory (MB): peak = 1637.305 ; gain = 627.781
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -250,35 +255,35 @@ Report Cell Usage:
 |4     |BUFG         |     1|
 |5     |LUT1         |     2|
 |6     |LUT2         |     3|
-|7     |LUT3         |     2|
-|8     |LUT4         |    11|
-|9     |LUT5         |    14|
-|10    |LUT6         |    20|
-|11    |FDCE         |    51|
+|7     |LUT3         |     3|
+|8     |LUT4         |    19|
+|9     |LUT5         |    17|
+|10    |LUT6         |    21|
+|11    |FDCE         |    58|
 |12    |FDPE         |     1|
 |13    |IBUF         |     3|
 |14    |OBUF         |     1|
 +------+-------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:31 ; elapsed = 00:00:32 . Memory (MB): peak = 1655.043 ; gain = 645.371
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:20 ; elapsed = 00:00:55 . Memory (MB): peak = 1637.305 ; gain = 627.781
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 1 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:21 ; elapsed = 00:00:30 . Memory (MB): peak = 1655.043 ; gain = 551.016
-Synthesis Optimization Complete : Time (s): cpu = 00:00:31 ; elapsed = 00:00:32 . Memory (MB): peak = 1655.043 ; gain = 645.371
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:13 ; elapsed = 00:00:50 . Memory (MB): peak = 1637.305 ; gain = 550.586
+Synthesis Optimization Complete : Time (s): cpu = 00:00:20 ; elapsed = 00:00:55 . Memory (MB): peak = 1637.305 ; gain = 627.781
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1655.043 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1637.305 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1655.043 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1637.305 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Synth Design complete | Checksum: 223809c3
+Synth Design complete | Checksum: 158e5442
 INFO: [Common 17-83] Releasing license: Synthesis
-35 Infos, 11 Warnings, 0 Critical Warnings and 0 Errors encountered.
+36 Infos, 11 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:36 ; elapsed = 00:00:38 . Memory (MB): peak = 1655.043 ; gain = 1034.023
-Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 1655.043 ; gain = 0.000
-INFO: [Common 17-1381] The checkpoint 'C:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/PMODESP32/synth/esp_ctrl/esp_ctrl.runs/synth_1/esp_ctrl.dcp' has been generated.
+synth_design: Time (s): cpu = 00:00:22 ; elapsed = 00:01:12 . Memory (MB): peak = 1637.305 ; gain = 1014.250
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1637.305 ; gain = 0.000
+INFO: [Common 17-1381] The checkpoint 'D:/CMPE_Capstone/CODE/hdl/PMODESP32/synth/esp_ctrl/esp_ctrl.runs/synth_1/esp_ctrl.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file esp_ctrl_utilization_synth.rpt -pb esp_ctrl_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Thu Apr 11 23:22:30 2024...
+INFO: [Common 17-206] Exiting Vivado at Wed Apr 17 11:18:03 2024...

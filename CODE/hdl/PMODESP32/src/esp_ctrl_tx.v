@@ -10,6 +10,7 @@ module esp_ctrl(
     reg [13:0] counter2;
     wire ready;
     reg [10:0] counter;
+    reg [6:0] addr;
 
     wire [3:0] awaddr;
     wire awvalid;
@@ -103,7 +104,7 @@ module esp_ctrl(
     );
 
     blk_mem_gen_0 brom(
-        .addra(counter[10:4]),
+        .addra(addr),
         .clka(clk),
         .douta(data)
     );
@@ -117,6 +118,17 @@ module esp_ctrl(
          .probe4(tx.curr_state),
          .probe5(valid),
          .probe6(ready)
+     );
+     
+     pc #(
+        .ADDR_WIDTH(7)
+     ) pc (
+        .clk(clk),
+        .rst(rst),
+        .inc(~(|counter[3:0]) && data != 8'h00),
+        .jmp(1'b0),
+        .addrin(7'h00),
+        .addrout(addr)
      );
 
 endmodule
