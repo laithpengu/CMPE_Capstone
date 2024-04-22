@@ -5,12 +5,9 @@ module esp_ctrl(
     output uart_tx
 );
     wire [7:0] data;
-    reg [7:0] txdata;
-    reg valid;
-    reg [13:0] counter2;
+//    reg [7:0] txdata;
+    wire valid;
     wire ready;
-    reg [10:0] counter;
-    reg [6:0] addr;
 
     wire [3:0] awaddr;
     wire awvalid;
@@ -21,8 +18,18 @@ module esp_ctrl(
     wire [1:0] bresp;
     wire bvalid;
     wire bready;
+    wire [3:0] araddr; 
+    wire arvalid; 
+    wire arready;
+    wire [7:0] rdata;
+    wire rready;
+    wire [1:0] rresp;
+    wire rvalid;
     
-    assign valid = ~(|counter[3:0]) && (data != 8'hE4 && data != 8'hFF && data != 8'h00);
+    wire uart_tx_w;
+    assign uart_tx = uart_tx_w;
+    
+//    assign valid = ~(|counter[3:0]) && (data != 8'hE4 && data != 8'hFF && data != 8'h00);
     
 //    always @(posedge clk or posedge rst) begin
 //        if(rst)
@@ -47,11 +54,11 @@ module esp_ctrl(
 //        end
 //    end
 
-    always @(posedge clk or posedge rst) begin
-        if(rst)
-            counter <= 'b0;
-        else if(ready)
-            counter <= counter + 1;
+    // always @(posedge clk or posedge rst) begin
+    //     if(rst)
+    //         counter <= 'b0;
+    //     else if(ready)
+    //         counter <= counter + 1;
             
 //        if(rst) begin
 //            txdata <= 'b0;
@@ -63,9 +70,23 @@ module esp_ctrl(
 //            valid <= 0;
 //        end
           
-    end
-            
-    
+    // end
+
+    UART_RX rx(
+        .clk(clk),
+        .rst(rst),
+        .ready(ready),
+        .data(data),
+        .valid(valid),
+        .araddr(araddr),
+        .arvalid(arvalid),
+        .arready(arready),
+        .rdata(rdata),
+        .rresp(rresp),
+        .rvalid(rvalid),
+        .rready(rready)
+    );
+
     UART_TX tx(
         .clk(clk),
         .rst(rst),
@@ -96,39 +117,36 @@ module esp_ctrl(
         .s_axi_bvalid(bvalid),
         .s_axi_bready(bready),
         .s_axi_wstrb(4'hf), // Enable all data lines
-        .s_axi_araddr('b0), // Not needed since only doing transmit
-        .s_axi_arvalid('b0), // Not needed since only doing transmit
-        .s_axi_rready('b0), // Not needed since only doing transmit
+        .s_axi_araddr(araddr), 
+        .s_axi_arvalid(arvalid), 
+        .s_axi_arready(arready), 
+        .s_axi_rdata({24'h000000, rdata}),
+        .s_axi_rready(rready),
+        .s_axi_rresp(rresp),
+        .s_axi_rvalid(rvalid),
         .rx(uart_rx),
-        .tx(uart_tx)
+        .tx(uart_tx_w)
     );
 
-    blk_mem_gen_0 brom(
-        .addra(addr),
-        .clka(clk),
-        .douta(data)
-    );
+    // blk_mem_gen_0 brom(
+    //     .addra(counter[10:4]),
+    //     .clka(clk),
+    //     .douta(data)
+    // );
     
-     ila_0 ila(
-         .clk(clk),
-         .probe0(wvalid),
-         .probe1(wready),
-         .probe2(wdata),
-         .probe3(counter[8:4]),
-         .probe4(tx.curr_state),
-         .probe5(valid),
-         .probe6(ready)
-     );
-     
-     pc #(
-        .ADDR_WIDTH(7)
-     ) pc (
-        .clk(clk),
-        .rst(rst),
-        .inc(~(|counter[3:0]) && data != 8'h00),
-        .jmp(1'b0),
-        .addrin(7'h00),
-        .addrout(addr)
-     );
+//     ila_0 ila(
+//         .clk(clk),
+//         .probe0(wvalid),
+//         .probe1(wready),
+//         .probe2(wdata),
+//         .probe3(tx.curr_state),
+//         .probe4(valid),
+//         .probe5(ready),
+//         .probe6(uart_rx),
+//         .probe7(uart_tx_w),
+//         .probe8(awvalid),
+//         .probe9(awready),
+//         .probe10(awaddr)
+//     );
 
 endmodule
