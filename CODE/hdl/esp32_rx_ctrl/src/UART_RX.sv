@@ -1,10 +1,9 @@
 module UART_RX(
     input clk,
     input rst,
-    input start,
-    input logic ready,
-    output [7:0] data,
-    output valid,
+    input ready,
+    output logic [7:0] data,
+    output logic valid,
 
     output logic [3:0] araddr,
     output logic arvalid,
@@ -18,13 +17,11 @@ module UART_RX(
     enum {idle_state, preset_status_state, read_status_state, preset_data_state, read_data_state} curr_state, next_state;
     logic [7:0] curr_data;
     logic [7:0] next_data;
-    logic ctrl_set_q;
-    logic ctrl_set_d;
     logic valid_d;
     logic valid_q;
 
-    assign data = curr_data;
-    assign valid = valid_q;
+    // assign data = curr_data;
+    // assign valid = valid_q;
 
     always_ff @(posedge clk or posedge rst) begin
         if(rst) begin
@@ -43,39 +40,57 @@ module UART_RX(
         arvalid = 0;
         rready = 0;
         valid_d = valid_q;
+        valid = 0;
+        next_data = curr_data;
+        data = 'b0;
         case(curr_state)
             idle_state: begin
-                if(ready) begin
-                    next_state = read_status_state;
-                    araddr = 4'h8;
-                    arvalid = 1;
-                    valid_d = 1'b0;
-                    rready = 1'b1;
-                end else begin
+                araddr = 4'h0;
+                arvalid = 1'b0;
+                valid = 1'b0;
+                if(ready)
+                    next_state = preset_status_state;
+                else
                     next_state = idle_state;
-                end
+            end
+            preset_status_state: begin
+                araddr = 4'h8;
+                arvalid = 1'b1;
+                if(arready)
+                    next_state = read_status_state;
+                else
+                    next_state = preset_status_state;
             end
             read_status_state: begin
-                arvalid = 1;
-                valid_d = 1'b0;
-                if(arready && !rdata[0] && !(&rresp)) begin
-                    araddr = 4'h0;
-                    rready = 1'b1;
-                    next_state = read_data_state;
+                arvalid = 1'b0;
+                rready = 1'b1;
+                if(rvalid && rdata[0] && !(&rresp)) begin
+                    next_state = preset_data_state;
                 end else begin
-                    araddr = 4'h8;
-                    next_state = read_status_state;
+                    next_state = preset_status_state;
                 end
             end
+            preset_data_state: begin
+                araddr = 4'h0;
+                arvalid = 1'b1;
+                if(arready)
+                    next_state = read_data_state;
+                else
+                    next_state = preset_data_state;
+            end
             read_data_state: begin
-                if(rready && rvalid && !(&rresp)) begin
+                arvalid = 1'b0;
+                rready = 1'b1;
+                if(rvalid && !(&rresp)) begin
                     next_data = rdata[7:0];
-                    valid_d = 1'b1;
+                    data = rdata[7:0];
+                    valid = 1'b1;
                     next_state = idle_state;
                 end else begin
                     next_state = read_data_state;
                 end
             end
+            default: next_state = idle_state;
         endcase
     end
     

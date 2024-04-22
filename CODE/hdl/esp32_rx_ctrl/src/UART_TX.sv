@@ -28,7 +28,7 @@ module UART_TX(
         if(rst) begin
             curr_state <= set_ctrl_state;
             curr_data <= 8'h00;
-            ctrl_set_q <= 0;
+            ctrl_set_q <= 1'b0;
         end else begin
             curr_state <= next_state;
             curr_data <= next_data;
@@ -39,7 +39,7 @@ module UART_TX(
     always_comb begin
         awaddr = 4'h0;
         awvalid = 1;
-        wdata = 8'h00;
+        wdata = 8'h03;
         wvalid = 1;
         bready = 1;
         ready = 0;
@@ -48,24 +48,20 @@ module UART_TX(
         case(curr_state)
             set_ctrl_state: begin
                 awaddr = 4'hc;
-                awvalid = 1;
-                wdata = 8'h00;
-                wvalid = 1;
-                bready = 1;
-                ready = 0;
+                awvalid = 1'b1;
                 ctrl_set_d = 0;
-                if(awready && wready)
+                wvalid = 1'b1;
+                bready = 1'b1;
+                wdata = 8'h00;
+                if(wready)
                     next_state = resp_state;
                 else
                     next_state = set_ctrl_state;
             end
             resp_state: begin
-                awaddr = 4'h0;
-                awvalid = 0;
-                wdata = 8'h00;
-                wvalid = 0;
+                wvalid = 1'b0;
                 bready = 1;
-                ready = 0;
+                ready = 1'b0;
                 if(!bready || !bvalid)
                     next_state = resp_state;
                 else
@@ -78,11 +74,6 @@ module UART_TX(
                         next_state = idle_state;
             end
             idle_state: begin
-                awaddr = 4'h4;
-                awvalid = 1;
-                wdata = 8'h00;
-                wvalid = 0;
-                bready = 0;
                 ready = 1;
                 ctrl_set_d = 1;
                 if(valid) begin
@@ -97,10 +88,9 @@ module UART_TX(
                 awaddr = 4'h4;
                 awvalid = 1;
                 wdata = curr_data;
-                wvalid = 1;
-                bready = 1;
-                ready = 0;
-                if(awready && wready)
+                wvalid = 1'b1;
+                ready = 1'b0;
+                if(wready && awready)
                     next_state = resp_state;
                 else
                     next_state = write_state;

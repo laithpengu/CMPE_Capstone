@@ -5,11 +5,9 @@ module esp_rx(
     output uart_tx
 );
     wire [7:0] data;
-    reg [7:0] txdata;
+//    reg [7:0] txdata;
     wire valid;
-    reg [13:0] counter2;
     wire ready;
-    reg [10:0] counter;
 
     wire [3:0] awaddr;
     wire awvalid;
@@ -77,7 +75,6 @@ module esp_rx(
     UART_RX rx(
         .clk(clk),
         .rst(rst),
-        .start(1'b1),
         .ready(ready),
         .data(data),
         .valid(valid),
@@ -139,17 +136,17 @@ module esp_rx(
     
      ila_0 ila(
          .clk(clk),
-         .probe0(rvalid),
-         .probe1(rready),
-         .probe2(rdata),
-         .probe3(rx.curr_state),
+         .probe0(wvalid),
+         .probe1(wready),
+         .probe2(wdata),
+         .probe3(tx.curr_state),
          .probe4(valid),
          .probe5(ready),
          .probe6(uart_rx),
          .probe7(uart_tx_w),
-         .probe8(arvalid),
-         .probe9(arready),
-         .probe10(araddr)
+         .probe8(awvalid),
+         .probe9(awready),
+         .probe10(awaddr)
      );
 
 endmodule

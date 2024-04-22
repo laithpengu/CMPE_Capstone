@@ -71,8 +71,13 @@ proc create_report { reportName command } {
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
 set_param tcl.collectionResultDisplayLimit 0
+set_param checkpoint.writeSynthRtdsInDcp 1
 set_param chipscope.maxJobs 3
+set_param synth.incrementalSynthesisCache C:/Users/JohnPC/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-5240-JohnDesktop/incrSyn
 set_param xicom.use_bs_reader 1
+set_msg_config -id {Common 17-41} -limit 10000000
+set_msg_config -id {Synth 8-256} -limit 10000
+set_msg_config -id {Synth 8-638} -limit 10000
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7s50csga324-1
 
@@ -92,19 +97,19 @@ OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 read_verilog -library xil_defaultlib -sv {
   C:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/esp32_rx_ctrl/src/UART_RX.sv
-  C:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/esp32_rx_ctrl/esp32_rx_ctrl.srcs/sources_1/new/UART_TX.sv
+  C:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/esp32_rx_ctrl/src/UART_TX.sv
 }
 read_verilog -library xil_defaultlib C:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/esp32_rx_ctrl/src/esp_rx.v
-read_ip -quiet C:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/esp32_rx_ctrl/esp32_rx_ctrl.srcs/sources_1/ip/axi_uartlite_0/axi_uartlite_0.xci
-set_property used_in_implementation false [get_files -all c:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/esp32_rx_ctrl/esp32_rx_ctrl.gen/sources_1/ip/axi_uartlite_0/axi_uartlite_0_board.xdc]
-set_property used_in_implementation false [get_files -all c:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/esp32_rx_ctrl/esp32_rx_ctrl.gen/sources_1/ip/axi_uartlite_0/axi_uartlite_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all c:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/esp32_rx_ctrl/esp32_rx_ctrl.gen/sources_1/ip/axi_uartlite_0/axi_uartlite_0.xdc]
-
 read_ip -quiet C:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/esp32_rx_ctrl/esp32_rx_ctrl.srcs/sources_1/ip/ila_0/ila_0.xci
 set_property used_in_synthesis false [get_files -all c:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/esp32_rx_ctrl/esp32_rx_ctrl.gen/sources_1/ip/ila_0/ila_v6_2/constraints/ila_impl.xdc]
 set_property used_in_implementation false [get_files -all c:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/esp32_rx_ctrl/esp32_rx_ctrl.gen/sources_1/ip/ila_0/ila_v6_2/constraints/ila_impl.xdc]
 set_property used_in_implementation false [get_files -all c:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/esp32_rx_ctrl/esp32_rx_ctrl.gen/sources_1/ip/ila_0/ila_v6_2/constraints/ila.xdc]
 set_property used_in_implementation false [get_files -all c:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/esp32_rx_ctrl/esp32_rx_ctrl.gen/sources_1/ip/ila_0/ila_0_ooc.xdc]
+
+read_ip -quiet C:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/esp32_rx_ctrl/esp32_rx_ctrl.srcs/sources_1/ip/axi_uartlite_0/axi_uartlite_0.xci
+set_property used_in_implementation false [get_files -all c:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/esp32_rx_ctrl/esp32_rx_ctrl.gen/sources_1/ip/axi_uartlite_0/axi_uartlite_0_board.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/esp32_rx_ctrl/esp32_rx_ctrl.gen/sources_1/ip/axi_uartlite_0/axi_uartlite_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/esp32_rx_ctrl/esp32_rx_ctrl.gen/sources_1/ip/axi_uartlite_0/axi_uartlite_0.xdc]
 
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
@@ -118,6 +123,8 @@ foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
 read_xdc C:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/PMODESP32/synth/esp_ctrl.xdc
 set_property used_in_implementation false [get_files C:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/PMODESP32/synth/esp_ctrl.xdc]
 
+read_xdc dont_touch.xdc
+set_property used_in_implementation false [get_files dont_touch.xdc]
 set_param ips.enableIPCacheLiteLoad 1
 
 read_checkpoint -auto_incremental -incremental C:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/esp32_rx_ctrl/esp32_rx_ctrl.srcs/utils_1/imports/synth_1/esp_ctrl.dcp
