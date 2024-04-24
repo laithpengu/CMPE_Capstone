@@ -36,7 +36,9 @@ module pc_tb();
         .douta(dout)
     );
 
-    pc dut(
+    pc #(
+        .ADDR_WIDTH(8)
+    ) dut (
         .clk(clk),
         .rst(rst),
         .inc(inc),

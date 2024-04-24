@@ -17,7 +17,7 @@ proc create_report { reportName command } {
   }
 }
 namespace eval ::optrace {
-  variable script "D:/CMPE_Capstone/CODE/hdl/UART/synth/UART_impl/UART_impl.runs/impl_1/UART_impl.tcl"
+  variable script "C:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/UART/synth/UART_impl/UART_impl.runs/impl_1/UART_impl.tcl"
   variable category "vivado_impl"
 }
 
@@ -126,7 +126,7 @@ set rc [catch {
   set_param chipscope.maxJobs 3
   set_param runs.launchOptions { -jobs 12  }
   open_checkpoint UART_impl_routed.dcp
-  set_property webtalk.parent_dir D:/CMPE_Capstone/CODE/hdl/UART/synth/UART_impl/UART_impl.cache/wt [current_project]
+  set_property webtalk.parent_dir C:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/UART/synth/UART_impl/UART_impl.cache/wt [current_project]
 set_property TOP UART_impl [current_fileset]
 OPTRACE "read constraints: write_bitstream" START { }
 OPTRACE "read constraints: write_bitstream" END { }

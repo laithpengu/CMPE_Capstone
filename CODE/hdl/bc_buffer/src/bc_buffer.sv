@@ -24,6 +24,7 @@
 
 module bc_buffer(
         input clk,
+        input sck,
         input rst,
 
         input [15:0] avoid_in_data, // going into incoming_fifo
@@ -88,6 +89,20 @@ module bc_buffer(
         .wr_rst_busy(old_wr_rst_busy),
         .rd_rst_busy(old_rd_rst_busy),
         .data_count(old_data_count)
+    );
+
+    serdes inner_serdes(
+      .clk(sck),
+      .rst(rst),
+      .serial_in(from_avoid),
+      .parallel_in(bc_out), //bc_out is filled from fifo
+      .start_ser(start_ser),
+      .start_des(start_des),
+      .parallel_out(to_control),
+      .serial_out(to_avoid),
+      .early_rdy(early_rdy),
+      .parallel_rdy(parallel_rdy),
+      .serial_done(serial_done)
     );
 
 endmodule

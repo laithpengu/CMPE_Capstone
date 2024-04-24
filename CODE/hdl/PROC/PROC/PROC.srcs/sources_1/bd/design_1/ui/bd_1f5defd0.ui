@@ -1,0 +1,39 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Default View_ScaleFactor":"1.53982",
+   "Default View_TopLeft":"-279,-20",
+   "ExpandedHierarchyInLayout":"",
+   "guistr":"# # String gsaved with Nlview 7.5.8 2022-09-21 7111 VDI=41 GEI=38 GUI=JA:10.0
+#  -string -flagsOSRD
+preplace port port-id_CLK100MHZ -pg 1 -lvl 0 -x -30 -y 490 -defaultsOSRD
+preplace port port-id_dir -pg 1 -lvl 6 -x 1680 -y 480 -defaultsOSRD
+preplace port port-id_speed -pg 1 -lvl 6 -x 1680 -y 510 -defaultsOSRD
+preplace port port-id_rst -pg 1 -lvl 0 -x -30 -y -80 -defaultsOSRD
+preplace inst microblaze_0 -pg 1 -lvl 3 -x 920 -y 20 -defaultsOSRD
+preplace inst microblaze_0_local_memory -pg 1 -lvl 5 -x 1560 -y 100 -defaultsOSRD
+preplace inst mdm_1 -pg 1 -lvl 2 -x 430 -y 90 -defaultsOSRD
+preplace inst clk_wiz_1 -pg 1 -lvl 1 -x 110 -y 300 -defaultsOSRD
+preplace inst rst_clk_wiz_1_100M -pg 1 -lvl 2 -x 430 -y 270 -defaultsOSRD
+preplace inst axi_interconnect_0 -pg 1 -lvl 3 -x 920 -y 550 -defaultsOSRD
+preplace inst PROC_0 -pg 1 -lvl 4 -x 1310 -y 470 -defaultsOSRD
+preplace netloc microblaze_0_Clk 1 1 4 250 170 680 -80 NJ -80 1460
+preplace netloc clk_wiz_1_locked 1 1 1 N 310
+preplace netloc rst_clk_wiz_1_100M_mb_reset 1 2 1 690 50n
+preplace netloc rst_clk_wiz_1_100M_bus_struct_reset 1 2 3 610 -70 NJ -70 1450
+preplace netloc mdm_1_debug_sys_rst 1 1 2 260 160 600
+preplace netloc rst_clk_wiz_1_100M_peripheral_aresetn 1 2 1 600 310n
+preplace netloc CLK100MHZ_1 1 0 4 0 -90 NJ -90 NJ -90 1160J
+preplace netloc PROC_0_dir 1 4 2 NJ 490 1660
+preplace netloc PROC_0_speed 1 4 2 N 510 NJ
+preplace netloc rst_1 1 0 1 -10 -80n
+preplace netloc microblaze_0_dlmb_1 1 3 2 1170 70 N
+preplace netloc microblaze_0_ilmb_1 1 3 2 1150 90 N
+preplace netloc microblaze_0_debug 1 2 1 600 10n
+levelinfo -pg 1 -30 110 430 920 1310 1560 1680
+pagesize -pg 1 -db -bbox -sgen -160 -140 1770 1630
+"
+}
+{
+   "da_clkrst_cnt":"1",
+   "da_mb_cnt":"1"
+}

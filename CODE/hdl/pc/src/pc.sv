@@ -20,23 +20,25 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module pc(
+module pc #(
+    parameter ADDR_WIDTH = 8
+)(
     input clk,
     input rst,
     input inc,
     input jmp,
-    input [7:0] addrin,
-    output [7:0] addrout
+    input [ADDR_WIDTH-1:0] addrin,
+    output [ADDR_WIDTH-1:0] addrout
     );
     
-    logic [7:0] addrout_q;
-    logic [7:0] addrout_d;
+    logic [ADDR_WIDTH-1:0] addrout_q;
+    logic [ADDR_WIDTH-1:0] addrout_d;
     
     assign addrout = addrout_q;
     
     always_ff @(posedge clk or posedge rst) begin
         if(rst) begin
-            addrout_q <= 8'h00;
+            addrout_q <= 'b0;
         end else begin
             addrout_q <= addrout_d;
         end

@@ -25,27 +25,27 @@ module rf_read_top(
     input rst,
     input rd_en,
     input uart_rx,
-    input sdo, //rf
-    input intr_in, //rf
+//    input sdo, //rf
+//    input intr_in, //rf
     output uart_tx,
     output empty_led,
-    output full_led,
-    output sdi, //rf
-    output sck, //rf
-    output cs, //rf
-    output n_rst, //rf
-    output wake //rf
+    output full_led
+//    output sdi, //rf
+//    output sck, //rf
+//    output cs, //rf
+//    output n_rst, //rf
+//    output wake //rf
     // output[7:0] data_o
     );
     
     wire clk;
 	wire inc;
     wire intr;
-    // wire sdo;
-    // wire intr_in;
-    // wire sdi;
-    // wire sck;
-    // wire cs;
+     wire sdo;
+     wire intr_in;
+     wire sdi;
+     wire sck;
+     wire cs;
     wire data_out_s;
     wire intr_out;
     wire [15:0] data_out_mem_a;
@@ -76,7 +76,7 @@ module rf_read_top(
     RF_cl_test RF_state(
         .clk(clk),
         .rst(rst),
-        .data_in(data_out_mem_b),
+        .data_in(data_out_mem_a),
         .ready(ready),
         .intr(intr_inter),
         .addr_out(addr_out),
@@ -110,7 +110,7 @@ module rf_read_top(
         .inc(inc),
         .jmp(1'b0),
         .addrin(1'b0),
-        .addrout(addr_b)
+        .addrout(addr_a)
     );
      
     blk_mem_gen_0 mem_0(
@@ -146,13 +146,13 @@ module rf_read_top(
         .enable(enable)
     );
 
-    // par_buffer parallel_dut_0(
-    //     .clk(clk),
-    //     .rst(rst),
-    //     .start(~cs),
-    //     .data_in(data_out),
-    //     .data_out(sdo)
-    // );
+     par_buffer parallel_dut_0(
+         .clk(clk),
+         .rst(rst),
+         .start(~cs),
+         .data_in(data_out),
+         .data_out(sdo)
+     );
     
     UART_pkg uart_dut_0(
         .clk(clk),

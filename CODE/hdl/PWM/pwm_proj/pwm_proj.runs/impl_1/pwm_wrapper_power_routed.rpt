@@ -1,8 +1,8 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date             : Fri Feb 23 21:19:24 2024
-| Host             : JohnDesktop running 64-bit major release  (build 9200)
+| Date             : Mon Feb 26 11:07:06 2024
+| Host             : DESKTOP-M1PCUD5 running 64-bit major release  (build 9200)
 | Command          : report_power -file pwm_wrapper_power_routed.rpt -pb pwm_wrapper_power_summary_routed.pb -rpx pwm_wrapper_power_routed.rpx
 | Design           : pwm_wrapper
 | Device           : xc7s50csga324-1
@@ -53,13 +53,13 @@ Table of Contents
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
 | Clocks         |    <0.001 |        8 |       --- |             --- |
-| Slice Logic    |    <0.001 |      112 |       --- |             --- |
-|   LUT as Logic |    <0.001 |       56 |     32600 |            0.17 |
+| Slice Logic    |    <0.001 |      102 |       --- |             --- |
+|   LUT as Logic |    <0.001 |       46 |     32600 |            0.14 |
 |   BUFG         |    <0.001 |        1 |        32 |            3.13 |
-|   Register     |    <0.001 |       31 |     65200 |            0.05 |
+|   Register     |    <0.001 |       34 |     65200 |            0.05 |
 |   CARRY4       |    <0.001 |        4 |      8150 |            0.05 |
 |   Others       |     0.000 |        9 |       --- |             --- |
-| Signals        |    <0.001 |       66 |       --- |             --- |
+| Signals        |    <0.001 |       56 |       --- |             --- |
 | MMCM           |     0.086 |        1 |         5 |           20.00 |
 | I/O            |    <0.001 |        4 |       210 |            1.90 |
 | Static Power   |     0.072 |          |           |                 |

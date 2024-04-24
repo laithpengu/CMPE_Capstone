@@ -122,10 +122,10 @@ module UART_ctrl(
                     wdata = ascii_data;
                 end else if(data_pos == 3'h5) begin
                     raw_data = curr_data[3:0];
-                    wdata = 8'h0A;
+                    wdata = 8'h0D;
                 end else begin
                     raw_data = curr_data[3:0];
-                    wdata = 8'h0D;
+                    wdata = 8'h0A;
                 end
                 wvalid = 1;
                 bready = 1;
