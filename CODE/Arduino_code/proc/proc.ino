@@ -5,10 +5,10 @@
 
 char ssid[] = "TP-Link_2F9C";
 char pass[] = "1cs_Pr0c";
-IPAddress ip(192, 168, 0, 101);
+IPAddress ip(192, 168, 0, 21);
 int status = WL_IDLE_STATUS;
 WiFiServer server_green(80);
-char server[] = "192.168.0.101";
+char server[] = "192.168.0.22";
 String readString;
 bool connected = false;
 bool second_loop = false;
@@ -139,31 +139,31 @@ void receive() {
             Serial.write(c);
 
             if (c == '\n') {
-              // if (readString.indexOf("?green") > 0)
-              // {
-              //   int speedIndex = readString.indexOf("speed:") + 7; // Locate the start of the speed value
-              //   int angleIndex = readString.indexOf("angle:") + 7; // Locate the start of the angle value
+              if (readString.indexOf("?green") > 0)
+              {
+                int speedIndex = readString.indexOf("speed:") + 7; // Locate the start of the speed value
+                int angleIndex = readString.indexOf("angle:") + 7; // Locate the start of the angle value
 
-              //   // Extract the speed value
-              //   String speedString = readString.substring(speedIndex, readString.indexOf(" ", speedIndex));
-              //   speed = speedString.toInt(); // Convert speed string to an integer
+                // Extract the speed value
+                String speedString = readString.substring(speedIndex, readString.indexOf(" ", speedIndex));
+                speed = speedString.toInt(); // Convert speed string to an integer
 
-              //   // Extract the angle value
-              //   String angleString = readString.substring(angleIndex);
-              //   angle = angleString.toInt(); // Convert angle string to an integer
+                // Extract the angle value
+                String angleString = readString.substring(angleIndex);
+                angle = angleString.toInt(); // Convert angle string to an integer
 
-              //   // Output the extracted values
-              //   Serial.print("Speed: ");
-              //   Serial.println(speed);
-              //   Serial.print("Angle: ");
-              //   Serial.println(angle);
+                // Output the extracted values
+                Serial.print("Speed: ");
+                Serial.println(speed);
+                Serial.print("Angle: ");
+                Serial.println(angle);
 
-              //   vehicleAngle(angle);
-              //   vehicleSpeed(speed);
-              //   delay(1);
-              // }
-
-              // readString = "";
+                vehicleAngle(angle);
+                vehicleSpeed(speed);
+                delay(1);
+              }
+              
+              readString = "";
 
               delay(1);
               // client.stop();
@@ -177,6 +177,7 @@ void receive() {
     delay(500);
   }
   second_loop = false;
+  connected = false;
 }
 
 void parseBreadcrumb() {
@@ -202,15 +203,22 @@ void parseBreadcrumb() {
     vehicleSpeed(speed);
     delay(1);
   }
-  readString = "";
+  // readString = "";
 }
 
 void send(int speed, int angle) {
+  String message = "";
+  String speedStr = "";
+  String angleStr = "";
   while(!second_loop){
     if (client.connect(server, 80)) {
       second_loop = true;
       Serial.println("connected");
-      client.println("GET /?green speed: 420 angle: 69 HTTP/1.0");
+      speedStr = String(speed);
+      angleStr = String(angle);
+      message = String("GET /?green speed: " + speedStr + " angle: " + angleStr + " HTTP/1.0");
+      client.println(message);
+      // client.println("GET /?green speed: 420 angle: 69 HTTP/1.0");
       client.println();
     }else{
       Serial.println("Not connected");
@@ -232,5 +240,4 @@ void send(int speed, int angle) {
 void loop() {
   // send(200, 90);
   receive();
-  parseBreadcrumb();
 }
