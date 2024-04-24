@@ -12,9 +12,9 @@ echo "Please update the PATH and LD_LIBRARY_PATH variables below, before executi
 exit
 
 if [ -z "$PATH" ]; then
-  PATH=D:/Xilinx/Vivado/2023.2/ids_lite/ISE/bin/nt64;D:/Xilinx/Vivado/2023.2/ids_lite/ISE/lib/nt64:D:/Xilinx/Vivado/2023.2/bin
+  PATH=J:/Xilinx/Vivado/2023.2/ids_lite/ISE/bin/nt64;J:/Xilinx/Vivado/2023.2/ids_lite/ISE/lib/nt64:J:/Xilinx/Vivado/2023.2/bin
 else
-  PATH=D:/Xilinx/Vivado/2023.2/ids_lite/ISE/bin/nt64;D:/Xilinx/Vivado/2023.2/ids_lite/ISE/lib/nt64:D:/Xilinx/Vivado/2023.2/bin:$PATH
+  PATH=J:/Xilinx/Vivado/2023.2/ids_lite/ISE/bin/nt64;J:/Xilinx/Vivado/2023.2/ids_lite/ISE/lib/nt64:J:/Xilinx/Vivado/2023.2/bin:$PATH
 fi
 export PATH
 
@@ -25,7 +25,7 @@ else
 fi
 export LD_LIBRARY_PATH
 
-HD_PWD='D:/CMPE_Capstone/CODE/hdl/UART/synth/UART_impl/UART_impl.runs/impl_1'
+HD_PWD='C:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/UART/synth/UART_impl/UART_impl.runs/impl_1'
 cd "$HD_PWD"
 
 HD_LOG=runme.log
@@ -42,7 +42,7 @@ EAStep()
 }
 
 # pre-commands:
-/bin/touch .init_design.begin.rst
+/bin/touch .write_bitstream.begin.rst
 EAStep vivado -log UART_impl.vdi -applog -m64 -product Vivado -messageDb vivado.pb -mode batch -source UART_impl.tcl -notrace
 
 

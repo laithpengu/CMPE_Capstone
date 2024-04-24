@@ -21,10 +21,10 @@ vmap axi_uartlite_v2_0_33 riviera/axi_uartlite_v2_0_33
 vmap xil_defaultlib riviera/xil_defaultlib
 
 vlog -work xpm  -incr -l xpm -l axi_lite_ipif_v3_0_4 -l lib_pkg_v1_0_3 -l lib_srl_fifo_v1_0_3 -l lib_cdc_v1_0_2 -l axi_uartlite_v2_0_33 -l xil_defaultlib \
-"D:/Xilinx/Vivado/2023.2/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv" \
+"J:/Xilinx/Vivado/2023.2/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv" \
 
 vcom -work xpm -93  -incr \
-"D:/Xilinx/Vivado/2023.2/data/ip/xpm/xpm_VCOMP.vhd" \
+"J:/Xilinx/Vivado/2023.2/data/ip/xpm/xpm_VCOMP.vhd" \
 
 vcom -work axi_lite_ipif_v3_0_4 -93  -incr \
 "../../../ipstatic/hdl/axi_lite_ipif_v3_0_vh_rfs.vhd" \

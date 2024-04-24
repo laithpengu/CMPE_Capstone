@@ -4,7 +4,7 @@ read_verilog ../src/pc.sv
 # Create the block memory
 create_ip -name blk_mem_gen -vendor xilinx.com -library ip -version 8.4 -module_name blk_mem_gen_0
 set_property -dict [list \
-  CONFIG.Coe_File {C:\Users\JohnPC\Documents\GitHub\CMPE_Capstone\CODE\mem_files\default.coe} \
+  CONFIG.Coe_File {D:\CMPE_Capstone\CODE\mem_files\default.coe} \
   CONFIG.Enable_A {Always_Enabled} \
   CONFIG.Load_Init_File {true} \
   CONFIG.Memory_Type {Single_Port_ROM} \

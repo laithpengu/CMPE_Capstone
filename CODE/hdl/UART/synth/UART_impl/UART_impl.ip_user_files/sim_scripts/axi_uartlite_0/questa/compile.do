@@ -18,10 +18,10 @@ vmap axi_uartlite_v2_0_33 questa_lib/msim/axi_uartlite_v2_0_33
 vmap xil_defaultlib questa_lib/msim/xil_defaultlib
 
 vlog -work xpm  -incr -mfcu  -sv \
-"D:/Xilinx/Vivado/2023.2/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv" \
+"J:/Xilinx/Vivado/2023.2/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv" \
 
 vcom -work xpm  -93  \
-"D:/Xilinx/Vivado/2023.2/data/ip/xpm/xpm_VCOMP.vhd" \
+"J:/Xilinx/Vivado/2023.2/data/ip/xpm/xpm_VCOMP.vhd" \
 
 vcom -work axi_lite_ipif_v3_0_4  -93  \
 "../../../ipstatic/hdl/axi_lite_ipif_v3_0_vh_rfs.vhd" \
