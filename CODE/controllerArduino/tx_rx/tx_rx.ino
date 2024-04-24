@@ -271,6 +271,7 @@ void send16_trad(word dest16, char * data) {
 }
 
 void interrupt_handler() {
+    Serial.println("Interrupt Recieved");
     uint8_t last_interrupt = read_short(MRF_INTSTAT);
     if (last_interrupt & MRF_I_RXIF) {
         flag_got_rx++;
@@ -401,7 +402,7 @@ void setup() {
   set_promiscuous(true);
 
   // attach interrupt
-  attachInterrupt(digitalPinToInterrupt(pin_interrupt), interrupt_handler, CHANGE);
+  attachInterrupt(digitalPinToInterrupt(pin_interrupt), interrupt_handler, FALLING);
   last_time = millis();
   interrupts();
 }
