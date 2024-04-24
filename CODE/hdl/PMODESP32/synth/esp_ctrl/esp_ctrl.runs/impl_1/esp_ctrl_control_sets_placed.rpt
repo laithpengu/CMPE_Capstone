@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date         : Sun Apr 21 21:10:41 2024
+| Date         : Sun Apr 21 23:19:57 2024
 | Host         : JohnDesktop running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file esp_ctrl_control_sets_placed.rpt
 | Design       : esp_ctrl
@@ -58,34 +58,34 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |               8 |            3 |
-| No           | No                    | Yes                    |              10 |            4 |
-| No           | Yes                   | No                     |              53 |           23 |
+| No           | No                    | No                     |               8 |            2 |
+| No           | No                    | Yes                    |              10 |            3 |
+| No           | Yes                   | No                     |              53 |           18 |
 | Yes          | No                    | No                     |               2 |            1 |
 | Yes          | No                    | Yes                    |               8 |            2 |
-| Yes          | Yes                   | No                     |              47 |           13 |
+| Yes          | Yes                   | No                     |              47 |           11 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
 4. Detailed Control Set Information
 -----------------------------------
 
-+----------------+----------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+------------------+----------------+--------------+
-|  Clock Signal  |                                      Enable Signal                                     |                                         Set/Reset Signal                                        | Slice Load Count | Bel Load Count | Bels / Slice |
-+----------------+----------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+------------------+----------------+--------------+
-|  clk_IBUF_BUFG | uart/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/start2                                      | uart/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/cs_ce_clr                                  |                1 |              4 |         4.00 |
-|  clk_IBUF_BUFG | uart/U0/UARTLITE_CORE_I/BAUD_RATE_I/en_16x_Baud                                        |                                                                                                 |                1 |              4 |         4.00 |
-|  clk_IBUF_BUFG |                                                                                        | uart/U0/UARTLITE_CORE_I/UARTLITE_RX_I/SRL_FIFO_I/I_SRL_FIFO_RBU_F/CNTR_INCR_DECR_ADDN_F_I/SS[0] |                2 |              6 |         3.00 |
-|  clk_IBUF_BUFG |                                                                                        | uart/U0/UARTLITE_CORE_I/UARTLITE_TX_I/SRL_FIFO_I/I_SRL_FIFO_RBU_F/CNTR_INCR_DECR_ADDN_F_I/SS[0] |                3 |              6 |         2.00 |
-|  clk_IBUF_BUFG | uart/U0/UARTLITE_CORE_I/BAUD_RATE_I/en_16x_Baud                                        | uart/U0/UARTLITE_CORE_I/UARTLITE_RX_I/SERIAL_TO_PARALLEL[8].fifo_din[8]_i_1_n_0                 |                1 |              7 |         7.00 |
-|  clk_IBUF_BUFG |                                                                                        |                                                                                                 |                3 |              8 |         2.67 |
-|  clk_IBUF_BUFG | uart/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/fifo_wr                           |                                                                                                 |                1 |              8 |         8.00 |
-|  clk_IBUF_BUFG | uart/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rresp_i                               | uart/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/rst                                                  |                2 |              8 |         4.00 |
-|  clk_IBUF_BUFG | uart/U0/UARTLITE_CORE_I/UARTLITE_RX_I/SRL_FIFO_I/I_SRL_FIFO_RBU_F/DYNSHREG_F_I/fifo_wr |                                                                                                 |                1 |              8 |         8.00 |
-|  clk_IBUF_BUFG | tx/next_data                                                                           | rst_IBUF                                                                                        |                2 |              8 |         4.00 |
-|  clk_IBUF_BUFG |                                                                                        | uart/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/rst                                                  |                4 |             11 |         2.75 |
-|  clk_IBUF_BUFG | uart/U0/UARTLITE_CORE_I/BAUD_RATE_I/en_16x_Baud                                        | rst_IBUF                                                                                        |                9 |             28 |         3.11 |
-|  clk_IBUF_BUFG |                                                                                        | rst_IBUF                                                                                        |               18 |             40 |         2.22 |
-+----------------+----------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+------------------+----------------+--------------+
++----------------+--------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------+------------------+----------------+--------------+
+|  Clock Signal  |                                        Enable Signal                                       |                                           Set/Reset Signal                                          | Slice Load Count | Bel Load Count | Bels / Slice |
++----------------+--------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------+------------------+----------------+--------------+
+|  clk_IBUF_BUFG | mon/pmod/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/start2                                      | mon/pmod/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/cs_ce_clr                                  |                2 |              4 |         2.00 |
+|  clk_IBUF_BUFG | mon/pmod/U0/UARTLITE_CORE_I/BAUD_RATE_I/en_16x_Baud                                        |                                                                                                     |                1 |              4 |         4.00 |
+|  clk_IBUF_BUFG |                                                                                            | mon/pmod/U0/UARTLITE_CORE_I/UARTLITE_RX_I/SRL_FIFO_I/I_SRL_FIFO_RBU_F/CNTR_INCR_DECR_ADDN_F_I/SS[0] |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG |                                                                                            | mon/pmod/U0/UARTLITE_CORE_I/UARTLITE_TX_I/SRL_FIFO_I/I_SRL_FIFO_RBU_F/CNTR_INCR_DECR_ADDN_F_I/SS[0] |                3 |              6 |         2.00 |
+|  clk_IBUF_BUFG | mon/pmod/U0/UARTLITE_CORE_I/BAUD_RATE_I/en_16x_Baud                                        | mon/pmod/U0/UARTLITE_CORE_I/UARTLITE_RX_I/SERIAL_TO_PARALLEL[8].fifo_din[8]_i_1_n_0                 |                1 |              7 |         7.00 |
+|  clk_IBUF_BUFG |                                                                                            |                                                                                                     |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG | mon/pmod/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/fifo_wr                           |                                                                                                     |                1 |              8 |         8.00 |
+|  clk_IBUF_BUFG | mon/pmod/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rresp_i                               | mon/pmod/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/rst                                                  |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG | mon/pmod/U0/UARTLITE_CORE_I/UARTLITE_RX_I/SRL_FIFO_I/I_SRL_FIFO_RBU_F/DYNSHREG_F_I/fifo_wr |                                                                                                     |                1 |              8 |         8.00 |
+|  clk_IBUF_BUFG | mon/pmod_tx/next_data                                                                      | rst_IBUF                                                                                            |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG |                                                                                            | mon/pmod/U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/rst                                                  |                3 |             11 |         3.67 |
+|  clk_IBUF_BUFG | mon/pmod/U0/UARTLITE_CORE_I/BAUD_RATE_I/en_16x_Baud                                        | rst_IBUF                                                                                            |                6 |             28 |         4.67 |
+|  clk_IBUF_BUFG |                                                                                            | rst_IBUF                                                                                            |               13 |             40 |         3.08 |
++----------------+--------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------+------------------+----------------+--------------+
 
 
