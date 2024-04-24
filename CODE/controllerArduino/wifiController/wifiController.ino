@@ -5,7 +5,7 @@ char ssid[] = "echo_router_24";
 char pass[] = "SouthRiver2020!";
 IPAddress ip(192, 168, 0, 101);
 int status = WL_IDLE_STATUS;
-char server[] = "192.168.0.103";
+char server[] = "192.168.0.20";
 bool connected = false;
 
 String veh_ips[3] {"192.168.0.21", "192.168.0.22", "192.168.0.23"};
@@ -30,18 +30,19 @@ void setup() {
   Serial.begin(9600);
   while(!Serial) {}
 
+  /*
   if (WiFi.status() == WL_NO_MODULE) {
     Serial.println("Communication with WiFi module failed!");
     // don't continue
     while (true);
   }
-
   String fv = WiFi.firmwareVersion();
   if (fv < WIFI_FIRMWARE_LATEST_VERSION) {
     Serial.println(fv);
     Serial.println(WIFI_FIRMWARE_LATEST_VERSION);
     Serial.println("Please upgrade the firmware");
   }
+  */
 
   // attempt to connect to WiFi network:
   while (status != WL_CONNECTED) {
@@ -115,7 +116,6 @@ void loop() {
     }
     curr_state = RUNNING;
   } else if (curr_state == RUNNING) {
-    /*
     // get motor data
     uint32_t wheel_val = analogRead(pin_wheel);
     uint8_t wheel_out;
@@ -143,7 +143,7 @@ void loop() {
     } else {
       trigger_out = 0;
     }
-    */
+
     for(int i = 0; i < 5; i++){
       if (client.connect(server, 80)) {
         i = 5;
@@ -153,10 +153,10 @@ void loop() {
         String message3 = " HTTP/1.0";
         char speed_string [3];
         char angle_string [3];
-        //sprintf(speed_string, "%d", trigger_out);
-        //sprintf(angle_string, "%d", wheel_out);
-        //String out_string = message1 + speed_string + message2 + angle_string + message3;
-        String out_string = "GET /?green speed:420 angle: 69 HTTP/1.0";
+        sprintf(speed_string, "%d", trigger_out);
+        sprintf(angle_string, "%d", wheel_out);
+        String out_string = message1 + speed_string + message2 + angle_string + message3;
+        //String out_string = "GET /?green speed:420 angle: 69 HTTP/1.0";
         Serial.println(out_string);
         client.println(out_string);
         client.println();
