@@ -76,7 +76,7 @@ void setup() {
 
 // Set Static IP
   WiFi.config(ip);
-
+  WiFi.noLowPowerMode();
   // attempt to connect to WiFi network:
   while (status != WL_CONNECTED) {
     Serial.print("Attempting to connect to SSID: ");
@@ -249,6 +249,7 @@ void send(int speed, int angle) {
 //////////
 void loop() {
   receive(1);
-  if(followerID != 37)
-  send(speed, angle);
+  if(followerID != 37) {
+    send(speed + 5, angle + 5);
+  }
 }
