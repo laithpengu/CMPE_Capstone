@@ -8,11 +8,14 @@ char pass[] = "1cs_Pr0c";
 IPAddress ip(192, 168, 0, 21);
 int status = WL_IDLE_STATUS;
 WiFiServer server_green(80);
-char server[] = "192.168.0.22";
+char followerVehicle[] = "192.168.0.22";
+int followerID;
 String readString;
 bool connected = false;
 bool second_loop = false;
 String postData;
+String vehId = "veh1";
+bool isLeader;
 
 WiFiClient client;
 
@@ -96,7 +99,7 @@ void setup() {
 
 bool send(){
   bool rv = false;
-  if (client.connect(server, 80)) {
+  if (client.connect(followerVehicle, 80)) {
       rv = true;
       Serial.println("connected");
       client.println("GET /?green speed: 420 angle: 69 HTTP/1.0");
@@ -111,7 +114,7 @@ bool send(){
     return rv;
 }
 
-void receive() {
+void receive(bool getBreadcrumb) {
   status = WiFi.status();
   while (status != WL_CONNECTED) {
       Serial.print("Attempting to connect to SSID: ");
@@ -139,28 +142,11 @@ void receive() {
             Serial.write(c);
 
             if (c == '\n') {
-              if (readString.indexOf("?green") > 0)
-              {
-                int speedIndex = readString.indexOf("speed:") + 7; // Locate the start of the speed value
-                int angleIndex = readString.indexOf("angle:") + 7; // Locate the start of the angle value
-
-                // Extract the speed value
-                String speedString = readString.substring(speedIndex, readString.indexOf(" ", speedIndex));
-                speed = speedString.toInt(); // Convert speed string to an integer
-
-                // Extract the angle value
-                String angleString = readString.substring(angleIndex);
-                angle = angleString.toInt(); // Convert angle string to an integer
-
-                // Output the extracted values
-                Serial.print("Speed: ");
-                Serial.println(speed);
-                Serial.print("Angle: ");
-                Serial.println(angle);
-
-                vehicleAngle(angle);
-                vehicleSpeed(speed);
-                delay(1);
+              if(getBreadcrumb) {
+                parseBreadcrumb();
+              }
+              else {
+                parseVehSel();
               }
               
               readString = "";
@@ -180,7 +166,34 @@ void receive() {
   connected = false;
 }
 
+void parseVehSel() {
+  // if (readString.indexOf("?" + vehId) > 0) {
+  if (readString.indexOf("?green") > 0) {
+    int leaderIndex = readString.indexOf("leader:") + 7; // Locate the start of the speed value
+    int followerIndex = readString.indexOf("follower:") + 7; // Locate the start of the angle value
+
+    // Extract the speed value
+    String leaderString = readString.substring(leaderIndex, readString.indexOf(" ", leaderIndex));
+    isLeader = leaderString.toInt(); // Convert speed string to flag value 
+
+    // Extract the angle value
+    String followerString = readString.substring(followerIndex);
+    followerID = followerString.toInt() + 20; // Convert follower string to get its ip lsB
+    String followerVehicleString = "192.168.0." + String(followerID);
+    followerVehicleString.toCharArray(followerVehicle, followerVehicleString.length());
+
+    // Output the extracted values
+    Serial.print("Is a leader: ");
+    Serial.println(isLeader);
+    isLeader = speedString.toInt();
+    Serial.print("Follower IP: ");
+    Serial.println(angle);
+    delay(1);
+  }
+}
+
 void parseBreadcrumb() {
+  // if (readString.indexOf("?" + vehId) > 0) {
   if (readString.indexOf("?green") > 0) {
     int speedIndex = readString.indexOf("speed:") + 7; // Locate the start of the speed value
     int angleIndex = readString.indexOf("angle:") + 7; // Locate the start of the angle value
@@ -210,12 +223,16 @@ void send(int speed, int angle) {
   String message = "";
   String speedStr = "";
   String angleStr = "";
+  String followerVehString = "";
   while(!second_loop){
-    if (client.connect(server, 80)) {
+    if (client.connect(followerVehicle, 80)) {
       second_loop = true;
       Serial.println("connected");
       speedStr = String(speed);
       angleStr = String(angle);
+      followerVehString = String(followerID - 20);
+
+      // message = String("POST /?veh" + followerVehString + " speed: " + speedStr + " angle: " + angleStr + " HTTP/1.0");
       message = String("GET /?green speed: " + speedStr + " angle: " + angleStr + " HTTP/1.0");
       client.println(message);
       // client.println("GET /?green speed: 420 angle: 69 HTTP/1.0");
