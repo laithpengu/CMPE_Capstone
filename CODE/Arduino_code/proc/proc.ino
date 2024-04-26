@@ -7,15 +7,15 @@ char ssid[] = "TP-Link_2F9C";
 char pass[] = "1cs_Pr0c";
 IPAddress ip(192, 168, 0, 21);
 int status = WL_IDLE_STATUS;
-WiFiServer server_green(80);
-char followerVehicle[] = "192.168.0.22";
+WiFiServer breadcrumbListener(80);
+char followerVehicle[] = "192.168.0.20";
 int followerID;
 String readString;
 bool connected = false;
 bool second_loop = false;
-String postData;
 String vehId = "veh1";
 bool isLeader;
+bool gotFollower;
 
 WiFiClient client;
 
@@ -65,7 +65,7 @@ void vehicleSpeed(int speed) {
 ///Setup///
 ///////////
 void setup() {
-
+  gotFollower = false;
   Serial.begin(9600);
   delay(5000);
   if (WiFi.status() == WL_NO_MODULE) {
@@ -88,45 +88,33 @@ void setup() {
     delay(5000);
   }
 
-  server_green.begin();
+  breadcrumbListener.begin();
   Serial.print("SSID: ");
   Serial.println(WiFi.SSID());
   IPAddress ip = WiFi.localIP();
   IPAddress gateway = WiFi.gatewayIP();
   Serial.print("IP Address: ");
   Serial.println(ip);
-}
-
-bool send(){
-  bool rv = false;
-  if (client.connect(followerVehicle, 80)) {
-      rv = true;
-      Serial.println("connected");
-      client.println("GET /?green speed: 420 angle: 69 HTTP/1.0");
-      client.println();
-    }else{
-      Serial.println("Not connected");
-    }
-
-    if (client.connected()) {
-      client.stop();
-    }
-    return rv;
+  // followerVehicle = ;
+  while(!gotFollower) {
+    Serial.println("Getting follower vehicle");
+    receive(0);
+  }
 }
 
 void receive(bool getBreadcrumb) {
-  status = WiFi.status();
-  while (status != WL_CONNECTED) {
-      Serial.print("Attempting to connect to SSID: ");
-      Serial.println(ssid);
-      // Connect to WPA/WPA2 network. Change this line if using open or WEP network:
-      status = WiFi.begin(ssid, pass);
+  // status = WiFi.status();
+  // while (status != WL_CONNECTED) {
+  //     Serial.print("Attempting to connect to SSID: ");
+  //     Serial.println(ssid);
+  //     // Connect to WPA/WPA2 network. Change this line if using open or WEP network:
+  //     status = WiFi.begin(ssid, pass);
 
-      // wait 10 seconds for connection:
-      delay(2000);
-    }
+  //     // wait 10 seconds for connection:
+  //     // delay(2000);
+  //   }
   while(!connected){
-    WiFiClient client = server_green.available();
+    WiFiClient client = breadcrumbListener.available();
     if (client) {
       connected = true;
       Serial.println("new client");
@@ -160,41 +148,45 @@ void receive(bool getBreadcrumb) {
       }
     }
     Serial.println("not recieved");
-    delay(500);
+    // delay(500);
   }
   second_loop = false;
   connected = false;
 }
 
 void parseVehSel() {
-  // if (readString.indexOf("?" + vehId) > 0) {
-  if (readString.indexOf("?green") > 0) {
-    int leaderIndex = readString.indexOf("leader:") + 7; // Locate the start of the speed value
-    int followerIndex = readString.indexOf("follower:") + 7; // Locate the start of the angle value
+  String ipPrefix = String("192.168.0.");
+  String followerIDString = String("");
+  if (readString.indexOf(vehId) > 0) {
+    gotFollower = true;
+  // if (readString.indexOf("?veh1") > 0) {
+    int leaderIndex = readString.indexOf("leader: ") + 8; // Locate the start of the speed value
+    int followerIndex = readString.indexOf("follower: ") + 10; // Locate the start of the angle value
 
     // Extract the speed value
     String leaderString = readString.substring(leaderIndex, readString.indexOf(" ", leaderIndex));
     isLeader = leaderString.toInt(); // Convert speed string to flag value 
 
     // Extract the angle value
-    String followerString = readString.substring(followerIndex);
-    followerID = followerString.toInt() + 20; // Convert follower string to get its ip lsB
-    String followerVehicleString = "192.168.0." + String(followerID);
-    followerVehicleString.toCharArray(followerVehicle, followerVehicleString.length());
+    String followerString = readString.substring(followerIndex, readString.indexOf(" ", followerIndex));
+    int followerOffset = followerString.toInt();
+    followerID = followerOffset + 20; // Convert follower string to get its ip lsB
+    followerIDString = String(followerID);
+    String followerVehicleString = String(ipPrefix + followerIDString);
+    followerVehicleString.toCharArray(followerVehicle, followerVehicleString.length() + 1);
 
     // Output the extracted values
     Serial.print("Is a leader: ");
     Serial.println(isLeader);
-    isLeader = speedString.toInt();
     Serial.print("Follower IP: ");
-    Serial.println(angle);
+    Serial.println(followerVehicle);
     delay(1);
   }
 }
 
 void parseBreadcrumb() {
   // if (readString.indexOf("?" + vehId) > 0) {
-  if (readString.indexOf("?green") > 0) {
+  if (readString.indexOf(vehId) > 0) {
     int speedIndex = readString.indexOf("speed:") + 7; // Locate the start of the speed value
     int angleIndex = readString.indexOf("angle:") + 7; // Locate the start of the angle value
 
@@ -225,6 +217,7 @@ void send(int speed, int angle) {
   String angleStr = "";
   String followerVehString = "";
   while(!second_loop){
+    Serial.println(followerVehicle);
     if (client.connect(followerVehicle, 80)) {
       second_loop = true;
       Serial.println("connected");
@@ -232,8 +225,8 @@ void send(int speed, int angle) {
       angleStr = String(angle);
       followerVehString = String(followerID - 20);
 
-      // message = String("POST /?veh" + followerVehString + " speed: " + speedStr + " angle: " + angleStr + " HTTP/1.0");
-      message = String("GET /?green speed: " + speedStr + " angle: " + angleStr + " HTTP/1.0");
+      message = String("POST /?veh" + followerVehString + " speed: " + speedStr + " angle: " + angleStr + " HTTP/1.0");
+      // message = String("GET /?green speed: " + speedStr + " angle: " + angleStr + " HTTP/1.0");
       client.println(message);
       // client.println("GET /?green speed: 420 angle: 69 HTTP/1.0");
       client.println();
@@ -244,17 +237,18 @@ void send(int speed, int angle) {
     //if (client.connected()) {
     //  client.stop();
     //}
-    delay(5000);
+    // delay(5000);
   }
   second_loop = false;
   Serial.println("send loop left");
-  delay(5000);
+  // delay(5000);
 }
 
 //////////
 ///LOOP///
 //////////
 void loop() {
-  // send(200, 90);
-  receive();
+  receive(1);
+  if(followerID != 37)
+  send(speed, angle);
 }
