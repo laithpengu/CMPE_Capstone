@@ -3,21 +3,23 @@
 #include <Servo.h>
 #include "mbed.h"
 
+// Wifi variables
 char ssid[] = "TP-Link_2F9C";
 char pass[] = "1cs_Pr0c";
 IPAddress ip(192, 168, 0, 21);
-int status = WL_IDLE_STATUS;
-WiFiServer breadcrumbListener(80);
-char followerVehicle[] = "192.168.0.20";
-int followerID;
-String readString;
-bool connected = false;
-bool second_loop = false;
 String vehId = "veh1";
+int status = WL_IDLE_STATUS;
+WiFiServer breadcrumbListener(80); // Web server that listens on port 80
+char followerVehicle[] = "Default IP"; // Web server ip that the leader vehicle will connect to once given by controller
+int followerID; // vehicle ID number
+String readString;
+WiFiClient client;
+
+// Flag variables
 bool isLeader;
 bool gotFollower;
-
-WiFiClient client;
+bool connected = false;
+bool second_loop = false;
 
 // constants for Motor control
 const int MIN_ANGLE_PWM = 1300;
@@ -33,7 +35,7 @@ PinName pinSpeed = digitalPinToPinName(D4);
 mbed::PwmOut* pwmAngle = new mbed::PwmOut(pinAngle);
 mbed::PwmOut* pwmSpeed = new mbed::PwmOut(pinSpeed);
 int speed = 0;
-int angle = 0;
+int angle = 90;
 
 char leader_ip[] = "";
 char follower_ip[] = "";
@@ -43,6 +45,7 @@ char follower_ip[] = "";
 ////////////////////////
 
 // takes values between 60 and 120
+// Needs different frequency that analog write does not provide (330 Hz)
 void vehicleAngle(int angle) {
   float scale = float(float(MAX_ANGLE_PWM - MIN_ANGLE_PWM) / float(MAX_ANGLE - MIN_ANGLE));
   float offset = -MIN_ANGLE * scale + MIN_ANGLE_PWM;
@@ -58,6 +61,7 @@ void vehicleAngle(int angle) {
 
 // takes values between 0-255 (0 is stopped)
 void vehicleSpeed(int speed) {
+  Serial.println(speed);
   analogWrite(pinSpeed,speed);
 }
 
@@ -66,8 +70,49 @@ void vehicleSpeed(int speed) {
 ///////////
 void setup() {
   gotFollower = false;
+  getBreadcrumb = false;
+  connected = false;
+  second_loop = false;
   Serial.begin(9600);
   delay(5000);
+  
+  if (WiFi.status() == WL_NO_MODULE) {
+    Serial.println("Communication with WiFi module failed!");
+    // don't continue
+    while (true);
+  }
+
+// Set Static IP
+  // WiFi.config(ip);
+  // // attempt to connect to WiFi network:
+  // while (status != WL_CONNECTED) {
+  //   Serial.print("Attempting to connect to SSID: ");
+  //   Serial.println(ssid);
+  //   // Connect to WPA/WPA2 network. Change this line if using open or WEP network:
+  //   status = WiFi.begin(ssid, pass);
+
+  //   // wait 10 seconds for connection:
+  //   delay(5000);
+  // }
+
+  // breadcrumbListener.begin();
+  // Serial.print("SSID: ");
+  // Serial.println(WiFi.SSID());
+  // IPAddress ip = WiFi.localIP();
+  // IPAddress gateway = WiFi.gatewayIP();
+  // Serial.print("IP Address: ");
+  // Serial.println(ip);
+  
+  wifiInit();
+
+  // followerVehicle = ;
+  while(!gotFollower) {
+    Serial.println("Getting follower vehicle");
+    receive(0);
+  }
+}
+
+void wifiInit() {
   if (WiFi.status() == WL_NO_MODULE) {
     Serial.println("Communication with WiFi module failed!");
     // don't continue
@@ -76,15 +121,14 @@ void setup() {
 
 // Set Static IP
   WiFi.config(ip);
-  WiFi.noLowPowerMode();
-  // attempt to connect to WiFi network:
+// attempt to connect to WiFi network:
   while (status != WL_CONNECTED) {
     Serial.print("Attempting to connect to SSID: ");
     Serial.println(ssid);
     // Connect to WPA/WPA2 network. Change this line if using open or WEP network:
     status = WiFi.begin(ssid, pass);
 
-    // wait 10 seconds for connection:
+    // wait 5 seconds for connection:
     delay(5000);
   }
 
@@ -95,11 +139,6 @@ void setup() {
   IPAddress gateway = WiFi.gatewayIP();
   Serial.print("IP Address: ");
   Serial.println(ip);
-  // followerVehicle = ;
-  while(!gotFollower) {
-    Serial.println("Getting follower vehicle");
-    receive(0);
-  }
 }
 
 void receive(bool getBreadcrumb) {
@@ -126,18 +165,31 @@ void receive(bool getBreadcrumb) {
           char c = client.read();
           if (readString.length() < 100)
           {
+            // If connection is connected and available, start storing the message
             readString += c;
             Serial.write(c);
 
             if (c == '\n') {
-              if(getBreadcrumb) {
-                parseBreadcrumb();
-              }
-              else {
-                parseVehSel();
+              if (readString.indexOf("/?kill") > 0) {
+                // In the case of a soft kill
+                vehicleAngle(90);
+                vehicleSpeed(0);
+                //if (client.connected()) {
+                //  client.stop();
+                //}
+                delay(1);
+                setup();
+              else if(readString.indexOf(vehId) > 0) {
+                // Ensure the message is being sent to the right vehicle
+                if(getBreadcrumb) {
+                  parseBreadcrumb();
+                }
+                else {
+                  parseVehSel();
+                }
               }
               
-              readString = "";
+              readString = ""; // reset the temporary read string
 
               delay(1);
               // client.stop();
@@ -157,23 +209,22 @@ void receive(bool getBreadcrumb) {
 void parseVehSel() {
   String ipPrefix = String("192.168.0.");
   String followerIDString = String("");
-  if (readString.indexOf(vehId) > 0) {
+  // if (readString.indexOf(vehId) > 0) {
     gotFollower = true;
-  // if (readString.indexOf("?veh1") > 0) {
-    int leaderIndex = readString.indexOf("leader: ") + 8; // Locate the start of the speed value
-    int followerIndex = readString.indexOf("follower: ") + 10; // Locate the start of the angle value
+    int leaderIndex = readString.indexOf("leader: ") + 8; // Locate the start of the leader flag value
+    int followerIndex = readString.indexOf("follower: ") + 10; // Locate the start of the follower value
 
-    // Extract the speed value
+    // Extract the leader flag boolean
     String leaderString = readString.substring(leaderIndex, readString.indexOf(" ", leaderIndex));
-    isLeader = leaderString.toInt(); // Convert speed string to flag value 
+    isLeader = leaderString.toInt(); // Convert leader string to flag value 
 
     // Extract the angle value
     String followerString = readString.substring(followerIndex, readString.indexOf(" ", followerIndex));
     int followerOffset = followerString.toInt();
     followerID = followerOffset + 20; // Convert follower string to get its ip lsB
-    followerIDString = String(followerID);
-    String followerVehicleString = String(ipPrefix + followerIDString);
-    followerVehicleString.toCharArray(followerVehicle, followerVehicleString.length() + 1);
+    followerIDString = String(followerID); // convert lsB value to string
+    String followerVehicleString = String(ipPrefix + followerIDString); // concat the lsB to the prefix 
+    followerVehicleString.toCharArray(followerVehicle, followerVehicleString.length() + 1); // Convert to char array so it can be sent to connect() function
 
     // Output the extracted values
     Serial.print("Is a leader: ");
@@ -181,12 +232,11 @@ void parseVehSel() {
     Serial.print("Follower IP: ");
     Serial.println(followerVehicle);
     delay(1);
-  }
+  // }
 }
 
 void parseBreadcrumb() {
-  // if (readString.indexOf("?" + vehId) > 0) {
-  if (readString.indexOf(vehId) > 0) {
+  // if (readString.indexOf(vehId) > 0) {
     int speedIndex = readString.indexOf("speed:") + 7; // Locate the start of the speed value
     int angleIndex = readString.indexOf("angle:") + 7; // Locate the start of the angle value
 
@@ -204,11 +254,15 @@ void parseBreadcrumb() {
     Serial.print("Angle: ");
     Serial.println(angle);
 
-    vehicleAngle(angle);
-    vehicleSpeed(speed);
+    // if(isLeader) {
+      vehicleAngle(angle);
+      vehicleSpeed(speed);
+    // }
+    // else {
+      // validateBreadcrumb();
+    // }
     delay(1);
-  }
-  // readString = "";
+  // }
 }
 
 void send(int speed, int angle) {
@@ -226,9 +280,7 @@ void send(int speed, int angle) {
       followerVehString = String(followerID - 20);
 
       message = String("POST /?veh" + followerVehString + " speed: " + speedStr + " angle: " + angleStr + " HTTP/1.0");
-      // message = String("GET /?green speed: " + speedStr + " angle: " + angleStr + " HTTP/1.0");
       client.println(message);
-      // client.println("GET /?green speed: 420 angle: 69 HTTP/1.0");
       client.println();
     }else{
       Serial.println("Not connected");
@@ -250,6 +302,6 @@ void send(int speed, int angle) {
 void loop() {
   receive(1);
   if(followerID != 37) {
-    send(speed + 5, angle + 5);
+    send(speed, angle);
   }
 }
