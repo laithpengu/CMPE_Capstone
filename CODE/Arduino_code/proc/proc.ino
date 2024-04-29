@@ -70,7 +70,6 @@ void vehicleSpeed(int speed) {
 ///////////
 void setup() {
   gotFollower = false;
-  getBreadcrumb = false;
   connected = false;
   second_loop = false;
   Serial.begin(9600);
@@ -179,7 +178,7 @@ void receive(bool getBreadcrumb) {
                 //}
                 delay(1);
                 setup();
-              else if(readString.indexOf(vehId) > 0) {
+              } else if(readString.indexOf(vehId) > 0) {
                 // Ensure the message is being sent to the right vehicle
                 if(getBreadcrumb) {
                   parseBreadcrumb();
@@ -188,19 +187,19 @@ void receive(bool getBreadcrumb) {
                   parseVehSel();
                 }
               }
-              
+            
               readString = ""; // reset the temporary read string
 
               delay(1);
-              // client.stop();
-              // Serial.println("client disconnected");
+            // client.stop();
+            // Serial.println("client disconnected");
             }
           }
         }
       }
     }
     Serial.println("not recieved");
-    // delay(500);
+  // delay(500);
   }
   second_loop = false;
   connected = false;

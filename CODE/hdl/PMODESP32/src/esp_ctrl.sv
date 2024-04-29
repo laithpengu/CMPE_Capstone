@@ -9,6 +9,18 @@ module esp_ctrl(
     logic [7:0] data;
     logic valid;
     logic ready;
+
+    logic [7:0] data;
+    logic valid;
+    logic ready;
+
+    logic [7:0] data;
+    logic valid;
+    logic ready;
+
+    logic [7:0] data;
+    logic valid;
+    logic ready;
     
 // ILA Signals
     // logic uart_tx_w;
@@ -23,7 +35,7 @@ module esp_ctrl(
 
     always_ff @(posedge clk or posedge rst) begin
         if(rst) begin
-            curr_state <= rst_state;
+            curr_state <= send_cmd_state;
         end else begin
             curr_state <= next_state;
         end
@@ -34,11 +46,16 @@ module esp_ctrl(
             rst_state:begin
             end
             send_cmd_state:begin
+                if(ready)
+                    next_state = check_resp_state;
+                else
+                    next_state = 
             end
             check_resp_state:begin
             end
             idle_state:begin
             end
+        endcase
     end
 
     UART_COM mon(
@@ -47,13 +64,13 @@ module esp_ctrl(
         .uart_rx(uart_rx),
         .uart_tx(uart_tx),
 
-        .tx_data(data),
-        .tx_valid(valid),
-        .tx_ready(ready),
+        .tx_data(uart_tx_data),
+        .tx_valid(uart_tx_valid),
+        .tx_ready(uart_tx_ready),
 
-        .rx_data(data),
-        .rx_valid(valid),
-        .rx_ready(ready)
+        .rx_data(uart_rx_data),
+        .rx_valid(uart_rx_valid),
+        .rx_ready(uart_rx_ready)
     );
 
     UART_COM pmod(
