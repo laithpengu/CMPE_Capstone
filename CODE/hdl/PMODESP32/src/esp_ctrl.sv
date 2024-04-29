@@ -44,12 +44,13 @@ module esp_ctrl(
     always_comb begin
         case(curr_state)
             rst_state:begin
+
             end
             send_cmd_state:begin
                 if(ready)
                     next_state = check_resp_state;
                 else
-                    next_state = 
+                    next_state = send_cmd_state;
             end
             check_resp_state:begin
             end
@@ -58,7 +59,7 @@ module esp_ctrl(
         endcase
     end
 
-    UART_COM mon(
+    UART_MON mon(
         .clk(clk),
         .rst(rst),
         .uart_rx(uart_rx),

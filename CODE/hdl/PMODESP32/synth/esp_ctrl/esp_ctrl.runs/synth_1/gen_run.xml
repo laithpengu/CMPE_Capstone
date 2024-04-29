@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GenRun Id="synth_1" LaunchPart="xc7s50csga324-1" LaunchTime="1713755908" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/esp_ctrl.dcp">
   <File Type="PA-TCL" Name="esp_ctrl.tcl"/>
-  <File Type="RDS-PROPCONSTRS" Name="esp_ctrl_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="esp_ctrl_reports.tcl"/>
   <File Type="RDS-RDS" Name="esp_ctrl.vds"/>
   <File Type="RDS-UTIL" Name="esp_ctrl_utilization_synth.rpt"/>
   <File Type="RDS-UTIL-PB" Name="esp_ctrl_utilization_synth.pb"/>
   <File Type="RDS-DCP" Name="esp_ctrl.dcp"/>
-  <File Type="VDS-TIMINGSUMMARY" Name="esp_ctrl_timing_summary_synth.rpt"/>
-  <File Type="VDS-TIMING-PB" Name="esp_ctrl_timing_summary_synth.pb"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
     <Filter Type="Srcs"/>
     <File Path="$PPRDIR/../../src/UART_COM.sv">

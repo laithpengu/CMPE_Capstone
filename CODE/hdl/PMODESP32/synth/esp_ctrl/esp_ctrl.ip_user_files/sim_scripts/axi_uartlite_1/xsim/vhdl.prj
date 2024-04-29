@@ -1,0 +1,5 @@
+vhdl xil_defaultlib  \
+"../../../../esp_ctrl.gen/sources_1/ip/axi_uartlite_1/sim/axi_uartlite_1.vhd" \
+
+# Do not sort compile order
+nosort
