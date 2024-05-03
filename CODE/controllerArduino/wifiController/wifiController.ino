@@ -16,7 +16,7 @@ WiFiClient client;
 const int pin_wheel = A1;
 const int pin_trigger = A0;
 
-enum {INIT, RUNNING} curr_state = RUNNING;
+enum {INIT, RUNNING} curr_state = INIT;
 
 ///////////
 ///Setup///
@@ -81,8 +81,6 @@ void loop() {
   // }
   // curr_state = RUNNING;
   if(curr_state == INIT) {
-    Serial.println("In INIT");
-    delay(10000);
     // set car order
     int order[3] = {2, 3, 1};
     leader_veh = order[0];
@@ -143,14 +141,13 @@ void loop() {
       //Serial.println(int_trigger_val);
       uint32_t OldRange = (865 - 395);
       uint32_t NewRange = (50 - 0);
-      float scale = NewRange / OldRange;
-      int offset = int(-395 * scale);
-      trigger_out = int(trigger_val * scale) + offset;
-      //trigger_out = (((trigger_val - 395) * NewRange) / OldRange);
+      //float scale = NewRange / OldRange;
+      //int offset = int(-395 * scale);
+      //trigger_out = int(trigger_val * scale) + offset;
+      trigger_out = (((trigger_val - 395) * NewRange) / OldRange);
     } else {
       trigger_out = 0;
     }
-    Serial.println("trigger_out");
 
     for(int i = 0; i < 5; i++){
       if (client.connect(veh_ips[leader_veh - 1], 80)) {
@@ -173,5 +170,5 @@ void loop() {
         Serial.println("Not connected");
       }
     }
-  //}
+  }
 }

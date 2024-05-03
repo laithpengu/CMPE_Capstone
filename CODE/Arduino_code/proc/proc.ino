@@ -7,8 +7,8 @@
 // Wifi variables
 char ssid[] = "TP-Link_2F9C";
 char pass[] = "1cs_Pr0c";
-IPAddress ip(192, 168, 0, 23);
-String vehId = "veh3";
+IPAddress ip(192, 168, 0, 21);
+String vehId = "veh1";
 int status = WL_IDLE_STATUS;
 WiFiServer breadcrumbListener(80); // Web server that listens on port 80
 char followerVehicle[] = "Default IP"; // Web server ip that the leader vehicle will connect to once given by controller
@@ -62,7 +62,7 @@ void vehicleAngle(int angle) {
 
 // takes values between 0-255 (0 is stopped)
 void vehicleSpeed(int speed) {
-  Serial.println(speed);
+  // Serial.println(speed);
   analogWrite(pinSpeed,speed);
 }
 
@@ -79,7 +79,7 @@ void setup() {
   // avoidSetup();
   
   if (WiFi.status() == WL_NO_MODULE) {
-    Serial.println("Communication with WiFi module failed!");
+    // Serial.println("Communication with WiFi module failed!");
     // don't continue
     while (true);
   }
@@ -88,14 +88,14 @@ void setup() {
 
   // followerVehicle = ;
   while(!gotFollower) {
-    Serial.println("Getting follower vehicle");
+    // Serial.println("Getting follower vehicle");
     receive(0);
   }
 }
 
 void wifiInit() {
   if (WiFi.status() == WL_NO_MODULE) {
-    Serial.println("Communication with WiFi module failed!");
+    // Serial.println("Communication with WiFi module failed!");
     // don't continue
     while (true);
   }
@@ -104,8 +104,8 @@ void wifiInit() {
   WiFi.config(ip);
 // attempt to connect to WiFi network:
   while (status != WL_CONNECTED) {
-    Serial.print("Attempting to connect to SSID: ");
-    Serial.println(ssid);
+    // Serial.print("Attempting to connect to SSID: ");
+    // Serial.println(ssid);
     // Connect to WPA/WPA2 network. Change this line if using open or WEP network:
     status = WiFi.begin(ssid, pass);
 
@@ -114,19 +114,19 @@ void wifiInit() {
   }
 
   breadcrumbListener.begin();
-  Serial.print("SSID: ");
-  Serial.println(WiFi.SSID());
+  // Serial.print("SSID: ");
+  // Serial.println(WiFi.SSID());
   IPAddress ip = WiFi.localIP();
   IPAddress gateway = WiFi.gatewayIP();
-  Serial.print("IP Address: ");
-  Serial.println(ip);
+  // Serial.print("IP Address: ");
+  // Serial.println(ip);
 }
 
 void receive(bool getBreadcrumb) {
   // status = WiFi.status();
   // while (status != WL_CONNECTED) {
-  //     Serial.print("Attempting to connect to SSID: ");
-  //     Serial.println(ssid);
+  //     // Serial.print("Attempting to connect to SSID: ");
+  //     // Serial.println(ssid);
   //     // Connect to WPA/WPA2 network. Change this line if using open or WEP network:
   //     status = WiFi.begin(ssid, pass);
 
@@ -137,7 +137,7 @@ void receive(bool getBreadcrumb) {
     WiFiClient client = breadcrumbListener.available();
     if (client) {
       connected = true;
-      Serial.println("new client");
+      // Serial.println("new client");
 
       while (client.connected())
       {
@@ -180,7 +180,7 @@ void receive(bool getBreadcrumb) {
         }
       }
     }
-    Serial.println("not recieved");
+    // Serial.println("not recieved");
   // delay(500);
   }
   second_loop = false;
@@ -208,10 +208,10 @@ void parseVehSel() {
     followerVehicleString.toCharArray(followerVehicle, followerVehicleString.length() + 1); // Convert to char array so it can be sent to connect() function
 
     // Output the extracted values
-    Serial.print("Is a leader: ");
-    Serial.println(isLeader);
-    Serial.print("Follower IP: ");
-    Serial.println(followerVehicle);
+    // Serial.print("Is a leader: ");
+    // Serial.println(isLeader);
+    // Serial.print("Follower IP: ");
+    // Serial.println(followerVehicle);
     delay(1);
   // }
 }
@@ -230,10 +230,10 @@ void parseBreadcrumb() {
     angle = angleString.toInt(); // Convert angle string to an integer
 
     // Output the extracted values
-    Serial.print("Speed: ");
-    Serial.println(speed);
-    Serial.print("Angle: ");
-    Serial.println(angle);
+    // Serial.print("Speed: ");
+    // Serial.println(speed);
+    // Serial.print("Angle: ");
+    // Serial.println(angle);
 
     // if(isLeader) {
       vehicleAngle(angle);
@@ -252,10 +252,10 @@ void send(int speed, int angle) {
   String angleStr = "";
   String followerVehString = "";
   while(!second_loop){
-    Serial.println(followerVehicle);
+    // Serial.println(followerVehicle);
     if (client.connect(followerVehicle, 80)) {
       second_loop = true;
-      Serial.println("connected");
+      // Serial.println("connected");
       speedStr = String(speed);
       angleStr = String(angle);
       followerVehString = String(followerID - 20);
@@ -264,7 +264,7 @@ void send(int speed, int angle) {
       client.println(message);
       client.println();
     }else{
-      Serial.println("Not connected");
+      // Serial.println("Not connected");
     }
 
     //if (client.connected()) {
@@ -273,7 +273,7 @@ void send(int speed, int angle) {
     // delay(5000);
   }
   second_loop = false;
-  Serial.println("send loop left");
+  // Serial.println("send loop left");
   // delay(5000);
 }
 
