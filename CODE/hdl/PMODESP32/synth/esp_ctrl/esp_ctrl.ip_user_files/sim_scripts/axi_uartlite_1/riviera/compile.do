@@ -21,6 +21,7 @@ vmap axi_uartlite_v2_0_33 riviera/axi_uartlite_v2_0_33
 vmap xil_defaultlib riviera/xil_defaultlib
 
 vlog -work xpm  -incr -l xpm -l axi_lite_ipif_v3_0_4 -l lib_pkg_v1_0_3 -l lib_srl_fifo_v1_0_3 -l lib_cdc_v1_0_2 -l axi_uartlite_v2_0_33 -l xil_defaultlib \
+"J:/Xilinx/Vivado/2023.2/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv" \
 "J:/Xilinx/Vivado/2023.2/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv" \
 
 vcom -work xpm -93  -incr \
@@ -43,7 +44,6 @@ vcom -work axi_uartlite_v2_0_33 -93  -incr \
 
 vcom -work xil_defaultlib -93  -incr \
 "../../../../esp_ctrl.gen/sources_1/ip/axi_uartlite_1/sim/axi_uartlite_1.vhd" \
-
 
 vlog -work xil_defaultlib \
 "glbl.v"
