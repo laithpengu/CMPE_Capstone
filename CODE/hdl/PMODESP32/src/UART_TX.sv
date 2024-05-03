@@ -64,14 +64,15 @@ module UART_TX(
                 ready = 1'b0;
                 if(!bready || !bvalid)
                     next_state = resp_state;
-                else
+                else begin
                     if(|bresp)
                         if(!ctrl_set_q)
                             next_state = set_ctrl_state;
                         else
                             next_state = write_state;
                     else
-                        next_state = idle_state;
+                    next_state = idle_state;
+                end
             end
             idle_state: begin
                 ready = 1;

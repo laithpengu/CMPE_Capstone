@@ -1,9 +1,9 @@
 module UART_RX(
     input clk,
     input rst,
-    input ready,
     output logic [7:0] data,
     output logic valid,
+    input ready,
 
     output logic [3:0] araddr,
     output logic arvalid,

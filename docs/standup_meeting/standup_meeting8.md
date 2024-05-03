@@ -1,0 +1,6 @@
+- **Scope**: We are one half of the Intelligent Convoy System team this academic year, ICS allows one leader vehicle to have autonomous follower vehicles with active obstacle avoidance. We are the ICS processor team, we are responsible for bringing inter-car communication and motor control to ICS. 
+- **Schedule**: We're on schedule, having the controller to leader vehicle comms to work. We have also tested multi-car communication and will test the actual driving of multiple cars
+- **Spending**: Spending has not changed since our last standup. Total spent still stands at about $850
+- **Stakeholders**: Our current stakeholder is Dr. LaBerge. Currently waiting on the antennas for the arduino gigas
+- **Status**: We have continued with the microcontroller approach, and have been successfully been testing our multiple tests
+- **Specifics**: We plan to be done our smaller tests and begin our full system test by the end of the week. We hope to fix any bugs by the end of the next week.

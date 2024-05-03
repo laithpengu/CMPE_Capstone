@@ -26,7 +26,7 @@ eval( EAInclude(ISEJScriptLib) );
 // pre-commands:
 ISETouchFile( "init_design", "begin" );
 ISEStep( "vivado",
-         "-log esp_ctrl.vdi -applog -m64 -product Vivado -messageDb vivado.pb -mode batch -source esp_ctrl.tcl -notrace" );
+         "-log esp_ctrl_dbg.vdi -applog -m64 -product Vivado -messageDb vivado.pb -mode batch -source esp_ctrl_dbg.tcl -notrace" );
 
 
 

@@ -41,4 +41,4 @@ EAStep()
      fi
 }
 
-EAStep vivado -log esp_ctrl.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source esp_ctrl.tcl
+EAStep vivado -log esp_ctrl_dbg.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source esp_ctrl_dbg.tcl
