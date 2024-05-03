@@ -2,6 +2,7 @@
 #include <WiFi.h>
 #include <Servo.h>
 #include "mbed.h"
+#include "oas.h"
 
 // Wifi variables
 char ssid[] = "TP-Link_2F9C";
@@ -253,13 +254,13 @@ void parseBreadcrumb() {
     Serial.print("Angle: ");
     Serial.println(angle);
 
-    // if(isLeader) {
+    if(isLeader) {
       vehicleAngle(angle);
       vehicleSpeed(speed);
-    // }
-    // else {
-      // validateBreadcrumb();
-    // }
+    }
+    else {
+      trackMovement();
+    }
     delay(1);
   // }
 }
