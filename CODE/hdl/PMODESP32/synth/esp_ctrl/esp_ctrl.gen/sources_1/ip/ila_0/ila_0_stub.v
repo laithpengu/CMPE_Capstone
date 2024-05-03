@@ -2,7 +2,7 @@
 // Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-// Date        : Thu Apr 11 22:35:30 2024
+// Date        : Tue Apr 30 21:58:41 2024
 // Host        : JohnDesktop running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode synth_stub
 //               c:/Users/JohnPC/Documents/GitHub/CMPE_Capstone/CODE/hdl/PMODESP32/synth/esp_ctrl/esp_ctrl.gen/sources_1/ip/ila_0/ila_0_stub.v
@@ -16,15 +16,18 @@
 // Please paste the declaration into a Verilog source file or add the file as an additional source.
 (* X_CORE_INFO = "ila,Vivado 2023.2" *)
 module ila_0(clk, probe0, probe1, probe2, probe3, probe4, probe5, 
-  probe6)
-/* synthesis syn_black_box black_box_pad_pin="probe0[0:0],probe1[0:0],probe2[7:0],probe3[3:0],probe4[1:0],probe5[0:0],probe6[0:0]" */
+  probe6, probe7, probe8, probe9)
+/* synthesis syn_black_box black_box_pad_pin="probe0[0:0],probe1[0:0],probe2[0:0],probe3[0:0],probe4[3:0],probe5[0:0],probe6[0:0],probe7[3:0],probe8[1:0],probe9[0:0]" */
 /* synthesis syn_force_seq_prim="clk" */;
   input clk /* synthesis syn_isclock = 1 */;
   input [0:0]probe0;
   input [0:0]probe1;
-  input [7:0]probe2;
-  input [3:0]probe3;
-  input [1:0]probe4;
+  input [0:0]probe2;
+  input [0:0]probe3;
+  input [3:0]probe4;
   input [0:0]probe5;
   input [0:0]probe6;
+  input [3:0]probe7;
+  input [1:0]probe8;
+  input [0:0]probe9;
 endmodule

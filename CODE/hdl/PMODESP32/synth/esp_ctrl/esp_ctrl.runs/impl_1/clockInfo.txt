@@ -1,6 +1,6 @@
 -------------------------------------
 | Tool Version : Vivado v.2023.2
-| Date         : Sun Apr 21 21:10:39 2024
+| Date         : Thu May  2 23:32:59 2024
 | Host         : JohnDesktop
 | Design       : design_1
 | Device       : xc7s50-csga324-1--

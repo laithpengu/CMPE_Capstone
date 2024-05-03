@@ -9,4 +9,5 @@ sim.*
 .gen
 .srcs
 UART_impl/*
+.DS_Store
 sim/sim.sim/*
