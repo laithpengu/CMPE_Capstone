@@ -75,33 +75,14 @@ void setup() {
   second_loop = false;
   Serial.begin(9600);
   delay(5000);
+
+  avoidSetup();
   
   if (WiFi.status() == WL_NO_MODULE) {
     Serial.println("Communication with WiFi module failed!");
     // don't continue
     while (true);
   }
-
-// Set Static IP
-  // WiFi.config(ip);
-  // // attempt to connect to WiFi network:
-  // while (status != WL_CONNECTED) {
-  //   Serial.print("Attempting to connect to SSID: ");
-  //   Serial.println(ssid);
-  //   // Connect to WPA/WPA2 network. Change this line if using open or WEP network:
-  //   status = WiFi.begin(ssid, pass);
-
-  //   // wait 10 seconds for connection:
-  //   delay(5000);
-  // }
-
-  // breadcrumbListener.begin();
-  // Serial.print("SSID: ");
-  // Serial.println(WiFi.SSID());
-  // IPAddress ip = WiFi.localIP();
-  // IPAddress gateway = WiFi.gatewayIP();
-  // Serial.print("IP Address: ");
-  // Serial.println(ip);
   
   wifiInit();
 
