@@ -8,13 +8,13 @@
 
 // Wifi variables
 char central_ssid[] = "TP-Link_2F9C";
-char AP_ssid[] = "veh1_ssid"
+char AP_ssid[] = "veh1_ssid";
 // char AP_ssid[] = vehId
 char pass[] = "1cs_Pr0c";
 
 int status = WL_IDLE_STATUS;
 WiFiServer breadcrumbListener(80); // Web server that listens on port 80
-char followerVehicle[] = "Default IP"; // Web server ip that the leader vehicle will connect to once given by controller
+char followerVehicle[] = "192.168.3.1"; // Web server ip that the leader vehicle will connect to once given by controller
 int followerID; // vehicle ID number
 String readString;
 WiFiClient client;
@@ -30,10 +30,6 @@ const int MIN_ANGLE_PWM = 1300;
 const int MAX_ANGLE_PWM = 1800;
 const int MIN_ANGLE = 60;
 const int MAX_ANGLE = 120;
-const int MIN_SPEED_PWM = 120;
-const int MAX_SPEED_PWM = 1500;
-const int MIN_SPEED = 1;
-const int MAX_SPEED = 255;
 PinName pinAngle = digitalPinToPinName(D2);
 PinName pinSpeed = digitalPinToPinName(D4);
 mbed::PwmOut* pwmAngle = new mbed::PwmOut(pinAngle);
@@ -86,23 +82,43 @@ void setup() {
     // don't continue
     while (true);
   }
+
+  // APInit();
   
   wifiInit();
 
   // followerVehicle = ;
-  while(!gotFollower) {
+  // while(!gotFollower) {
     // Serial.println("Getting follower vehicle");
-    receive(0);
+  //   receive(0);
+  // }
+}
+
+void APInit() {
+    // print the network name (SSID);
+  Serial.print("Creating access point named: ");
+  Serial.println(ssid);
+
+  // Create open network. Change this line if you want to create an WEP network:
+  status = WiFi.beginAP(ssid, pass);
+  if (status != WL_AP_LISTENING) {
+    Serial.println("Creating access point failed");
+    // don't continue
+    while (true)
+      ;
   }
+
+  // wait 10 seconds for connection:
+  delay(10000);
+
+  // start the web server on port 80
+  breadcrumbListener.begin();
+
+  // you're connected now, so print out the status
+  printWiFiStatus();
 }
 
 void wifiInit() {
-  if (WiFi.status() == WL_NO_MODULE) {
-    // Serial.println("Communication with WiFi module failed!");
-    // don't continue
-    while (true);
-  }
-
 // Set Static IP
   WiFi.config(ip);
 // attempt to connect to WiFi network:
@@ -110,13 +126,11 @@ void wifiInit() {
     // Serial.print("Attempting to connect to SSID: ");
     // Serial.println(ssid);
     // Connect to WPA/WPA2 network. Change this line if using open or WEP network:
-    status = WiFi.begin(ssid, pass);
+    status = WiFi.begin(AP_ssid, pass);
 
     // wait 5 seconds for connection:
     delay(5000);
   }
-
-  breadcrumbListener.begin();
   // Serial.print("SSID: ");
   // Serial.println(WiFi.SSID());
   IPAddress ip = WiFi.localIP();
@@ -126,68 +140,62 @@ void wifiInit() {
 }
 
 void receive(bool getBreadcrumb) {
-  // status = WiFi.status();
-  // while (status != WL_CONNECTED) {
-  //     // Serial.print("Attempting to connect to SSID: ");
-  //     // Serial.println(ssid);
-  //     // Connect to WPA/WPA2 network. Change this line if using open or WEP network:
-  //     status = WiFi.begin(ssid, pass);
+  if (status != WiFi.status()) {
+    // it has changed update the variable
+    status = WiFi.status();
 
-  //     // wait 10 seconds for connection:
-  //     // delay(2000);
-  //   }
-  while(!connected){
-    WiFiClient client = breadcrumbListener.available();
-    if (client) {
-      connected = true;
-      // Serial.println("new client");
+    if (status == WL_AP_CONNECTED) {
+      // a device has connected to the AP
+      Serial.println("Device connected to AP");
+    } else {
+      // a device has disconnected from the AP, and we are back in listening mode
+      Serial.println("Device disconnected from AP");
+    }
+  }
 
-      while (client.connected())
-      {
-        if (client.available())
+  WifiClient client = breadcrumbListener.available();
+
+  if(client) {
+    Serial.println("new client");
+    while(client.connected()) {
+      if(client.available()) {
+        char c = client.read();
+        if (readString.length() < 100)
         {
-          char c = client.read();
-          if (readString.length() < 100)
-          {
-            // If connection is connected and available, start storing the message
-            readString += c;
-            Serial.write(c);
+          // If connection is connected and available, start storing the message
+          readString += c;
+          Serial.write(c);
 
-            if (c == '\n') {
-              if (readString.indexOf("/?kill") > 0) {
-                // In the case of a soft kill
-                vehicleAngle(90);
-                vehicleSpeed(0);
-                //if (client.connected()) {
-                //  client.stop();
-                //}
-                delay(1);
-                setup();
-              } else if(readString.indexOf(vehId) > 0) {
-                // Ensure the message is being sent to the right vehicle
-                if(getBreadcrumb) {
-                  parseBreadcrumb();
-                }
-                else {
-                  parseVehSel();
-                }
-              }
-            
-              readString = ""; // reset the temporary read string
-
+          if (c == '\n') {
+            if (readString.indexOf("/?kill") > 0) {
+              // In the case of a soft kill
+              vehicleAngle(90);
+              vehicleSpeed(0);
+              //if (client.connected()) {
+              //  client.stop();
+              //}
               delay(1);
-            // client.stop();
-            // Serial.println("client disconnected");
+              setup();
+            } else if(readString.indexOf(vehId) > 0) {
+              // Ensure the message is being sent to the right vehicle
+              if(getBreadcrumb) {
+                parseBreadcrumb();
+              }
+              else {
+                parseVehSel();
+              }
             }
+          
+            readString = ""; // reset the temporary read string
+
+            delay(1);
+          // client.stop();
+          // Serial.println("client disconnected");
           }
         }
       }
     }
-    // Serial.println("not recieved");
-  // delay(500);
   }
-  second_loop = false;
-  connected = false;
 }
 
 void parseVehSel() {
@@ -284,8 +292,9 @@ void send(int speed, int angle) {
 ///LOOP///
 //////////
 void loop() {
-  receive(1);
-  if(followerID != 37) {
-    send(speed, angle);
-  }
+  // receive(1);
+  // if(followerID != 37) {
+  //   send(speed, angle);
+  // }
+  send(speed, angle);
 }
