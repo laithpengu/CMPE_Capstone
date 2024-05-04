@@ -2,13 +2,13 @@
 #include <WiFi.h>
 #include <Servo.h>
 #include "mbed.h"
-// #include "oas.h"
+#include "oas.h"
 
 // Wifi variables
 char ssid[] = "TP-Link_2F9C";
 char pass[] = "1cs_Pr0c";
-IPAddress ip(192, 168, 0, 21);
-String vehId = "veh1";
+IPAddress ip(192, 168, 0, 22);
+String vehId = "veh2";
 int status = WL_IDLE_STATUS;
 WiFiServer breadcrumbListener(80); // Web server that listens on port 80
 char followerVehicle[] = "Default IP"; // Web server ip that the leader vehicle will connect to once given by controller
@@ -29,8 +29,6 @@ const int MIN_ANGLE = 60;
 const int MAX_ANGLE = 120;
 const int MIN_SPEED_PWM = 120;
 const int MAX_SPEED_PWM = 1500;
-const int MIN_SPEED = 1;
-const int MAX_SPEED = 255;
 PinName pinAngle = digitalPinToPinName(D2);
 PinName pinSpeed = digitalPinToPinName(D4);
 mbed::PwmOut* pwmAngle = new mbed::PwmOut(pinAngle);
@@ -76,7 +74,7 @@ void setup() {
   Serial.begin(9600);
   delay(5000);
 
-  // avoidSetup();
+  avoid_setup();
   
   if (WiFi.status() == WL_NO_MODULE) {
     // Serial.println("Communication with WiFi module failed!");
@@ -235,13 +233,11 @@ void parseBreadcrumb() {
     // Serial.print("Angle: ");
     // Serial.println(angle);
 
-    // if(isLeader) {
-      vehicleAngle(angle);
-      vehicleSpeed(speed);
-    // }
-    // else {
-    //   trackMovement();
-    // }
+    if(!isLeader) {
+      avoid(angle, speed);
+    }
+    vehicleAngle(angle);
+    vehicleSpeed(speed);
     delay(1);
   // }
 }

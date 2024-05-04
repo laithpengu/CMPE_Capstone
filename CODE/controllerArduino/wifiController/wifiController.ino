@@ -48,21 +48,27 @@ void setup() {
 
   // attempt to connect to WiFi network:
   while (status != WL_CONNECTED) {
-    Serial.print("Attempting to connect to SSID: ");
+    Serial.print("[New new] Attempting to connect to SSID: ");
     Serial.println(ssid);
     // Connect to WPA/WPA2 network. Change this line if using open or WEP network:
     status = WiFi.begin(ssid, pass);
-
+    Serial.println("Got status");
     // wait 10 seconds for connection:
-    delay(2000);
+    delay(5000);
+    if(status != WL_CONNECTED) {
+      Serial.println("Connection failed");
+    }
+    else {
+      Serial.println("Connected");
+    }
   }
 
   Serial.print("SSID: ");
   Serial.println(WiFi.SSID());
   IPAddress ip = WiFi.localIP();
   IPAddress gateway = WiFi.gatewayIP();
-  Serial.print("IP Address: ");
-  Serial.println(ip);
+  // Serial.print("IP Address: ");
+  // Serial.println(ip);
 }
 
 //////////
@@ -72,8 +78,8 @@ void loop() {
   // status = WiFi.status();
   // // attempt to connect to WiFi network:
   // while (status != WL_CONNECTED) {
-  //   Serial.print("Attempting to reconnect to SSID: ");
-  //   Serial.println(ssid);
+  //   // Serial.print("Attempting to reconnect to SSID: ");
+  //   // Serial.println(ssid);
   //   // Connect to WPA/WPA2 network. Change this line if using open or WEP network:
   //   status = WiFi.begin(ssid, pass);
   //   // wait 10 seconds for connection:
@@ -82,14 +88,14 @@ void loop() {
   // curr_state = RUNNING;
   if(curr_state == INIT) {
     // set car order
-    int order[3] = {2, 3, 1};
+    int order[3] = {3, 2, 1};
     leader_veh = order[0];
     // send init messages
     int i = veh_count - 1;
     while (i >= 0) {
-      Serial.print("Attempting Connection: ");
-      Serial.print(veh_ips[order[i] - 1]);
-      Serial.println("...");
+      // Serial.print("Attempting Connection: ");
+      // Serial.print(veh_ips[order[i] - 1]);
+      // Serial.println("...");
       if (client.connect(veh_ips[order[i] - 1], 80)) {
         // define order for string
         char out_string[31];
@@ -104,8 +110,8 @@ void loop() {
 
         // set http
         sprintf(out_string, "POST /?veh%d leader: %d follower: %d", order[i], leader, follower);
-        Serial.println("Connection successfull. Sending: ");
-        Serial.println(out_string);
+        // Serial.println("Connection successfull. Sending: ");
+        // Serial.println(out_string);
         client.println(out_string);
         client.println();
         //delay(500);
@@ -113,7 +119,7 @@ void loop() {
         client.stop();
         i--;
       } else {
-        Serial.println("Connection failed. Attempting reconnection.");;
+        // Serial.println("Connection failed. Attempting reconnection.");;
       }
     }
     curr_state = RUNNING;
@@ -138,7 +144,7 @@ void loop() {
       // convert to a binary
       // 21 - 200
       //uint32_t int_trigger_val = (865+380) - trigger_val;
-      //Serial.println(int_trigger_val);
+      //// Serial.println(int_trigger_val);
       uint32_t OldRange = (865 - 395);
       uint32_t NewRange = (50 - 0);
       //float scale = NewRange / OldRange;
@@ -167,7 +173,7 @@ void loop() {
         client.stop();
         break;
       }else{
-        Serial.println("Not connected");
+        // Serial.println("Not connected");
       }
     }
   }
