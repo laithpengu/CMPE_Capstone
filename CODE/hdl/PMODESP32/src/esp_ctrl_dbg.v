@@ -61,7 +61,9 @@ module esp_ctrl_dbg(
         .probe6(pmod_rx_ready),
         .probe7(uart_rx_data),
         .probe8(uart_rx_valid),
-        .probe9(uart_rx_ready)
+        .probe9(uart_rx_ready),
+        .probe10(pmod.pmod_tx.curr_state),
+        .probe11(pmod.pmod_rx.curr_state)
      );
 
 endmodule

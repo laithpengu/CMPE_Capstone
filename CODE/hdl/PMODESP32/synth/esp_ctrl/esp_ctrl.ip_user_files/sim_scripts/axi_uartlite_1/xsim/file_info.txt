@@ -1,2 +1,0 @@
-axi_uartlite_1.vhd,vhdl,xil_defaultlib,../../../../esp_ctrl.gen/sources_1/ip/axi_uartlite_1/sim/axi_uartlite_1.vhd,
-glbl.v,Verilog,xil_defaultlib,glbl.v
