@@ -7,8 +7,8 @@
 // Wifi variables
 char ssid[] = "TP-Link_2F9C";
 char pass[] = "1cs_Pr0c";
-IPAddress ip(192, 168, 0, 22);
-String vehId = "veh2";
+IPAddress ip(192, 168, 0, 23);
+String vehId = "veh3";
 int status = WL_IDLE_STATUS;
 WiFiServer breadcrumbListener(80); // Web server that listens on port 80
 char followerVehicle[] = "Default IP"; // Web server ip that the leader vehicle will connect to once given by controller
@@ -74,7 +74,7 @@ void setup() {
   Serial.begin(9600);
   delay(5000);
 
-  avoid_setup();
+  // avoid_setup();
   
   if (WiFi.status() == WL_NO_MODULE) {
     // Serial.println("Communication with WiFi module failed!");
@@ -228,14 +228,14 @@ void parseBreadcrumb() {
     angle = angleString.toInt(); // Convert angle string to an integer
 
     // Output the extracted values
-    // Serial.print("Speed: ");
-    // Serial.println(speed);
-    // Serial.print("Angle: ");
-    // Serial.println(angle);
+    Serial.print("Speed: ");
+    Serial.println(speed);
+    Serial.print("Angle: ");
+    Serial.println(angle);
 
-    if(!isLeader) {
-      avoid(angle, speed);
-    }
+    // if(!isLeader) {
+    //   avoid(angle, speed);
+    // }
     vehicleAngle(angle);
     vehicleSpeed(speed);
     delay(1);
@@ -249,7 +249,7 @@ void send(int speed, int angle) {
   String followerVehString = "";
   // while(!second_loop){
     // Serial.println(followerVehicle);
-    client.stop();
+    // client.stop();
     if (client.connect(followerVehicle, 80)) {
       second_loop = true;
       // Serial.println("connected");
