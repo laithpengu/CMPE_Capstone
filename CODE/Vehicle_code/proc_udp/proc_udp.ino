@@ -2,25 +2,26 @@
 #include <WiFi.h>
 #include <Servo.h>
 #include "mbed.h"
-#include "oas.h"
 
 // Wifi variables
 char ssid[] = "TP-Link_2F9C";
 char pass[] = "1cs_Pr0c";
-IPAddress ip(192, 168, 0, 22);
-String vehId = "veh2";
+IPAddress ip(192, 168, 0, 21);
+IPAddress follower(192, 168, 0, 37);
+String vehId = "veh1";
 int status = WL_IDLE_STATUS;
 WiFiServer breadcrumbListener(80); // Web server that listens on port 80
 char followerVehicle[] = "Default IP"; // Web server ip that the leader vehicle will connect to once given by controller
 int followerID; // vehicle ID number
 String readString;
 WiFiClient client;
+WiFiUDP Udp;
+unsigned int localPort = 80;      // local port to listen on
+char charMessage[] = "";       // a string to send back
 
 // Flag variables
 bool isLeader;
 bool gotFollower;
-bool connected = false;
-bool second_loop = false;
 
 // constants for Motor control
 const int MIN_ANGLE_PWM = 1300;
@@ -38,6 +39,7 @@ int angle = 90;
 
 char leader_ip[] = "";
 char follower_ip[] = "";
+char packetBuffer[256]; //buffer to hold incoming packet
 
 ////////////////////////
 ///Motor control code///
@@ -69,8 +71,6 @@ void vehicleSpeed(int speed) {
 ///////////
 void setup() {
   gotFollower = false;
-  connected = false;
-  second_loop = false;
   Serial.begin(9600);
   delay(5000);
 
@@ -85,25 +85,19 @@ void setup() {
   wifiInit();
 
   // followerVehicle = ;
-  while(!gotFollower) {
-    // Serial.println("Getting follower vehicle");
-    receive(0);
-  }
+//   while(!gotFollower) {
+//     // Serial.println("Getting follower vehicle");
+    receive(1);
+//   }
 }
 
 void wifiInit() {
-  if (WiFi.status() == WL_NO_MODULE) {
-    // Serial.println("Communication with WiFi module failed!");
-    // don't continue
-    while (true);
-  }
-
 // Set Static IP
   WiFi.config(ip);
 // attempt to connect to WiFi network:
   while (status != WL_CONNECTED) {
-    // Serial.print("Attempting to connect to SSID: ");
-    // Serial.println(ssid);
+    Serial.print("Attempting to connect to SSID: ");
+    Serial.println(ssid);
     // Connect to WPA/WPA2 network. Change this line if using open or WEP network:
     status = WiFi.begin(ssid, pass);
 
@@ -111,79 +105,59 @@ void wifiInit() {
     delay(5000);
   }
 
-  breadcrumbListener.begin();
+//   breadcrumbListener.begin();
   // Serial.print("SSID: ");
   // Serial.println(WiFi.SSID());
   IPAddress ip = WiFi.localIP();
   IPAddress gateway = WiFi.gatewayIP();
   // Serial.print("IP Address: ");
   // Serial.println(ip);
+  Serial.println("\nStarting connection to server...");
+  // if you get a connection, report back via serial:
+  Udp.begin(localPort);
+  Serial.println("Connected to port");
 }
 
 void receive(bool getBreadcrumb) {
-  // status = WiFi.status();
-  // while (status != WL_CONNECTED) {
-  //     // Serial.print("Attempting to connect to SSID: ");
-  //     // Serial.println(ssid);
-  //     // Connect to WPA/WPA2 network. Change this line if using open or WEP network:
-  //     status = WiFi.begin(ssid, pass);
+  int packetSize = Udp.parsePacket();
+  if (packetSize) {
+    Serial.print("Received packet of size ");
+    Serial.println(packetSize);
+    Serial.print("From ");
+    IPAddress remoteIp = Udp.remoteIP();
+    Serial.print(remoteIp);
+    Serial.print(", port ");
+    Serial.println(Udp.remotePort());
 
-  //     // wait 10 seconds for connection:
-  //     // delay(2000);
-  //   }
-  // while(!connected){
-    Serial.println("In receive");
-    WiFiClient server = breadcrumbListener.available();
-    if (server) {
-      connected = true;
-      Serial.println("new client");
+    // read the packet into packetBufffer
+    int len = Udp.read(packetBuffer, 255);
+    if (len > 0) {
+      packetBuffer[len] = 0;
+    }
+    Serial.println("Contents:");
+    Serial.println(packetBuffer);
 
-      while (server.connected())
-      {
-        if (server.available())
-        {
-          char c = server.read();
-          if (readString.length() < 100)
-          {
-            // If connection is connected and available, start storing the message
-            readString += c;
-            Serial.write(c);
-
-            if (c == '\n') {
-              if (readString.indexOf("/?kill") > 0) {
-                // In the case of a soft kill
-                vehicleAngle(90);
-                vehicleSpeed(0);
-                //if (client.connected()) {
-                //  client.stop();
-                //}
-                delay(1);
-                setup();
-              } else if(readString.indexOf(vehId) > 0) {
-                // Ensure the message is being sent to the right vehicle
-                if(getBreadcrumb) {
-                  parseBreadcrumb();
-                }
-                else {
-                  parseVehSel();
-                }
-              }
-            
-              readString = ""; // reset the temporary read string
-
-              delay(1);
-            // client.stop();
-            // Serial.println("client disconnected");
-            }
-          }
-        }
+    readString = packetBuffer;
+    if (readString.indexOf("/?kill") > 0) {
+        // In the case of a soft kill
+        vehicleAngle(90);
+        vehicleSpeed(0);
+        //if (client.connected()) {
+        //  client.stop();
+        //}
+        delay(1);
+        setup();
+    // } else if(readString.indexOf(vehId) > 0) {
+    } else {
+    // Ensure the message is being sent to the right vehicle
+      if(getBreadcrumb) {
+          parseBreadcrumb();
+      }
+      else {
+          parseVehSel();
       }
     }
-    // Serial.println("not recieved");
-  // delay(500);
-  // }
-  second_loop = false;
-  connected = false;
+  }
 }
 
 void parseVehSel() {
@@ -217,6 +191,7 @@ void parseVehSel() {
 
 void parseBreadcrumb() {
   // if (readString.indexOf(vehId) > 0) {
+    Serial.println("Getting here");
     int speedIndex = readString.indexOf("speed:") + 7; // Locate the start of the speed value
     int angleIndex = readString.indexOf("angle:") + 7; // Locate the start of the angle value
 
@@ -250,22 +225,24 @@ void send(int speed, int angle) {
   String followerVehString = "";
   // while(!second_loop){
     // Serial.println(followerVehicle);
-    client.stop();
-    Serial.println("-----Sending to follower-------");
-    Serial.println(followerVehicle);
-    if (client.connect(followerVehicle, 80)) {
-      second_loop = true;
-      // Serial.println("connected");
-      speedStr = String(speed);
-      angleStr = String(angle);
-      followerVehString = String(followerID - 20);
+    // client.stop();
+  Serial.println("-----Sending to follower-------");
+  Serial.println(followerVehicle);
+  // if (client.connect(followerVehicle, 80)) {
+  // Serial.println("connected");
+  speedStr = String(speed);
+  angleStr = String(angle);
+  followerVehString = String(followerID - 20);
 
-      message = String("POST /?veh" + followerVehString + " speed: " + speedStr + " angle: " + angleStr + " HTTP/1.0");
-      client.println(message);
-      client.println();
-      Serial.println(message);
-    }
-  second_loop = false;
+  message = String("POST /?veh" + followerVehString + " speed: " + speedStr + " angle: " + angleStr + " HTTP/1.0");
+  Serial.println(message);
+  Udp.beginPacket(follower, localPort);
+  message.toCharArray(charMessage, message.length() + 1);
+  Udp.write(charMessage);
+  Udp.endPacket();
+    
+    // }
+//   second_loop = false;
   // Serial.println("send loop left");
   // delay(5000);
 }
@@ -275,7 +252,7 @@ void send(int speed, int angle) {
 //////////
 void loop() {
   receive(1);
-  if(followerID != 37) {
-    send(speed, angle);
-  }
+  // if(followerID != 37) {
+  // send(speed, angle);
+  // }
 }
