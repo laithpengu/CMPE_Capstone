@@ -2,24 +2,25 @@
 #include <WiFi.h>
 #include <Servo.h>
 #include "mbed.h"
+// #include "oas.h"
+
+// Change these for 
 
 // Wifi variables
-char ssid[] = "TP-Link_2F9C";
+char central_ssid[] = "TP-Link_2F9C";
+char AP_ssid[] = "veh1_ssid";
+char AP_ssid2[] = "veh2_ssid";
+// char AP_ssid[] = vehId
 char pass[] = "1cs_Pr0c";
-<<<<<<< Updated upstream:CODE/Arduino_code/proc/proc.ino
-IPAddress ip(192, 168, 0, 21);
 String vehId = "veh1";
-=======
-IPAddress ip(192, 168, 0, 23);
-String vehId = "veh3";
->>>>>>> Stashed changes:CODE/Vehicle_code/proc/proc.ino
+IPAddress ip(192, 168, 3, 3);
+
 int status = WL_IDLE_STATUS;
 WiFiServer breadcrumbListener(80); // Web server that listens on port 80
-char followerVehicle[] = "Default IP"; // Web server ip that the leader vehicle will connect to once given by controller
+char followerVehicle[] = "192.168.3.1"; // Web server ip that the leader vehicle will connect to once given by controller
 int followerID; // vehicle ID number
 String readString;
 WiFiClient client;
-WiFiClient server;
 
 // Flag variables
 bool isLeader;
@@ -32,10 +33,6 @@ const int MIN_ANGLE_PWM = 1300;
 const int MAX_ANGLE_PWM = 1800;
 const int MIN_ANGLE = 60;
 const int MAX_ANGLE = 120;
-const int MIN_SPEED_PWM = 120;
-const int MAX_SPEED_PWM = 1500;
-const int MIN_SPEED = 1;
-const int MAX_SPEED = 255;
 PinName pinAngle = digitalPinToPinName(D2);
 PinName pinSpeed = digitalPinToPinName(D4);
 mbed::PwmOut* pwmAngle = new mbed::PwmOut(pinAngle);
@@ -67,7 +64,7 @@ void vehicleAngle(int angle) {
 
 // takes values between 0-255 (0 is stopped)
 void vehicleSpeed(int speed) {
-  Serial.println(speed);
+  // Serial.println(speed);
   analogWrite(pinSpeed,speed);
 }
 
@@ -75,16 +72,14 @@ void vehicleSpeed(int speed) {
 ///Setup///
 ///////////
 void setup() {
+  Serial.println("Setting up");
   gotFollower = false;
   connected = false;
   second_loop = false;
   Serial.begin(9600);
   delay(5000);
-<<<<<<< Updated upstream:CODE/Arduino_code/proc/proc.ino
-=======
 
-  // avoid_setup();
->>>>>>> Stashed changes:CODE/Vehicle_code/proc/proc.ino
+  // avoidSetup();
   
   if (WiFi.status() == WL_NO_MODULE) {
     Serial.println("Communication with WiFi module failed!");
@@ -92,128 +87,121 @@ void setup() {
     while (true);
   }
 
-// Set Static IP
-  // WiFi.config(ip);
-  // // attempt to connect to WiFi network:
-  // while (status != WL_CONNECTED) {
-  //   Serial.print("Attempting to connect to SSID: ");
-  //   Serial.println(ssid);
-  //   // Connect to WPA/WPA2 network. Change this line if using open or WEP network:
-  //   status = WiFi.begin(ssid, pass);
+  Serial.println("Setting up");
 
-  //   // wait 10 seconds for connection:
-  //   delay(5000);
-  // }
-
-  // breadcrumbListener.begin();
-  // Serial.print("SSID: ");
-  // Serial.println(WiFi.SSID());
-  // IPAddress ip = WiFi.localIP();
-  // IPAddress gateway = WiFi.gatewayIP();
-  // Serial.print("IP Address: ");
-  // Serial.println(ip);
+  APInit();
   
   wifiInit();
 
+  Serial.println("Done Setting up");
+
   // followerVehicle = ;
-  while(!gotFollower) {
-    Serial.println("Getting follower vehicle");
-    receive(0);
+  // while(!gotFollower) {
+    // Serial.println("Getting follower vehicle");
+  //   receive(0);
+  // }
+}
+
+void APInit() {
+  WiFi.config(ip);
+    // print the network name (SSID);
+  Serial.print("Creating access point named: ");
+  Serial.println(AP_ssid2);
+
+  // Create open network. Change this line if you want to create an WEP network:
+  status = WiFi.beginAP(AP_ssid2, pass);
+  if (status != WL_AP_LISTENING) {
+    Serial.println("Creating access point failed");
+    // don't continue
+    while (true)
+      ;
   }
+
+  // wait 10 seconds for connection:
+  delay(10000);
+
+  // start the web server on port 80
+  breadcrumbListener.begin();
 }
 
 void wifiInit() {
-  if (WiFi.status() == WL_NO_MODULE) {
-    Serial.println("Communication with WiFi module failed!");
-    // don't continue
-    while (true);
-  }
-
 // Set Static IP
-  WiFi.config(ip);
+  // WiFi.config(ip);
 // attempt to connect to WiFi network:
   while (status != WL_CONNECTED) {
-    Serial.print("Attempting to connect to SSID: ");
-    Serial.println(ssid);
+    // Serial.print("Attempting to connect to SSID: ");
+    // Serial.println(ssid);
     // Connect to WPA/WPA2 network. Change this line if using open or WEP network:
-    status = WiFi.begin(ssid, pass);
+    status = WiFi.begin(AP_ssid, pass);
 
     // wait 5 seconds for connection:
     delay(5000);
   }
-
-  breadcrumbListener.begin();
-  Serial.print("SSID: ");
-  Serial.println(WiFi.SSID());
+  // Serial.print("SSID: ");
+  // Serial.println(WiFi.SSID());
   IPAddress ip = WiFi.localIP();
   IPAddress gateway = WiFi.gatewayIP();
-  Serial.print("IP Address: ");
-  Serial.println(ip);
+  // Serial.print("IP Address: ");
+  // Serial.println(ip);
 }
 
 void receive(bool getBreadcrumb) {
-  // status = WiFi.status();
-  // while (status != WL_CONNECTED) {
-  //     Serial.print("Attempting to connect to SSID: ");
-  //     Serial.println(ssid);
-  //     // Connect to WPA/WPA2 network. Change this line if using open or WEP network:
-  //     status = WiFi.begin(ssid, pass);
+  if (status != WiFi.status()) {
+    // it has changed update the variable
+    status = WiFi.status();
 
-  //     // wait 10 seconds for connection:
-  //     // delay(2000);
-  //   }
-  // while(!connected){
-    server = breadcrumbListener.available();
-    if (server) {
-      connected = true;
-      Serial.println("new client");
+    if (status == WL_AP_CONNECTED) {
+      // a device has connected to the AP
+      Serial.println("Device connected to AP");
+    } else {
+      // a device has disconnected from the AP, and we are back in listening mode
+      Serial.println("Device disconnected from AP");
+    }
+  }
 
-      while (server.connected())
-      {
-        if (server.available())
+  client = breadcrumbListener.available();
+
+  if(client) {
+    Serial.println("new client");
+    while(client.connected()) {
+      if(client.available()) {
+        char c = client.read();
+        if (readString.length() < 100)
         {
-          char c = server.read();
-          if (readString.length() < 100)
-          {
-            // If connection is connected and available, start storing the message
-            readString += c;
-            Serial.write(c);
+          // If connection is connected and available, start storing the message
+          readString += c;
+          Serial.write(c);
 
-            if (c == '\n') {
-              if (readString.indexOf("/?kill") > 0) {
-                // In the case of a soft kill
-                vehicleAngle(90);
-                vehicleSpeed(0);
-                //if (client.connected()) {
-                //  client.stop();
-                //}
-                delay(1);
-                setup();
-              } else if(readString.indexOf(vehId) > 0) {
-                // Ensure the message is being sent to the right vehicle
-                if(getBreadcrumb) {
-                  parseBreadcrumb();
-                }
-                else {
-                  parseVehSel();
-                }
-              }
-            
-              readString = ""; // reset the temporary read string
-
+          if (c == '\n') {
+            if (readString.indexOf("/?kill") > 0) {
+              // In the case of a soft kill
+              vehicleAngle(90);
+              vehicleSpeed(0);
+              //if (client.connected()) {
+              //  client.stop();
+              //}
               delay(1);
-            // client.stop();
-            // Serial.println("client disconnected");
+              setup();
+            } else if(readString.indexOf(vehId) > 0) {
+              // Ensure the message is being sent to the right vehicle
+              if(getBreadcrumb) {
+                parseBreadcrumb();
+              }
+              else {
+                parseVehSel();
+              }
             }
+          
+            readString = ""; // reset the temporary read string
+
+            delay(1);
+          // client.stop();
+          // Serial.println("client disconnected");
           }
         }
       }
     }
-    Serial.println("not recieved");
-  // delay(500);
-  // }
-  second_loop = false;
-  connected = false;
+  }
 }
 
 void parseVehSel() {
@@ -237,10 +225,10 @@ void parseVehSel() {
     followerVehicleString.toCharArray(followerVehicle, followerVehicleString.length() + 1); // Convert to char array so it can be sent to connect() function
 
     // Output the extracted values
-    Serial.print("Is a leader: ");
-    Serial.println(isLeader);
-    Serial.print("Follower IP: ");
-    Serial.println(followerVehicle);
+    // Serial.print("Is a leader: ");
+    // Serial.println(isLeader);
+    // Serial.print("Follower IP: ");
+    // Serial.println(followerVehicle);
     delay(1);
   // }
 }
@@ -259,26 +247,18 @@ void parseBreadcrumb() {
     angle = angleString.toInt(); // Convert angle string to an integer
 
     // Output the extracted values
-    Serial.print("Speed: ");
-    Serial.println(speed);
-    Serial.print("Angle: ");
-    Serial.println(angle);
+    // Serial.print("Speed: ");
+    // Serial.println(speed);
+    // Serial.print("Angle: ");
+    // Serial.println(angle);
 
-<<<<<<< Updated upstream:CODE/Arduino_code/proc/proc.ino
     // if(isLeader) {
       vehicleAngle(angle);
       vehicleSpeed(speed);
     // }
     // else {
-      // validateBreadcrumb();
+    //   trackMovement();
     // }
-=======
-    // if(!isLeader) {
-    //   avoid(angle, speed);
-    // }
-    vehicleAngle(angle);
-    vehicleSpeed(speed);
->>>>>>> Stashed changes:CODE/Vehicle_code/proc/proc.ino
     delay(1);
   // }
 }
@@ -288,17 +268,11 @@ void send(int speed, int angle) {
   String speedStr = "";
   String angleStr = "";
   String followerVehString = "";
-<<<<<<< Updated upstream:CODE/Arduino_code/proc/proc.ino
   while(!second_loop){
-    Serial.println(followerVehicle);
-=======
-  // while(!second_loop){
     // Serial.println(followerVehicle);
-    client.stop();
->>>>>>> Stashed changes:CODE/Vehicle_code/proc/proc.ino
     if (client.connect(followerVehicle, 80)) {
       second_loop = true;
-      Serial.println("connected");
+      // Serial.println("connected");
       speedStr = String(speed);
       angleStr = String(angle);
       followerVehString = String(followerID - 20);
@@ -306,29 +280,17 @@ void send(int speed, int angle) {
       message = String("POST /?veh" + followerVehString + " speed: " + speedStr + " angle: " + angleStr + " HTTP/1.0");
       client.println(message);
       client.println();
-<<<<<<< Updated upstream:CODE/Arduino_code/proc/proc.ino
     }else{
-      Serial.println("Not connected");
-=======
->>>>>>> Stashed changes:CODE/Vehicle_code/proc/proc.ino
+      // Serial.println("Not connected");
     }
-    // }else{
-    //   // Serial.println("Not connected");
-    //   client.stop();
-    // }
 
     //if (client.connected()) {
     //  client.stop();
     //}
     // delay(5000);
-  // }
+  }
   second_loop = false;
-<<<<<<< Updated upstream:CODE/Arduino_code/proc/proc.ino
-  Serial.println("send loop left");
-=======
-  client.stop();
   // Serial.println("send loop left");
->>>>>>> Stashed changes:CODE/Vehicle_code/proc/proc.ino
   // delay(5000);
 }
 
@@ -337,7 +299,8 @@ void send(int speed, int angle) {
 //////////
 void loop() {
   receive(1);
-  if(followerID != 37) {
-    send(speed, angle);
-  }
+  // if(followerID != 37) {
+  //   send(speed, angle);
+  // }
+  send(speed, angle);
 }
