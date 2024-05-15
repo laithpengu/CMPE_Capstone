@@ -1,11 +1,11 @@
-#define DATA_PIN 3    // DS (serial data input)
+#define DATA_PIN 4    // DS (serial data input)
 #define CLOCK_PIN 5   // SH_CP (shift register clock input)
-#define LATCH_PIN 4   // ST_CP (storage register clock input)
-#define GO_PIN 13
-#define STOP_PIN 12
-#define B1_PIN 11
-#define B2_PIN 10
-#define B3_PIN 9
+#define LATCH_PIN 6   // ST_CP (storage register clock input)
+#define GO_PIN 10
+#define STOP_PIN 9
+#define B1_PIN 13
+#define B2_PIN 12
+#define B3_PIN 11
 
 enum CSTATE {IDLE, INIT, DRIVE, KILL};
 enum RFSTATE {RFIDLE};
@@ -81,9 +81,6 @@ void loop() {
   b1 = digitalRead(B1_PIN);
   b2 = digitalRead(B2_PIN);
   b3 = digitalRead(B3_PIN);
-
-  // 7 seg display output
-  
 
   // control logic
   if (controlState == IDLE){
