@@ -74,7 +74,7 @@ void setup() {
   Serial.begin(9600);
   delay(5000);
 
-  avoid_setup();
+  // avoid_setup();
   
   if (WiFi.status() == WL_NO_MODULE) {
     // Serial.println("Communication with WiFi module failed!");
@@ -131,17 +131,18 @@ void receive(bool getBreadcrumb) {
   //     // wait 10 seconds for connection:
   //     // delay(2000);
   //   }
-  while(!connected){
-    WiFiClient client = breadcrumbListener.available();
-    if (client) {
+  // while(!connected){
+    Serial.println("In receive");
+    WiFiClient server = breadcrumbListener.available();
+    if (server) {
       connected = true;
-      // Serial.println("new client");
+      Serial.println("new client");
 
-      while (client.connected())
+      while (server.connected())
       {
-        if (client.available())
+        if (server.available())
         {
-          char c = client.read();
+          char c = server.read();
           if (readString.length() < 100)
           {
             // If connection is connected and available, start storing the message
@@ -180,7 +181,7 @@ void receive(bool getBreadcrumb) {
     }
     // Serial.println("not recieved");
   // delay(500);
-  }
+  // }
   second_loop = false;
   connected = false;
 }
@@ -206,10 +207,10 @@ void parseVehSel() {
     followerVehicleString.toCharArray(followerVehicle, followerVehicleString.length() + 1); // Convert to char array so it can be sent to connect() function
 
     // Output the extracted values
-    // Serial.print("Is a leader: ");
-    // Serial.println(isLeader);
-    // Serial.print("Follower IP: ");
-    // Serial.println(followerVehicle);
+    Serial.print("Is a leader: ");
+    Serial.println(isLeader);
+    Serial.print("Follower IP: ");
+    Serial.println(followerVehicle);
     delay(1);
   // }
 }
@@ -228,14 +229,14 @@ void parseBreadcrumb() {
     angle = angleString.toInt(); // Convert angle string to an integer
 
     // Output the extracted values
-    // Serial.print("Speed: ");
-    // Serial.println(speed);
-    // Serial.print("Angle: ");
-    // Serial.println(angle);
+    Serial.print("Speed: ");
+    Serial.println(speed);
+    Serial.print("Angle: ");
+    Serial.println(angle);
 
-    if(!isLeader) {
-      avoid(angle, speed);
-    }
+    // if(!isLeader) {
+    //   avoid(angle, speed);
+    // }
     vehicleAngle(angle);
     vehicleSpeed(speed);
     delay(1);
@@ -247,8 +248,11 @@ void send(int speed, int angle) {
   String speedStr = "";
   String angleStr = "";
   String followerVehString = "";
-  while(!second_loop){
+  // while(!second_loop){
     // Serial.println(followerVehicle);
+    client.stop();
+    Serial.println("-----Sending to follower-------");
+    Serial.println(followerVehicle);
     if (client.connect(followerVehicle, 80)) {
       second_loop = true;
       // Serial.println("connected");
@@ -259,15 +263,8 @@ void send(int speed, int angle) {
       message = String("POST /?veh" + followerVehString + " speed: " + speedStr + " angle: " + angleStr + " HTTP/1.0");
       client.println(message);
       client.println();
-    }else{
-      // Serial.println("Not connected");
+      Serial.println(message);
     }
-
-    //if (client.connected()) {
-    //  client.stop();
-    //}
-    // delay(5000);
-  }
   second_loop = false;
   // Serial.println("send loop left");
   // delay(5000);
