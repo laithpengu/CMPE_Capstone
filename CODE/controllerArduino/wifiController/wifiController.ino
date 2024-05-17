@@ -6,9 +6,9 @@
 #define LATCH_PIN 6   // ST_CP (storage register clock input)
 #define GO_PIN 10
 #define STOP_PIN 9
-#define B1_PIN 13
+#define B1_PIN 11
 #define B2_PIN 12
-#define B3_PIN 11
+#define B3_PIN 13
 
 char packetBuffer[255];
 
@@ -179,9 +179,9 @@ void loop() {
     int order[3];
     // set car order
     for (int pos = 0; pos < 3; pos++) {
-      for (int num = 0; num < 3; num++) {
-        if (carOrder[num] == pos) {
-          order[pos] = num + 1;
+      for (int car = 0; car < 3; car++) {
+        if (carOrder[car] == pos + 1) {
+          order[pos] = car + 1;
         }
       }
     }
@@ -191,6 +191,11 @@ void loop() {
     while (send_count != 0) {
       int i = veh_count - 1;
       while (i >= 0) {
+        Serial.print(i); 
+        Serial.print(" order: ");
+        Serial.print(order[i]);
+        Serial.print(" target: ");
+        Serial.println(veh_ips[order[i] - 1]);
         if (controllerUDP.beginPacket(veh_ips[order[i] - 1], 80)) {
           // define order for string
           char out_string[32];
@@ -246,6 +251,30 @@ void loop() {
       controllerUDP.write(messageout);
       controllerUDP.endPacket();
     }
+
+    if (stop == LOW && stop != stopLast) {
+      carOrder[0] = 0;
+      carOrder[1] = 0;
+      carOrder[2] = 0;
+      carCounter = 0;
+      curr_state = KILL;
+      Serial.println("Entering kill.");
+    }
+  } else if (curr_state == KILL) {
+    int send_count = 50;
+    while (send_count != 0) {
+      for (int i = 0; i < 3; i++) {
+        if (controllerUDP.beginPacket(veh_ips[i], 80)) {
+          controllerUDP.write("POST /?kill");
+          controllerUDP.endPacket();
+          //client.println("POST /?kill");
+          delay(50);
+        }
+      }
+      send_count--;
+    }
+    Serial.println("Entering idle.");
+    curr_state = IDLE;
   }
 
   // store last button outputs
@@ -257,7 +286,7 @@ void loop() {
 
   // output to leds car order
   digitalWrite(LATCH_PIN, LOW);
-  for (int x = 0; x < 3; x++){
+  for (int x = 2; x >= 0; x--){
     int num = carOrder[x];
     for (int i = 7; i >= 0; i--) {
       digitalWrite(CLOCK_PIN, LOW);
