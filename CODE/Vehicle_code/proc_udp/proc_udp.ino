@@ -2,18 +2,19 @@
 #include <WiFi.h>
 #include <Servo.h>
 #include "mbed.h"
+#include "oas.h"
 
 // Wifi variables
 char ssid[] = "TP-Link_2F9C";
 char pass[] = "1cs_Pr0c";
-IPAddress ip(192, 168, 0, 21);
+IPAddress ip(192, 168, 0, 22);
 IPAddress follower;
 IPAddress veh1_ip(192, 168, 0, 21);
 IPAddress veh2_ip(192, 168, 0, 22);
 IPAddress veh3_ip(192, 168, 0, 23);
 IPAddress vehicles[3] = {veh1_ip, veh2_ip, veh3_ip};
 // IPAddress follower;
-String vehId = "veh1";
+String vehId = "veh2";
 int status = WL_IDLE_STATUS;
 int followerID; // vehicle ID number
 String readString;
@@ -78,7 +79,7 @@ void setup() {
     // don't continue
     while (true);
   }
-  
+  // isLeader = 1;
   wifiInit();
 }
 
@@ -120,7 +121,7 @@ void receive() {
         vehicleAngle(90);
         vehicleSpeed(0);
         delay(1);
-        setup();
+        // setup();
     } else if(readString.indexOf(vehId) > 0) {
     // Ensure the message is being sent to the right vehicle
       Serial.println("You've got mail");
@@ -174,9 +175,13 @@ void parseBreadcrumb() {
   Serial.print("Angle: ");
   Serial.println(angle);
 
-  // if(!isLeader) {
-  //   avoid(angle, speed);
-  // }
+  int *speedPtr = &speed;
+  int *anglePtr = &angle;
+
+  if(!isLeader) {
+    // avoid(anglePtr, speedPtr);
+    Serial.println("This is not a leader");
+  }
   vehicleAngle(angle);
   vehicleSpeed(speed);
   delay(1);
