@@ -72,7 +72,7 @@ void setup() {
   Serial.begin(9600);
   delay(5000);
 
-  // avoid_setup();
+  avoid_setup();
   
   if (WiFi.status() == WL_NO_MODULE) {
     // Serial.println("Communication with WiFi module failed!");
@@ -179,7 +179,7 @@ void parseBreadcrumb() {
   int *anglePtr = &angle;
 
   if(!isLeader) {
-    // avoid(anglePtr, speedPtr);
+    avoid(anglePtr, speedPtr);
     Serial.println("This is not a leader");
   }
   vehicleAngle(angle);

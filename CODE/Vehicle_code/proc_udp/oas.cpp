@@ -397,7 +397,7 @@ void avoid(int *angle, int *speed) {
 
   //Serial.println("Entering avoid");
 
-  
+  /* uncomment this
   //Checks the sensors
   check_US();
   //distance_IR_1 = check_IR(Serial1, data_laser_1);
@@ -432,9 +432,9 @@ void avoid(int *angle, int *speed) {
     storedRoute[0] = 0;
     storedRoute[1] = 0;
   }
-  
+  uncomment this*/ 
   //Uses the gyroscope to calculate any micro-adjustments we need
-  //keepOnPath(angle, speed);
+  keepOnPath(angle, speed);
 
 }
 
