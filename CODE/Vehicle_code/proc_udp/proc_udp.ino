@@ -72,7 +72,7 @@ void setup() {
   Serial.begin(9600);
   delay(5000);
 
-  avoid_setup();
+  //avoid_setup();
   
   if (WiFi.status() == WL_NO_MODULE) {
     // Serial.println("Communication with WiFi module failed!");
@@ -118,9 +118,12 @@ void receive() {
     readString = packetBuffer;
     if (readString.indexOf("/?kill") > 0) {
         // In the case of a soft kill
+        speed = 0;
+        angle = 90;
         vehicleAngle(90);
         vehicleSpeed(0);
         delay(1);
+        followerID = 17;
         // setup();
     } else if(readString.indexOf(vehId) > 0) {
     // Ensure the message is being sent to the right vehicle
@@ -178,10 +181,10 @@ void parseBreadcrumb() {
   int *speedPtr = &speed;
   int *anglePtr = &angle;
 
-  if(!isLeader) {
-    avoid(anglePtr, speedPtr);
-    Serial.println("This is not a leader");
-  }
+  // if(!isLeader) {
+  //   avoid(anglePtr, speedPtr);
+  //   Serial.println("This is not a leader");
+  // }
   vehicleAngle(angle);
   vehicleSpeed(speed);
   delay(1);
@@ -202,7 +205,7 @@ void send(int speed, int angle) {
 //////////
 void loop() {
   receive();
-  if(followerID != 17) {
+  if(followerID < 17) {
     send(speed, angle);
   }
 }
